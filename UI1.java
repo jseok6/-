@@ -86,13 +86,16 @@ public class UI1 extends JFrame{
 	}
 	public void placeLoginPanel(JPanel panel){
         panel.setLayout(null);
+        Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
         
-        JLabel userLabel = new JLabel("User");
+        JLabel userLabel = new JLabel("Tell");
         userLabel.setBounds(427, 229, 80, 25);
+        userLabel.setFont(font);
         panel.add(userLabel);
        
         JLabel passLabel = new JLabel("PassWord");
         passLabel.setBounds(427, 259, 80, 25);
+        passLabel.setFont(font);
         panel.add(passLabel);
        
         userText = new JTextField(20);

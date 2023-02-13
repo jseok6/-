@@ -63,106 +63,66 @@ public class Pay extends JFrame{
 	}
 	public void PayUI(JPanel panel){
 		panel.setLayout(null);
+		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		btntime=new JButton("시간권");
 		btntime.setBounds(67, 50, 420, 100);
 		btntime.setBackground(Color.yellow);
+		btntime.setFont(font);
 		panel.add(btntime);
 		
 		btnperiod=new JButton("기간권");
 		btnperiod.setBounds(567, 50, 420, 100);
 		btnperiod.setBackground(Color.yellow);
+		btnperiod.setFont(font);
 		panel.add(btnperiod);
 		
 		btntime1=new JButton("1시간권");
 		btntime1.setBounds(67,167,200,100);
 		btntime1.setBackground(Color.yellow);
+		btntime1.setFont(font);
 		panel.add(btntime1);
 		
 		
 		btntime2=new JButton("2시간권");
 		btntime2.setBounds(427,167,200,100);
 		btntime2.setBackground(Color.yellow);
+		btntime2.setFont(font);
 		panel.add(btntime2);
 		
 		btntime4=new JButton("4시간권");
 		btntime4.setBounds(787,167,200,100);
 		btntime4.setBackground(Color.yellow);
+		btntime4.setFont(font);
 		panel.add(btntime4);
 		
 		
 		btntime6=new JButton("6시간권");
 		btntime6.setBounds(67,367,200,100);
 		btntime6.setBackground(Color.yellow);
+		btntime6.setFont(font);
 		panel.add(btntime6);
 		btntime9=new JButton("8시간권");
 		btntime9.setBounds(427,367,200,100);
 		btntime9.setBackground(Color.yellow);
+		btntime9.setFont(font);
 		panel.add(btntime9);
 		btntime12=new JButton("12시간권");
 		btntime12.setBounds(787,367,200,100);
 		btntime12.setBackground(Color.yellow);
+		btntime12.setFont(font);
 		panel.add(btntime12);
 		
 		btnpay=new JButton("결제");
 		btnpay.setBounds(375,500,300,100);
 		btnpay.setBackground(Color.yellow);
+		btnpay.setFont(font);
 		panel.add(btnpay);
 		
 		
 
 	
 	}
-	public void PayUI2(JPanel panel){
-		panel.setLayout(null);
-		btntime=new JButton("시간권");
-		btntime.setBounds(67, 50, 420, 100);
-		btntime.setBackground(Color.yellow);
-		panel.add(btntime);
-		
-		btnperiod=new JButton("기간권");
-		btnperiod.setBounds(567, 50, 420, 100);
-		btnperiod.setBackground(Color.yellow);
-		panel.add(btnperiod);
-		
-		btntime1=new JButton("1일권");
-		btntime1.setBounds(67,167,200,100);
-		btntime1.setBackground(Color.yellow);
-		panel.add(btntime1);
-		
-		
-		btntime2=new JButton("2일권");
-		btntime2.setBounds(427,167,200,100);
-		btntime2.setBackground(Color.yellow);
-		panel.add(btntime2);
-		
-		btntime4=new JButton("4일권");
-		btntime4.setBounds(787,167,200,100);
-		btntime4.setBackground(Color.yellow);
-		panel.add(btntime4);
-		
-		
-		btntime6=new JButton("6일권");
-		btntime6.setBounds(67,367,200,100);
-		btntime6.setBackground(Color.yellow);
-		panel.add(btntime6);
-		btntime9=new JButton("9일권");
-		btntime9.setBounds(427,367,200,100);
-		btntime9.setBackground(Color.yellow);
-		panel.add(btntime9);
-		btntime12=new JButton("12일권");
-		btntime12.setBounds(787,367,200,100);
-		btntime12.setBackground(Color.yellow);
-		panel.add(btntime12);
-		
-		btnpay=new JButton("결제");
-		btnpay.setBounds(375,500,300,100);
-		btnpay.setBackground(Color.yellow);
-		panel.add(btnpay);
-		
-		
 
-	
-	}
 	
 	
 	public static void main(String[] args) {
