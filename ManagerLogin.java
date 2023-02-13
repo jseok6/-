@@ -76,7 +76,9 @@ public class ManagerLogin extends JFrame{
 	}
 	public void placeLoginPanel(JPanel panel){
         panel.setLayout(null);
+        Font font=new Font("���� ����", Font.PLAIN, 17);
         
+<<<<<<<< HEAD:ManagerLogin.java
         //안내메세지 라벨
         JLabel notificationLabel = new JLabel("<html><body><center>아이디와 비밀번호를 입력하세요"
         		+ "<br>Enter ID and Password</center></body></html>");
@@ -111,6 +113,26 @@ public class ManagerLogin extends JFrame{
         panel.add(managerPassWordText);
     
         managerPassWordText.addActionListener(new ActionListener() {          
+========
+        JLabel userLabel = new JLabel("Tell");
+        userLabel.setBounds(427, 229, 80, 25);
+        userLabel.setFont(font);
+        panel.add(userLabel);
+       
+        JLabel passLabel = new JLabel("PassWord");
+        passLabel.setBounds(427, 259, 80, 25);
+        passLabel.setFont(font);
+        panel.add(passLabel);
+       
+        userText = new JTextField(20);
+        userText.setBounds(517, 229, 160, 25);
+        panel.add(userText);
+       
+        passText = new JPasswordField(20);
+        passText.setBounds(517, 259, 160, 25);
+        panel.add(passText);
+        passText.addActionListener(new ActionListener() {          
+>>>>>>>> 23877a5279dfe3eea1de9a2543bed81d24a5090e:UI1.java
             @Override
             public void actionPerformed(ActionEvent e) {
             	//�α���üũ
