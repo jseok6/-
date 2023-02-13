@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.PublicKey;
 
 public class UserMainUI extends JFrame{
 	
@@ -13,11 +14,12 @@ public class UserMainUI extends JFrame{
 	private JLabel ManagerNumber;
 	private JLabel ManagerEmail;
 	private JLabel picture;
+	private JLabel quest;
 	private JButton addpay;
 	private JButton exit;
-	private JButton quest;
-	private JButton answerButton;
-	private JButton questButton;
+
+	private JButton answerButton;//댭변버튼
+	private JButton questButton;//질문버튼
 
 	
 	
@@ -43,8 +45,17 @@ public class UserMainUI extends JFrame{
         panel2.setBounds(800,0,300,700);
         getContentPane().add(panel2);
         
-       
+
         setVisible(true);
+        
+        questButton.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				QuestUI questui=new QuestUI();
+				questui.setVisible(true);
+				dispose();
+			}
+		});
         
 		
 		
@@ -95,6 +106,8 @@ public class UserMainUI extends JFrame{
         
         
         
+        
+        
         panel.setBackground(Color.pink);
 		
 	}
@@ -104,8 +117,8 @@ public class UserMainUI extends JFrame{
 		panel.setLayout(null);
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
-		JButton quest=new JButton("질문");
-		quest.setBounds(740,50,300,50);
+		JLabel quest=new JLabel("질문");
+		quest.setBounds(880,50,300,50);
 		quest.setBackground(Color.cyan);
 		quest.setFont(font);
 		panel.add(quest);
