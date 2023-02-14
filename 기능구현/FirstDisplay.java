@@ -3,12 +3,8 @@ package 기능구현;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
 import java.awt.BorderLayout;
-import java.awt.Rectangle;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Toolkit;
