@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.PublicKey;
 
-public class UserMainUI extends JFrame{
+
+public class UserMainUI extends JFrame {
 	
 	private JLabel RemainTime;
 	private JLabel notification;
@@ -57,8 +58,6 @@ public class UserMainUI extends JFrame{
 			}
 		});
         
-		
-		
 	}
 	
 	public void UserMainUIPanel(JPanel panel)
@@ -106,9 +105,8 @@ public class UserMainUI extends JFrame{
         
         
         
-        
-        
         panel.setBackground(Color.pink);
+        
 		
 	}
 	
@@ -138,9 +136,19 @@ public class UserMainUI extends JFrame{
 		
 		panel.setBackground(Color.green);
 		
-		
-		
+		questButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				QuestUI qui=new QuestUI();
+				qui.setVisible(true);
+				dispose();
+				
+			}
+		});
+       
 	}
+
 
 	public static void main(String[] args) {
 		new UserMainUI();

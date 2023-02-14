@@ -59,6 +59,15 @@ public class Pay2 extends JFrame{
 				
 			}
 		});
+        //결제버튼 누르면 결제창으로 이동
+        btnpay.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 	public void PayUI(JPanel panel){

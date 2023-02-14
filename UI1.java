@@ -3,17 +3,39 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.net.Socket;
 
 import javax.swing.border.*;
-public class UI1 extends JFrame{
+
+import net.ChatClient3;
+import net.ChatProtocol3;
+import talk.TalkProtocol;
+public class UI1 extends JFrame
+implements ActionListener{
+	
 	 private JButton btnLogin;
 	 private JButton btnInit;
 	 private JPasswordField passText;
 	 private JTextField userText;
 	 private JLabel managerphone;
 	 private JLabel label;
-	 
+	 private JLabel label2;
 
+	 
+	 
+	 Socket sock;
+	 String id;
+	 String ip = "127.0.0.1";
+	 int port = 8003;
+	 BufferedReader in;
+	 PrintWriter out;
+	 
 	 private JButton btn1;
 	 private JButton btn2;
 	 private JButton btn3;
@@ -116,24 +138,21 @@ public class UI1 extends JFrame{
         btnInit.setBackground(Color.yellow);
         btnInit.setBounds(427, 299, 121, 25);
         panel.add(btnInit);
-        btnInit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                userText.setText("");
-                passText.setText("");
-            }
-        });
+        
        
         btnLogin = new JButton("Login");
         btnLogin.setBackground(Color.yellow);
         btnLogin.setBounds(560, 299, 117, 25);
         panel.add(btnLogin);
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	//로그인체크
-            }
-        });
+        btnLogin.addActionListener(this);
+        btnInit.addActionListener(this);
+        
+        label2=new JLabel("아이디와 비번을 입력하세요.");
+        label2.setFont(font);
+        label2.setBounds(430, 580, 250, 20);
+        panel.add(label2);
+        
+        
         //숫자키패드
         btn0=new JButton("0");
         btn0.setBounds(310,350,50,25);
@@ -294,6 +313,62 @@ public class UI1 extends JFrame{
         
         
     }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		try {
+			Object obj=e.getSource();
+			if(obj==btnInit)
+			{
+				userText.setText("");
+	            passText.setText("");
+			}
+			else if (obj==btnLogin)
+			{
+				id=userText.getText().trim();
+//				out.println(StudyProtocol.ID+StudyProtocol.MODE+id+";"+passText.getText().trim());
+//				String line=in.readLine();
+//				int idx=line.indexOf(StudyProtocol.MODE);
+//				String cmd= line.substring(0,idx);
+//				String data = line.substring(idx+1);
+//				if(cmd.equals(StudyProtocol.ID))
+//				{
+//					if(data.equals("F"))
+//					{
+//						label2.setText("ID와 PWD를 확인하세요.");
+//					}
+//					else if(data.equals("C"))
+//					{
+//						label2.setText("이중 접속입니다.");
+//					}
+//					else if(data.equals("T"))
+//					{
+//
+////						msgl.setText("로그인성공");
+//						dispose();//로그인awt사라짐
+//						new Pay();
+//					}
+//				}
+				
+			}
+			
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void connect() 
+	{
+		try
+		{
+			sock = new Socket(ip, port);
+			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}// --connect
 
 	public static void main(String[] args) {
 		new UI1();

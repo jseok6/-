@@ -27,8 +27,7 @@ public class QuestUI extends JFrame{
         getContentPane().add(panel);
         
         setVisible(true);
-        
-		
+       
 	}
 	public void QuestPanel(JPanel panel)
 	{
@@ -51,9 +50,18 @@ public class QuestUI extends JFrame{
 		JButton check=new JButton("»Æ¿Œ");
 		check.setBounds(430, 550, 200, 100);
 		check.setFont(font);
+		check.setBackground(Color.yellow);
 		panel.add(check);
 		
-		
+		check.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UserMainUI Userui=new UserMainUI();
+				Userui.setVisible(true);
+				dispose();
+				
+			}
+		});
 		
 		
 	}
