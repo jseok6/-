@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.Box;
+import javax.swing.SwingConstants;
 
 public class ManagerMain extends JFrame {
 
@@ -83,7 +84,7 @@ public class ManagerMain extends JFrame {
 	 */
 	public ManagerMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1098, 723);
+		setBounds(450, 200, 1100, 728);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(249, 228, 166));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,7 +102,7 @@ public class ManagerMain extends JFrame {
 		
 		//1층 좌석 버튼
 		JButton seat101Btn = new JButton("101");
-		seat101Btn.setBounds(113, 0, 72, 60);
+		seat101Btn.setBounds(114, 0, 72, 60);
 		seat101Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -357,23 +358,124 @@ public class ManagerMain extends JFrame {
 		seat131Btn.setFocusPainted(false);
 		seat131Btn.setBackground(new Color(0, 128, 255));
 		panel1F.add(seat131Btn);
+			
+		//화장실
+		JLabel toiletLabel1_1 = new JLabel("<html><body><center>화<br>장<br>실</center></body></html>");
+		toiletLabel1_1.setOpaque(true);
+		toiletLabel1_1.setHorizontalAlignment(JLabel.CENTER);
+		toiletLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		toiletLabel1_1.setBackground(new Color(255, 210, 0));
+		toiletLabel1_1.setBounds(0, 58, 72, 167);
+		panel1F.add(toiletLabel1_1);
+		
+		
+		//문
+		JLabel doorLabel1_1 = new JLabel("문");
+		doorLabel1_1.setOpaque(true);
+		doorLabel1_1.setHorizontalAlignment(JLabel.CENTER);
+		doorLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		doorLabel1_1.setBackground(new Color(128, 0, 0));
+		doorLabel1_1.setBounds(884, 70, 61, 69);
+		panel1F.add(doorLabel1_1);
+		
+		//벽라벨들
+		JLabel wallLabel1_1 = new JLabel();
+		wallLabel1_1.setOpaque(true);
+		wallLabel1_1.setBackground(Color.GRAY);
+		wallLabel1_1.setBounds(0, 496, 72, 103);
+		panel1F.add(wallLabel1_1);
+		
+		JLabel wallLabel1_2 = new JLabel();
+		wallLabel1_2.setOpaque(true);
+		wallLabel1_2.setBackground(Color.GRAY);
+		wallLabel1_2.setBounds(26, 539, 72, 60);
+		panel1F.add(wallLabel1_2);
+		
+		JLabel wallLabel1_3 = new JLabel();
+		wallLabel1_3.setOpaque(true);
+		wallLabel1_3.setBackground(Color.GRAY);
+		wallLabel1_3.setBounds(241, 539, 90, 60);
+		panel1F.add(wallLabel1_3);
+		
+		JLabel wallLabel1_4 = new JLabel();
+		wallLabel1_4.setOpaque(true);
+		wallLabel1_4.setBackground(Color.GRAY);
+		wallLabel1_4.setBounds(536, 539, 112, 60);
+		panel1F.add(wallLabel1_4);
+		
+		JLabel wallLabel1_5 = new JLabel();
+		wallLabel1_5.setOpaque(true);
+		wallLabel1_5.setBackground(Color.GRAY);
+		wallLabel1_5.setBounds(787, 539, 156, 60);
+		panel1F.add(wallLabel1_5);
+		
+		JLabel wallLabel1_6 = new JLabel();
+		wallLabel1_6.setOpaque(true);
+		wallLabel1_6.setBackground(Color.GRAY);
+		wallLabel1_6.setBounds(871, 294, 72, 69);
+		panel1F.add(wallLabel1_6);
+		
+		JLabel wallLabel1_7 = new JLabel();
+		wallLabel1_7.setOpaque(true);
+		wallLabel1_7.setBackground(Color.GRAY);
+		wallLabel1_7.setBounds(871, 143, 72, 103);
+		panel1F.add(wallLabel1_7);
+		
+		JLabel wallLabel1_8 = new JLabel();
+		wallLabel1_8.setOpaque(true);
+		wallLabel1_8.setBackground(Color.GRAY);
+		wallLabel1_8.setBounds(0, 209, 72, 60);
+		panel1F.add(wallLabel1_8);
+		
+		JLabel wallLabel1_9 = new JLabel();
+		wallLabel1_9.setOpaque(true);
+		wallLabel1_9.setBackground(Color.GRAY);
+		wallLabel1_9.setBounds(0, 0, 117, 60);
+		panel1F.add(wallLabel1_9);
+		
+		JLabel wallLabel1_10 = new JLabel();
+		wallLabel1_10.setOpaque(true);
+		wallLabel1_10.setBackground(Color.GRAY);
+		wallLabel1_10.setBounds(329, 0, 79, 60);
+		panel1F.add(wallLabel1_10);
+		
+		JLabel wallLabel1_11 = new JLabel();
+		wallLabel1_11.setOpaque(true);
+		wallLabel1_11.setBackground(Color.GRAY);
+		wallLabel1_11.setBounds(126, 241, 21, 122);
+		panel1F.add(wallLabel1_11);
+		
+		JLabel wallLabel1_12 = new JLabel();
+		wallLabel1_12.setOpaque(true);
+		wallLabel1_12.setBackground(Color.GRAY);
+		wallLabel1_12.setBounds(126, 358, 93, 18);
+		panel1F.add(wallLabel1_12);
+		
+		JLabel wallLabel1_13 = new JLabel();
+		wallLabel1_13.setOpaque(true);
+		wallLabel1_13.setBackground(Color.GRAY);
+		wallLabel1_13.setBounds(126, 228, 93, 18);
+		panel1F.add(wallLabel1_13);
+		
+		JLabel wallLabel1_14 = new JLabel();
+		wallLabel1_14.setOpaque(true);
+		wallLabel1_14.setBackground(Color.GRAY);
+		wallLabel1_14.setBounds(648, 241, 21, 122);
+		panel1F.add(wallLabel1_14);
+		
+		JLabel wallLabel1_15 = new JLabel();
+		wallLabel1_15.setOpaque(true);
+		wallLabel1_15.setBackground(Color.GRAY);
+		wallLabel1_15.setBounds(576, 358, 93, 18);
+		panel1F.add(wallLabel1_15);
+		
+		JLabel wallLabel1_16 = new JLabel();
+		wallLabel1_16.setOpaque(true);
+		wallLabel1_16.setBackground(Color.GRAY);
+		wallLabel1_16.setBounds(576, 228, 93, 18);
+		panel1F.add(wallLabel1_16);
 		
 		contentPane.add(panel1F);
-		
-		
-		//화장실
-		JButton seat101Btn_1 = new JButton("<html><body><center>화<br>장<br>실</center></body></html>");
-		seat101Btn_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		seat101Btn_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		seat101Btn_1.setFocusPainted(false);
-		seat101Btn_1.setBackground(new Color(0, 128, 255));
-		seat101Btn_1.setBounds(0, 58, 72, 167);
-		panel1F.add(seat101Btn_1);
-		
-	
 		//-------------------------------------------------------------------------------------------------------------
 		//2층 배치도 판넬
 		JPanel panel2F = new JPanel();
@@ -383,7 +485,7 @@ public class ManagerMain extends JFrame {
 		panel2F.setVisible(false); //버튼 감추기
 		contentPane.add(panel2F);
 		panel2F.setLayout(null);
-		
+		//------------------------------------------------------------------------------------------------------------
 		//로그아웃 버튼
 		JButton logoutBtn = new JButton("로그아웃");
 		logoutBtn.setBounds(954, 0, 128, 38);
