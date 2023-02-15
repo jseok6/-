@@ -1,16 +1,16 @@
-package ê¸°ëŠ¥êµ¬í˜„;
+package ±â´É±¸Çö;
 
 import javax.swing.*;
 
 public class PopUp {
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
-        int result = JOptionPane.showConfirmDialog(jFrame, "OOë²ˆ ìë¦¬ë¥¼ ì„ íƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+        int result = JOptionPane.showConfirmDialog(jFrame, "OO¹ø ÀÚ¸®¸¦ ¼±ÅÃ ÇÏ½Ã°Ú½À´Ï±î?");
 
         if (result == 0)
-            System.out.println("You pressed í™•ì¸");
+            System.out.println("You pressed È®ÀÎ");
         else if (result == 1)
-        	 System.out.println("You pressed ìë¦¬ ì„ íƒ í™”ë©´ìœ¼ë¡œ");
+        	 System.out.println("You pressed ÀÚ¸® ¼±ÅÃ È­¸éÀ¸·Î");
     }
 
 }

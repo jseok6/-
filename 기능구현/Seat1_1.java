@@ -6,12 +6,14 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -89,6 +91,26 @@ public class Seat1_1 extends JFrame {
 		Font logoutBtnFont = new Font("맑은고딕 굵게", Font.BOLD, 16);
 		 //테두리선 굵게
 		 LineBorder lb = new LineBorder(Color.BLACK,2);
+		 
+		 ImageIcon logoIcon= new ImageIcon
+					("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg");
+	        Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
+	    	Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH);         // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
+	        ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
+	        
+			ImageIcon trashcanIcon= new ImageIcon
+					("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\trashcan.png");
+			Image trashcanImg = trashcanIcon.getImage();
+			Image updateTrashcanImg = trashcanImg.getScaledInstance(57, 54, Image.SCALE_SMOOTH);
+	        ImageIcon updatetrashcanIcon = new ImageIcon(updateTrashcanImg);        
+	        
+			ImageIcon waterPFIcon = new ImageIcon
+					("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\water.png");
+			Image waterPFImg = waterPFIcon.getImage();
+			Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
+			ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
+			
+			setVisible(true);
 	
 		//1층 배치도 판넬
 		JPanel panel1F = new JPanel();
@@ -357,23 +379,149 @@ public class Seat1_1 extends JFrame {
 		
 		
 		//화장실
-		JButton seat101Btn_1 = new JButton("<html><body><center>화<br>장<br>실</center></body></html>");
-		seat101Btn_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		seat101Btn_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		seat101Btn_1.setFocusPainted(false);
-		seat101Btn_1.setBackground(new Color(0, 128, 255));
-		seat101Btn_1.setBounds(0, 58, 72, 167);
-		panel1F.add(seat101Btn_1);
-		
-		JLabel lblNewLabel = new JLabel("자리 선택 완료");
-		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 12));
-		lblNewLabel.setBounds(192, 36, 90, 29);
-		contentPane.add(lblNewLabel);
-		
-	
+				JLabel toiletLabel1_1 = new JLabel("<html><body><center>화<br>장<br>실</center></body></html>");
+				toiletLabel1_1.setOpaque(true);
+				toiletLabel1_1.setHorizontalAlignment(JLabel.CENTER);
+				toiletLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
+				toiletLabel1_1.setBackground(new Color(255, 210, 0));
+				toiletLabel1_1.setBounds(0, 60, 72, 160);
+				panel1F.add(toiletLabel1_1);
+				
+				
+				//문
+				JLabel doorLabel1_1 = new JLabel("문");
+				doorLabel1_1.setOpaque(true);
+				doorLabel1_1.setHorizontalAlignment(JLabel.CENTER);
+				doorLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
+				doorLabel1_1.setBackground(new Color(128, 0, 0));
+				doorLabel1_1.setBounds(884, 70, 61, 69);
+				panel1F.add(doorLabel1_1);
+				
+				//벽라벨들
+				JLabel wallLabel1_1 = new JLabel();
+				wallLabel1_1.setOpaque(true);
+				wallLabel1_1.setBackground(Color.GRAY);
+				wallLabel1_1.setBounds(0, 496, 72, 103);
+				panel1F.add(wallLabel1_1);
+				
+				JLabel wallLabel1_2 = new JLabel();
+				wallLabel1_2.setOpaque(true);
+				wallLabel1_2.setBackground(Color.GRAY);
+				wallLabel1_2.setBounds(26, 539, 72, 60);
+				panel1F.add(wallLabel1_2);
+				
+				JLabel wallLabel1_3 = new JLabel();
+				wallLabel1_3.setOpaque(true);
+				wallLabel1_3.setBackground(Color.GRAY);
+				wallLabel1_3.setBounds(241, 539, 90, 60);
+				panel1F.add(wallLabel1_3);
+				
+				JLabel wallLabel1_4 = new JLabel();
+				wallLabel1_4.setOpaque(true);
+				wallLabel1_4.setBackground(Color.GRAY);
+				wallLabel1_4.setBounds(536, 539, 112, 60);
+				panel1F.add(wallLabel1_4);
+				
+				JLabel wallLabel1_5 = new JLabel();
+				wallLabel1_5.setOpaque(true);
+				wallLabel1_5.setBackground(Color.GRAY);
+				wallLabel1_5.setBounds(787, 539, 156, 60);
+				panel1F.add(wallLabel1_5);
+				
+				JLabel wallLabel1_6 = new JLabel();
+				wallLabel1_6.setOpaque(true);
+				wallLabel1_6.setBackground(Color.GRAY);
+				wallLabel1_6.setBounds(871, 294, 72, 69);
+				panel1F.add(wallLabel1_6);
+				
+				JLabel wallLabel1_7 = new JLabel();
+				wallLabel1_7.setOpaque(true);
+				wallLabel1_7.setBackground(Color.GRAY);
+				wallLabel1_7.setBounds(871, 143, 72, 103);
+				panel1F.add(wallLabel1_7);
+				
+				JLabel wallLabel1_8 = new JLabel();
+				wallLabel1_8.setOpaque(true);
+				wallLabel1_8.setBackground(Color.GRAY);
+				wallLabel1_8.setBounds(0, 209, 72, 60);
+				panel1F.add(wallLabel1_8);
+				
+				JLabel wallLabel1_9 = new JLabel();
+				wallLabel1_9.setOpaque(true);
+				wallLabel1_9.setBackground(Color.GRAY);
+				wallLabel1_9.setBounds(0, 0, 117, 60);
+				panel1F.add(wallLabel1_9);
+				
+				JLabel wallLabel1_10 = new JLabel();
+				wallLabel1_10.setOpaque(true);
+				wallLabel1_10.setBackground(Color.GRAY);
+				wallLabel1_10.setBounds(329, 0, 79, 60);
+				panel1F.add(wallLabel1_10);
+				
+				JLabel wallLabel1_11 = new JLabel();
+				wallLabel1_11.setOpaque(true);
+				wallLabel1_11.setBackground(Color.GRAY);
+				wallLabel1_11.setBounds(126, 241, 21, 122);
+				panel1F.add(wallLabel1_11);
+				
+				JLabel wallLabel1_12 = new JLabel();
+				wallLabel1_12.setOpaque(true);
+				wallLabel1_12.setBackground(Color.GRAY);
+				wallLabel1_12.setBounds(126, 358, 93, 18);
+				panel1F.add(wallLabel1_12);
+				
+				JLabel wallLabel1_13 = new JLabel();
+				wallLabel1_13.setOpaque(true);
+				wallLabel1_13.setBackground(Color.GRAY);
+				wallLabel1_13.setBounds(126, 228, 93, 18);
+				panel1F.add(wallLabel1_13);
+				
+				JLabel wallLabel1_14 = new JLabel();
+				wallLabel1_14.setOpaque(true);
+				wallLabel1_14.setBackground(Color.GRAY);
+				wallLabel1_14.setBounds(648, 241, 21, 122);
+				panel1F.add(wallLabel1_14);
+				
+				JLabel wallLabel1_15 = new JLabel();
+				wallLabel1_15.setOpaque(true);
+				wallLabel1_15.setBackground(Color.GRAY);
+				wallLabel1_15.setBounds(576, 358, 93, 18);
+				panel1F.add(wallLabel1_15);
+				
+				JLabel wallLabel1_16 = new JLabel();
+				wallLabel1_16.setOpaque(true);
+				wallLabel1_16.setBackground(Color.GRAY);
+				wallLabel1_16.setBounds(576, 228, 93, 18);
+				panel1F.add(wallLabel1_16);
+				
+				JLabel wallLabel1_17 = new JLabel();
+				wallLabel1_17.setOpaque(true);
+				wallLabel1_17.setBackground(Color.GRAY);
+				wallLabel1_17.setBounds(765, 0, 50, 60);
+				panel1F.add(wallLabel1_17);
+				setVisible(true);
+				
+				//쓰레기통 이미지
+				JLabel trashcanLabel1_1 = new JLabel(); //화장실옆
+				trashcanLabel1_1.setBounds(70, 53, 57, 54);
+				trashcanLabel1_1.setIcon(updatetrashcanIcon);
+				panel1F.add(trashcanLabel1_1);
+				
+				JLabel trashcanLabel1_2 = new JLabel(); //문옆
+				trashcanLabel1_2.setBounds(814, 0, 57, 54);
+				trashcanLabel1_2.setIcon(updatetrashcanIcon);
+				panel1F.add(trashcanLabel1_2);
+				
+				//정수기 이미지
+				JLabel waterPFLabel1_1 = new JLabel(); // 화장실옆
+				waterPFLabel1_1.setBounds(70, 166, 35, 54);
+				waterPFLabel1_1.setIcon(updateWaterPFIcon);
+				panel1F.add(waterPFLabel1_1);
+				
+						JLabel waterPFLabel1_2 = new JLabel(); // 문옆
+						waterPFLabel1_2.setBounds(876, 6, 57, 54);
+						waterPFLabel1_2.setIcon(updateWaterPFIcon);
+						panel1F.add(waterPFLabel1_2);
 		//-------------------------------------------------------------------------------------------------------------
 	}
 	
