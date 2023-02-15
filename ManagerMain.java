@@ -7,6 +7,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Panel;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -28,7 +29,7 @@ import javax.swing.SwingConstants;
 public class ManagerMain extends JFrame {
 
 	private JPanel contentPane;
-
+	
 	 //버튼 디자인
 	   public class RoundedButton extends JButton {
 	      public RoundedButton() { super(); decorate(); } 
@@ -116,6 +117,179 @@ public class ManagerMain extends JFrame {
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
 		
 		setVisible(true);
+			
+			
+			//------------------------------------------------------------------------------------------------------------
+			//회원정보 패널
+			JPanel memberInfoPanel = new JPanel();
+			memberInfoPanel.setLayout(null);
+			memberInfoPanel.setOpaque(true);
+			memberInfoPanel.setBackground(new Color(128, 255, 128));
+			memberInfoPanel.setBounds(420, 150, 165, 251);
+			memberInfoPanel.setEnabled(false);
+			memberInfoPanel.setVisible(false);
+			//----------------------------------------------------------------------------	
+			
+			//좌석정보 패널- 켜지면 다른 좌석 버튼등은 다 못누르게 해야함(처음에 활성화안되고 안보이는 상태)
+			JPanel seatInfoPanel = new JPanel();
+			seatInfoPanel.setOpaque(true);
+			seatInfoPanel.setBorder(lb);
+			seatInfoPanel.setBounds(420, 150, 165, 251);
+			seatInfoPanel.setBackground(new Color(128, 255, 128));
+			seatInfoPanel.setLayout(null);
+			seatInfoPanel.setEnabled(false);
+			seatInfoPanel.setVisible(false);
+			contentPane.add(seatInfoPanel);
+			
+			//"좌석정보" 글자 라벨
+			JLabel seatInfoStrLabel = new JLabel("좌석정보");
+			//seatInfoStrLabel.setOpaque(true);
+			seatInfoStrLabel.setHorizontalAlignment(JLabel.CENTER);
+			seatInfoStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatInfoStrLabel.setBackground(new Color(128, 0, 0));
+			seatInfoStrLabel.setBounds(48, 10, 66, 23);
+			seatInfoPanel.add(seatInfoStrLabel);
+			
+			//"좌석번호" 글자 라벨
+			JLabel seatNumStrLabel = new JLabel("좌석번호");
+			//seatNumStrLabel.setOpaque(true);
+			seatNumStrLabel.setHorizontalAlignment(JLabel.CENTER);
+			seatNumStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatNumStrLabel.setBackground(new Color(128, 0, 0));
+			seatNumStrLabel.setBounds(12, 79, 66, 23);
+			seatInfoPanel.add(seatNumStrLabel);
+			
+			//좌석번호 숫자 라벨-DB에서? 클릭한 좌석번호 정보를 읽어와서 출력
+			JLabel seatNumLabel_seatInfoPanel = new JLabel("105");
+			seatNumLabel_seatInfoPanel.setHorizontalAlignment(JLabel.CENTER);
+			seatNumLabel_seatInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatNumLabel_seatInfoPanel.setBackground(new Color(128, 0, 0));
+			seatNumLabel_seatInfoPanel.setBounds(22, 99, 27, 23);
+			seatInfoPanel.add(seatNumLabel_seatInfoPanel);
+			
+			//"회원"글자 라벨
+			JLabel memberStrLabel = new JLabel("회원");
+			//memberStrLabel.setOpaque(true);
+			memberStrLabel.setHorizontalAlignment(JLabel.CENTER);
+			memberStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			memberStrLabel.setBackground(new Color(128, 0, 0));
+			memberStrLabel.setBounds(16, 185, 33, 23);
+			seatInfoPanel.add(memberStrLabel);
+			
+	    //회원정보 버튼(클릭시 memberInfo 패널 켜짐)
+			JButton memberInfoBtn = new JButton("정보");
+			memberInfoBtn.setBounds(57, 183, 78, 27);
+			memberInfoBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					seatInfoPanel.setEnabled(false);
+					seatInfoPanel.setVisible(false);					
+					memberInfoPanel.setVisible(true);
+					memberInfoPanel.setEnabled(true);
+				}
+			});
+			memberInfoBtn.setBackground(new Color(0, 128, 255));
+			memberInfoBtn.setFont(logoutBtnFont);
+			memberInfoBtn.setBorder(lb);
+			memberInfoBtn.setFocusPainted(false);// hide focus rectangle
+			seatInfoPanel.add(memberInfoBtn);
+			
+			//회원 전화번호 라벨
+			JLabel memberTelLabel = new JLabel("010-1234-1234");
+			//memberTelLabel.setOpaque(true);
+			memberTelLabel.setHorizontalAlignment(JLabel.CENTER);
+			memberTelLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			memberTelLabel.setBackground(new Color(128, 0, 0));
+			memberTelLabel.setBounds(12, 212, 141, 23);
+			seatInfoPanel.add(memberTelLabel);
+			
+			//닫기버튼x
+			JButton closeBtn_seatInfoPanel = new JButton("X");
+			closeBtn_seatInfoPanel.setOpaque(true);
+			closeBtn_seatInfoPanel.setBounds(116, 0, 49, 38);
+			closeBtn_seatInfoPanel.setFont(new Font("Dialog", Font.BOLD, 13));
+			closeBtn_seatInfoPanel.setHorizontalAlignment(JLabel.CENTER);
+			closeBtn_seatInfoPanel.setBackground(new Color(128, 255, 128));//패널이랑 비슷한색으로?
+			closeBtn_seatInfoPanel.setForeground(Color.RED);
+			closeBtn_seatInfoPanel.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					seatInfoPanel.setEnabled(false);
+					seatInfoPanel.setVisible(false);
+				}
+			});
+			closeBtn_seatInfoPanel.setBorder(lb);
+			closeBtn_seatInfoPanel.setFocusPainted(false);
+			seatInfoPanel.add(closeBtn_seatInfoPanel);
+			memberInfoPanel.setBorder(lb);
+			contentPane.add(memberInfoPanel);
+			
+			//"회원 정보" 글자 라벨
+			JLabel seatInfoStrLabel_1 = new JLabel("\uD68C\uC6D0\uC815\uBCF4");
+			seatInfoStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			seatInfoStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatInfoStrLabel_1.setBackground(new Color(128, 0, 0));
+			seatInfoStrLabel_1.setBounds(37, 10, 77, 23);
+			memberInfoPanel.add(seatInfoStrLabel_1);
+			
+			//"남은 시간" 글자 라벨
+			JLabel seatNumStrLabel_1 = new JLabel("\uB0A8\uC740\uC2DC\uAC04");
+			seatNumStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			seatNumStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatNumStrLabel_1.setBackground(new Color(128, 0, 0));
+			seatNumStrLabel_1.setBounds(12, 79, 66, 23);
+			memberInfoPanel.add(seatNumStrLabel_1);
+			
+			//남은시간 글자 라벨-DB에서 남은시간 읽어와서 표시
+			JLabel seatNumLabel_1 = new JLabel("10일 11시간12분13초");
+			seatNumLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			seatNumLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
+			seatNumLabel_1.setBackground(new Color(128, 0, 0));
+			seatNumLabel_1.setBounds(12, 99, 141, 23);
+			memberInfoPanel.add(seatNumLabel_1);
+			
+			//"번 좌석"글자 라벨
+			JLabel memberStrLabel_1 = new JLabel("번 좌석");
+			memberStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			memberStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
+			memberStrLabel_1.setBackground(new Color(128, 0, 0));
+			memberStrLabel_1.setBounds(52, 191, 62, 23);
+			memberInfoPanel.add(memberStrLabel_1);
+			
+	     	//좌석번호 숫자 라벨-DB에서? 클릭한 좌석번호 정보를 읽어와서 출력
+			JLabel seatNumLabel_memberInfoPanel = new JLabel("105");
+			seatNumLabel_memberInfoPanel.setHorizontalAlignment(JLabel.CENTER);
+			seatNumLabel_memberInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatNumLabel_memberInfoPanel.setBackground(new Color(128, 0, 0));
+			seatNumLabel_memberInfoPanel.setBounds(12, 191, 39, 23);
+			memberInfoPanel.add(seatNumLabel_memberInfoPanel);
+			
+			//좌석상태 글자 라벨(이용중/일시정지?)
+			JLabel memberTelLabel_1 = new JLabel("이용중");
+			memberTelLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			memberTelLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
+			memberTelLabel_1.setBackground(new Color(128, 0, 0));
+			memberTelLabel_1.setBounds(12, 218, 55, 23);
+			memberInfoPanel.add(memberTelLabel_1);
+			
+			//닫기버튼
+			JButton closeBtn_MemberInfoPanel = new JButton("X");
+			closeBtn_MemberInfoPanel.setOpaque(true);
+			closeBtn_MemberInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
+			closeBtn_MemberInfoPanel.setForeground(Color.RED);
+			closeBtn_MemberInfoPanel.setFont(new Font("Dialog", Font.BOLD, 13));
+			closeBtn_MemberInfoPanel.setFocusPainted(false);
+			closeBtn_MemberInfoPanel.setBackground(new Color(128, 255, 128));
+			closeBtn_MemberInfoPanel.setBounds(116, 0, 49, 38);
+			closeBtn_MemberInfoPanel.setBorder(lb);
+			closeBtn_MemberInfoPanel.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					memberInfoPanel.setEnabled(false);
+					memberInfoPanel.setVisible(false);
+					seatInfoPanel.setEnabled(true);
+					seatInfoPanel.setVisible(true);		
+				}
+			});
+			memberInfoPanel.add(closeBtn_MemberInfoPanel);
+					
 		//-----------------------------------------------------------------------------------------------------------
 			//1층 배치도 판넬
 			JPanel panel1F = new JPanel();
@@ -208,6 +382,7 @@ public class ManagerMain extends JFrame {
 			
 			JButton seat110Btn = new JButton("110");
 			seat110Btn.setBounds(147, 303, 72, 60);
+
 			seat110Btn.setFont(new Font("Dialog", Font.BOLD, 16));
 			seat110Btn.setBorder(lb);
 			seat110Btn.setFocusPainted(false);
@@ -240,6 +415,21 @@ public class ManagerMain extends JFrame {
 			
 			JButton seat114Btn = new JButton("114");
 			seat114Btn.setBounds(402, 303, 72, 60);
+			seat114Btn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					panel1F.setEnabled(false);//1층 배치도 패널 안의 버튼들 클릭 불가능
+//					seat111Btn.setEnabled(false);
+//					seat112Btn.setEnabled(false);
+//					seat113Btn.setEnabled(false);
+//					seat114Btn.setEnabled(false);
+//					seat114Btn.setVisible(false);
+//					seatInfoPanel.setVisible(true);
+					seatInfoPanel.setEnabled(true);
+					seatInfoPanel.setVisible(true);
+					//seatInfoPanel.requestFocus();
+					seatInfoPanel.setFocusable(true);
+				}
+			});
 			seat114Btn.setFont(new Font("Dialog", Font.BOLD, 16));
 			seat114Btn.setBorder(lb);
 			seat114Btn.setFocusPainted(false);
@@ -521,11 +711,11 @@ public class ManagerMain extends JFrame {
 		waterPFLabel1_1.setIcon(updateWaterPFIcon);
 		panel1F.add(waterPFLabel1_1);
 		
-				JLabel waterPFLabel1_2 = new JLabel(); // 문옆
-				waterPFLabel1_2.setBounds(876, 6, 57, 54);
-				waterPFLabel1_2.setIcon(updateWaterPFIcon);
-				panel1F.add(waterPFLabel1_2);
-				
+		JLabel waterPFLabel1_2 = new JLabel(); // 문옆
+		waterPFLabel1_2.setBounds(876, 6, 57, 54);
+		waterPFLabel1_2.setIcon(updateWaterPFIcon);
+		panel1F.add(waterPFLabel1_2);
+					
 		//-------------------------------------------------------------------------------------------------------------
 		//2층 배치도 판넬
 		JPanel panel2F = new JPanel();
@@ -986,5 +1176,20 @@ public class ManagerMain extends JFrame {
 		logoLabel.setBounds(0, 0, 70, 69);       
         logoLabel.setIcon(updateLogoIcon);
         getContentPane().add(logoLabel);
+        //--------------------------------------------------------------------------------------------------
+    	class SeatBtnListener implements ActionListener {
+    		//의자버튼 눌렀을때 동작
+    		@Override
+    		public void actionPerformed(ActionEvent e) {
+    			if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false)
+    			{
+    				seatInfoPanel.setVisible(true);
+    				seatInfoPanel.setEnabled(true);
+    				
+    			}
+    		}
+    	}
 	}
+	
+	
 }
