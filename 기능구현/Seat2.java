@@ -47,7 +47,7 @@ public class Seat2 {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 1084, 689);
+		panel.setBounds(-7, 2, 1084, 689);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -121,67 +121,67 @@ public class Seat2 {
 		panel.add(seat217btn);
 
 		Button seat218btn = new Button("218");
-		seat218btn.setBounds(94, 352, 53, 53);
+		seat218btn.setBounds(146, 346, 53, 53);
 		panel.add(seat218btn);
 
 		Button seat219btn = new Button("219");
-		seat219btn.setBounds(94, 405, 53, 53);
+		seat219btn.setBounds(146, 399, 53, 53);
 		panel.add(seat219btn);
 
 		Button seat220btn = new Button("220");
-		seat220btn.setBounds(94, 458, 53, 53);
+		seat220btn.setBounds(146, 452, 53, 53);
 		panel.add(seat220btn);
 
 		Button seat221btn = new Button("221");
-		seat221btn.setBounds(805, 5, 53, 53);
+		seat221btn.setBounds(146, 505, 53, 53);
 		panel.add(seat221btn);
 
 		Button seat222btn = new Button("222");
-		seat222btn.setBounds(845, 5, 53, 53);
+		seat222btn.setBounds(146, 558, 53, 53);
 		panel.add(seat222btn);
 
 		Button seat223btn = new Button("223");
-		seat223btn.setBounds(885, 5, 53, 53);
+		seat223btn.setBounds(199, 558, 53, 53);
 		panel.add(seat223btn);
 
 		Button seat224btn = new Button("224");
-		seat224btn.setBounds(925, 5, 53, 53);
+		seat224btn.setBounds(306, 558, 53, 53);
 		panel.add(seat224btn);
 
 		Button seat225btn = new Button("225");
-		seat225btn.setBounds(965, 5, 53, 53);
+		seat225btn.setBounds(359, 558, 53, 53);
 		panel.add(seat225btn);
 
 		Button seat226btn = new Button("226");
-		seat226btn.setBounds(1005, 5, 53, 53);
+		seat226btn.setBounds(412, 558, 53, 53);
 		panel.add(seat226btn);
 
 		Button seat227btn = new Button("227");
-		seat227btn.setBounds(1045, 5, 53, 53);
+		seat227btn.setBounds(539, 558, 53, 53);
 		panel.add(seat227btn);
 
 		Button seat228btn = new Button("228");
-		seat228btn.setBounds(424, 33, 53, 53);
+		seat228btn.setBounds(592, 558, 53, 53);
 		panel.add(seat228btn);
 
 		Button seat229btn = new Button("229");
-		seat229btn.setBounds(464, 33, 53, 53);
+		seat229btn.setBounds(645, 558, 53, 53);
 		panel.add(seat229btn);
 
 		Button seat230btn = new Button("230");
-		seat230btn.setBounds(504, 33, 53, 53);
+		seat230btn.setBounds(698, 558, 53, 53);
 		panel.add(seat230btn);
 
 		Button seat231btn = new Button("231");
-		seat231btn.setBounds(544, 33, 53, 53);
+		seat231btn.setBounds(698, 337, 53, 53);
 		panel.add(seat231btn);
 
 		Button seat232btn = new Button("232");
-		seat232btn.setBounds(584, 33, 53, 53);
+		seat232btn.setBounds(698, 452, 53, 53);
 		panel.add(seat232btn);
 
 		Button seat233btn = new Button("233");
-		seat233btn.setBounds(624, 33, 53, 53);
+		seat233btn.setBounds(698, 505, 53, 53);
 		panel.add(seat233btn);
 	}
 

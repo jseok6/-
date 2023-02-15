@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JTextField;
-import java.awt.Component;
 import java.awt.Toolkit;
 
 public class Pay_Enter {
@@ -47,29 +46,30 @@ public class Pay_Enter {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\D팀 프로젝트\\-001.jpg"));
 		frame.setTitle("결제, 입실");
 		frame.setResizable(false); // 버튼 & 창 고정
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 1056, 570);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		frame.getContentPane().setLayout(null);
 
 		Button button1 = new Button("결제하기");
+		button1.setBounds(0, 20, 520, 510);
 		button1.setBackground(new Color(143, 188, 143));
 		button1.setPreferredSize(new Dimension(216, 0));
-		frame.getContentPane().add(button1, BorderLayout.WEST);
-		button1.setSize(216, 0);
+		frame.getContentPane().add(button1);
 		// 결제하기 버튼 button1
 
 		Button button2 = new Button("입실하기");
+		button2.setBounds(520, 20, 520, 510);
 		button2.setBackground(new Color(112, 128, 144));
 		button2.setPreferredSize(new Dimension(216, 0));
-		frame.getContentPane().add(button2, BorderLayout.EAST);
-		button2.setSize(216, 0);
+		frame.getContentPane().add(button2);
 		// 입실하기 버튼 button2
 		
 		textField = new JTextField();
+		textField.setBounds(0, 0, 1040, 20);
 		textField.setBackground(new Color(135, 206, 250));
 		textField.setText("결제하기, 입실하기 중에서 선택해주세요");
 		textField.setHorizontalAlignment(JTextField.CENTER);
-		frame.getContentPane().add(textField, BorderLayout.NORTH);
+		frame.getContentPane().add(textField);
 		textField.setColumns(20);
 		
 	}
