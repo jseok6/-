@@ -535,285 +535,281 @@ public class ManagerMain extends JFrame {
 		panel2F.setVisible(false); //패널 감추기
 		panel2F.setLayout(null);
 		contentPane.add(panel2F);
-		
-				// 2층 좌석 버튼
-				JButton seat201Btn = new JButton("201");
-				seat201Btn.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					}
-				});
-				seat201Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-				seat201Btn.setFocusPainted(false);
-				seat201Btn.setBorder(lb);
-				seat201Btn.setBackground(new Color(0, 128, 255));
-				seat201Btn.setBounds(190, 0, 72, 60);
-				panel2F.add(seat201Btn);
-				
-						JButton seat202Btn = new JButton("202");
-						seat202Btn.setBounds(264, 0, 72, 60);
-						seat202Btn.setBackground(new Color(0, 128, 255));
-						seat202Btn.setFont(logoutBtnFont);
-						seat202Btn.setBorder(lb);
-						seat202Btn.setFocusPainted(false);// hide focus rectangle
-						panel2F.add(seat202Btn);
-						
-								JButton seat203Btn = new JButton("203");
-								seat203Btn.setBounds(338, 0, 72, 60);
-								seat203Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-								seat203Btn.setBorder(lb);
-								seat203Btn.setFocusPainted(false);
-								seat203Btn.setBackground(new Color(0, 128, 255));
-								panel2F.add(seat203Btn);
-								
-										JButton seat204Btn = new JButton("204");
-										seat204Btn.setBounds(414, 0, 72, 60);
-										seat204Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-										seat204Btn.setBorder(lb);
-										seat204Btn.setFocusPainted(false);
-										seat204Btn.setBackground(new Color(0, 128, 255));
-										panel2F.add(seat204Btn);
-										
-												JButton seat205Btn = new JButton("205");
-												seat205Btn.setBounds(489, 0, 72, 60);
-												seat205Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-												seat205Btn.setBorder(lb);
-												seat205Btn.setFocusPainted(false);
-												seat205Btn.setBackground(new Color(0, 128, 255));
-												panel2F.add(seat205Btn);
-												
-														JButton seat206Btn = new JButton("206");
-														seat206Btn.setBounds(563, 0, 72, 60);
-														seat206Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-														seat206Btn.setBorder(lb);
-														seat206Btn.setFocusPainted(false);
-														seat206Btn.setBackground(new Color(0, 128, 255));
-														panel2F.add(seat206Btn);
-														
-																JButton seat207Btn = new JButton("207");
-																seat207Btn.setBounds(636, 0, 72, 60);
-																seat207Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																seat207Btn.setBorder(lb);
-																seat207Btn.setFocusPainted(false);
-																seat207Btn.setBackground(new Color(0, 128, 255));
-																panel2F.add(seat207Btn);
-																
-																		JButton seat208Btn = new JButton("208");
-																		seat208Btn.setBounds(215, 184, 72, 60);
-																		seat208Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																		seat208Btn.setBorder(lb);
-																		seat208Btn.setFocusPainted(false);
-																		seat208Btn.setBackground(new Color(0, 128, 255));
-																		panel2F.add(seat208Btn);
-																		
-																				JButton seat209Btn = new JButton("209");
-																				seat209Btn.setBounds(310, 184, 72, 60);
-																				seat209Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																				seat209Btn.setBorder(lb);
-																				seat209Btn.setFocusPainted(false);
-																				seat209Btn.setBackground(new Color(0, 128, 255));
-																				panel2F.add(seat209Btn);
-																				
-																						JButton seat210Btn = new JButton("210");
-																						seat210Btn.setBounds(402, 184, 72, 60);
-																						seat210Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																						seat210Btn.setBorder(lb);
-																						seat210Btn.setFocusPainted(false);
-																						seat210Btn.setBackground(new Color(0, 128, 255));
-																						panel2F.add(seat210Btn);
-																						
-																								JButton seat211Btn = new JButton("211");
-																								seat211Btn.setBounds(215, 264, 72, 60);
-																								seat211Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																								seat211Btn.setBorder(lb);
-																								seat211Btn.setFocusPainted(false);
-																								seat211Btn.setBackground(new Color(0, 128, 255));
-																								panel2F.add(seat211Btn);
-																								
-																										JButton seat212Btn = new JButton("212");
-																										seat212Btn.setBounds(310, 264, 72, 60);
-																										seat212Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																										seat212Btn.setBorder(lb);
-																										seat212Btn.setFocusPainted(false);
-																										seat212Btn.setBackground(new Color(0, 128, 255));
-																										panel2F.add(seat212Btn);
-																										
-																												JButton seat213Btn = new JButton("213");
-																												seat213Btn.setBounds(402, 264, 72, 60);
-																												seat213Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																												seat213Btn.setBorder(lb);
-																												seat213Btn.setFocusPainted(false);
-																												seat213Btn.setBackground(new Color(0, 128, 255));
-																												panel2F.add(seat213Btn);
-																												
-																														JButton seat214Btn = new JButton("214");
-																														seat214Btn.setBounds(600, 184, 72, 60);
-																														seat214Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																														seat214Btn.setBorder(lb);
-																														seat214Btn.setFocusPainted(false);
-																														seat214Btn.setBackground(new Color(0, 128, 255));
-																														panel2F.add(seat214Btn);
-																														
-																																JButton seat215Btn = new JButton("215");
-																																seat215Btn.setBounds(690, 184, 72, 60);
-																																seat215Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																seat215Btn.setBorder(lb);
-																																seat215Btn.setFocusPainted(false);
-																																seat215Btn.setBackground(new Color(0, 128, 255));
-																																panel2F.add(seat215Btn);
-																																
-																																		JButton seat216Btn = new JButton("216");
-																																		seat216Btn.setBounds(600, 264, 72, 60);
-																																		seat216Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																		seat216Btn.setBorder(lb);
-																																		seat216Btn.setFocusPainted(false);
-																																		seat216Btn.setBackground(new Color(0, 128, 255));
-																																		panel2F.add(seat216Btn);
-																																		
-																																				JButton seat217Btn = new JButton("217");
-																																				seat217Btn.setBounds(690, 264, 72, 60);
-																																				seat217Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																				seat217Btn.setBorder(lb);
-																																				seat217Btn.setFocusPainted(false);
-																																				seat217Btn.setBackground(new Color(0, 128, 255));
-																																				panel2F.add(seat217Btn);
-																																				
-																																						JButton seat218Btn = new JButton("218");
-																																						seat218Btn.setBounds(0, 294, 72, 60);
-																																						seat218Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																						seat218Btn.setBorder(lb);
-																																						seat218Btn.setFocusPainted(false);
-																																						seat218Btn.setBackground(new Color(0, 128, 255));
-																																						panel2F.add(seat218Btn);
-																																						
-																																								JButton seat219Btn = new JButton("219");
-																																								seat219Btn.setBounds(0, 355, 72, 60);
-																																								seat219Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																								seat219Btn.setBorder(lb);
-																																								seat219Btn.setFocusPainted(false);
-																																								seat219Btn.setBackground(new Color(0, 128, 255));
-																																								panel2F.add(seat219Btn);
-																																								
-																																										JButton seat220Btn = new JButton("220");
-																																										seat220Btn.setBounds(0, 416, 72, 60);
-																																										seat220Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																										seat220Btn.setBorder(lb);
-																																										seat220Btn.setFocusPainted(false);
-																																										seat220Btn.setBackground(new Color(0, 128, 255));
-																																										panel2F.add(seat220Btn);
-																																										
-																																												JButton seat221Btn = new JButton("221");
-																																												seat221Btn.setBounds(0, 478, 72, 60);
-																																												seat221Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																												seat221Btn.setBorder(lb);
-																																												seat221Btn.setFocusPainted(false);
-																																												seat221Btn.setBackground(new Color(0, 128, 255));
-																																												panel2F.add(seat221Btn);
-																																												
-																																														JButton seat222Btn = new JButton("222");
-																																														seat222Btn.setBounds(0, 539, 72, 60);
-																																														seat222Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																														seat222Btn.setBorder(lb);
-																																														seat222Btn.setFocusPainted(false);
-																																														seat222Btn.setBackground(new Color(0, 128, 255));
-																																														panel2F.add(seat222Btn);
-																																														
-																																																JButton seat223Btn = new JButton("223");
-																																																seat223Btn.setBounds(74, 539, 72, 60);
-																																																seat223Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																seat223Btn.setBorder(lb);
-																																																seat223Btn.setFocusPainted(false);
-																																																seat223Btn.setBackground(new Color(0, 128, 255));
-																																																panel2F.add(seat223Btn);
-																																																
-																																																		JButton seat224Btn = new JButton("224");
-																																																		seat224Btn.setBounds(258, 539, 72, 60);
-																																																		seat224Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																		seat224Btn.setBorder(lb);
-																																																		seat224Btn.setFocusPainted(false);
-																																																		seat224Btn.setBackground(new Color(0, 128, 255));
-																																																		panel2F.add(seat224Btn);
-																																																		
-																																																				JButton seat225Btn = new JButton("225");
-																																																				seat225Btn.setBounds(332, 539, 72, 60);
-																																																				seat225Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																				seat225Btn.setBorder(lb);
-																																																				seat225Btn.setFocusPainted(false);
-																																																				seat225Btn.setBackground(new Color(0, 128, 255));
-																																																				panel2F.add(seat225Btn);
-																																																				
-																																																						JButton seat226Btn = new JButton("226");
-																																																						seat226Btn.setBounds(406, 539, 72, 60);
-																																																						seat226Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																						seat226Btn.setBorder(lb);
-																																																						seat226Btn.setFocusPainted(false);
-																																																						seat226Btn.setBackground(new Color(0, 128, 255));
-																																																						panel2F.add(seat226Btn);
-																																																						
-																																																								JButton seat227Btn = new JButton("227");
-																																																								seat227Btn.setBounds(583, 539, 72, 60);
-																																																								seat227Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																								seat227Btn.setBorder(lb);
-																																																								seat227Btn.setFocusPainted(false);
-																																																								seat227Btn.setBackground(new Color(0, 128, 255));
-																																																								panel2F.add(seat227Btn);
-																																																								
-																																																										JButton seat228Btn = new JButton("228");
-																																																										seat228Btn.setBounds(656, 539, 72, 60);
-																																																										seat228Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																										seat228Btn.setBorder(lb);
-																																																										seat228Btn.setFocusPainted(false);
-																																																										seat228Btn.setBackground(new Color(0, 128, 255));
-																																																										panel2F.add(seat228Btn);
-																																																										
-																																																												JButton seat229Btn = new JButton("229");
-																																																												seat229Btn.setBounds(797, 539, 72, 60);
-																																																												seat229Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																												seat229Btn.setBorder(lb);
-																																																												seat229Btn.setFocusPainted(false);
-																																																												seat229Btn.setBackground(new Color(0, 128, 255));
-																																																												panel2F.add(seat229Btn);
-																																																												
-																																																														JButton seat230Btn = new JButton("230");
-																																																														seat230Btn.setBounds(871, 539, 72, 60);
-																																																														seat230Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																														seat230Btn.setBorder(lb);
-																																																														seat230Btn.setFocusPainted(false);
-																																																														seat230Btn.setBackground(new Color(0, 128, 255));
-																																																														panel2F.add(seat230Btn);
-																																																														
-																																																																JButton seat231Btn = new JButton("231");
-																																																																seat231Btn.setBounds(871, 478, 72, 60);
-																																																																seat231Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																																seat231Btn.setBorder(lb);
-																																																																seat231Btn.setFocusPainted(false);
-																																																																seat231Btn.setBackground(new Color(0, 128, 255));
-																																																																panel2F.add(seat231Btn);
-																																																																
-																																																																		JButton seat232Btn = new JButton("232");
-																																																																		seat232Btn.setBounds(871, 416, 72, 60);
-																																																																		seat232Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																																		seat232Btn.setBorder(lb);
-																																																																		seat232Btn.setFocusPainted(false);
-																																																																		seat232Btn.setBackground(new Color(0, 128, 255));
-																																																																		panel2F.add(seat232Btn);
-																																																																		
-																																																																				JButton seat233Btn = new JButton("233");
-																																																																				seat233Btn.setBounds(871, 184, 72, 60);
-																																																																				seat233Btn.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																																				seat233Btn.setBorder(lb);
-																																																																				seat233Btn.setFocusPainted(false);
-																																																																				seat233Btn.setBackground(new Color(0, 128, 255));
-																																																																				panel2F.add(seat233Btn);
-																																																																				
-																																																																						// 2층 문
-																																																																						JLabel doorLabel2_1 = new JLabel("문");
-																																																																						doorLabel2_1.setOpaque(true);
-																																																																						doorLabel2_1.setHorizontalAlignment(JLabel.CENTER);
-																																																																						doorLabel2_1.setFont(new Font("Dialog", Font.BOLD, 16));
-																																																																						doorLabel2_1.setBackground(new Color(128, 0, 0));
-																																																																						doorLabel2_1.setBounds(882, 72, 61, 69);
-																																																																						panel2F.add(doorLabel2_1);
-																																																																						
+
+		// 2층 좌석 버튼
+		JButton seat201Btn = new JButton("201");
+		seat201Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat201Btn.setFocusPainted(false);
+		seat201Btn.setBorder(lb);
+		seat201Btn.setBackground(new Color(0, 128, 255));
+		seat201Btn.setBounds(190, 0, 72, 60);
+		panel2F.add(seat201Btn);
+
+		JButton seat202Btn = new JButton("202");
+		seat202Btn.setBounds(264, 0, 72, 60);
+		seat202Btn.setBackground(new Color(0, 128, 255));
+		seat202Btn.setFont(logoutBtnFont);
+		seat202Btn.setBorder(lb);
+		seat202Btn.setFocusPainted(false);// hide focus rectangle
+		panel2F.add(seat202Btn);
+
+		JButton seat203Btn = new JButton("203");
+		seat203Btn.setBounds(338, 0, 72, 60);
+		seat203Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat203Btn.setBorder(lb);
+		seat203Btn.setFocusPainted(false);
+		seat203Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat203Btn);
+
+		JButton seat204Btn = new JButton("204");
+		seat204Btn.setBounds(414, 0, 72, 60);
+		seat204Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat204Btn.setBorder(lb);
+		seat204Btn.setFocusPainted(false);
+		seat204Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat204Btn);
+
+		JButton seat205Btn = new JButton("205");
+		seat205Btn.setBounds(489, 0, 72, 60);
+		seat205Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat205Btn.setBorder(lb);
+		seat205Btn.setFocusPainted(false);
+		seat205Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat205Btn);
+
+		JButton seat206Btn = new JButton("206");
+		seat206Btn.setBounds(563, 0, 72, 60);
+		seat206Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat206Btn.setBorder(lb);
+		seat206Btn.setFocusPainted(false);
+		seat206Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat206Btn);
+
+		JButton seat207Btn = new JButton("207");
+		seat207Btn.setBounds(636, 0, 72, 60);
+		seat207Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat207Btn.setBorder(lb);
+		seat207Btn.setFocusPainted(false);
+		seat207Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat207Btn);
+
+		JButton seat208Btn = new JButton("208");
+		seat208Btn.setBounds(215, 184, 72, 60);
+		seat208Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat208Btn.setBorder(lb);
+		seat208Btn.setFocusPainted(false);
+		seat208Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat208Btn);
+
+		JButton seat209Btn = new JButton("209");
+		seat209Btn.setBounds(310, 184, 72, 60);
+		seat209Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat209Btn.setBorder(lb);
+		seat209Btn.setFocusPainted(false);
+		seat209Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat209Btn);
+
+		JButton seat210Btn = new JButton("210");
+		seat210Btn.setBounds(402, 184, 72, 60);
+		seat210Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat210Btn.setBorder(lb);
+		seat210Btn.setFocusPainted(false);
+		seat210Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat210Btn);
+
+		JButton seat211Btn = new JButton("211");
+		seat211Btn.setBounds(215, 264, 72, 60);
+		seat211Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat211Btn.setBorder(lb);
+		seat211Btn.setFocusPainted(false);
+		seat211Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat211Btn);
+
+		JButton seat212Btn = new JButton("212");
+		seat212Btn.setBounds(310, 264, 72, 60);
+		seat212Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat212Btn.setBorder(lb);
+		seat212Btn.setFocusPainted(false);
+		seat212Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat212Btn);
+
+		JButton seat213Btn = new JButton("213");
+		seat213Btn.setBounds(402, 264, 72, 60);
+		seat213Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat213Btn.setBorder(lb);
+		seat213Btn.setFocusPainted(false);
+		seat213Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat213Btn);
+
+		JButton seat214Btn = new JButton("214");
+		seat214Btn.setBounds(600, 184, 72, 60);
+		seat214Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat214Btn.setBorder(lb);
+		seat214Btn.setFocusPainted(false);
+		seat214Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat214Btn);
+
+		JButton seat215Btn = new JButton("215");
+		seat215Btn.setBounds(690, 184, 72, 60);
+		seat215Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat215Btn.setBorder(lb);
+		seat215Btn.setFocusPainted(false);
+		seat215Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat215Btn);
+
+		JButton seat216Btn = new JButton("216");
+		seat216Btn.setBounds(600, 264, 72, 60);
+		seat216Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat216Btn.setBorder(lb);
+		seat216Btn.setFocusPainted(false);
+		seat216Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat216Btn);
+
+		JButton seat217Btn = new JButton("217");
+		seat217Btn.setBounds(690, 264, 72, 60);
+		seat217Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat217Btn.setBorder(lb);
+		seat217Btn.setFocusPainted(false);
+		seat217Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat217Btn);
+
+		JButton seat218Btn = new JButton("218");
+		seat218Btn.setBounds(0, 294, 72, 60);
+		seat218Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat218Btn.setBorder(lb);
+		seat218Btn.setFocusPainted(false);
+		seat218Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat218Btn);
+
+		JButton seat219Btn = new JButton("219");
+		seat219Btn.setBounds(0, 355, 72, 60);
+		seat219Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat219Btn.setBorder(lb);
+		seat219Btn.setFocusPainted(false);
+		seat219Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat219Btn);
+
+		JButton seat220Btn = new JButton("220");
+		seat220Btn.setBounds(0, 416, 72, 60);
+		seat220Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat220Btn.setBorder(lb);
+		seat220Btn.setFocusPainted(false);
+		seat220Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat220Btn);
+
+		JButton seat221Btn = new JButton("221");
+		seat221Btn.setBounds(0, 478, 72, 60);
+		seat221Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat221Btn.setBorder(lb);
+		seat221Btn.setFocusPainted(false);
+		seat221Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat221Btn);
+
+		JButton seat222Btn = new JButton("222");
+		seat222Btn.setBounds(0, 539, 72, 60);
+		seat222Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat222Btn.setBorder(lb);
+		seat222Btn.setFocusPainted(false);
+		seat222Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat222Btn);
+
+		JButton seat223Btn = new JButton("223");
+		seat223Btn.setBounds(74, 539, 72, 60);
+		seat223Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat223Btn.setBorder(lb);
+		seat223Btn.setFocusPainted(false);
+		seat223Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat223Btn);
+
+		JButton seat224Btn = new JButton("224");
+		seat224Btn.setBounds(258, 539, 72, 60);
+		seat224Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat224Btn.setBorder(lb);
+		seat224Btn.setFocusPainted(false);
+		seat224Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat224Btn);
+
+		JButton seat225Btn = new JButton("225");
+		seat225Btn.setBounds(332, 539, 72, 60);
+		seat225Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat225Btn.setBorder(lb);
+		seat225Btn.setFocusPainted(false);
+		seat225Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat225Btn);
+
+		JButton seat226Btn = new JButton("226");
+		seat226Btn.setBounds(406, 539, 72, 60);
+		seat226Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat226Btn.setBorder(lb);
+		seat226Btn.setFocusPainted(false);
+		seat226Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat226Btn);
+
+		JButton seat227Btn = new JButton("227");
+		seat227Btn.setBounds(583, 539, 72, 60);
+		seat227Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat227Btn.setBorder(lb);
+		seat227Btn.setFocusPainted(false);
+		seat227Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat227Btn);
+
+		JButton seat228Btn = new JButton("228");
+		seat228Btn.setBounds(656, 539, 72, 60);
+		seat228Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat228Btn.setBorder(lb);
+		seat228Btn.setFocusPainted(false);
+		seat228Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat228Btn);
+
+		JButton seat229Btn = new JButton("229");
+		seat229Btn.setBounds(797, 539, 72, 60);
+		seat229Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat229Btn.setBorder(lb);
+		seat229Btn.setFocusPainted(false);
+		seat229Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat229Btn);
+
+		JButton seat230Btn = new JButton("230");
+		seat230Btn.setBounds(871, 539, 72, 60);
+		seat230Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat230Btn.setBorder(lb);
+		seat230Btn.setFocusPainted(false);
+		seat230Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat230Btn);
+
+		JButton seat231Btn = new JButton("231");
+		seat231Btn.setBounds(871, 478, 72, 60);
+		seat231Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat231Btn.setBorder(lb);
+		seat231Btn.setFocusPainted(false);
+		seat231Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat231Btn);
+
+		JButton seat232Btn = new JButton("232");
+		seat232Btn.setBounds(871, 416, 72, 60);
+		seat232Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat232Btn.setBorder(lb);
+		seat232Btn.setFocusPainted(false);
+		seat232Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat232Btn);
+
+		JButton seat233Btn = new JButton("233");
+		seat233Btn.setBounds(871, 184, 72, 60);
+		seat233Btn.setFont(new Font("Dialog", Font.BOLD, 16));
+		seat233Btn.setBorder(lb);
+		seat233Btn.setFocusPainted(false);
+		seat233Btn.setBackground(new Color(0, 128, 255));
+		panel2F.add(seat233Btn);
+
+		// 2층 문
+		JLabel doorLabel2_1 = new JLabel("문");
+		doorLabel2_1.setOpaque(true);
+		doorLabel2_1.setHorizontalAlignment(JLabel.CENTER);
+		doorLabel2_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		doorLabel2_1.setBackground(new Color(128, 0, 0));
+		doorLabel2_1.setBounds(882, 72, 61, 69);
+		panel2F.add(doorLabel2_1);
+
 		// 화장실
 		JLabel toiletLabel2_1 = new JLabel("<html><body><center>화<br>장<br>실</center></body></html>");
 		toiletLabel2_1.setOpaque(true);
@@ -852,78 +848,78 @@ public class ManagerMain extends JFrame {
 		wallLabel2_1.setBounds(148, 539, 108, 60);
 		panel2F.add(wallLabel2_1);
 		
-		JLabel wallLabel2_1_1 = new JLabel();
-		wallLabel2_1_1.setOpaque(true);
-		wallLabel2_1_1.setBackground(Color.GRAY);
-		wallLabel2_1_1.setBounds(0, 0, 148, 60);
-		panel2F.add(wallLabel2_1_1);
+		JLabel wallLabel2_2 = new JLabel();
+		wallLabel2_2.setOpaque(true);
+		wallLabel2_2.setBackground(Color.GRAY);
+		wallLabel2_2.setBounds(0, 0, 148, 60);
+		panel2F.add(wallLabel2_2);
 		
-		JLabel wallLabel2_1_1_1 = new JLabel();
-		wallLabel2_1_1_1.setOpaque(true);
-		wallLabel2_1_1_1.setBackground(Color.GRAY);
-		wallLabel2_1_1_1.setBounds(0, 241, 122, 54);
-		panel2F.add(wallLabel2_1_1_1);
+		JLabel wallLabel2_3 = new JLabel();
+		wallLabel2_3.setOpaque(true);
+		wallLabel2_3.setBackground(Color.GRAY);
+		wallLabel2_3.setBounds(0, 241, 122, 54);
+		panel2F.add(wallLabel2_3);
 		
-		JLabel wallLabel2_1_2 = new JLabel();
-		wallLabel2_1_2.setOpaque(true);
-		wallLabel2_1_2.setBackground(Color.GRAY);
-		wallLabel2_1_2.setBounds(477, 539, 108, 60);
-		panel2F.add(wallLabel2_1_2);
+		JLabel wallLabel2_4 = new JLabel();
+		wallLabel2_4.setOpaque(true);
+		wallLabel2_4.setBackground(Color.GRAY);
+		wallLabel2_4.setBounds(477, 539, 108, 60);
+		panel2F.add(wallLabel2_4);
 		
-		JLabel wallLabel2_1_3 = new JLabel();
-		wallLabel2_1_3.setOpaque(true);
-		wallLabel2_1_3.setBackground(Color.GRAY);
-		wallLabel2_1_3.setBounds(728, 539, 72, 60);
-		panel2F.add(wallLabel2_1_3);
+		JLabel wallLabel2_5 = new JLabel();
+		wallLabel2_5.setOpaque(true);
+		wallLabel2_5.setBackground(Color.GRAY);
+		wallLabel2_5.setBounds(728, 539, 72, 60);
+		panel2F.add(wallLabel2_5);
 		
-		JLabel wallLabel2_1_3_1 = new JLabel();
-		wallLabel2_1_3_1.setOpaque(true);
-		wallLabel2_1_3_1.setBackground(Color.GRAY);
-		wallLabel2_1_3_1.setBounds(871, 241, 72, 176);
-		panel2F.add(wallLabel2_1_3_1);
+		JLabel wallLabel2_6 = new JLabel();
+		wallLabel2_6.setOpaque(true);
+		wallLabel2_6.setBackground(Color.GRAY);
+		wallLabel2_6.setBounds(871, 241, 72, 176);
+		panel2F.add(wallLabel2_6);
 		
-		JLabel wallLabel2_1_4 = new JLabel();
-		wallLabel2_1_4.setOpaque(true);
-		wallLabel2_1_4.setBackground(Color.GRAY);
-		wallLabel2_1_4.setBounds(871, 141, 72, 47);
-		panel2F.add(wallLabel2_1_4);
+		JLabel wallLabel2_7 = new JLabel();
+		wallLabel2_7.setOpaque(true);
+		wallLabel2_7.setBackground(Color.GRAY);
+		wallLabel2_7.setBounds(871, 141, 72, 47);
+		panel2F.add(wallLabel2_7);
 		
-		JLabel wallLabel2_1_5 = new JLabel();
-		wallLabel2_1_5.setOpaque(true);
-		wallLabel2_1_5.setBackground(Color.GRAY);
-		wallLabel2_1_5.setBounds(709, 0, 57, 60);
-		panel2F.add(wallLabel2_1_5);
+		JLabel wallLabel2_8 = new JLabel();
+		wallLabel2_8.setOpaque(true);
+		wallLabel2_8.setBackground(Color.GRAY);
+		wallLabel2_8.setBounds(709, 0, 57, 60);
+		panel2F.add(wallLabel2_8);
 		
-		JLabel wallLabel2_1_6 = new JLabel();
-		wallLabel2_1_6.setOpaque(true);
-		wallLabel2_1_6.setBackground(Color.GRAY);
-		wallLabel2_1_6.setBounds(215, 241, 259, 23);
-		panel2F.add(wallLabel2_1_6);
+		JLabel wallLabel2_9 = new JLabel();
+		wallLabel2_9.setOpaque(true);
+		wallLabel2_9.setBackground(Color.GRAY);
+		wallLabel2_9.setBounds(215, 241, 259, 23);
+		panel2F.add(wallLabel2_9);
 		
-		JLabel wallLabel2_1_6_1 = new JLabel();
-		wallLabel2_1_6_1.setOpaque(true);
-		wallLabel2_1_6_1.setBackground(Color.GRAY);
-		wallLabel2_1_6_1.setBounds(600, 244, 162, 23);
-		panel2F.add(wallLabel2_1_6_1);
+		JLabel wallLabel2_10 = new JLabel();
+		wallLabel2_10.setOpaque(true);
+		wallLabel2_10.setBackground(Color.GRAY);
+		wallLabel2_10.setBounds(600, 244, 162, 23);
+		panel2F.add(wallLabel2_10);
 		
-		JLabel wallLabel2_1_6_2_1_1 = new JLabel();
-		wallLabel2_1_6_2_1_1.setOpaque(true);
-		wallLabel2_1_6_2_1_1.setBackground(Color.GRAY);
-		wallLabel2_1_6_2_1_1.setBounds(670, 184, 23, 140);
-		panel2F.add(wallLabel2_1_6_2_1_1);
+		JLabel wallLabel2_11 = new JLabel();
+		wallLabel2_11.setOpaque(true);
+		wallLabel2_11.setBackground(Color.GRAY);
+		wallLabel2_11.setBounds(670, 184, 23, 140);
+		panel2F.add(wallLabel2_11);
 		
-		JLabel wallLabel2_1_6_2_1_1_1 = new JLabel();
-		wallLabel2_1_6_2_1_1_1.setOpaque(true);
-		wallLabel2_1_6_2_1_1_1.setBackground(Color.GRAY);
-		wallLabel2_1_6_2_1_1_1.setBounds(380, 184, 23, 140);
-		panel2F.add(wallLabel2_1_6_2_1_1_1);
+		JLabel wallLabel2_12 = new JLabel();
+		wallLabel2_12.setOpaque(true);
+		wallLabel2_12.setBackground(Color.GRAY);
+		wallLabel2_12.setBounds(380, 184, 23, 140);
+		panel2F.add(wallLabel2_12);
 		
-		JLabel wallLabel2_1_6_2_1_1_1_1 = new JLabel();
-		wallLabel2_1_6_2_1_1_1_1.setOpaque(true);
-		wallLabel2_1_6_2_1_1_1_1.setBackground(Color.GRAY);
-		wallLabel2_1_6_2_1_1_1_1.setBounds(285, 184, 27, 140);
-		panel2F.add(wallLabel2_1_6_2_1_1_1_1);
-		setVisible(true);		
+		JLabel wallLabel2_13 = new JLabel();
+		wallLabel2_13.setOpaque(true);
+		wallLabel2_13.setBackground(Color.GRAY);
+		wallLabel2_13.setBounds(285, 184, 27, 140);
+		panel2F.add(wallLabel2_13);
+		setVisible(true);	
 		//-----------------------------------------------------------------------------------------
 		//로그아웃 버튼
 		JButton logoutBtn = new JButton("로그아웃");
@@ -977,7 +973,6 @@ public class ManagerMain extends JFrame {
 			}
 		});
 		contentPane.add(secondFloorBtn);
-		
 		
 		//접속중인 관리자 ID(이름?)
 		JLabel idLabel = new JLabel("관리자:"); // + 관리자 ID + " 님" 추가필요
