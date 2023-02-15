@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class SeatSelectAlertPopUp {
 
@@ -42,6 +43,7 @@ public class SeatSelectAlertPopUp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\family.jpg"));
 		frame.getContentPane().setFont(new Font("±¼¸²", Font.PLAIN, 12));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 465, 260);
