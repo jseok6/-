@@ -65,10 +65,6 @@ public class QuestUI extends JFrame{
 		
 		
 	}
-	public static void main(String[] args) {
-		new QuestUI();
-		
 
-	}
 
 }

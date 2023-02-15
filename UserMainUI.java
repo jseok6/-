@@ -150,8 +150,5 @@ public class UserMainUI extends JFrame {
 	}
 
 
-	public static void main(String[] args) {
-		new UserMainUI();
-	}
 
 }
