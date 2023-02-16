@@ -1,6 +1,7 @@
 package study;
 
 import java.awt.Color;
+import study.UI1;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -12,55 +13,138 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.security.PublicKey;
 
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.event.MouseInputAdapter;
 import javax.swing.Box;
 import javax.swing.SwingConstants;
+
+class MemberInfoDTO{
+	//회원정보
+	private String memberTel;
+	
+	public MemberInfoDTO(String memberTel) {
+		this.memberTel=memberTel;
+	}
+
+	public String getMemberTel() {
+		return memberTel;
+	}
+}
+class ManagerInfoDTO{
+	//매니저 정보
+	private String managerId;
+	
+	public ManagerInfoDTO(String managerId) {
+		this.managerId=managerId;
+	}
+
+	public String getManagerId() {
+		return managerId;
+	}
+}
+class QuestInfoDTO{
+	//질문 정보
+	private String question;
+	
+	public QuestInfoDTO(String question) {
+		this.question = question;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+}
+
+class QuestDialog extends JDialog{
+	public QuestDialog(String title, boolean modal, ManagerInfoDTO managerInfo, QuestInfoDTO questInfo,ManagerMain mMain)
+	{
+		//다이얼로그 생성자 호출
+		super(mMain, title, modal);
+		
+		//다이얼로그 설정
+		this.setTitle(managerInfo.getManagerId()+"님 환영합니다."); //매니저 ID 읽어와서 창 제목 변경
+		this.setBounds(100, 100, 500, 700);
+		this.setLocationRelativeTo(mMain);
+		this.setResizable(false);
+		
+		//패널추가
+		JPanel questListPanel = new JPanel();
+		questListPanel.setLayout(null);
+		this.setContentPane(questListPanel);
+		
+		//--TODO 라벨, 삭제버튼 생성은 DB에서 받아와서 질문개수만큼 반복필요--
+		//라벨추가
+        //QuestInfo의 정보를 받아와서 라벨에 표시-DB연동 필요
+        JLabel questLabel = new JLabel("질문:"+questInfo.getQuestion());
+        questLabel.setBounds(0, 100, 100, 50);
+        questListPanel.add(questLabel);
+		
+		//삭제버튼 추가
+        JButton questDeleteBtn = new JButton("삭제");
+        questDeleteBtn.setFont(new Font("Dialog", Font.BOLD, 12));
+        questDeleteBtn.setBackground(Color.RED);
+        questDeleteBtn.setFocusPainted(false);
+        questDeleteBtn.setBounds
+        (questLabel.getX(), questLabel.getY()-20,80, 30);
+        questDeleteBtn.addMouseListener(new MouseInputAdapter() {
+		//버튼을 누르면 questLabel 삭제
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	questListPanel.remove(questLabel); //삭제
+            	questListPanel.repaint(); //다시그리기
+            }
+        });
+        questListPanel.add(questDeleteBtn);   
+	}
+}
 
 public class ManagerMain extends JFrame {
 
 	private JPanel contentPane;
-	
-	 //버튼 디자인
-	   public class RoundedButton extends JButton {
-	      public RoundedButton() { super(); decorate(); } 
-	      public RoundedButton(String text) { super(text); decorate(); } 
-	      public RoundedButton(Action action) { super(action); decorate(); } 
-	      public RoundedButton(Icon icon) { super(icon); decorate(); } 
-	      public RoundedButton(String text, Icon icon) { super(text, icon); decorate(); } 
-	      protected void decorate() { setBorderPainted(false); setOpaque(false); }
-	      @Override 
-	      protected void paintComponent(Graphics g) {
-	         Color c=new Color(255,247,242); //배경색 결정
-	         Color o=new Color(247,99,12); //글자색 결정
-	         int width = getWidth(); 
-	         int height = getHeight(); 
-	         Graphics2D graphics = (Graphics2D) g; 
-	         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
-	         if (getModel().isArmed()) { graphics.setColor(c.darker()); } 
-	         else if (getModel().isRollover()) { graphics.setColor(c.brighter()); } 
-	         else { graphics.setColor(c); } 
-	         graphics.fillRoundRect(0, 0, width, height, 10, 10); 
-	         FontMetrics fontMetrics = graphics.getFontMetrics(); 
-	         Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds(); 
-	         int textX = (width - stringBounds.width) / 2; 
-	         int textY = (height - stringBounds.height) / 2 + fontMetrics.getAscent(); 
-	         graphics.setColor(o); 
-	         graphics.setFont(getFont()); 
-	         graphics.drawString(getText(), textX, textY); 
-	         graphics.dispose(); 
-	         super.paintComponent(g); 
-	         }
-	      }
+
+	 //버튼 디자인(둥근 모서리 버튼 쓸때 사용)
+//	   public class RoundedButton extends JButton {
+//	      public RoundedButton() { super(); decorate(); } 
+//	      public RoundedButton(String text) { super(text); decorate(); } 
+//	      public RoundedButton(Action action) { super(action); decorate(); } 
+//	      public RoundedButton(Icon icon) { super(icon); decorate(); } 
+//	      public RoundedButton(String text, Icon icon) { super(text, icon); decorate(); } 
+//	      protected void decorate() { setBorderPainted(false); setOpaque(false); }
+//	      @Override 
+//	      protected void paintComponent(Graphics g) {
+//	         Color c=new Color(255,247,242); //배경색 결정
+//	         Color o=new Color(247,99,12); //글자색 결정
+//	         int width = getWidth(); 
+//	         int height = getHeight(); 
+//	         Graphics2D graphics = (Graphics2D) g; 
+//	         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
+//	         if (getModel().isArmed()) { graphics.setColor(c.darker()); } 
+//	         else if (getModel().isRollover()) { graphics.setColor(c.brighter()); } 
+//	         else { graphics.setColor(c); } 
+//	         graphics.fillRoundRect(0, 0, width, height, 10, 10); 
+//	         FontMetrics fontMetrics = graphics.getFontMetrics(); 
+//	         Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds(); 
+//	         int textX = (width - stringBounds.width) / 2; 
+//	         int textY = (height - stringBounds.height) / 2 + fontMetrics.getAscent(); 
+//	         graphics.setColor(o); 
+//	         graphics.setFont(getFont()); 
+//	         graphics.drawString(getText(), textX, textY); 
+//	         graphics.dispose(); 
+//	         super.paintComponent(g); 
+//	         }
+//	      }
 	
 	/**
 	 * Launch the application.
@@ -80,9 +164,8 @@ public class ManagerMain extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
+	//프레임 생성
 	public ManagerMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1114, 736);
@@ -129,7 +212,6 @@ public class ManagerMain extends JFrame {
 			seatInfoPanel.setEnabled(false);
 			seatInfoPanel.setVisible(false);
 			
-			
 			//------------------------------------------------------------------------------------------------------------
 			//회원정보 패널
 			JPanel memberInfoPanel = new JPanel();
@@ -138,12 +220,10 @@ public class ManagerMain extends JFrame {
 			memberInfoPanel.setBackground(new Color(128, 255, 128));
 			memberInfoPanel.setBounds(420, 150, 165, 251);
 			memberInfoPanel.setEnabled(false);
-			memberInfoPanel.setVisible(false);
-			
-			
+			memberInfoPanel.setVisible(false);	
 			
 			//"회원 정보" 글자 라벨
-			JLabel seatInfoStrLabel_1 = new JLabel("\uD68C\uC6D0\uC815\uBCF4");
+			JLabel seatInfoStrLabel_1 = new JLabel("회원정보");
 			seatInfoStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			seatInfoStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatInfoStrLabel_1.setBackground(new Color(128, 0, 0));
@@ -158,7 +238,8 @@ public class ManagerMain extends JFrame {
 			seatNumStrLabel_1.setBounds(12, 79, 66, 23);
 			memberInfoPanel.add(seatNumStrLabel_1);
 			
-			//남은시간 글자 라벨-DB에서 남은시간 읽어와서 표시
+			//TODO DB의 Member테이블 remainTime 연동필요
+			//남은시간 글자 라벨
 			JLabel seatNumLabel_1 = new JLabel("10일 11시간12분13초");
 			seatNumLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			seatNumLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -174,7 +255,8 @@ public class ManagerMain extends JFrame {
 			memberStrLabel_1.setBounds(52, 191, 62, 23);
 			memberInfoPanel.add(memberStrLabel_1);
 			
-	     	//좌석번호 숫자 라벨-DB에서? 클릭한 좌석번호 정보를 읽어와서 출력
+			//TODO DB의 SEAT테이블 seatNum 연동필요
+	     	//좌석번호 숫자 라벨
 			JLabel seatNumLabel_memberInfoPanel = new JLabel("105");
 			seatNumLabel_memberInfoPanel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumLabel_memberInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -182,6 +264,7 @@ public class ManagerMain extends JFrame {
 			seatNumLabel_memberInfoPanel.setBounds(12, 191, 39, 23);
 			memberInfoPanel.add(seatNumLabel_memberInfoPanel);
 			
+			//TODO DB의 SEAT테이블 seatAvail 연동필요
 			//좌석상태 글자 라벨(이용중/일시정지?)
 			JLabel memberTelLabel_1 = new JLabel("이용중");
 			memberTelLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -231,6 +314,7 @@ public class ManagerMain extends JFrame {
 			seatNumStrLabel.setBounds(12, 79, 66, 23);
 			seatInfoPanel.add(seatNumStrLabel);
 			
+			//TODO DB의 SEAT테이블 seatNum 연동필요
 			//좌석번호 숫자 라벨-DB에서? 클릭한 좌석번호 정보를 읽어와서 출력
 			JLabel seatNumLabel_seatInfoPanel = new JLabel("105");
 			seatNumLabel_seatInfoPanel.setHorizontalAlignment(JLabel.CENTER);
@@ -265,6 +349,7 @@ public class ManagerMain extends JFrame {
 			memberInfoBtn.setFocusPainted(false);// hide focus rectangle
 			seatInfoPanel.add(memberInfoBtn);
 			
+			//TODO DB의 MEMBER테이블 memberTEL 연동필요
 			//회원 전화번호 라벨
 			JLabel memberTelLabel = new JLabel("010-1234-1234");
 			//memberTelLabel.setOpaque(true);
@@ -283,6 +368,7 @@ public class ManagerMain extends JFrame {
 			//panel1F.setVisible(false); //패널 감추기
 			contentPane.add(panel1F);
 			
+			//TODO DB에서 좌석정보 받아와서 이름(seatNum), 상태(seatAvail)에따라 색 등 지정필요
 			//1층 좌석 버튼 생성, 위치지정
 	    	String[] seat1Farr = {"100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110"
 	    			, "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124"
@@ -351,108 +437,34 @@ public class ManagerMain extends JFrame {
 		doorLabel1_1.setBounds(882, 74, 61, 69);
 		panel1F.add(doorLabel1_1);
 		
-		//벽라벨들
-		JLabel wallLabel1_1 = new JLabel();
-		wallLabel1_1.setOpaque(true);
-		wallLabel1_1.setBackground(Color.GRAY);
-		wallLabel1_1.setBounds(0, 496, 72, 103);
-		panel1F.add(wallLabel1_1);
-		
-		JLabel wallLabel1_2 = new JLabel();
-		wallLabel1_2.setOpaque(true);
-		wallLabel1_2.setBackground(Color.GRAY);
-		wallLabel1_2.setBounds(26, 539, 72, 60);
-		panel1F.add(wallLabel1_2);
-		
-		JLabel wallLabel1_3 = new JLabel();
-		wallLabel1_3.setOpaque(true);
-		wallLabel1_3.setBackground(Color.GRAY);
-		wallLabel1_3.setBounds(241, 539, 90, 60);
-		panel1F.add(wallLabel1_3);
-		
-		JLabel wallLabel1_4 = new JLabel();
-		wallLabel1_4.setOpaque(true);
-		wallLabel1_4.setBackground(Color.GRAY);
-		wallLabel1_4.setBounds(536, 539, 112, 60);
-		panel1F.add(wallLabel1_4);
-		
-		JLabel wallLabel1_5 = new JLabel();
-		wallLabel1_5.setOpaque(true);
-		wallLabel1_5.setBackground(Color.GRAY);
-		wallLabel1_5.setBounds(787, 539, 156, 60);
-		panel1F.add(wallLabel1_5);
-		
-		JLabel wallLabel1_6 = new JLabel();
-		wallLabel1_6.setOpaque(true);
-		wallLabel1_6.setBackground(Color.GRAY);
-		wallLabel1_6.setBounds(871, 294, 72, 69);
-		panel1F.add(wallLabel1_6);
-		
-		JLabel wallLabel1_7 = new JLabel();
-		wallLabel1_7.setOpaque(true);
-		wallLabel1_7.setBackground(Color.GRAY);
-		wallLabel1_7.setBounds(871, 143, 72, 103);
-		panel1F.add(wallLabel1_7);
-		
-		JLabel wallLabel1_8 = new JLabel();
-		wallLabel1_8.setOpaque(true);
-		wallLabel1_8.setBackground(Color.GRAY);
-		wallLabel1_8.setBounds(0, 209, 72, 60);
-		panel1F.add(wallLabel1_8);
-		
-		JLabel wallLabel1_9 = new JLabel();
-		wallLabel1_9.setOpaque(true);
-		wallLabel1_9.setBackground(Color.GRAY);
-		wallLabel1_9.setBounds(0, 0, 117, 60);
-		panel1F.add(wallLabel1_9);
-		
-		JLabel wallLabel1_10 = new JLabel();
-		wallLabel1_10.setOpaque(true);
-		wallLabel1_10.setBackground(Color.GRAY);
-		wallLabel1_10.setBounds(329, 0, 79, 60);
-		panel1F.add(wallLabel1_10);
-		
-		JLabel wallLabel1_11 = new JLabel();
-		wallLabel1_11.setOpaque(true);
-		wallLabel1_11.setBackground(Color.GRAY);
-		wallLabel1_11.setBounds(126, 241, 21, 122);
-		panel1F.add(wallLabel1_11);
-		
-		JLabel wallLabel1_12 = new JLabel();
-		wallLabel1_12.setOpaque(true);
-		wallLabel1_12.setBackground(Color.GRAY);
-		wallLabel1_12.setBounds(126, 358, 93, 18);
-		panel1F.add(wallLabel1_12);
-		
-		JLabel wallLabel1_13 = new JLabel();
-		wallLabel1_13.setOpaque(true);
-		wallLabel1_13.setBackground(Color.GRAY);
-		wallLabel1_13.setBounds(126, 228, 93, 18);
-		panel1F.add(wallLabel1_13);
-		
-		JLabel wallLabel1_14 = new JLabel();
-		wallLabel1_14.setOpaque(true);
-		wallLabel1_14.setBackground(Color.GRAY);
-		wallLabel1_14.setBounds(648, 241, 21, 122);
-		panel1F.add(wallLabel1_14);
-		
-		JLabel wallLabel1_15 = new JLabel();
-		wallLabel1_15.setOpaque(true);
-		wallLabel1_15.setBackground(Color.GRAY);
-		wallLabel1_15.setBounds(576, 358, 93, 18);
-		panel1F.add(wallLabel1_15);
-		
-		JLabel wallLabel1_16 = new JLabel();
-		wallLabel1_16.setOpaque(true);
-		wallLabel1_16.setBackground(Color.GRAY);
-		wallLabel1_16.setBounds(576, 228, 93, 18);
-		panel1F.add(wallLabel1_16);
-		
-		JLabel wallLabel1_17 = new JLabel();
-		wallLabel1_17.setOpaque(true);
-		wallLabel1_17.setBackground(Color.GRAY);
-		wallLabel1_17.setBounds(765, 0, 50, 60);
-		panel1F.add(wallLabel1_17);
+		//1층 벽라벨 생성, 위치지정
+    	JLabel[] wall1FLabel = new JLabel[17];
+    	
+    	for (int i = 0; i < wall1FLabel.length; i++) {
+			wall1FLabel[i] = new JLabel();
+			wall1FLabel[i].setBounds(871, 184, 72, 60);
+			wall1FLabel[i].setOpaque(true);
+			wall1FLabel[i].setBackground(Color.GRAY);
+			panel1F.add(wall1FLabel[i]);
+		}
+    	
+    	wall1FLabel[0].setBounds(0, 496, 72, 103);
+    	wall1FLabel[1].setBounds(26, 539, 72, 60);
+    	wall1FLabel[2].setBounds(241, 539, 90, 60);
+    	wall1FLabel[3].setBounds(536, 539, 112, 60);
+    	wall1FLabel[4].setBounds(787, 539, 156, 60);
+    	wall1FLabel[5].setBounds(871, 294, 72, 69);
+    	wall1FLabel[6].setBounds(871, 143, 72, 103);
+    	wall1FLabel[7].setBounds(0, 209, 72, 60);
+    	wall1FLabel[8].setBounds(0, 0, 117, 60);
+    	wall1FLabel[9].setBounds(329, 0, 79, 60);
+    	wall1FLabel[10].setBounds(126, 241, 21, 122);
+    	wall1FLabel[11].setBounds(126, 358, 93, 18);
+    	wall1FLabel[12].setBounds(126, 228, 93, 18);
+    	wall1FLabel[13].setBounds(648, 241, 21, 122);
+    	wall1FLabel[14].setBounds(576, 358, 93, 18);
+    	wall1FLabel[15].setBounds(576, 228, 93, 18);
+    	wall1FLabel[16].setBounds(765, 0, 50, 60);
 		
 		//쓰레기통 이미지
 		JLabel trashcanLabel1_1 = new JLabel(); //화장실옆
@@ -486,6 +498,7 @@ public class ManagerMain extends JFrame {
 		panel2F.setLayout(null);
 		contentPane.add(panel2F);
 
+		//TODO DB에서 좌석정보 받아와서 이름(seatNum), 상태(seatAvail)에따라 색 등 지정필요
 		// 2층 좌석 버튼 생성, 위치지정
     	String[] seat2Farr = {"200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210"
     			, "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224"
@@ -576,94 +589,57 @@ public class ManagerMain extends JFrame {
 		waterPFLabel2_2.setIcon(updateWaterPFIcon);
 		panel2F.add(waterPFLabel2_2);
 		
-		//벽라벨들
-		JLabel wallLabel2_1 = new JLabel();
-		wallLabel2_1.setOpaque(true);
-		wallLabel2_1.setBackground(Color.GRAY);
-		wallLabel2_1.setBounds(148, 539, 108, 60);
-		panel2F.add(wallLabel2_1);
-		
-		JLabel wallLabel2_2 = new JLabel();
-		wallLabel2_2.setOpaque(true);
-		wallLabel2_2.setBackground(Color.GRAY);
-		wallLabel2_2.setBounds(0, 0, 148, 60);
-		panel2F.add(wallLabel2_2);
-		
-		JLabel wallLabel2_3 = new JLabel();
-		wallLabel2_3.setOpaque(true);
-		wallLabel2_3.setBackground(Color.GRAY);
-		wallLabel2_3.setBounds(0, 241, 122, 54);
-		panel2F.add(wallLabel2_3);
-		
-		JLabel wallLabel2_4 = new JLabel();
-		wallLabel2_4.setOpaque(true);
-		wallLabel2_4.setBackground(Color.GRAY);
-		wallLabel2_4.setBounds(477, 539, 108, 60);
-		panel2F.add(wallLabel2_4);
-		
-		JLabel wallLabel2_5 = new JLabel();
-		wallLabel2_5.setOpaque(true);
-		wallLabel2_5.setBackground(Color.GRAY);
-		wallLabel2_5.setBounds(728, 539, 72, 60);
-		panel2F.add(wallLabel2_5);
-		
-		JLabel wallLabel2_6 = new JLabel();
-		wallLabel2_6.setOpaque(true);
-		wallLabel2_6.setBackground(Color.GRAY);
-		wallLabel2_6.setBounds(871, 241, 72, 176);
-		panel2F.add(wallLabel2_6);
-		
-		JLabel wallLabel2_7 = new JLabel();
-		wallLabel2_7.setOpaque(true);
-		wallLabel2_7.setBackground(Color.GRAY);
-		wallLabel2_7.setBounds(871, 141, 72, 47);
-		panel2F.add(wallLabel2_7);
-		
-		JLabel wallLabel2_8 = new JLabel();
-		wallLabel2_8.setOpaque(true);
-		wallLabel2_8.setBackground(Color.GRAY);
-		wallLabel2_8.setBounds(709, 0, 57, 60);
-		panel2F.add(wallLabel2_8);
-		
-		JLabel wallLabel2_9 = new JLabel();
-		wallLabel2_9.setOpaque(true);
-		wallLabel2_9.setBackground(Color.GRAY);
-		wallLabel2_9.setBounds(215, 241, 259, 23);
-		panel2F.add(wallLabel2_9);
-		
-		JLabel wallLabel2_10 = new JLabel();
-		wallLabel2_10.setOpaque(true);
-		wallLabel2_10.setBackground(Color.GRAY);
-		wallLabel2_10.setBounds(600, 244, 162, 23);
-		panel2F.add(wallLabel2_10);
-		
-		JLabel wallLabel2_11 = new JLabel();
-		wallLabel2_11.setOpaque(true);
-		wallLabel2_11.setBackground(Color.GRAY);
-		wallLabel2_11.setBounds(670, 184, 23, 140);
-		panel2F.add(wallLabel2_11);
-		
-		JLabel wallLabel2_12 = new JLabel();
-		wallLabel2_12.setOpaque(true);
-		wallLabel2_12.setBackground(Color.GRAY);
-		wallLabel2_12.setBounds(380, 184, 23, 140);
-		panel2F.add(wallLabel2_12);
-		
-		JLabel wallLabel2_13 = new JLabel();
-		wallLabel2_13.setOpaque(true);
-		wallLabel2_13.setBackground(Color.GRAY);
-		wallLabel2_13.setBounds(285, 184, 27, 140);
-		panel2F.add(wallLabel2_13);
-		setVisible(true);	
+		// 2층 벽라벨 생성, 위치지정
+    	//String[] wall2Farr = {};
+    	JLabel[] wall2FLabel = new JLabel[13];
+    	
+    	for (int i = 0; i < wall2FLabel.length; i++) {
+			wall2FLabel[i] = new JLabel();
+			wall2FLabel[i].setBounds(871, 184, 72, 60);
+			wall2FLabel[i].setOpaque(true);
+			wall2FLabel[i].setBackground(Color.GRAY);
+			panel2F.add(wall2FLabel[i]);
+		}
+    	
+			wall2FLabel[0].setBounds(148, 539, 108, 60);
+			wall2FLabel[1].setBounds(0, 0, 148, 60);
+			wall2FLabel[2].setBounds(0, 241, 122, 54);
+			wall2FLabel[3].setBounds(477, 539, 108, 60);
+			wall2FLabel[4].setBounds(728, 539, 72, 60);
+			wall2FLabel[5].setBounds(871, 241, 72, 176);
+			wall2FLabel[6].setBounds(871, 141, 72, 47);
+			wall2FLabel[7].setBounds(709, 0, 57, 60);
+			wall2FLabel[8].setBounds(215, 241, 259, 23);
+			wall2FLabel[9].setBounds(600, 244, 162, 23);
+			wall2FLabel[10].setBounds(670, 184, 23, 140);
+			wall2FLabel[11].setBounds(380, 184, 23, 140);
+			wall2FLabel[12].setBounds(285, 184, 27, 140);
+
+//		setVisible(true);	
 		//-----------------------------------------------------------------------------------------
-		//로그아웃 버튼
+
+			//로그아웃 버튼--누르면 관리자로그인창으로
 		JButton logoutBtn = new JButton("로그아웃");
 		logoutBtn.setBounds(982, 0, 116, 31);
 		logoutBtn.setBackground(new Color(255, 0, 0));
 		logoutBtn.setFont(logoutBtnFont);
         logoutBtn.setFocusPainted(false);// hide focus rectangle
+    	logoutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//System.exit(0); //매니저 메인화면 닫기(0 == 정상종료)  <=이거쓰면 새창도 안나옴
+				dispose(); //이걸쓰자
+				new UI1();//관리자 로그인 창 띄움- TODO 지금은 관리자 로그인 창 동작안해서 임시로 적어둠 관리자로그인창 고치고 수정필요
+			}
+		});
 		contentPane.add(logoutBtn);
 		
+		
+		//TODO 임시로 해둠, 실제 DB값 받아오고 지우기
+		//managerInfo, quest값 데이터 매개변수로 가진 객체 생성
+		ManagerInfoDTO manager1 = new ManagerInfoDTO("corlwn");
+		QuestInfoDTO quest1 = new QuestInfoDTO("질문입니다");
+		
+		//TODO DB, 채팅질문목록기능 연동해야함
 		//질문확인 버튼
 		JButton searchQuestionBtn = new JButton("<html><body><center>질"
         		+ "<br>문</center><br>확<br>인</body></html>");
@@ -671,8 +647,12 @@ public class ManagerMain extends JFrame {
 		searchQuestionBtn.setBackground(new Color(0, 255, 64));
 		searchQuestionBtn.setFont(logoutBtnFont);
 		searchQuestionBtn.setFocusPainted(false);// hide focus rectangle
-		searchQuestionBtn.addActionListener(new ActionListener() {
+		searchQuestionBtn.addActionListener(new ActionListener() {//누르면 아래 기능 동작
 			public void actionPerformed(ActionEvent e) {
+	              // QuestDialog생성
+                QuestDialog questDialog = new QuestDialog //위에서 정의해놓은 QuestDialog 클래스 객체 생성
+                		("", true, manager1,quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
+                questDialog.setVisible(true);
 			}
 		});
 		contentPane.add(searchQuestionBtn);
@@ -716,7 +696,7 @@ public class ManagerMain extends JFrame {
 		idLabel.setFont(logoutBtnFont);
 		contentPane.add(idLabel);
 		
-		//로고이미지
+		//좌측상단 로고이미지
 		JLabel logoLabel = new JLabel();
 		logoLabel.setBounds(0, 0, 70, 69);       
         logoLabel.setIcon(updateLogoIcon);
@@ -741,7 +721,6 @@ public class ManagerMain extends JFrame {
     				seat1FBtn[13].setEnabled(false);
     				seat1FBtn[13].setVisible(false);
 
-    				
     				//패널 아래의 2층좌석 버튼 비활성화
     				seat2FBtn[8].setEnabled(false);
     				seat2FBtn[8].setVisible(false);
@@ -754,30 +733,15 @@ public class ManagerMain extends JFrame {
     			}
     		}
     	}
-    	SeatBtnListener seatBtnListener = new SeatBtnListener();
+    	
     	//좌석버튼에 액션리스너 기능 추가
+    	SeatBtnListener seatBtnListener = new SeatBtnListener();
     	for (int i = 0; i < seat1Farr.length; i++) {
     		seat1FBtn[i].addActionListener(seatBtnListener);
 		}
     	for (int i = 0; i < seat2Farr.length; i++) {
 			seat2FBtn[i].addActionListener(seatBtnListener);
 		}
-    	
-//    	//for()
-//    	String[] arr = {"301", "302", "303"};
-//    	JButton[] btn = new JButton[3];
-//    	SeatBtnListener seatBtnListener = new SeatBtnListener();
-//    	
-//    	for (int i = 0; i < arr.length; i++) {
-//			btn[i] = new JButton(arr[i]);
-//			btn[i].setBounds(871, 184, 72, 60);
-//			btn[i].setFont(new Font("Dialog", Font.BOLD, 16));
-//			btn[i].setBorder(lb);
-//			btn[i].setFocusPainted(false);
-//			btn[i].setBackground(new Color(0, 128, 255));
-//			btn[i].addActionListener(seatBtnListener);
-//			panel2F.add(btn[i]);
-//		}
     	
     	//닫기버튼x
 		JButton closeBtn_seatInfoPanel = new JButton("X");
@@ -816,7 +780,6 @@ public class ManagerMain extends JFrame {
 		closeBtn_seatInfoPanel.setBorder(lb);
 		closeBtn_seatInfoPanel.setFocusPainted(false);
 		seatInfoPanel.add(closeBtn_seatInfoPanel);
-	}
-	
+	}	
 	
 }
