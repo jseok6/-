@@ -1,4 +1,4 @@
-package ±â´É±¸Çö;
+package ê¸°ëŠ¥êµ¬í˜„;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -43,21 +43,21 @@ public class SeatSelectAlertPopUp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\family.jpg"));
-		frame.getContentPane().setFont(new Font("±¼¸²", Font.PLAIN, 12));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\family.jpg"));
+		frame.getContentPane().setFont(new Font("êµ´ë¦¼", Font.PLAIN, 12));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 465, 260);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("oo¹ø ÀÚ¸®¸¦ ¼±ÅÃ ÇÏ½Ã°Ú½À´Ï±î?");
+		JLabel lblNewLabel = new JLabel("ooë²ˆ ìë¦¬ë¥¼ ì„ íƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("ÇÔÃÊ·Ò¹ÙÅÁ", Font.PLAIN, 18));
+		lblNewLabel.setFont(new Font("í•¨ì´ˆë¡¬ë°”íƒ•", Font.PLAIN, 18));
 		lblNewLabel.setBounds(75, 40, 317, 78);
 		frame.getContentPane().add(lblNewLabel);
 
-		JButton btnNewButton1 = new JButton("È®ÀÎ");
-		btnNewButton1.addActionListener((ActionListener) new ActionListener() {
+		JButton btnNewButton1 = new JButton("í™•ì¸");
+		btnNewButton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -65,15 +65,15 @@ public class SeatSelectAlertPopUp {
 		});
 		btnNewButton1.setDefaultCapable(false);
 		btnNewButton1.setSelected(true);
-		btnNewButton1.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		btnNewButton1.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		btnNewButton1.setPreferredSize(new Dimension(0, 0));
 		btnNewButton1.setMinimumSize(new Dimension(0, 0));
 		btnNewButton1.setMaximumSize(new Dimension(0, 0));
 		btnNewButton1.setBounds(99, 139, 109, 50);
 		frame.getContentPane().add(btnNewButton1);
 
-		JButton btnNewButton2 = new JButton("´Ù½Ã ¼±ÅÃ");
-		btnNewButton2.addActionListener((ActionListener) new ActionListener() {
+		JButton btnNewButton2 = new JButton("ë‹¤ì‹œ ì„ íƒ");
+		btnNewButton2.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -81,7 +81,7 @@ public class SeatSelectAlertPopUp {
 		});
 		btnNewButton2.setDefaultCapable(false);
 		btnNewButton2.setSelected(true);
-		btnNewButton2.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		btnNewButton2.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		btnNewButton2.setPreferredSize(new Dimension(0, 0));
 		btnNewButton2.setMinimumSize(new Dimension(0, 0));
 		btnNewButton2.setMaximumSize(new Dimension(0, 0));

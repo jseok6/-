@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
+import java.awt.Dimension;
 
 public class Seat1_1 extends JFrame {
 
