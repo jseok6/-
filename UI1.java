@@ -341,7 +341,8 @@ implements ActionListener{
 					dispose();
 				}else
 				{
-					label2.setText("로그인실패");
+//					label2.setText("로그인실패");
+					JOptionPane.showMessageDialog(null, "로그인 실패");
 				}
 				
 			}
@@ -349,7 +350,9 @@ implements ActionListener{
 			{
 				join_event join=new join_event();
 				join.join(Integer.parseInt(userText.getText()),passText.getText());
-				JOptionPane.showMessageDialog(null, "회원 가입 완료");
+//				JOptionPane.showMessageDialog(null, "회원 가입 완료");
+				userText.setText("");
+				passText.setText("");
 				
 			}
 			

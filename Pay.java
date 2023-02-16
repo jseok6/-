@@ -9,7 +9,8 @@ import java.awt.event.ActionListener;
 public class Pay extends JFrame{
 	private JButton btntime;//시간권버튼
 	private JButton btnperiod;//기간권 버튼
-	private JLabel label;
+	private JLabel label;//배경이미지
+	private JLabel label2;
 	
 
 	private JButton btntime1;
@@ -19,7 +20,16 @@ public class Pay extends JFrame{
 	private JButton btntime9;
 	private JButton btntime12;
 	
-	private JButton btnpay;
+	private JButton btncardpay;
+	private JButton btncashpay;
+	private JButton back;
+	
+	ImageIcon img=new ImageIcon("./Button_Image/image_exitButton.jpg");
+	ImageIcon img2=new ImageIcon("./Button_Image/image_exitButton2.jpg");
+	ImageIcon imgtime=new ImageIcon("./Button_Image/time.jpg");
+	ImageIcon imageperiod=new ImageIcon("./Button_Image/time2.jpg");
+	
+	Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 	
 	
 	
@@ -31,6 +41,7 @@ public class Pay extends JFrame{
 		
 		// panel
         JPanel panel = new JPanel();
+        panel.setBackground(Color.white);
         PayUI(panel);
 		
 		
@@ -40,9 +51,16 @@ public class Pay extends JFrame{
 		
         //배경이미지
         label = new JLabel();
-        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
+//        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
         label.setBounds(0, 0, 1100, 700);
         panel.add(label);
+        
+        label2=new JLabel();
+        label2.setBounds(450,0,250,100);
+        label2.setBackground(Color.pink);
+        label2.setText("원하는 메뉴를 선택하세요.");
+        label2.setFont(font);
+        panel.add(label2);
 
         // add
         getContentPane().add(panel);
@@ -50,6 +68,7 @@ public class Pay extends JFrame{
         // visible
         setVisible(true);
         
+        //기간권버튼
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -60,8 +79,29 @@ public class Pay extends JFrame{
 			}
 		});
         
-        //결제버튼 누르면 결제창으로 이동
-        btnpay.addActionListener(new ActionListener() {
+        //뒤로가기버튼
+        back.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				UI1 ui1=new UI1();
+				ui1.setVisible(true);
+				dispose();
+			}
+		});
+        
+        //현금결제
+        btncashpay.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+        //카드결제
+        btncardpay.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -73,18 +113,22 @@ public class Pay extends JFrame{
 	}
 	public void PayUI(JPanel panel){
 		panel.setLayout(null);
-		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
-		btntime=new JButton("시간권");
-		btntime.setBounds(67, 50, 420, 100);
-		btntime.setBackground(Color.yellow);
-		btntime.setFont(font);
-		panel.add(btntime);
 		
-		btnperiod=new JButton("기간권");
-		btnperiod.setBounds(567, 50, 420, 100);
-		btnperiod.setBackground(Color.yellow);
-		btnperiod.setFont(font);
-		panel.add(btnperiod);
+		
+		
+//		btntime=new JButton(imgtime);
+//		btntime.setBounds(0,100, 550,67);
+//		btntime.setBorderPainted(false);
+//		btntime.setPreferredSize(new Dimension(300,50));
+//
+//		btntime.setBackground(Color.yellow);
+//		panel.add(btntime);
+		
+//		btnperiod=new JButton("기간권");
+//		btnperiod.setBounds(550, 100, 550, 67);
+//		btnperiod.setBackground(Color.yellow);
+//		btnperiod.setFont(font);
+//		panel.add(btnperiod);
 		
 		btntime1=new JButton("1시간권");
 		btntime1.setBounds(67,167,200,100);
@@ -122,15 +166,38 @@ public class Pay extends JFrame{
 		btntime12.setFont(font);
 		panel.add(btntime12);
 		
-		btnpay=new JButton("결제");
-		btnpay.setBounds(375,500,300,100);
-		btnpay.setBackground(Color.yellow);
-		btnpay.setFont(font);
-		panel.add(btnpay);
+		btncardpay=new JButton("카드결제");
+		btncardpay.setBounds(800,560,300,100);
+		btncardpay.setBackground(Color.red);
+		btncardpay.setFont(font);
+		panel.add(btncardpay);
 		
+		btncashpay=new JButton("현금결제");
+		btncashpay.setBounds(500,560,300,100);
+		btncashpay.setBackground(Color.cyan);
+		btncashpay.setFont(font);
+		panel.add(btncashpay);
+		
+		back = new JButton(img);
+		back.setBounds(0, 610, 300, 50);
+		back.setRolloverIcon(img2);
+		back.setBorderPainted(false);
+
+		panel.add(back);
+		
+		btntime=new JButton(imgtime);
+		btntime.setBounds(0,70, 550,98);
+		panel.add(btntime);
+		
+		btnperiod=new JButton(imageperiod);
+		btnperiod.setBounds(550, 70, 550, 98);
+		panel.add(btnperiod);
 		
 
 	
+	}
+	public static void main(String[] args) {
+		new Pay();
 	}
 	
 	

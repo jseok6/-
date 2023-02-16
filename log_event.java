@@ -16,7 +16,7 @@ public class log_event {
 		DBconnect db = new DBconnect();
 		String test = null;
 
-		String queryIdCheck="SELECT count(*) cnt FROM member WHERE id=?";
+
 		String queryLogin = "select member_pw  from member where member_tel = '"+num+"'";
 		try {
 			

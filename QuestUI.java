@@ -10,6 +10,11 @@ public class QuestUI extends JFrame{
 	private JTextField title;
 	private JTextField detail;
 	private JButton check;
+	private JButton back;
+	
+	Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+	
+	ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
 	
 	public QuestUI() {
 		setTitle("Áú¹®Ã¢");
@@ -32,7 +37,23 @@ public class QuestUI extends JFrame{
 	public void QuestPanel(JPanel panel)
 	{
 		panel.setLayout(null);
-		Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+		
+		back=new JButton(img);
+		back.setBounds(0, 0, 150, 90);
+		back.setBorderPainted(false);
+		panel.add(back);
+		
+		back.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				UserMainUI ui=new UserMainUI();
+				ui.setVisible(true);
+				dispose();
+				
+			}
+		});
 		
 		
 		JTextField title=new JTextField(20);
@@ -64,6 +85,9 @@ public class QuestUI extends JFrame{
 		});
 		
 		
+	}
+	public static void main(String[] args) {
+		new QuestUI();
 	}
 
 

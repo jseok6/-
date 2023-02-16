@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.*;
 
+import javax.swing.JOptionPane;
+
 
 public class join_event {
 	
@@ -18,47 +20,39 @@ public class join_event {
 	
 	public void join(int num,String pass)
 	{
+		DBconnect db = new DBconnect();
+		String test = null;
+		int password=Integer.parseInt(pass);
+		
+        String sql = "INSERT INTO member";
+ 	   sql += " VALUES (";
+ 	   sql +=num;
+ 	   sql +=","; 
+ 	   sql +=password;
+ 	   sql +=",";
+ 	   sql +="'1234'";
+ 	   sql +=",";
+ 	   sql += "'0000-12-12'";
+ 	   sql += ")";
 		try {
-        	
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Driver Loading Success!!");
-            
-            
-            String url = "jdbc:mysql://localhost/projec";
-            String user = "root", pwd = "whdtjrsq124!"; 
-            int password=Integer.parseInt(pass);
-            Connection con = DriverManager.getConnection(url, user, pwd);
-            System.out.println("DB 연결 성공!!");
-            
-            
-            String sql = "INSERT INTO member";
-            	   sql += " VALUES (";
-            	   sql +=num;
-            	   sql +=","; 
-            	   sql +=password;
-            	   sql +=",";
-            	   sql +="'1234'";
-            	   sql +=",";
-            	   sql += "'0000-12-12'";
-            	   sql += ")";
-            
-            
-      	    Statement stmt=con.createStatement();	  
-            
-         
+            int count=0;
+      	    Statement stmt=db.con.createStatement();	  
             stmt.execute(sql);
-            System.out.println("데이터 insert 성공!!");
-           
 	    if(stmt != null) 
 	    	stmt.close();
 	    if(con != null) 
 	    	con.close();
+	    
+	    count++;
+	    if (count!=0)
+	    {
+	    	JOptionPane.showMessageDialog(null, "회원 가입 완료");
+	    	Pay pay=new Pay();
+        	pay.setVisible(true);
+	    }
             
         } 
-		catch(ClassNotFoundException e) 
-		{
-			System.out.println("드라이버 로딩 실패!!");
-			} 
+
 		catch(SQLException e) 
 		
 		{
