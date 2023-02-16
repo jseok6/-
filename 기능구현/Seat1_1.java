@@ -132,6 +132,7 @@ public class Seat1_1 extends JFrame {
 		seat102Btn.setBounds(186, 0, 72, 60);
 		seat102Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		contentPane.setLayout(null);

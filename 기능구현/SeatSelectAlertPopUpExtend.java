@@ -2,8 +2,12 @@ package 기능구현;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,6 +19,7 @@ import javax.swing.border.LineBorder;
 public class SeatSelectAlertPopUpExtend {
 
 	private JFrame frame;
+	protected JInternalFrame fr;
 
 	/**
 	 * Launch the application.
@@ -63,7 +68,13 @@ public class SeatSelectAlertPopUpExtend {
 		seat101Btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				fr = new JInternalFrame("자리 선택 여부", true, true, false, false);
+				fr.getContentPane().add(new JLabel(new ImageIcon("/root/Download/ICON/jeehaa1004_10.gif")),
+						BorderLayout.CENTER);
+				fr.setLayout(null);
+				fr.setBounds(400, 300, 500, 400);
+				fr.setVisible(true);
+				frame.add(fr);
 			}
 		});
 		JButton seat102Btn = new JButton("102");

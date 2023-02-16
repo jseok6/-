@@ -1,22 +1,22 @@
 package 기능구현;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class SeatSelectAvailability {
 
@@ -80,7 +80,6 @@ public class SeatSelectAvailability {
 		Image trashcanImg = trashcanIcon.getImage();
 		Image updateTrashcanImg = trashcanImg.getScaledInstance(57, 54, Image.SCALE_SMOOTH);
 		ImageIcon updatetrashcanIcon = new ImageIcon(updateTrashcanImg);
-
 		ImageIcon waterPFIcon = new ImageIcon(
 				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\water.png");
 		Image waterPFImg = waterPFIcon.getImage();
@@ -103,8 +102,9 @@ public class SeatSelectAvailability {
 		seat101Btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
+
 		});
 
 		JButton seat102Btn = new JButton("102");
@@ -547,6 +547,11 @@ public class SeatSelectAvailability {
 		자리선택완료.setBorder(new LineBorder(Color.BLACK, 2));
 		자리선택완료.setBackground(new Color(0, 0, 128));
 		자리선택완료.setLayout(null);
+	}
+
+	protected void dispose() {
+		// TODO Auto-generated method stub
+
 	}
 
 	private void setVisible(boolean b) {
