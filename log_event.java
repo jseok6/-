@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+//로그인이벤트
 public class log_event {
 
 	Connection con = null;

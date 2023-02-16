@@ -29,8 +29,6 @@ implements ActionListener{
 	 private JLabel label;
 	 private JLabel label2;
 	 
-	 Connection con=null;
-	 String sql="SELECT manager_tel FROM manager";
 
 	 
 	 
@@ -319,8 +317,9 @@ implements ActionListener{
         panel.add(btnm);
         
         
-        
-        JLabel managerphone= new JLabel("包府磊 楷遏贸:01044444449");
+        manager_pn mgpn=new manager_pn();
+        String str=mgpn.manager_pn();
+        JLabel managerphone= new JLabel("包府磊 楷遏贸:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);

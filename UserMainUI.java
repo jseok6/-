@@ -87,7 +87,7 @@ public class UserMainUI extends JFrame {
 		panel.add(managerEmail);
 		
 		picture = new JLabel();
-        picture.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\hanbok.jpg"));
+        picture.setIcon(new ImageIcon("./Button_Image/hanbok.jpg"));
         picture.setBounds(140, 200, 500,300);
         panel.add(picture);
         
