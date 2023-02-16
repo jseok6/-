@@ -28,6 +28,9 @@ implements ActionListener{
 	 private JLabel managerphone;
 	 private JLabel label;
 	 private JLabel label2;
+	 
+	 Connection con=null;
+	 String sql="SELECT manager_tel FROM manager";
 
 	 
 	 
@@ -144,7 +147,7 @@ implements ActionListener{
        
         btnLogin = new JButton("Login");
         btnLogin.setBackground(Color.yellow);
-        btnLogin.setBounds(560, 299, 117, 25);
+        btnLogin.setBounds(680, 229, 120, 100);
         panel.add(btnLogin);
         btnLogin.addActionListener(this);
         btnInit.addActionListener(this);
@@ -152,13 +155,15 @@ implements ActionListener{
         
         btnjoin=new JButton("회원가입");
         btnjoin.setBackground(Color.yellow);
-        btnjoin.setBounds(495, 325, 120, 20);
+        btnjoin.setBounds(560, 299, 117, 25);
         panel.add(btnjoin);
         btnjoin.addActionListener(this);
         
         label2=new JLabel("아이디와 비번을 입력하세요.");
+        label2.setOpaque(true); 
+        label2.setBackground(Color.pink);
         label2.setFont(font);
-        label2.setBounds(430, 580, 250, 20);
+        label2.setBounds(430, 580, 220, 20);
         panel.add(label2);
         
         
@@ -313,8 +318,11 @@ implements ActionListener{
         btnm.setBackground(Color.yellow);
         panel.add(btnm);
         
-        JLabel managerphone= new JLabel("관리자 연락처:");
-        managerphone.setBounds(900, 550, 100, 50);
+        
+        
+        JLabel managerphone= new JLabel("관리자 연락처:01044444449");
+        managerphone.setFont(font);
+        managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
         
         
@@ -338,10 +346,14 @@ implements ActionListener{
 				if(i == 1){
 					Pay pay=new Pay();
 					pay.setVisible(true);
+					JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
 					dispose();
-				}else
+					
+					
+				}
+				else
 				{
-//					label2.setText("로그인실패");
+
 					JOptionPane.showMessageDialog(null, "로그인 실패");
 				}
 				
@@ -350,9 +362,9 @@ implements ActionListener{
 			{
 				join_event join=new join_event();
 				join.join(Integer.parseInt(userText.getText()),passText.getText());
-//				JOptionPane.showMessageDialog(null, "회원 가입 완료");
 				userText.setText("");
 				passText.setText("");
+				dispose();
 				
 			}
 			
