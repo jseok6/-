@@ -121,10 +121,6 @@ public class Seat1_1 extends JFrame {
 		//1Ãþ ÁÂ¼® ¹öÆ°
 		JButton seat101Btn = new JButton("101");
 		seat101Btn.setBounds(113, 0, 72, 60);
-		seat101Btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		panel1F.setLayout(null);
 		seat101Btn.setBackground(new Color(0, 128, 255));
 		seat101Btn.setFont(logoutBtnFont);

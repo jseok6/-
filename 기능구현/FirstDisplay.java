@@ -1,4 +1,4 @@
-package ê¸°ëŠ¥êµ¬í˜„;
+package ±â´É±¸Çö;
 
 import java.awt.EventQueue;
 
@@ -40,27 +40,27 @@ public class FirstDisplay {
 	 */
 	private void initialize() {
 		frmFamilyStudyCafe = new JFrame();
-		frmFamilyStudyCafe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸\\-001.jpg"));
-		frmFamilyStudyCafe.setTitle("Family Study Cafeì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.");
-		frmFamilyStudyCafe.setResizable(false); //ë²„íŠ¼ & ì°½ ê³ ì •
+		frmFamilyStudyCafe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ®\\-001.jpg"));
+		frmFamilyStudyCafe.setTitle("Family Study Cafe¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù.");
+		frmFamilyStudyCafe.setResizable(false); //¹öÆ° & Ã¢ °íÁ¤
 		frmFamilyStudyCafe.setBounds(100, 100, 1000, 600);
 		frmFamilyStudyCafe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFamilyStudyCafe.getContentPane().setLayout(null);
 	
 		
-		Button button1 = new Button("ì‚¬ìš©ì");
+		Button button1 = new Button("»ç¿ëÀÚ");
 		button1.setBounds(0, 0, 492, 561);
 		button1.setBackground(new Color(205, 133, 63));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.getContentPane().add(button1);
-		// ì‚¬ìš©ì ë²„íŠ¼ button1
+		// »ç¿ëÀÚ ¹öÆ° button1
 		
-		Button button2 = new Button("ê´€ë¦¬ì");
+		Button button2 = new Button("°ü¸®ÀÚ");
 		button2.setBounds(492, 0, 492, 561);
 		button2.setBackground(new Color(102, 205, 170));
 		button2.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.getContentPane().add(button2);
-		// ê´€ë¦¬ì ë²„íŠ¼ button2
+		// °ü¸®ÀÚ ¹öÆ° button2
 	}
 
 }

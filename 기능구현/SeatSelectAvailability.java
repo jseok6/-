@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Rectangle;
 
 public class SeatSelectAvailability {
@@ -98,6 +100,12 @@ public class SeatSelectAvailability {
 		seat101Btn.setBackground(new Color(0, 128, 255));
 		seat101Btn.setBounds(113, 0, 72, 60);
 		panel1F.add(seat101Btn);
+		seat101Btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 
 		JButton seat102Btn = new JButton("102");
 		seat102Btn.setBorder(new LineBorder(new Color(0, 0, 0), 2));
