@@ -49,6 +49,7 @@ public class SeatSelectAvailability {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	// 1층 배치도 자리 선택 예시 만들기
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -99,13 +100,6 @@ public class SeatSelectAvailability {
 		seat101Btn.setBackground(new Color(0, 128, 255));
 		seat101Btn.setBounds(113, 0, 72, 60);
 		panel1F.add(seat101Btn);
-		seat101Btn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-
-		});
 
 		JButton seat102Btn = new JButton("102");
 		seat102Btn.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -356,8 +350,6 @@ public class SeatSelectAvailability {
 		seat131Btn.setBounds(871, 241, 72, 60);
 		panel1F.add(seat131Btn);
 
-		JFrame frame1 = new JFrame();
-
 		JLabel toiletLabel1_1 = new JLabel("<html><body><center>화<br>장<br>실</center></body></html>");
 		toiletLabel1_1.setOpaque(true);
 		toiletLabel1_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -550,7 +542,6 @@ public class SeatSelectAvailability {
 	}
 
 	protected void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 

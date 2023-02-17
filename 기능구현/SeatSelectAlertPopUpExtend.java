@@ -4,10 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -19,7 +16,6 @@ import javax.swing.border.LineBorder;
 public class SeatSelectAlertPopUpExtend {
 
 	private JFrame frame;
-	protected JInternalFrame fr;
 
 	/**
 	 * Launch the application.
@@ -41,23 +37,25 @@ public class SeatSelectAlertPopUpExtend {
 	 * Create the application.
 	 */
 	public SeatSelectAlertPopUpExtend() {
-		initialize();
+		initialize(); // 초기화
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		// 자리 배치도 1층 생성
 		frame = new JFrame();
 		frame.setBounds(100, 100, 963, 639);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
 		JPanel panel1F = new JPanel();
 		panel1F.setBounds(0, 0, 945, 600);
 		panel1F.setLayout(null);
 		frame.getContentPane().add(panel1F);
-
+		
+		// 예시 : 자리 101번 버튼 눌렀을 시 팝업 생성  ("101번 자리를 선택 하시겠습니까?" 내용 출력)
+		// 맞을시 확인, 아닐시 다시 선택
 		JButton seat101Btn = new JButton("101");
 		seat101Btn.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		seat101Btn.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -68,13 +66,50 @@ public class SeatSelectAlertPopUpExtend {
 		seat101Btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				fr = new JInternalFrame("자리 선택 여부", true, true, false, false);
-				fr.getContentPane().add(new JLabel(new ImageIcon("/root/Download/ICON/jeehaa1004_10.gif")),
-						BorderLayout.CENTER);
-				fr.setLayout(null);
-				fr.setBounds(400, 300, 500, 400);
-				fr.setVisible(true);
-				frame.add(fr);
+				JInternalFrame internalFrame = new JInternalFrame("자리 선택 여부");
+				internalFrame.setBounds(100, 100, 465, 260);
+				panel1F.add(internalFrame);
+				internalFrame.getContentPane().setLayout(null);
+
+				JLabel lblNewLabel = new JLabel("101번 자리를 선택 하시겠습니까?");
+				lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel.setFont(new Font("함초롬바탕", Font.PLAIN, 18));
+				lblNewLabel.setBounds(75, 40, 317, 78);
+				internalFrame.getContentPane().add(lblNewLabel);
+
+				JButton btnNewButton1 = new JButton("확인");
+				btnNewButton1.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						//System.exit(0);
+						setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+					}
+
+					private void setDefaultCloseOperation(int disposeOnClose) {
+						// TODO Auto-generated method stub
+						
+					}
+
+				});
+				btnNewButton1.setDefaultCapable(false);
+				btnNewButton1.setSelected(true);
+				btnNewButton1.setFont(new Font("굴림", Font.PLAIN, 15));
+				btnNewButton1.setBounds(99, 139, 109, 50);
+				internalFrame.getContentPane().add(btnNewButton1);
+
+				JButton btnNewButton2 = new JButton("다시 선택");
+				btnNewButton2.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// System.exit(0);
+					}
+				});
+				btnNewButton2.setDefaultCapable(false);
+				btnNewButton2.setSelected(true);
+				btnNewButton2.setFont(new Font("굴림", Font.PLAIN, 15));
+				btnNewButton2.setBounds(258, 139, 109, 50);
+				internalFrame.getContentPane().add(btnNewButton2);
+				internalFrame.setVisible(true);
 			}
 		});
 		JButton seat102Btn = new JButton("102");
@@ -450,7 +485,5 @@ public class SeatSelectAlertPopUpExtend {
 		JLabel waterPFLabel1_2 = new JLabel();
 		waterPFLabel1_2.setBounds(876, 6, 57, 54);
 		panel1F.add(waterPFLabel1_2);
-
 	}
-
 }

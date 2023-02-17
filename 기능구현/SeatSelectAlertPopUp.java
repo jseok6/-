@@ -18,6 +18,7 @@ public class SeatSelectAlertPopUp {
 	/**
 	 * Launch the application.
 	 */
+	// 자리 선택 여부 팝업창 생성
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +42,7 @@ public class SeatSelectAlertPopUp {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	// 자리 선택 프레임 세팅
 	private void initialize() {
 		frame = new JFrame();
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
@@ -56,35 +58,31 @@ public class SeatSelectAlertPopUp {
 		lblNewLabel.setBounds(75, 40, 317, 78);
 		frame.getContentPane().add(lblNewLabel);
 
+		// 확인 버튼
 		JButton btnNewButton1 = new JButton("확인");
 		btnNewButton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				System.exit(0); // 누를시 닫기
 			}
 		});
 		btnNewButton1.setDefaultCapable(false);
 		btnNewButton1.setSelected(true);
 		btnNewButton1.setFont(new Font("굴림", Font.PLAIN, 15));
-		btnNewButton1.setPreferredSize(new Dimension(0, 0));
-		btnNewButton1.setMinimumSize(new Dimension(0, 0));
-		btnNewButton1.setMaximumSize(new Dimension(0, 0));
 		btnNewButton1.setBounds(99, 139, 109, 50);
 		frame.getContentPane().add(btnNewButton1);
 
+		// 다시 선택 버튼
 		JButton btnNewButton2 = new JButton("다시 선택");
 		btnNewButton2.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				System.exit(0); // 누를시 닫기
 			}
 		});
 		btnNewButton2.setDefaultCapable(false);
 		btnNewButton2.setSelected(true);
 		btnNewButton2.setFont(new Font("굴림", Font.PLAIN, 15));
-		btnNewButton2.setPreferredSize(new Dimension(0, 0));
-		btnNewButton2.setMinimumSize(new Dimension(0, 0));
-		btnNewButton2.setMaximumSize(new Dimension(0, 0));
 		btnNewButton2.setBounds(258, 139, 109, 50);
 		frame.getContentPane().add(btnNewButton2);
 	}
