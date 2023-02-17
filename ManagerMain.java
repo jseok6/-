@@ -27,6 +27,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MouseInputAdapter;
+
+import ch06.ThisEx1;
+
 import javax.swing.Box;
 import javax.swing.SwingConstants;
 
@@ -112,6 +115,17 @@ class QuestDialog extends JDialog{
 
 public class ManagerMain extends JFrame {
 
+	public String tempId;
+	public String getTempId() {
+		return tempId;
+	}
+
+
+	public void setTempId(String tempId) {
+		this.tempId = tempId;
+	}
+
+
 	private JPanel contentPane;
 
 	 //버튼 디자인(둥근 모서리 버튼 쓸때 사용)
@@ -146,14 +160,12 @@ public class ManagerMain extends JFrame {
 //	         }
 //	      }
 	
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
+		//전부 주석처리하면 이파일자체로 실행안됨, 로그인창에서 넘어오는 실행은 그대로 가능
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManagerMain Jframe = new ManagerMain();
+					ManagerMain Jframe = new ManagerMain("홍길동");
 					Jframe.setVisible(true);
 					Jframe.setResizable(false);
 					Jframe.setTitle("FamilyStudyCafe_ManagerMain");
@@ -166,7 +178,7 @@ public class ManagerMain extends JFrame {
 
 
 	//프레임 생성
-	public ManagerMain() {
+	public ManagerMain(String name) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1114, 736);
 		contentPane = new JPanel();
@@ -203,6 +215,7 @@ public class ManagerMain extends JFrame {
 			//----------------------------------------------------------------------------	
 			
 			//좌석정보 패널- 켜지면 다른 좌석 버튼등은 다 못누르게 해야함(처음에 활성화안되고 안보이는 상태)
+			//TODO DB연동해서 seatNum, seatAvail 받아와야함
 			JPanel seatInfoPanel = new JPanel();
 			seatInfoPanel.setOpaque(true);
 			seatInfoPanel.setBorder(lb);
@@ -375,16 +388,33 @@ public class ManagerMain extends JFrame {
 	    			,"125", "126","127", "128", "129", "130"};
 	    	JButton[] seat1FBtn = new JButton[31];
 	    	
+	    	
+	    	FindSeatTable findSeatTable = new FindSeatTable();
+	    	
 	    	for (int i = 0; i < seat1Farr.length; i++) {
 				seat1FBtn[i] = new JButton(seat1Farr[i]);
 				seat1FBtn[i].setBounds(871, 184, 72, 60);
 				seat1FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 				seat1FBtn[i].setBorder(lb);
 				seat1FBtn[i].setFocusPainted(false);
-				seat1FBtn[i].setBackground(new Color(0, 128, 255));
-				//btn[i].addActionListener(seatBtnListener); 아래쪽에 따로
+				//seat1FBtn[i].setBackground(new Color(0, 128, 255));
+		    	if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==0) 
+		    	{//사용가능
+					seat1FBtn[i].setBackground(Color.CYAN);
+				} 
+		    	else if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==1)
+		    	{//사용중
+		    		seat1FBtn[i].setBackground(Color.ORANGE);
+				}
+		    	else if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==2)
+		    	{//사용불가
+		    		seat1FBtn[i].setBackground(Color.RED);
+		    	}
 				panel1F.add(seat1FBtn[i]);
 			}
+	    	
+	    	//인덱스(i)의 값을 seatNum으로 가지는 seatAvail 검색
+	    	Integer.parseInt(seat1Farr[0]);
 	    	
 			seat1FBtn[0].setBounds(114, 0, 72, 60); //100번 좌석
 			seat1FBtn[1].setBounds(186, 0, 72, 60);
@@ -511,8 +541,19 @@ public class ManagerMain extends JFrame {
 			seat2FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 			seat2FBtn[i].setBorder(lb);
 			seat2FBtn[i].setFocusPainted(false);
-			seat2FBtn[i].setBackground(new Color(0, 128, 255));
-			//btn[i].addActionListener(seatBtnListener); 아래쪽에 따로
+			//seat2FBtn[i].setBackground(new Color(0, 128, 255)); //seatAvail에따라 변경
+	    	if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==0) 
+	    	{//사용가능
+				seat2FBtn[i].setBackground(Color.CYAN);
+			} 
+	    	else if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==1)
+	    	{//사용중
+	    		seat2FBtn[i].setBackground(Color.ORANGE);
+			}
+	    	else if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==2)
+	    	{//사용불가
+	    		seat2FBtn[i].setBackground(Color.RED);
+	    	}
 			panel2F.add(seat2FBtn[i]);
 		}
 
@@ -628,7 +669,7 @@ public class ManagerMain extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//System.exit(0); //매니저 메인화면 닫기(0 == 정상종료)  <=이거쓰면 새창도 안나옴
 				dispose(); //이걸쓰자
-				new UI1();//관리자 로그인 창 띄움- TODO 지금은 관리자 로그인 창 동작안해서 임시로 적어둠 관리자로그인창 고치고 수정필요
+				new ManagerLogin();//관리자 로그인 창 띄움- 관리자로그인창 고치고 수정필요
 			}
 		});
 		contentPane.add(logoutBtn);
@@ -689,8 +730,9 @@ public class ManagerMain extends JFrame {
 		});
 		contentPane.add(secondFloorBtn);
 		
-		//접속중인 관리자 ID(이름?)
-		JLabel idLabel = new JLabel("관리자:"); // + 관리자 ID + " 님" 추가필요
+		//TODO DB에서 managerID 읽어와서 연동
+		//매개변수로 지금 로그인한 관리자ID넣기
+		JLabel idLabel = new JLabel("관리자:"+name+" 님"); 
 		idLabel.setBounds(71, 0, 197, 38);
 		idLabel.setBackground(new Color(255, 255, 255));
 		idLabel.setFont(logoutBtnFont);
@@ -703,9 +745,13 @@ public class ManagerMain extends JFrame {
         getContentPane().add(logoLabel);
         //--------------------------------------------------------------------------------------------------
     	class SeatBtnListener implements ActionListener {
-    		//의자버튼 눌렀을때 동작
+    		//의자버튼 눌렀을때 동작 		seat2FBtn[0] //200번 의자
     		@Override
     		public void actionPerformed(ActionEvent e) {
+    			JButton seatSource = (JButton)e.getSource();
+    			//System.out.println(seatSource.getText());
+    			//의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
+    			seatNumLabel_seatInfoPanel.setText(seatSource.getText());//
     			if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false)
     			{
     				seatInfoPanel.setVisible(true);
