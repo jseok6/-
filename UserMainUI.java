@@ -76,12 +76,18 @@ public class UserMainUI extends JFrame {
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
 		
-		JLabel ManagerNumber=new JLabel("010-1234-1234");
+		//관리자 전화번호 뜨게하기
+		manager_pn mgpn=new manager_pn();
+        String managerphone_str=mgpn.manager_pn();
+        JLabel ManagerNumber=new JLabel(""+managerphone_str);
 		ManagerNumber.setBounds(295,120,150,50);
 		ManagerNumber.setFont(font);
 		panel.add(ManagerNumber);
 		
-		JLabel managerEmail=new JLabel("Family@naver.com");
+		//관리자이메일 뜨게하기
+		manager_pn mgem=new manager_pn();
+		String managerEmail_str=mgem.manager_email();
+		JLabel managerEmail=new JLabel(""+managerEmail_str);
 		managerEmail.setBounds(293,140,150,50);
 		managerEmail.setFont(font);
 		panel.add(managerEmail);

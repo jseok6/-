@@ -141,7 +141,11 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				payresult.setText("가격:1000");
+
+				
+			    Pay_charge charge1=new Pay_charge();
+		        String str=charge1.Pay_charge1();
+		        payresult.setText("가격:"+str);
 				
 				
 			}
@@ -157,8 +161,9 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				payresult.setText("가격:2000");
+				Pay_charge charge2=new Pay_charge();
+				String str=charge2.Pay_charge2();
+				payresult.setText("가격:"+str);
 			}
 		});
 		
@@ -172,8 +177,9 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				payresult.setText("가격:4000");
+				Pay_charge charge3=new Pay_charge();
+				String str=charge3.Pay_charge3();
+				payresult.setText("가격:"+str);
 			}
 		});
 		
@@ -187,8 +193,9 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				payresult.setText("가격:6000");
+				Pay_charge charge4=new Pay_charge();
+				String str=charge4.Pay_charge4();
+				payresult.setText("가격:"+str);
 			}
 		});
 		
@@ -201,8 +208,9 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				payresult.setText("가격:8000");
+				Pay_charge charge5=new Pay_charge();
+				String str=charge5.Pay_charge5();
+				payresult.setText("가격:"+str);
 			}
 		});
 		
@@ -215,8 +223,9 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				payresult.setText("가격:12000");
+				Pay_charge charge6=new Pay_charge();
+				String str=charge6.Pay_charge6();
+				payresult.setText("가격:"+str);
 			}
 		});
 		

@@ -1,5 +1,4 @@
 package study;
-import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +27,7 @@ implements ActionListener{
 	 private JLabel managerphone;
 	 private JLabel label;
 	 private JLabel label2;
+	 ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
 	 
 
 	 
@@ -79,6 +79,8 @@ implements ActionListener{
 	 private JButton btnn;
 	 private JButton btnm;
 	 
+	 private JButton back;
+	 
 	 
 	 
 	public UI1() {
@@ -105,6 +107,7 @@ implements ActionListener{
 
         // add
         getContentPane().add(panel);
+        
        
         // visiible
         setVisible(true);
@@ -324,6 +327,10 @@ implements ActionListener{
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
         
+        back=new JButton(img);
+		back.setBounds(0, 0, 150, 90);
+		back.setBorderPainted(false);
+		panel.add(back);
         
         
         
@@ -338,6 +345,7 @@ implements ActionListener{
 				userText.setText("");
 	            passText.setText("");
 			}
+			//로그인버튼
 			else if (obj==btnLogin)
 			{
 				log_event log=new log_event();
@@ -357,6 +365,7 @@ implements ActionListener{
 				}
 				
 			}
+			//회원가입버튼
 			else if(obj==btnjoin)
 			{
 				join_event join=new join_event();
@@ -365,6 +374,11 @@ implements ActionListener{
 				passText.setText("");
 				dispose();
 				
+			}
+			//뒤로가기버튼
+			else if (obj==back)
+			{
+				//뒤로가기 기능
 			}
 			
 		} catch (Exception e2) {

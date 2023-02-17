@@ -13,16 +13,16 @@ public class log_event {
 	Connection con = null;
 	Statement stmt = null;
 		
-	public int sql_run(int num, String name) {
+	public int sql_run(int member_tel, String member_pw) {
 		DBconnect db = new DBconnect();
 		String test = null;
 
-
-		String queryLogin = "select member_pw  from member where member_tel = '"+num+"'";
+		//로그인
+		String queryLogin = "select member_pw  from member where member_tel = '"+member_tel+"'";
 		try {
 			
 			
-			//로그인
+
 			stmt=db.con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryLogin);
 			while(rs.next()){
@@ -32,7 +32,7 @@ public class log_event {
 			// TODO: handle exception
 			e.printStackTrace();	
 		}
-		if(name.equals(test)){
+		if(member_pw.equals(test)){
 			return 1;
 		}else{
 			return 0;
