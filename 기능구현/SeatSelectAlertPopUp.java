@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class SeatSelectAlertPopUp {

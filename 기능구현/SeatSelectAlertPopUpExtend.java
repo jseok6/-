@@ -53,8 +53,55 @@ public class SeatSelectAlertPopUpExtend {
 		panel1F.setBounds(0, 0, 945, 600);
 		panel1F.setLayout(null);
 		frame.getContentPane().add(panel1F);
-		
-		// 예시 : 자리 101번 버튼 눌렀을 시 팝업 생성  ("101번 자리를 선택 하시겠습니까?" 내용 출력)
+//		LineBorder lb = new LineBorder(Color.BLACK, 2);
+//		String[] seat1Farr = { "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111",
+//				"112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126",
+//				"127", "128", "129", "130" };
+//		JButton[] seat1FBtn = new JButton[31];
+//		for (int i = 0; i < seat1Farr.length; i++) {
+//			seat1FBtn[i] = new JButton(seat1Farr[i]);
+//			seat1FBtn[i].setBounds(871, 184, 72, 60);
+//			seat1FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
+//			seat1FBtn[i].setBorder(lb);
+//			seat1FBtn[i].setFocusPainted(false);
+//			seat1FBtn[i].setBackground(new Color(0, 128, 255));
+//			// btn[i].addActionListener(seatBtnListener); 아래쪽에 따로
+//			panel1F.add(seat1FBtn[i]);
+//		}
+//
+//		seat1FBtn[0].setBounds(114, 0, 72, 60); // 100번 좌석
+//		seat1FBtn[1].setBounds(186, 0, 72, 60);
+//		seat1FBtn[2].setBounds(259, 0, 72, 60);
+//		seat1FBtn[3].setBounds(402, 0, 72, 60);
+//		seat1FBtn[4].setBounds(475, 0, 72, 60);
+//		seat1FBtn[5].setBounds(548, 0, 72, 60);
+//		seat1FBtn[6].setBounds(621, 0, 72, 60);
+//		seat1FBtn[7].setBounds(694, 0, 72, 60);
+//		seat1FBtn[8].setBounds(147, 241, 72, 60);
+//		seat1FBtn[9].setBounds(147, 303, 72, 60);
+//		seat1FBtn[10].setBounds(329, 241, 72, 60);
+//		seat1FBtn[11].setBounds(402, 241, 72, 60);
+//		seat1FBtn[12].setBounds(329, 303, 72, 60);
+//		seat1FBtn[13].setBounds(402, 303, 72, 60);
+//		seat1FBtn[14].setBounds(576, 241, 72, 60);
+//		seat1FBtn[15].setBounds(576, 303, 72, 60);
+//		seat1FBtn[16].setBounds(0, 253, 72, 60);
+//		seat1FBtn[17].setBounds(0, 314, 72, 60);
+//		seat1FBtn[18].setBounds(0, 375, 72, 60);
+//		seat1FBtn[19].setBounds(0, 437, 72, 60);
+//		seat1FBtn[20].setBounds(98, 539, 72, 60);
+//		seat1FBtn[21].setBounds(171, 539, 72, 60);
+//		seat1FBtn[22].setBounds(329, 539, 72, 60);
+//		seat1FBtn[23].setBounds(402, 539, 72, 60);
+//		seat1FBtn[24].setBounds(475, 539, 72, 60);
+//		seat1FBtn[25].setBounds(648, 539, 72, 60);
+//		seat1FBtn[26].setBounds(721, 539, 72, 60);
+//		seat1FBtn[27].setBounds(871, 480, 72, 60);
+//		seat1FBtn[28].setBounds(871, 419, 72, 60);
+//		seat1FBtn[29].setBounds(871, 358, 72, 60);
+//		seat1FBtn[30].setBounds(871, 241, 72, 60);
+
+		// 예시 : 자리 101번 버튼 눌렀을 시 팝업 생성 ("101번 자리를 선택 하시겠습니까?" 내용 출력)
 		// 맞을시 확인, 아닐시 다시 선택
 		JButton seat101Btn = new JButton("101");
 		seat101Btn.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -63,11 +110,12 @@ public class SeatSelectAlertPopUpExtend {
 		seat101Btn.setBackground(new Color(0, 128, 255));
 		seat101Btn.setBounds(113, 0, 72, 60);
 		panel1F.add(seat101Btn);
+
 		seat101Btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JInternalFrame internalFrame = new JInternalFrame("자리 선택 여부");
-				internalFrame.setBounds(100, 100, 465, 260);
+				internalFrame.setBounds(200, 150, 465, 260);
 				panel1F.add(internalFrame);
 				internalFrame.getContentPane().setLayout(null);
 
@@ -81,21 +129,15 @@ public class SeatSelectAlertPopUpExtend {
 				btnNewButton1.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//System.exit(0);
-						setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+						// System.exit(0); -> 이 메소드를 쓰면 화면이 전부 닫힘.
 					}
-
-					private void setDefaultCloseOperation(int disposeOnClose) {
-						// TODO Auto-generated method stub
-						
-					}
-
 				});
 				btnNewButton1.setDefaultCapable(false);
 				btnNewButton1.setSelected(true);
 				btnNewButton1.setFont(new Font("굴림", Font.PLAIN, 15));
 				btnNewButton1.setBounds(99, 139, 109, 50);
 				internalFrame.getContentPane().add(btnNewButton1);
+				internalFrame.setVisible(true);
 
 				JButton btnNewButton2 = new JButton("다시 선택");
 				btnNewButton2.addActionListener(new ActionListener() {
@@ -368,122 +410,32 @@ public class SeatSelectAlertPopUpExtend {
 		doorLabel1_1.setBounds(884, 70, 61, 69);
 		panel1F.add(doorLabel1_1);
 
-		JLabel wallLabel1_1 = new JLabel();
-		wallLabel1_1.setOpaque(true);
-		wallLabel1_1.setBackground(Color.GRAY);
-		wallLabel1_1.setBounds(0, 496, 72, 103);
-		panel1F.add(wallLabel1_1);
+		// 1층 벽라벨 생성, 위치지정
+		JLabel[] wall1FLabel = new JLabel[17];
 
-		JLabel wallLabel1_2 = new JLabel();
-		wallLabel1_2.setOpaque(true);
-		wallLabel1_2.setBackground(Color.GRAY);
-		wallLabel1_2.setBounds(26, 539, 72, 60);
-		panel1F.add(wallLabel1_2);
-
-		JLabel wallLabel1_3 = new JLabel();
-		wallLabel1_3.setOpaque(true);
-		wallLabel1_3.setBackground(Color.GRAY);
-		wallLabel1_3.setBounds(241, 539, 90, 60);
-		panel1F.add(wallLabel1_3);
-
-		JLabel wallLabel1_4 = new JLabel();
-		wallLabel1_4.setOpaque(true);
-		wallLabel1_4.setBackground(Color.GRAY);
-		wallLabel1_4.setBounds(536, 539, 112, 60);
-		panel1F.add(wallLabel1_4);
-
-		JLabel wallLabel1_5 = new JLabel();
-		wallLabel1_5.setOpaque(true);
-		wallLabel1_5.setBackground(Color.GRAY);
-		wallLabel1_5.setBounds(787, 539, 156, 60);
-		panel1F.add(wallLabel1_5);
-
-		JLabel wallLabel1_6 = new JLabel();
-		wallLabel1_6.setOpaque(true);
-		wallLabel1_6.setBackground(Color.GRAY);
-		wallLabel1_6.setBounds(871, 294, 72, 69);
-		panel1F.add(wallLabel1_6);
-
-		JLabel wallLabel1_7 = new JLabel();
-		wallLabel1_7.setOpaque(true);
-		wallLabel1_7.setBackground(Color.GRAY);
-		wallLabel1_7.setBounds(871, 143, 72, 103);
-		panel1F.add(wallLabel1_7);
-
-		JLabel wallLabel1_8 = new JLabel();
-		wallLabel1_8.setOpaque(true);
-		wallLabel1_8.setBackground(Color.GRAY);
-		wallLabel1_8.setBounds(0, 209, 72, 60);
-		panel1F.add(wallLabel1_8);
-
-		JLabel wallLabel1_9 = new JLabel();
-		wallLabel1_9.setOpaque(true);
-		wallLabel1_9.setBackground(Color.GRAY);
-		wallLabel1_9.setBounds(0, 0, 117, 60);
-		panel1F.add(wallLabel1_9);
-
-		JLabel wallLabel1_10 = new JLabel();
-		wallLabel1_10.setOpaque(true);
-		wallLabel1_10.setBackground(Color.GRAY);
-		wallLabel1_10.setBounds(329, 0, 79, 60);
-		panel1F.add(wallLabel1_10);
-
-		JLabel wallLabel1_11 = new JLabel();
-		wallLabel1_11.setOpaque(true);
-		wallLabel1_11.setBackground(Color.GRAY);
-		wallLabel1_11.setBounds(126, 241, 21, 122);
-		panel1F.add(wallLabel1_11);
-
-		JLabel wallLabel1_12 = new JLabel();
-		wallLabel1_12.setOpaque(true);
-		wallLabel1_12.setBackground(Color.GRAY);
-		wallLabel1_12.setBounds(126, 358, 93, 18);
-		panel1F.add(wallLabel1_12);
-
-		JLabel wallLabel1_13 = new JLabel();
-		wallLabel1_13.setOpaque(true);
-		wallLabel1_13.setBackground(Color.GRAY);
-		wallLabel1_13.setBounds(126, 228, 93, 18);
-		panel1F.add(wallLabel1_13);
-
-		JLabel wallLabel1_14 = new JLabel();
-		wallLabel1_14.setOpaque(true);
-		wallLabel1_14.setBackground(Color.GRAY);
-		wallLabel1_14.setBounds(648, 241, 21, 122);
-		panel1F.add(wallLabel1_14);
-
-		JLabel wallLabel1_15 = new JLabel();
-		wallLabel1_15.setOpaque(true);
-		wallLabel1_15.setBackground(Color.GRAY);
-		wallLabel1_15.setBounds(576, 358, 93, 18);
-		panel1F.add(wallLabel1_15);
-
-		JLabel wallLabel1_16 = new JLabel();
-		wallLabel1_16.setOpaque(true);
-		wallLabel1_16.setBackground(Color.GRAY);
-		wallLabel1_16.setBounds(576, 228, 93, 18);
-		panel1F.add(wallLabel1_16);
-
-		JLabel wallLabel1_17 = new JLabel();
-		wallLabel1_17.setOpaque(true);
-		wallLabel1_17.setBackground(Color.GRAY);
-		wallLabel1_17.setBounds(765, 0, 50, 60);
-		panel1F.add(wallLabel1_17);
-
-		JLabel trashcanLabel1_1 = new JLabel();
-		trashcanLabel1_1.setBounds(70, 53, 57, 54);
-		panel1F.add(trashcanLabel1_1);
-
-		JLabel trashcanLabel1_2 = new JLabel();
-		trashcanLabel1_2.setBounds(814, 0, 57, 54);
-		panel1F.add(trashcanLabel1_2);
-
-		JLabel waterPFLabel1_1 = new JLabel();
-		waterPFLabel1_1.setBounds(70, 166, 35, 54);
-		panel1F.add(waterPFLabel1_1);
-
-		JLabel waterPFLabel1_2 = new JLabel();
-		waterPFLabel1_2.setBounds(876, 6, 57, 54);
-		panel1F.add(waterPFLabel1_2);
+		for (int i = 0; i < wall1FLabel.length; i++) {
+			wall1FLabel[i] = new JLabel();
+			wall1FLabel[i].setBounds(871, 184, 72, 60);
+			wall1FLabel[i].setOpaque(true);
+			wall1FLabel[i].setBackground(Color.GRAY);
+			panel1F.add(wall1FLabel[i]);
+		}
+		wall1FLabel[0].setBounds(0, 496, 72, 103);
+		wall1FLabel[1].setBounds(26, 539, 72, 60);
+		wall1FLabel[2].setBounds(241, 539, 90, 60);
+		wall1FLabel[3].setBounds(536, 539, 112, 60);
+		wall1FLabel[4].setBounds(787, 539, 156, 60);
+		wall1FLabel[5].setBounds(871, 294, 72, 69);
+		wall1FLabel[6].setBounds(871, 143, 72, 103);
+		wall1FLabel[7].setBounds(0, 209, 72, 60);
+		wall1FLabel[8].setBounds(0, 0, 117, 60);
+		wall1FLabel[9].setBounds(329, 0, 79, 60);
+		wall1FLabel[10].setBounds(126, 241, 21, 122);
+		wall1FLabel[11].setBounds(126, 358, 93, 18);
+		wall1FLabel[12].setBounds(126, 228, 93, 18);
+		wall1FLabel[13].setBounds(648, 241, 21, 122);
+		wall1FLabel[14].setBounds(576, 358, 93, 18);
+		wall1FLabel[15].setBounds(576, 228, 93, 18);
+		wall1FLabel[16].setBounds(765, 0, 50, 60);
+		}
 	}
-}
