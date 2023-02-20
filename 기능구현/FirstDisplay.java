@@ -1,12 +1,16 @@
 package 기능구현;
 
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JInternalFrame;
 
 public class FirstDisplay {
 
@@ -54,6 +58,20 @@ public class FirstDisplay {
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.getContentPane().add(button1);
 		// 사용자 버튼 button1
+		button1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object obj = e.getSource();
+				if ((Button) obj == button1) {
+					Frame fs = new Frame();
+					fs.setVisible(true);
+					fs.setSize(700,600);
+					fs.setLocation(200, 200);
+					
+				}
+			}
+		});
 		
 		Button button2 = new Button("관리자");
 		button2.setBounds(492, 0, 492, 561);
@@ -61,6 +79,20 @@ public class FirstDisplay {
 		button2.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.getContentPane().add(button2);
 		// 관리자 버튼 button2
+		button2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object obj = e.getSource();
+				if ((Button) obj == button2) {
+					Frame fs = new Frame();
+					fs.setVisible(true);
+					fs.setSize(700,600);
+					fs.setLocation(200, 200);
+					
+				}
+			}
+		});
+		
 	}
-
 }

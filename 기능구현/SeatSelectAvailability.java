@@ -490,7 +490,7 @@ public class SeatSelectAvailability {
 		사용가능.setBounds(174, 10, 80, 75);
 		contentPane.add(사용가능);
 		사용가능.setBorder(new LineBorder(Color.BLACK, 2));
-		사용가능.setBackground(Color.BLUE);
+		사용가능.setBackground(Color.CYAN);
 		사용가능.setLayout(null);
 
 		JLabel lblNewLabel1 = new JLabel("사용 가능");

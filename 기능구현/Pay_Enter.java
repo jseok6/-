@@ -1,6 +1,7 @@
 package 기능구현;
 
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import java.awt.Button;
@@ -8,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Pay_Enter {
 
@@ -55,14 +58,41 @@ public class Pay_Enter {
 		button1.setPreferredSize(new Dimension(216, 0));
 		frame.getContentPane().add(button1);
 		// 결제하기 버튼 button1
+		button1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object obj = e.getSource();
+				if ((Button) obj == button1) {
+					Frame fs = new Frame();
+					fs.setVisible(true);
+					fs.setSize(700, 600);
+					fs.setLocation(200, 200);
+				}
+			}
+		});
 
 		Button button2 = new Button("입실하기");
 		button2.setBounds(520, 20, 520, 510);
 		button2.setBackground(new Color(112, 128, 144));
 		button2.setPreferredSize(new Dimension(216, 0));
 		frame.getContentPane().add(button2);
+		button2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object obj = e.getSource();
+				if ((Button) obj == button2) {
+					Frame fs = new Frame();
+					fs.setVisible(true);
+					fs.setSize(700, 600);
+					fs.setLocation(200, 200);
+				}
+			}
+		});
+
 		// 입실하기 버튼 button2
-		
+
 		textField = new JTextField();
 		textField.setBounds(0, 0, 1040, 20);
 		textField.setBackground(new Color(135, 206, 250));
@@ -70,8 +100,7 @@ public class Pay_Enter {
 		textField.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(textField);
 		textField.setColumns(20);
-		
-	}
 
+	}
 
 }
