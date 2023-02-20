@@ -7,6 +7,9 @@ import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JTextField;
+import study.Pay;
+import study.Pay2;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,32 +54,54 @@ public class Pay_Enter {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		Button button1 = new Button("결제하기");
-		button1.setBounds(0, 20, 520, 510);
+		Button button1 = new Button("시간제 결제하기");
+		button1.setBounds(0, 20, 346, 510);
 		button1.setBackground(new Color(143, 188, 143));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frame.getContentPane().add(button1);
-		// 결제하기 버튼 button1
+		// 시간제 결제하기 버튼 button1
 		button1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj = e.getSource();
 				if ((Button) obj == button1) {
-					Frame fs = new Frame();
-					fs.setVisible(true);
-					fs.setSize(700, 600);
-					fs.setLocation(200, 200);
+//					Frame fs = new Frame();
+//					fs.setVisible(true);
+//					fs.setSize(700, 600);
+//					fs.setLocation(200, 200);
+					new Pay();
+				}
+			}
+		});
+		Button button2 = new Button("기간제 결제하기");
+		button2.setBounds(346, 20, 347, 510);
+		button2.setBackground(new Color(143, 188, 143));
+		button2.setPreferredSize(new Dimension(216, 0));
+		frame.getContentPane().add(button2);
+		// 기간제 결제하기 버튼 button2
+		
+		button2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object obj = e.getSource();
+				if ((Button) obj == button2) {
+//					Frame fs = new Frame();
+//					fs.setVisible(true);
+//					fs.setSize(700, 600);
+//					fs.setLocation(200, 200);
+					new Pay2();
 				}
 			}
 		});
 
-		Button button2 = new Button("입실하기");
-		button2.setBounds(520, 20, 520, 510);
-		button2.setBackground(new Color(112, 128, 144));
-		button2.setPreferredSize(new Dimension(216, 0));
-		frame.getContentPane().add(button2);
-		button2.addActionListener(new ActionListener() {
+		Button button3 = new Button("입실하기");
+		button3.setBounds(693, 20, 347, 510);
+		button3.setBackground(new Color(112, 128, 144));
+		button3.setPreferredSize(new Dimension(216, 0));
+		frame.getContentPane().add(button3);
+		button3.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -86,11 +111,12 @@ public class Pay_Enter {
 					fs.setVisible(true);
 					fs.setSize(700, 600);
 					fs.setLocation(200, 200);
+					
 				}
 			}
 		});
 
-		// 입실하기 버튼 button2
+		// 입실하기 버튼 button3
 
 		textField = new JTextField();
 		textField.setBounds(0, 0, 1040, 20);
