@@ -6,20 +6,14 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Toolkit;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.time.OffsetDateTime;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
-
-import oracle.net.aso.f;
 
 public class SeatSelectAlertPopUpExtend {
 
@@ -115,7 +109,6 @@ public class SeatSelectAlertPopUpExtend {
 			seat1FBtn[i].addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Object obj = e.getSource();
 					JFrame fs = new JFrame();
 					fs.setTitle("자리 선택 여부");
 					fs.setVisible(true);
@@ -123,23 +116,21 @@ public class SeatSelectAlertPopUpExtend {
 							"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
 					fs.setFont(new Font("굴림", Font.PLAIN, 12));
 					fs.setResizable(false);
-					fs.setBounds(100, 100, 465, 260);
-					((JFrame) fs).setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					fs.setBounds(370, 289, 465, 260);
 					fs.setLayout(null);
-
-					JLabel lblNewLabel = new JLabel("번 자리를 선택 하시겠습니까?");
+					JButton seatSource = (JButton) e.getSource();
+					JLabel lblNewLabel = new JLabel(seatSource.getText() + "번 자리를 선택 하시겠습니까?"); // 좌석 번호의 정보를 읽어와야 함.
 					lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 					lblNewLabel.setFont(new Font("함초롬바탕", Font.PLAIN, 18));
 					lblNewLabel.setBounds(75, 40, 317, 78);
 					fs.add(lblNewLabel);
-
 					JButton btnNewButton1 = new JButton("확인");
 					btnNewButton1.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							fs.setVisible(false);
-							fs.dispose();
-							
+							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
+
 						}
 					});
 					btnNewButton1.setDefaultCapable(false);
@@ -162,7 +153,6 @@ public class SeatSelectAlertPopUpExtend {
 					btnNewButton2.setBounds(258, 139, 109, 50);
 					fs.add(btnNewButton2);
 				}
-
 			});
 		}
 
