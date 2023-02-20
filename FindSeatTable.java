@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 public class FindSeatTable {	
 	//의자번호확인
-	public String findSeatNum()
+	public String findSeatNum() throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -31,15 +31,21 @@ public class FindSeatTable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
 		return str;
 	}
 	
 	//의자상태확인
-	public Integer seatAvail(int seatnum)
+	public Integer seatAvail(int seatnum) throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt=null;
+		ResultSet rs = null;
 		Integer stateInt=null;
 		String queryFindSeatAvail="select seatAvail from seat "
 				+ "where seatNum = ?";
@@ -48,7 +54,7 @@ public class FindSeatTable {
 			con = DBConnect2.getConnection();
 			pstmt=con.prepareStatement(queryFindSeatAvail);
 			pstmt.setInt(1, seatnum);
-			ResultSet rs=pstmt.executeQuery();
+			 rs=pstmt.executeQuery();
 			
 			while(rs.next())
 			{
@@ -58,7 +64,12 @@ public class FindSeatTable {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
 		return stateInt;
 	}
 	

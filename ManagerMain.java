@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.security.PublicKey;
+import java.sql.SQLException;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -115,19 +116,8 @@ class QuestDialog extends JDialog{
 
 public class ManagerMain extends JFrame {
 
-	public String tempId;
-	public String getTempId() {
-		return tempId;
-	}
-
-
-	public void setTempId(String tempId) {
-		this.tempId = tempId;
-	}
-
-
 	private JPanel contentPane;
-
+	
 	 //버튼 디자인(둥근 모서리 버튼 쓸때 사용)
 //	   public class RoundedButton extends JButton {
 //	      public RoundedButton() { super(); decorate(); } 
@@ -398,18 +388,42 @@ public class ManagerMain extends JFrame {
 				seat1FBtn[i].setBorder(lb);
 				seat1FBtn[i].setFocusPainted(false);
 				//seat1FBtn[i].setBackground(new Color(0, 128, 255));
-		    	if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==0) 
-		    	{//사용가능
-					seat1FBtn[i].setBackground(Color.CYAN);
-				} 
-		    	else if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==1)
-		    	{//사용중
-		    		seat1FBtn[i].setBackground(Color.ORANGE);
+		    	try {
+					if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==0) 
+					{//사용가능
+						seat1FBtn[i].setBackground(Color.CYAN);
+					} else
+						try {
+							if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==1)
+							{//사용중
+								seat1FBtn[i].setBackground(Color.ORANGE);
+							} else
+								try {
+									if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==2)
+									{//사용불가
+										seat1FBtn[i].setBackground(Color.RED);
+									}
+								} catch (NumberFormatException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} catch (SQLException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+						} catch (NumberFormatException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-		    	else if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==2)
-		    	{//사용불가
-		    		seat1FBtn[i].setBackground(Color.RED);
-		    	}
 				panel1F.add(seat1FBtn[i]);
 			}
 	    	
@@ -542,18 +556,34 @@ public class ManagerMain extends JFrame {
 			seat2FBtn[i].setBorder(lb);
 			seat2FBtn[i].setFocusPainted(false);
 			//seat2FBtn[i].setBackground(new Color(0, 128, 255)); //seatAvail에따라 변경
-	    	if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==0) 
-	    	{//사용가능
-				seat2FBtn[i].setBackground(Color.CYAN);
-			} 
-	    	else if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==1)
-	    	{//사용중
-	    		seat2FBtn[i].setBackground(Color.ORANGE);
+	    	try {
+				if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==0) 
+				{//사용가능
+					seat2FBtn[i].setBackground(Color.CYAN);
+				} else
+					try {
+						if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==1)
+						{//사용중
+							seat2FBtn[i].setBackground(Color.ORANGE);
+						}
+						else if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==2)
+						{//사용불가
+							seat2FBtn[i].setBackground(Color.RED);
+						}
+					} catch (NumberFormatException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-	    	else if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==2)
-	    	{//사용불가
-	    		seat2FBtn[i].setBackground(Color.RED);
-	    	}
 			panel2F.add(seat2FBtn[i]);
 		}
 
@@ -748,12 +778,32 @@ public class ManagerMain extends JFrame {
     		//의자버튼 눌렀을때 동작 		seat2FBtn[0] //200번 의자
     		@Override
     		public void actionPerformed(ActionEvent e) {
-    			JButton seatSource = (JButton)e.getSource();
-    			//System.out.println(seatSource.getText());
+    			JButton seatSource = (JButton)e.getSource(); //클릭한 버튼의 라벨값 읽어옴
+    			FindUseTable findUseTable = new FindUseTable();
+    			String usestat = null; //seatInfoPanel의 memberTelLabel에 들어갈 
+    			
     			//의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
     			seatNumLabel_seatInfoPanel.setText(seatSource.getText());//
     			if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false)
     			{
+    				//클릭한 의자라벨값 읽어와서 findUse 실행(사용중인지 검사)
+    				try {
+						usestat = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
+					} catch (NumberFormatException e1) {
+						e1.printStackTrace();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+    				if(usestat=="0")//리턴받은값이 0이면 회원전화번호 라벨에서 지우기(공백상태로 둠)
+    				{
+    					memberTelLabel.setText("");
+    				}
+    				else
+    				{
+    					//사용 테이블에서 유저 전화번호 검색해와서 집어넣기
+    					memberTelLabel.setText(usestat);
+    				}
+    				
     				seatInfoPanel.setVisible(true);
     				seatInfoPanel.setEnabled(true);
     				

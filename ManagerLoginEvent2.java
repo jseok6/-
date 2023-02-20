@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class ManagerLoginEvent2 {
 	
 	//로그인
-	public int managerLogin2(String managerid, String managerpw) {
+	public int managerLogin2(String managerid, String managerpw) throws SQLException {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -36,6 +36,12 @@ public class ManagerLoginEvent2 {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();	
+		}
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
 		}
 		if(managerpw.equals(test)){
 			return 1;

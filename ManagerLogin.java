@@ -1,27 +1,27 @@
 package study;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.net.Socket;
 
-import javax.swing.border.*;
-
-import network.ChatClient3;
-import network.ChatProtocol3;
-import Talk.TalkProtocol;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 public class ManagerLogin extends JFrame
 implements ActionListener{
 	
 	 private JButton btnLogin;
 	 private JButton btnInit;
 	 private JButton btnjoin;
+	 private JButton btnBack;
 	 private JPasswordField managerPwText;
 	 private JTextField managerIdText;
 	 private JLabel managerphone;
@@ -132,6 +132,25 @@ implements ActionListener{
             	//로그인체크
             }
         });
+        
+        //뒤로가기 버튼
+        btnBack = new JButton();
+        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\"
+        		+ "src\\img\\Button_image\\back.jpg"));
+        btnBack.setFocusPainted(false);
+        btnBack.addActionListener(new ActionListener()
+        		{
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		FirstDisplay fDisplay = new FirstDisplay();
+        		fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+        		fDisplay.setVisible(true);
+             	dispose(); //이창 닫기
+        	}
+        		});
+        btnBack.setBounds(0,0,100,50);
+        panel.add(btnBack);
+        
        
         btnInit = new JButton("Reset");
         btnInit.setFocusPainted(false);
@@ -147,13 +166,6 @@ implements ActionListener{
         panel.add(btnLogin);
         btnLogin.addActionListener(this);
         btnInit.addActionListener(this);
-        
-        
-//        btnjoin=new JButton("회원가입");
-//        btnjoin.setBackground(Color.yellow);
-//        btnjoin.setBounds(560, 299, 117, 25);
-//        panel.add(btnjoin);
-//        btnjoin.addActionListener(this);
         
         infoMsgLabel=new JLabel("아이디와 비밀번호를 입력하세요.");
         infoMsgLabel.setOpaque(true); 
@@ -382,12 +394,6 @@ implements ActionListener{
         btnm.setFocusPainted(false);
         panel.add(btnm);
         
-//        manager_pn mgpn=new manager_pn();
-//        String str=mgpn.manager_pn();
-//        JLabel managerphone= new JLabel("관리자 연락처:"+str);
-//        managerphone.setFont(font);
-//        managerphone.setBounds(800, 620, 300, 50);
-//        panel.add(managerphone);
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -408,7 +414,7 @@ implements ActionListener{
 					ManagerMain managerMain = new ManagerMain(name);
 					managerMain.setTitle("FamilyStudyCafe_ManagerMain");
 					managerMain.setResizable(false);
-					managerMain.setVisible(true);
+					//managerMain.setVisible(true);
 					JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
 					dispose();
 				}
@@ -416,74 +422,13 @@ implements ActionListener{
 				{
 					JOptionPane.showMessageDialog(null, "아이디나 비밀번호를 확인하세요");
 				}
-				
 			}
-//			else if(obj==btnjoin)
-//			{
-//				ManagerJoinEvent mJ=new ManagerJoinEvent();
-//				//mJ.managerJoin((managerIdText.getText()),managerPwText.getText());
-//				managerIdText.setText("");
-//				managerPwText.setText("");
-//				dispose();
-//				
-//			}
 		}
 		catch (Exception e2)
 		{
 			// TODO: handle exception
 		}
 	}
-	
-//	@Override
-//	public void actionPerformed(ActionEvent e) 
-//	{
-//		try 
-//		{
-//			Object obj = e.getSource();
-//			if(obj==btnLogin)//로그인 버튼 누르면
-//			{
-//				if(sock==null)
-//				{
-//					connect(); //처음 시도
-//				}
-//				id = managerIdText.getText().trim();
-//				out.println(ChatProtocol3.ID+ChatProtocol3.MODE+id+";"
-//				+managerPwText.getText().trim());
-//				String line = in.readLine();
-//				int idx = line.indexOf(ChatProtocol3.MODE);
-//				String cmd = line.substring(0, idx);
-//				String data = line.substring(idx+1);
-//				
-//				//cmd는 ID, data는 T,F,C값중 하나가 들어옴
-//				if(cmd.equals(ChatProtocol3.ID))
-//				{
-//					if(data.equals("T"))
-//					{
-//						dispose();
-//						new ManagerMain(id);
-//					}//if data.equals
-//				}//if cmd.equals
-//			}//if obj==btnlogin
-//		}//try
-//		catch (Exception e2)
-//		{
-//		e2.printStackTrace();
-//		}
-//	}
-//
-//	public void connect() 
-//	{
-//		try
-//		{
-//			sock = new Socket(ip, port);
-//			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-//			out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
-//		} 
-//		catch (Exception e) 
-//		{
-//			e.printStackTrace();
-//		}
-//	}// --connect
 	
 	public static void main(String[] args) {
 		new ManagerLogin();

@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 //관리자 이름 가져오기
 public class FindManagerName {
-	public String managerName(String mid)
+	public String managerName(String mid) throws SQLException
 	{
 		Connection con=null;
 		PreparedStatement pstmt = null;
@@ -30,6 +30,12 @@ public class FindManagerName {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
 		}
 		return str;
 	}
