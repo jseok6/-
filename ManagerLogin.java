@@ -1,34 +1,39 @@
 package study;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.net.Socket;
 
-import javax.swing.border.*;
-
-import net.ChatClient3;
-import net.ChatProtocol3;
-import talk.TalkProtocol;
-public class User_LoginUI extends JFrame
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+public class ManagerLogin extends JFrame
 implements ActionListener{
 	
 	 private JButton btnLogin;
 	 private JButton btnInit;
 	 private JButton btnjoin;
-	 private JPasswordField passText;
-	 private JTextField userText;
+	 private JButton btnBack;
+	 private JPasswordField managerPwText;
+	 private JTextField managerIdText;
 	 private JLabel managerphone;
 	 private JLabel label;
-	 private JLabel label2;
-	 ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
+	 private JLabel infoMsgLabel;
 	 
-
+	 Socket sock;
+	 String id;
+	 String ip = "127.0.0.1";
+	 int port = 8003;
+	 BufferedReader in;
+	 PrintWriter out;
 	 
 	 private JButton btn1;
 	 private JButton btn2;
@@ -70,16 +75,14 @@ implements ActionListener{
 	 private JButton btnn;
 	 private JButton btnm;
 	 
-	 private JButton back;
 	 
 	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
 	 
 	 
 	 
-	 
-	public User_LoginUI() {
+	public ManagerLogin() {
 		 // setting
-        setTitle("FamilyStudyCafe");
+        setTitle("FamilyStudyCafe_ManagerLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
@@ -95,13 +98,12 @@ implements ActionListener{
 		
         //배경이미지
         label = new JLabel();
-        label.setIcon(new ImageIcon("./Button_Image/family.jpg"));
+        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
         label.setBounds(0, 0, 1100, 700);
         panel.add(label);
 
         // add
         getContentPane().add(panel);
-        
        
         // visiible
         setVisible(true);
@@ -110,7 +112,7 @@ implements ActionListener{
         panel.setLayout(null);
         Font font=new Font("맑은 고딕", Font.PLAIN, 17);
         
-        JLabel userLabel = new JLabel("Tell");
+        JLabel userLabel = new JLabel("ID");
         userLabel.setBounds(427, 229, 80, 25);
         userLabel.setFont(font);
         panel.add(userLabel);
@@ -120,25 +122,43 @@ implements ActionListener{
         passLabel.setFont(font);
         panel.add(passLabel);
        
-        userText = new JTextField(20);
-        userText.setBounds(517, 229, 160, 25);
-        panel.add(userText);
+        managerIdText = new JTextField(20);
+        managerIdText.setBounds(517, 229, 160, 25);
+        panel.add(managerIdText);
        
-        passText = new JPasswordField(20);
-        passText.setBounds(517, 259, 160, 25);
-        panel.add(passText);
-        passText.addActionListener(new ActionListener() {          
+        managerPwText = new JPasswordField(20);
+        managerPwText.setBounds(517, 259, 160, 25);
+        panel.add(managerPwText);
+        managerPwText.addActionListener(new ActionListener() {          
             @Override
             public void actionPerformed(ActionEvent e) {
             	//로그인체크
             }
         });
+        
+        //뒤로가기 버튼
+        btnBack = new JButton();
+        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\"
+        		+ "src\\img\\Button_image\\back.jpg"));
+        btnBack.setFocusPainted(false);
+        btnBack.addActionListener(new ActionListener()
+        		{
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		FirstDisplay fDisplay = new FirstDisplay();
+        		fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+        		fDisplay.setVisible(true);
+             	dispose(); //이창 닫기
+        	}
+        		});
+        btnBack.setBounds(0,0,100,50);
+        panel.add(btnBack);
+        
        
         btnInit = new JButton("Reset");
-        btnInit.setFocusPainted(true);
+        btnInit.setFocusPainted(false);
         btnInit.setBackground(Color.yellow);
-        btnInit.setBounds(427, 299, 121, 25);
-        
+        btnInit.setBounds(480, 300, 140, 25);
         panel.add(btnInit);
         
        
@@ -146,96 +166,77 @@ implements ActionListener{
         btnLogin.setFocusPainted(false);
         btnLogin.setBackground(Color.yellow);
         btnLogin.setBounds(680, 229, 120, 100);
-       
         panel.add(btnLogin);
         btnLogin.addActionListener(this);
         btnInit.addActionListener(this);
         
-        
-        btnjoin=new JButton("회원가입");
-        btnjoin.setBackground(Color.yellow);
-        btnjoin.setBounds(560, 299, 117, 25);
-        btnjoin.setFocusPainted(false);
-        panel.add(btnjoin);
-        btnjoin.addActionListener(this);
-        
-        label2=new JLabel("아이디와 비번을 입력하세요.");
-        label2.setOpaque(true); 
-        label2.setBackground(Color.pink);
-        label2.setFont(font);
-        label2.setBounds(430, 180, 250, 20);
-        panel.add(label2);
-        
+        infoMsgLabel=new JLabel("아이디와 비밀번호를 입력하세요.");
+        infoMsgLabel.setOpaque(true); 
+        infoMsgLabel.setBackground(Color.pink);
+        infoMsgLabel.setHorizontalAlignment(JLabel.CENTER);
+        infoMsgLabel.setFont(font);
+        infoMsgLabel.setBounds(400, 180, 300, 20);
+        panel.add(infoMsgLabel);
         
         //숫자키패드
         btn0=new JButton("0");
         btn0.setBounds(310,350,50,25);
         btn0.setBackground(Color.yellow);
         btn0.setFocusPainted(false);
-        btn0.addActionListener(this);
         panel.add(btn0);
         
         btn1=new JButton("1");
         btn1.setBounds(360,350,50,25);
         btn1.setBackground(Color.yellow);
         btn1.setFocusPainted(false);
-        btn1.addActionListener(this);
         panel.add(btn1);
         
         btn2=new JButton("2");
         btn2.setBounds(410,350,50,25);
         btn2.setBackground(Color.yellow);
         btn2.setFocusPainted(false);
-        btn2.addActionListener(this);
         panel.add(btn2);
         
         btn3=new JButton("3");
         btn3.setBounds(460,350,50,25);
         btn3.setBackground(Color.yellow);
         btn3.setFocusPainted(false);
-        btn3.addActionListener(this);
         panel.add(btn3);
         
         btn4=new JButton("4");
         btn4.setBounds(510,350,50,25);
         btn4.setBackground(Color.yellow);
         btn4.setFocusPainted(false);
-        btn4.addActionListener(this);
         panel.add(btn4);
         
         btn5=new JButton("5");
         btn5.setBounds(560,350,50,25);
         btn5.setBackground(Color.yellow);
         btn5.setFocusPainted(false);
-        btn5.addActionListener(this);
         panel.add(btn5);
         
         btn6=new JButton("6");
         btn6.setBounds(610,350,50,25);
         btn6.setBackground(Color.yellow);
         btn6.setFocusPainted(false);
-        btn6.addActionListener(this);
         panel.add(btn6);
         
         btn7=new JButton("7");
         btn7.setBounds(660,350,50,25);
         btn7.setBackground(Color.yellow);
         btn7.setFocusPainted(false);
-        btn7.addActionListener(this);
         panel.add(btn7);
         
         btn8=new JButton("8");
         btn8.setBounds(710,350,50,25);
         btn8.setBackground(Color.yellow);
         btn8.setFocusPainted(false);
-        btn8.addActionListener(this);
         panel.add(btn8);
         
         btn9=new JButton("9");
         btn9.setBounds(760,350,50,25);
         btn9.setBackground(Color.yellow);
         btn9.setFocusPainted(false);
-        btn9.addActionListener(this);
         panel.add(btn9);
         
         //영문키패드
@@ -422,19 +423,6 @@ implements ActionListener{
         btnm.addActionListener(this);
         panel.add(btnm);
         
-        
-        Manager_pn mgpn=new Manager_pn();
-        String str=mgpn.Manager_pn();
-        JLabel managerphone= new JLabel("관리자 연락처:"+str);
-        managerphone.setFont(font);
-        managerphone.setBounds(800, 620, 300, 50);
-        panel.add(managerphone);
-        
-        back=new JButton(img);
-		back.setBounds(0, 0, 150, 90);
-		back.setBorderPainted(false);
-		panel.add(back);
-            
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -442,28 +430,29 @@ implements ActionListener{
 			Object obj=e.getSource();
 			if(obj==btnInit)
 			{
-				userText.setText("");
-	            passText.setText("");
+				managerIdText.setText("");
+	            managerPwText.setText("");
 			}
-			//로그인버튼
 			else if (obj==btnLogin)
 			{
-				User_Login_Event login=new User_Login_Event();
-				int i = login.sql_run(Integer.parseInt(userText.getText()), passText.getText());
+				ManagerLoginEvent2 mLE2=new ManagerLoginEvent2();
+				int i = mLE2.managerLogin2((managerIdText.getText()), managerPwText.getText());
 				if(i == 1){
-					Pay pay=new Pay();
-					pay.setVisible(true);
+					FindManagerName mgr = new FindManagerName();
+					String name = mgr.managerName(managerIdText.getText());//managerName읽어옴
+					ManagerMain managerMain = new ManagerMain(name);
+					managerMain.setTitle("FamilyStudyCafe_ManagerMain");
+					managerMain.setResizable(false);
+					//managerMain.setVisible(true);
 					JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
 					dispose();
-					
 				}
 				else
 				{
-
-					JOptionPane.showMessageDialog(null, "로그인 실패");
+					JOptionPane.showMessageDialog(null, "아이디나 비밀번호를 확인하세요");
 				}
-				
 			}
+<<<<<<< HEAD:User_LoginUI.java
 			//회원가입버튼
 			else if(obj==btnjoin)
 			{
@@ -629,15 +618,16 @@ implements ActionListener{
 		
 			
 		} catch (Exception e2) {
+=======
+		}
+		catch (Exception e2)
+		{
+>>>>>>> d0f65de21c13ef4a691965cb30268c034f70508c:ManagerLogin.java
 			// TODO: handle exception
 		}
-		
 	}
-
+	
 	public static void main(String[] args) {
-		new User_LoginUI();
-
+		new ManagerLogin();
 	}
-
 }
-

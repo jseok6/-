@@ -44,6 +44,7 @@ public class SeatSelectAlertPopUp {
 	// 자리 선택 프레임 세팅
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("자리 선택 여부");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
 		frame.getContentPane().setFont(new Font("굴림", Font.PLAIN, 12));
 		frame.setResizable(false);
@@ -85,4 +86,5 @@ public class SeatSelectAlertPopUp {
 		btnNewButton2.setBounds(258, 139, 109, 50);
 		frame.getContentPane().add(btnNewButton2);
 	}
+
 }

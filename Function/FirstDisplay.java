@@ -3,6 +3,7 @@ package Function;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import javax.swing.JFrame;
+import study.ManagerMain;
 import java.awt.Dimension;
 import java.awt.Button;
 import java.awt.Color;
@@ -42,55 +43,55 @@ public class FirstDisplay {
 	 */
 	private void initialize() {
 		frmFamilyStudyCafe = new JFrame();
-		frmFamilyStudyCafe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸\\-001.jpg"));
-		frmFamilyStudyCafe.setTitle("Family Study Cafeì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.");
-		frmFamilyStudyCafe.setResizable(false); //ë²„íŠ¼ & ì°½ ê³ ì •
+		frmFamilyStudyCafe
+				.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\family.jpg"));
+		frmFamilyStudyCafe.setTitle("Family Study Cafe¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù.");
+		frmFamilyStudyCafe.setResizable(false); // ¹öÆ° & Ã¢ °íÁ¤
 		frmFamilyStudyCafe.setBounds(100, 100, 1000, 600);
 		frmFamilyStudyCafe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFamilyStudyCafe.getContentPane().setLayout(null);
-	
-		
-		Button button1 = new Button("ì‚¬ìš©ì");
+
+		Button button1 = new Button("»ç¿ëÀÚ");
 		button1.setBounds(0, 0, 492, 561);
 		button1.setBackground(new Color(205, 133, 63));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.getContentPane().add(button1);
-		// ì‚¬ìš©ì ë²„íŠ¼ button1
+		// »ç¿ëÀÚ ¹öÆ° button1
 		button1.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj = e.getSource();
 				if ((Button) obj == button1) {
 					Frame fs = new Frame();
 					fs.setVisible(true);
-					fs.setSize(700,600);
+					fs.setSize(700, 600);
 					fs.setLocation(200, 200);
-					
+
 				}
 			}
 		});
-		
-		Button button2 = new Button("ê´€ë¦¬ì");
+
+		Button button2 = new Button("°ü¸®ÀÚ");
 		button2.setBounds(492, 0, 492, 561);
 		button2.setBackground(new Color(102, 205, 170));
 		button2.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.getContentPane().add(button2);
-		// ê´€ë¦¬ì ë²„íŠ¼ button2
+		// °ü¸®ÀÚ ¹öÆ° button2
 		button2.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj = e.getSource();
 				if ((Button) obj == button2) {
 					Frame fs = new Frame();
-					fs.setVisible(true);
-					fs.setSize(700,600);
-					fs.setLocation(200, 200);
-					
+//					fs.setVisible(true);
+//					fs.setSize(700,600);
+//					fs.setLocation(200, 200);
+					new ManagerMain("");
 				}
 			}
 		});
-		
+
 	}
 }

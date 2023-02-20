@@ -2,21 +2,27 @@ package study;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class FindManagerName {//관리자 이름 가져오기
-	public String managerName(String mid)
+//관리자 이름 가져오기
+public class FindManagerName {
+	public String managerName(String mid) throws SQLException
 	{
-		DBconnect db = new DBconnect();
 		Connection con=null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String str=null;
-		String sql = "select managerName from manager where managerId = '"+ mid +"'";
+		String queryFindManagerName = "select managerName from manager "
+				+ "where managerId = ?";
+		
 		try {
-			stmt=db.con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			con=DBConnect2.getConnection();
+			pstmt=con.prepareStatement(queryFindManagerName);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
 			if(rs.next())
 			{
 				str = rs.getString("managerName");
@@ -24,6 +30,12 @@ public class FindManagerName {//관리자 이름 가져오기
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
 		}
 		return str;
 	}

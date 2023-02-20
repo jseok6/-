@@ -4,26 +4,24 @@ import java.awt.Color;
 //의자정보(seat테이블) 가져오기
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class FindSeatTable {
-	Connection con=null;
-	String fSNSql="SELECT seatNum FROM seat"; //의자번호 찾기
-	//+where ...
-	//String fSASql="SELECT seatAvail FROM seat";//의자 사용가능여부 찾기
-	
-	
+public class FindSeatTable {	
 	//의자번호확인
-	public String findSeatNum()
+	public String findSeatNum() throws SQLException
 	{
-		DBconnect db = new DBconnect();
-		Statement stmt = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String queryFindSeatNum="SELECT seatNum FROM seat"; //의자번호 찾기
 		String str=null;
 		try {
-			stmt=db.con.createStatement();
-			ResultSet rs = stmt.executeQuery(fSNSql);
+			con = DBConnect2.getConnection();
+			pstmt=con.prepareStatement(queryFindSeatNum);
+			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
 				str=rs.getString(1);
@@ -33,22 +31,30 @@ public class FindSeatTable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
 		return str;
 	}
 	
 	//의자상태확인
-	public Integer seatAvail(int tempint)
+	public Integer seatAvail(int seatnum) throws SQLException
 	{
-		DBconnect db=new DBconnect();
-		Statement stmt=null;
-		String stateStr="";
-		Color seatColor= Color.BLACK;
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs = null;
 		Integer stateInt=null;
-		String fSASql="select seatAvail from seat where seatNum = "+ tempint;
+		String queryFindSeatAvail="select seatAvail from seat "
+				+ "where seatNum = ?";
+		
 		try {
-			stmt=db.con.createStatement();
-			ResultSet rs=stmt.executeQuery(fSASql);
+			con = DBConnect2.getConnection();
+			pstmt=con.prepareStatement(queryFindSeatAvail);
+			pstmt.setInt(1, seatnum);
+			 rs=pstmt.executeQuery();
 			
 			while(rs.next())
 			{
@@ -58,7 +64,12 @@ public class FindSeatTable {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		finally 
+		{
+			rs.close();
+			pstmt.close();
+			con.close();
+		}
 		return stateInt;
 	}
 	

@@ -6,8 +6,11 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.OffsetDateTime;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -57,7 +60,7 @@ public class SeatSelectAlertPopUpExtend {
 		panel1F.setLayout(null);
 		frame.getContentPane().add(panel1F);
 		LineBorder lb = new LineBorder(Color.BLACK, 2);
-	
+
 		seat1FBtn = new JButton[31];
 		for (int i = 0; i < seat1Farr.length; i++) {
 			seat1FBtn[i] = new JButton(seat1Farr[i]);
@@ -101,18 +104,58 @@ public class SeatSelectAlertPopUpExtend {
 		seat1FBtn[28].setBounds(871, 419, 72, 60);
 		seat1FBtn[29].setBounds(871, 358, 72, 60);
 		seat1FBtn[30].setBounds(871, 241, 72, 60);
-		
-		for (int j = 0; j < seat1FBtn.length; j++) {
-			seat1FBtn[j].addActionListener(new ActionListener() {
+
+		for (int i = 0; i < seat1FBtn.length; i++) {
+			seat1FBtn[i].addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Object obj = e.getSource();
-					
-					
+					JFrame fs = new JFrame();
+					fs.setTitle("자리 선택 여부");
+					fs.setVisible(true);
+					fs.setIconImage(Toolkit.getDefaultToolkit().getImage(
+							"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
+					fs.setFont(new Font("굴림", Font.PLAIN, 12));
+					fs.setResizable(false);
+					fs.setBounds(370, 289, 465, 260);
+					fs.setLayout(null);
+					JButton seatSource = (JButton) e.getSource();
+					JLabel lblNewLabel = new JLabel(seatSource.getText() + "번 자리를 선택 하시겠습니까?"); // 좌석 번호의 정보를 읽어와야 함.
+					lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+					lblNewLabel.setFont(new Font("함초롬바탕", Font.PLAIN, 18));
+					lblNewLabel.setBounds(75, 40, 317, 78);
+					fs.add(lblNewLabel);
+					JButton btnNewButton1 = new JButton("확인");
+					btnNewButton1.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							fs.setVisible(false);
+							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
+
+						}
+					});
+					btnNewButton1.setDefaultCapable(false);
+					btnNewButton1.setSelected(true);
+					btnNewButton1.setFont(new Font("굴림", Font.PLAIN, 15));
+					btnNewButton1.setBounds(99, 139, 109, 50);
+					fs.add(btnNewButton1);
+
+					JButton btnNewButton2 = new JButton("다시 선택");
+					btnNewButton2.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							fs.setVisible(false);
+							fs.dispose();
+						}
+					});
+					btnNewButton2.setDefaultCapable(false);
+					btnNewButton2.setSelected(true);
+					btnNewButton2.setFont(new Font("굴림", Font.PLAIN, 15));
+					btnNewButton2.setBounds(258, 139, 109, 50);
+					fs.add(btnNewButton2);
 				}
 			});
 		}
-		
+
 //		 예시 : 자리 101번 버튼 눌렀을 시 팝업 생성 ("101번 자리를 선택 하시겠습니까?" 내용 출력)
 //		 맞을시 확인, 아닐시 다시 선택
 //		JButton seat101Btn = new JButton("101");
@@ -423,7 +466,6 @@ public class SeatSelectAlertPopUpExtend {
 		doorLabel1_1.setBackground(new Color(128, 0, 0));
 		doorLabel1_1.setBounds(884, 70, 61, 69);
 		panel1F.add(doorLabel1_1);
-		
 
 		// 1층 벽라벨 생성, 위치지정
 		JLabel[] wall1FLabel = new JLabel[17];
@@ -452,6 +494,11 @@ public class SeatSelectAlertPopUpExtend {
 		wall1FLabel[14].setBounds(576, 358, 93, 18);
 		wall1FLabel[15].setBounds(576, 228, 93, 18);
 		wall1FLabel[16].setBounds(765, 0, 50, 60);
-		}
+	}
+
+	private Object JFrame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
