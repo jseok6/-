@@ -72,6 +72,9 @@ implements ActionListener{
 	 
 	 private JButton back;
 	 
+	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
+	 
+	 
 	 
 	 
 	public User_LoginUI() {
@@ -241,156 +244,182 @@ implements ActionListener{
         btnq.setBounds(310,375,50,25);
         btnq.setBackground(Color.yellow);
         btnq.setFocusPainted(false);
+        btnq.addActionListener(this);
         panel.add(btnq);
         
         btnw=new JButton("w");
         btnw.setBounds(360,375,50,25);
         btnw.setBackground(Color.yellow);
         btnw.setFocusPainted(false);
+        btnw.addActionListener(this);
         panel.add(btnw);
         
         btne=new JButton("e");
         btne.setBounds(410,375,50,25);
         btne.setBackground(Color.yellow);
         btne.setFocusPainted(false);
+        btne.addActionListener(this);
         panel.add(btne);
         
         btnr=new JButton("r");
         btnr.setBounds(460,375,50,25);
         btnr.setBackground(Color.yellow);
         btnr.setFocusPainted(false);
+        btnr.addActionListener(this);
         panel.add(btnr);
         
         btnt=new JButton("t");
         btnt.setBounds(510,375,50,25);
         btnt.setBackground(Color.yellow);
         btnt.setFocusPainted(false);
+        btnt.addActionListener(this);
         panel.add(btnt);
         
         btny=new JButton("y");
         btny.setBounds(560,375,50,25);
         btny.setBackground(Color.yellow);
         btny.setFocusPainted(false);
+        btny.addActionListener(this);
         panel.add(btny);
         
         btnu=new JButton("u");
         btnu.setBounds(610,375,50,25);
         btnu.setBackground(Color.yellow);
         btnu.setFocusPainted(false);
+        btnu.addActionListener(this);
         panel.add(btnu);
         
         btni=new JButton("i");
         btni.setBounds(660,375,50,25);
         btni.setBackground(Color.yellow);
         btni.setFocusPainted(false);
+        btni.addActionListener(this);
         panel.add(btni);
         
         btno=new JButton("o");
         btno.setBounds(710,375,50,25);
         btno.setBackground(Color.yellow);
         btno.setFocusPainted(false);
+        btno.addActionListener(this);
         panel.add(btno);
         
         btnp=new JButton("p");
         btnp.setBounds(760,375,50,25);
         btnp.setBackground(Color.yellow);
         btnp.setFocusPainted(false);
+        btnp.addActionListener(this);
         panel.add(btnp);
         
         btna=new JButton("a");
         btna.setBounds(335,400,50,25);
         btna.setBackground(Color.yellow);
         btna.setFocusPainted(false);
+        btna.addActionListener(this);
         panel.add(btna);
         
         btns=new JButton("s");
         btns.setBounds(385,400,50,25);
         btns.setBackground(Color.yellow);
         btns.setFocusPainted(false);
+        btns.addActionListener(this);
         panel.add(btns);
         
         btnd=new JButton("d");
         btnd.setBounds(435,400,50,25);
         btnd.setBackground(Color.yellow);
         btnd.setFocusPainted(false);
+        btnd.addActionListener(this);
         panel.add(btnd);
         
         btnf=new JButton("f");
         btnf.setBounds(485,400,50,25);
         btnf.setBackground(Color.yellow);
         btnf.setFocusPainted(false);
+        btnf.addActionListener(this);
         panel.add(btnf);
         
         btng=new JButton("g");
         btng.setBounds(535,400,50,25);
         btng.setBackground(Color.yellow);
         btng.setFocusPainted(false);
+        btng.addActionListener(this);
         panel.add(btng);
         
         btnh=new JButton("h");
         btnh.setBounds(585,400,50,25);
         btnh.setBackground(Color.yellow);
         btnh.setFocusPainted(false);
+        btnh.addActionListener(this);
         panel.add(btnh);
         
         btnj=new JButton("j");
         btnj.setBounds(635,400,50,25);
         btnj.setBackground(Color.yellow);
         btnj.setFocusPainted(false);
+        btnj.addActionListener(this);
         panel.add(btnj);
         
         btnk=new JButton("k");
         btnk.setBounds(685,400,50,25);
         btnk.setBackground(Color.yellow);
         btnk.setFocusPainted(false);
+        btnk.addActionListener(this);
         panel.add(btnk);
         
         btnl=new JButton("l");
         btnl.setBounds(735,400,50,25);
         btnl.setBackground(Color.yellow);
         btnl.setFocusPainted(false);
+        btnl.addActionListener(this);
         panel.add(btnl);
         
         btnz=new JButton("z");
         btnz.setBounds(385,425,50,25);
         btnz.setBackground(Color.yellow);
         btnz.setFocusPainted(false);
+        btnz.addActionListener(this);
         panel.add(btnz);
         
         btnx=new JButton("x");
         btnx.setBounds(435,425,50,25);
         btnx.setBackground(Color.yellow);
         btnx.setFocusPainted(false);
+        btnx.addActionListener(this);
         panel.add(btnx);
         
         btnc=new JButton("c");
         btnc.setBounds(485,425,50,25);
         btnc.setBackground(Color.yellow);
         btnc.setFocusPainted(false);
+        btnc.addActionListener(this);
         panel.add(btnc);
         
         btnv=new JButton("v");
         btnv.setBounds(535,425,50,25);
         btnv.setBackground(Color.yellow);
         btnv.setFocusPainted(false);
+        btnv.addActionListener(this);
         panel.add(btnv);
         
         btnb=new JButton("b");
         btnb.setBounds(585,425,50,25);
         btnb.setBackground(Color.yellow);
         btnb.setFocusPainted(false);
+        btnb.addActionListener(this);
         panel.add(btnb);
         
         btnn=new JButton("n");
         btnn.setBounds(635,425,50,25);
         btnn.setBackground(Color.yellow);
         btnn.setFocusPainted(false);
+        btnn.addActionListener(this);
         panel.add(btnn);
         
         btnm=new JButton("m");
         btnm.setBounds(685,425,50,25);
         btnm.setBackground(Color.yellow);
         btnm.setFocusPainted(false);
+        btnm.addActionListener(this);
         panel.add(btnm);
         
         
@@ -491,6 +520,113 @@ implements ActionListener{
 			{
 				userText.setText(userText.getText()+ "9");
 			}
+			else if(obj==btnq)
+			{
+				passText.setText(passText.getText()+"q");
+			}
+			else if(obj==btnw)
+			{
+				passText.setText(passText.getText()+"w");
+			}
+			else if(obj==btne)
+			{
+				passText.setText(passText.getText()+"e");
+			}
+			else if(obj==btnr)
+			{
+				passText.setText(passText.getText()+"r");
+			}
+			else if(obj==btnt)
+			{
+				passText.setText(passText.getText()+"t");
+			}
+			else if(obj==btny)
+			{
+				passText.setText(passText.getText()+"y");
+			}
+			else if(obj==btnu)
+			{
+				passText.setText(passText.getText()+"u");
+			}
+			else if(obj==btni)
+			{
+				passText.setText(passText.getText()+"i");
+			}
+			else if(obj==btno)
+			{
+				passText.setText(passText.getText()+"o");
+			}
+			else if(obj==btnp)
+			{
+				passText.setText(passText.getText()+"p");
+			}
+			else if(obj==btna)
+			{
+				passText.setText(passText.getText()+"a");
+			}
+			else if(obj==btns)
+			{
+				passText.setText(passText.getText()+"s");
+			}
+			else if(obj==btnd)
+			{
+				passText.setText(passText.getText()+"d");
+			}
+			else if(obj==btnf)
+			{
+				passText.setText(passText.getText()+"f");
+			}
+			else if(obj==btng)
+			{
+				passText.setText(passText.getText()+"g");
+			}
+			else if(obj==btnh)
+			{
+				passText.setText(passText.getText()+"h");
+			}
+			else if(obj==btnj)
+			{
+				passText.setText(passText.getText()+"j");
+			}
+			else if(obj==btnk)
+			{
+				passText.setText(passText.getText()+"k");
+			}
+			else if(obj==btnl)
+			{
+				passText.setText(passText.getText()+"l");
+			}
+			else if(obj==btnz)
+			{
+				passText.setText(passText.getText()+"z");
+			}
+			else if(obj==btnx)
+			{
+				passText.setText(passText.getText()+"x");
+			}
+			else if(obj==btnc)
+			{
+				passText.setText(passText.getText()+"c");
+			}
+			else if(obj==btnv)
+			{
+				passText.setText(passText.getText()+"v");
+			}
+			else if(obj==btnb)
+			{
+				passText.setText(passText.getText()+"b");
+			}
+			else if(obj==btnn)
+			{
+				passText.setText(passText.getText()+"n");
+			}
+			else if(obj==btnm)
+			{
+				passText.setText(passText.getText()+"m");
+			}
+			
+			
+		
 			
 		} catch (Exception e2) {
 			// TODO: handle exception
