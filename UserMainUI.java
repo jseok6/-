@@ -18,10 +18,16 @@ public class UserMainUI extends JFrame {
 	private JLabel quest;
 	private JButton addpay;
 	private JButton exit;
+	private JList list;
+	String [] question= {"질문:~~~~~"};
+	
+	
 
 	private JButton answerButton;//댭변버튼
 	private JButton questButton;//질문버튼
 
+	ImageIcon img=new ImageIcon("./Button_Image/addpay.jpg");
+	ImageIcon imgexit=new ImageIcon("./Button_Image/exit.jpg");
 	
 	
 	
@@ -49,14 +55,7 @@ public class UserMainUI extends JFrame {
 
         setVisible(true);
         
-        questButton.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				QuestUI questui=new QuestUI();
-				questui.setVisible(true);
-				dispose();
-			}
-		});
+        
         
 	}
 	
@@ -67,51 +66,65 @@ public class UserMainUI extends JFrame {
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
 		JLabel remaintime=new JLabel("남은 시간:");
-		remaintime.setBounds(400,50,100,50);
+		remaintime.setBounds(400,0,100,50);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		
-		JLabel ManagerPhone = new JLabel("관리자 연락처");
-		ManagerPhone.setBounds(300, 100, 150, 50);
+		//관리자 전화번호 뜨게하기
+		Manager_pn mgpn=new Manager_pn();
+        String managerphone_str=mgpn.Manager_pn();
+		JLabel ManagerPhone = new JLabel("관리자 연락처:"+managerphone_str);
+		ManagerPhone.setBounds(400, 20, 300, 50);
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
 		
-		//관리자 전화번호 뜨게하기
-		manager_pn mgpn=new manager_pn();
-        String managerphone_str=mgpn.manager_pn();
-        JLabel ManagerNumber=new JLabel(""+managerphone_str);
-		ManagerNumber.setBounds(295,120,150,50);
-		ManagerNumber.setFont(font);
-		panel.add(ManagerNumber);
 		
 		//관리자이메일 뜨게하기
-		manager_pn mgem=new manager_pn();
+		Manager_pn mgem=new Manager_pn();
 		String managerEmail_str=mgem.manager_email();
-		JLabel managerEmail=new JLabel(""+managerEmail_str);
-		managerEmail.setBounds(293,140,150,50);
+		JLabel managerEmail=new JLabel("관리자이메일:"+managerEmail_str);
+		managerEmail.setBounds(400,40,300,50);
 		managerEmail.setFont(font);
 		panel.add(managerEmail);
 		
 		picture = new JLabel();
-        picture.setIcon(new ImageIcon("./Button_Image/hanbok.jpg"));
-        picture.setBounds(140, 200, 500,300);
+        picture.setIcon(new ImageIcon("./Button_Image/book.jpg"));
+        picture.setBounds(0, 100, 700,365);
         panel.add(picture);
         
-        JButton addpay=new JButton("추가결제");
-        addpay.setBounds(50,500,250,100);
-        addpay.setBackground(Color.yellow);
-        addpay.setFont(font);
+        JButton addpay=new JButton(img);
+        addpay.setBounds(0,465,350,200);
         panel.add(addpay);
         
-        JButton exit=new JButton("퇴실");
-        exit.setBounds(350,500,250,100);
-        exit.setBackground(Color.yellow);
-        exit.setFont(font);
+        JButton exit=new JButton(imgexit);
+        exit.setBounds(350,465,350,200);
         panel.add(exit);
         
         
         
         panel.setBackground(Color.pink);
+        
+        //추가결제 기능
+        addpay.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Pay pay=new Pay();
+				pay.setVisible(true);
+				dispose();
+				
+			}
+		});
+        
+        //퇴실 기능
+        exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         
 		
 	}
@@ -121,27 +134,35 @@ public class UserMainUI extends JFrame {
 		panel.setLayout(null);
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
+		//질문리스트들
+		list=new JList(question);
+		list.setFont(font);		
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);	
+		list.setBounds(730, 100, 320, 500);
+		panel.add(list);
+		
 		JLabel quest=new JLabel("질문");
-		quest.setBounds(880,50,300,50);
+		quest.setBounds(880,50,100,50);
 		quest.setBackground(Color.cyan);
 		quest.setFont(font);
 		panel.add(quest);
 		
 		
-		JButton questButton=new JButton("질문");
-		questButton.setBounds(700,550,180,50);
+		JButton questButton=new JButton("질문하기");
+		questButton.setBounds(700,615,192,50);
 		questButton.setBackground(Color.yellow);
 		questButton.setFont(font);
 		panel.add(questButton);
 		
-		JButton answerButton=new JButton("답변");
-		answerButton.setBounds(910,550,180,50);
+		JButton answerButton=new JButton("답변하기");
+		answerButton.setBounds(892,615,192,50);
 		answerButton.setBackground(Color.yellow);
 		answerButton.setFont(font);
 		panel.add(answerButton);
-		
 		panel.setBackground(Color.green);
 		
+		
+		//질문하기버튼
 		questButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -152,6 +173,8 @@ public class UserMainUI extends JFrame {
 				
 			}
 		});
+		
+		
        
 	}
 	public static void main(String[] args) {

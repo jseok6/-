@@ -37,7 +37,6 @@ public class QuestUI extends JFrame{
 	public void QuestPanel(JPanel panel)
 	{
 		panel.setLayout(null);
-		
 		back=new JButton(img);
 		back.setBounds(0, 0, 150, 90);
 		back.setBorderPainted(false);

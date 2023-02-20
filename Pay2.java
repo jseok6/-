@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
 
 
 public class Pay2 extends JFrame{
@@ -11,7 +13,7 @@ public class Pay2 extends JFrame{
 	private JButton btnperiod;//기간권 버튼
 	private JLabel label;//배경이미지
 	private JLabel label2;
-	
+	Desktop desktop = Desktop.getDesktop();
 	private JLabel payresult;
 	
 
@@ -89,7 +91,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				UI1 ui1=new UI1();
+				User_LoginUI ui1=new User_LoginUI();
 				ui1.setVisible(true);
 				dispose();
 			}
@@ -100,7 +102,7 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null, "현금을 넣어주세요.");
 				
 			}
 		});
@@ -109,7 +111,12 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				try {
+					URI uri = new URI("C:/Users/dita810/Desktop/pay.html");
+	                desktop.browse(uri);
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
 				
 			}
 		});
@@ -119,24 +126,10 @@ public class Pay2 extends JFrame{
 		panel.setLayout(null);
 		
 		
-		
-//		btntime=new JButton(imgtime);
-//		btntime.setBounds(0,100, 550,67);
-//		btntime.setBorderPainted(false);
-//		btntime.setPreferredSize(new Dimension(300,50));
-//
-//		btntime.setBackground(Color.yellow);
-//		panel.add(btntime);
-		
-//		btnperiod=new JButton("기간권");
-//		btnperiod.setBounds(550, 100, 550, 67);
-//		btnperiod.setBackground(Color.yellow);
-//		btnperiod.setFont(font);
-//		panel.add(btnperiod);
-		
 		btntime1=new JButton("1일권");
 		btntime1.setBounds(0,167,367,196);
 		btntime1.setBackground(Color.yellow);
+		btntime1.setFocusPainted(false);
 		btntime1.setFont(font);
 		panel.add(btntime1);
 		btntime1.addActionListener(new ActionListener() {
@@ -153,6 +146,7 @@ public class Pay2 extends JFrame{
 		btntime2=new JButton("3일권");
 		btntime2.setBounds(367,167,367,196);
 		btntime2.setBackground(Color.yellow);
+		btntime2.setFocusPainted(false);
 		btntime2.setFont(font);
 		panel.add(btntime2);
 		btntime2.addActionListener(new ActionListener() {
@@ -168,6 +162,7 @@ public class Pay2 extends JFrame{
 		btntime4=new JButton("7일권");
 		btntime4.setBounds(734,167,367,196);
 		btntime4.setBackground(Color.yellow);
+		btntime4.setFocusPainted(false);
 		btntime4.setFont(font);
 		panel.add(btntime4);
 		btntime4.addActionListener(new ActionListener() {
@@ -184,6 +179,7 @@ public class Pay2 extends JFrame{
 		btntime6=new JButton("10일권");
 		btntime6.setBounds(0,363,367,196);
 		btntime6.setBackground(Color.yellow);
+		btntime6.setFocusPainted(false);
 		btntime6.setFont(font);
 		panel.add(btntime6);
 		btntime6.addActionListener(new ActionListener() {
@@ -199,6 +195,7 @@ public class Pay2 extends JFrame{
 		btntime9=new JButton("15일권권");
 		btntime9.setBounds(367,363,367,196);
 		btntime9.setBackground(Color.yellow);
+		btntime9.setFocusPainted(false);
 		btntime9.setFont(font);
 		panel.add(btntime9);
 		btntime9.addActionListener(new ActionListener() {
@@ -215,6 +212,7 @@ public class Pay2 extends JFrame{
 		btntime12=new JButton("30일권");
 		btntime12.setBounds(734,363,367,196);
 		btntime12.setBackground(Color.yellow);
+		btntime12.setFocusPainted(false);
 		btntime12.setFont(font);
 		panel.add(btntime12);
 		btntime12.addActionListener(new ActionListener() {
