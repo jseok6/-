@@ -12,9 +12,6 @@ import java.sql.Statement;
 
 import javax.swing.border.*;
 
-import net.ChatClient3;
-import net.ChatProtocol3;
-import talk.TalkProtocol;
 public class User_LoginUI extends JFrame
 implements ActionListener{
 	

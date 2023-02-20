@@ -1,7 +1,6 @@
 package study;
 
 import java.awt.Color;
-import study.UI1;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -783,9 +782,9 @@ public class ManagerMain extends JFrame {
     			String usestat = null; //seatInfoPanel의 memberTelLabel에 들어갈 
     			
     			//의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
-    			seatNumLabel_seatInfoPanel.setText(seatSource.getText());//
-    			if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false)
-    			{
+    			seatNumLabel_seatInfoPanel.setText(seatSource.getText());
+    			//if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false) //TODO 조건문 미동작?
+    			//{
     				//클릭한 의자라벨값 읽어와서 findUse 실행(사용중인지 검사)
     				try {
 						usestat = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
@@ -828,7 +827,7 @@ public class ManagerMain extends JFrame {
     				seat2FBtn[12].setVisible(false);
     			}
     		}
-    	}
+    	//}
     	
     	//좌석버튼에 액션리스너 기능 추가
     	SeatBtnListener seatBtnListener = new SeatBtnListener();
