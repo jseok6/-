@@ -1,4 +1,4 @@
-package Function;
+package study.function;
 
 import javax.swing.*;
 

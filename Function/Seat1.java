@@ -1,4 +1,4 @@
-package Function;
+package study.function;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;

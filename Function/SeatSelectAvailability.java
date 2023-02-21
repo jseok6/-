@@ -1,4 +1,4 @@
-package Function;
+package study.function;
 
 import java.awt.Color;
 import java.awt.EventQueue;
