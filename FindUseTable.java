@@ -1,16 +1,44 @@
 package study;
 
-import java.awt.Color;
 //의자정보(seat테이블) 가져오기
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 //USE(사용)테이블 검색
 public class FindUseTable {	
+	
+	//사용정보 Insert
+	public void insertUse(String checkintime
+			, String membertel, int seatnum) throws SQLException
+	{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String queryinsertUse="insert into `Use` "
+				+ "VALUES(null, ?, null, ?, ?, null)";
+		try 
+		{
+			con = DBConnect2.getConnection();
+			pstmt=con.prepareStatement(queryinsertUse);
+			
+			pstmt.setString(1, checkintime);
+			pstmt.setString(2, membertel);
+			pstmt.setInt(3, seatnum);
+			
+			pstmt.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			pstmt.close();
+			con.close();
+		}
+		return;
+	}
 	
 	//사용번호 확인- 의자번호로 찾기
 	public String findUse(int seatnum) throws SQLException

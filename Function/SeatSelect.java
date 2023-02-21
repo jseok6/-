@@ -1,43 +1,44 @@
-package function;
+package study.function;
 
+import java.awt.Color;
 // TODO 뒤로가기 버튼, 확인 버튼 누를시 회원 메인 화면 창 이동
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import function.InsertUseTable;
-import oracle.net.ano.SupervisorService;
-
-import javax.swing.ImageIcon;
+import study.FindSeatTable;
+import study.FindUseTable;
+import study.UserLoginUI;
 
 public class SeatSelect extends JFrame {
 
-	private JFrame frame;
+	private JPanel ssPanel;
 	String[] seat1Farr = { "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112",
 			"113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127",
 			"128", "129", "130" };
 	JButton[] seat1FBtn;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					SeatSelect window = new SeatSelect();
-					window.frame.setVisible(true);
+					window.setVisible(true);
+					window.setResizable(false);
+					window.setTitle("SeatSelect");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,78 +46,66 @@ public class SeatSelect extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public SeatSelect() {
-		initialize(); // 초기화
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		// 자리 배치도 1층 생성
-		frame = new JFrame();
-		frame.setBounds(100, 100, 963, 639);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 960, 640);
+		ssPanel = new JPanel();
+		ssPanel.setLayout(null);
+		ssPanel.setBounds(0,0,945,600);
+		setContentPane(ssPanel);
+		
 		JPanel panel1F = new JPanel();
 		panel1F.setBounds(0, 0, 945, 600);
 		panel1F.setLayout(null);
-		frame.getContentPane().add(panel1F);
+		ssPanel.add(panel1F);
 		LineBorder lb = new LineBorder(Color.BLACK, 2);
 		
+		//좌석별 상태안내패널
+		
+		//하늘색 패널
 		Panel panel1 = new Panel();
 		panel1.setBackground(Color.CYAN);
 		panel1.setBounds(267, 66, 61, 69);
-		panel1F.add(panel1);
-
+		panel1F.add(panel1);	
+		//주황색 패널
 		Panel panel2 = new Panel();
 		panel2.setBackground(Color.ORANGE);
 		panel2.setBounds(386, 66, 61, 69);
 		panel1F.add(panel2);
-
+		//빨간색 패널
 		Panel panel3 = new Panel();
 		panel3.setBackground(Color.RED);
 		panel3.setBounds(507, 66, 61, 69);
 		panel1F.add(panel3);
-
+		
 		Label label1 = new Label("사용 가능");
 		label1.setAlignment(Label.CENTER);
 		label1.setBounds(259, 149, 79, 23);
 		panel1F.add(label1);
-
 		Label label2 = new Label("사용 중");
 		label2.setAlignment(Label.CENTER);
 		label2.setBounds(376, 149, 79, 23);
 		panel1F.add(label2);
-
 		Label label3 = new Label("사용 불가능");
 		label3.setAlignment(Label.CENTER);
 		label3.setBounds(497, 149, 79, 23);
 		panel1F.add(label3);
 		
-		 //뒤로가기 버튼
+        //뒤로가기 버튼
         JButton btnBack = new JButton();
-        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
+        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\"
+        		+ "src\\img\\Button_image\\back.jpg"));
         btnBack.setFocusPainted(false);
         btnBack.addActionListener(new ActionListener()
         		{
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        		
+        		new UserLoginUI(); //회원로그인 화면으로 이동
+        		dispose();
         	}
         		});
-        btnBack.setBounds(3,3,105,54);
+        btnBack.setBounds(0,0,115,60);
         panel1F.add(btnBack);
-
-//		JButton backBtn = new JButton();
-//		backBtn.setFocusPainted(false);
-//		backBtn.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
-//		backBtn.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-//		backBtn.setBounds(12, 6, 72, 50);
-//		panel1F.add(backBtn);
 
 		seat1FBtn = new JButton[31];
 		for (int i = 0; i < seat1Farr.length; i++) {
@@ -162,7 +151,6 @@ public class SeatSelect extends JFrame {
 		seat1FBtn[29].setBounds(871, 358, 72, 60);
 		seat1FBtn[30].setBounds(871, 241, 72, 60);
 
-		
 		for (int i = 0; i < seat1FBtn.length; i++) {
 			seat1FBtn[i].addActionListener(new ActionListener() {
 				@Override
@@ -176,44 +164,63 @@ public class SeatSelect extends JFrame {
 					fs.setResizable(false);
 					fs.setBounds(370, 289, 465, 260);
 					fs.getContentPane().setLayout(null);
+					
 					JButton seatSource = (JButton) e.getSource();
-					JLabel lblNewLabel = new JLabel(seatSource.getText() + "번 자리를 선택 하시겠습니까?"); // 좌석 번호의 정보를 읽어와야 함.
-					lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-					lblNewLabel.setFont(new Font("함초롬바탕", Font.PLAIN, 18));
-					lblNewLabel.setBounds(75, 40, 317, 78);
-					fs.getContentPane().add(lblNewLabel);
-					JButton btnNewButton1 = new JButton("확인");
-					btnNewButton1.addActionListener(new ActionListener() {
+					JLabel guideLabel = new JLabel(seatSource.getText() + "번 자리를 선택 하시겠습니까?");
+					guideLabel.setHorizontalAlignment(SwingConstants.CENTER);
+					guideLabel.setFont(new Font("함초롬바탕", Font.PLAIN, 18));
+					guideLabel.setBounds(75, 40, 317, 78);
+					fs.getContentPane().add(guideLabel);
+					
+					//확인버튼
+					JButton checkBtn = new JButton("확인");
+					checkBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							JButton btnNewButton1 = (JButton)e.getSource();
-							if ((JButton)e.getSource() == btnNewButton1) {
+							String checkStat;
+							//Object obj = new Object();	
 								fs.setVisible(false);
 								fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-								new InsertUseTable();
-							}
-						}
+								
+								//use 테이블에서 사용중인지 검사
+								FindUseTable fut = new FindUseTable();
+								try {
+									 checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
+										if(checkStat=="0")//사용중인 좌석이 아니면
+										{
+											//사용번호 ,체크인시간, 전화번호, 의자번호
+											//TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
+											fut.insertUse("2023-02-20 03:30:00", "010-1234-1234", Integer.parseInt(seatSource.getText()));
+										}
+										else
+										{
+											System.out.println("Already using seat");
+										}
+								} catch (NumberFormatException e1) {
+									e1.printStackTrace();
+								} catch (SQLException e1) {
+									e1.printStackTrace();
+								}					
+							}						
 					});
-					
-					btnNewButton1.setDefaultCapable(false);
-					btnNewButton1.setSelected(true);
-					btnNewButton1.setFont(new Font("굴림", Font.PLAIN, 15));
-					btnNewButton1.setBounds(99, 139, 109, 50);
-					fs.getContentPane().add(btnNewButton1);
+					checkBtn.setSelected(true);
+					checkBtn.setFont(new Font("굴림", Font.PLAIN, 15));
+					checkBtn.setBounds(99, 139, 109, 50);
+					fs.getContentPane().add(checkBtn);
 
-					JButton btnNewButton2 = new JButton("다시 선택");
-					btnNewButton2.addActionListener(new ActionListener() {
+					//다시선택버튼
+					JButton reChoiceBtn = new JButton("다시 선택");
+					reChoiceBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							fs.setVisible(false);
 							fs.dispose();
 						}
 					});
-					btnNewButton2.setDefaultCapable(false);
-					btnNewButton2.setSelected(true);
-					btnNewButton2.setFont(new Font("굴림", Font.PLAIN, 15));
-					btnNewButton2.setBounds(258, 139, 109, 50);
-					fs.getContentPane().add(btnNewButton2);
+					reChoiceBtn.setSelected(true);
+					reChoiceBtn.setFont(new Font("굴림", Font.PLAIN, 15));
+					reChoiceBtn.setBounds(258, 139, 109, 50);
+					fs.getContentPane().add(reChoiceBtn);
 				}
 			});
 		}
@@ -244,6 +251,7 @@ public class SeatSelect extends JFrame {
 			wall1FLabel[i].setBackground(Color.GRAY);
 			panel1F.add(wall1FLabel[i]);
 		}
+		
 		wall1FLabel[0].setBounds(0, 496, 72, 103);
 		wall1FLabel[1].setBounds(26, 539, 72, 60);
 		wall1FLabel[2].setBounds(241, 539, 90, 60);
@@ -261,6 +269,5 @@ public class SeatSelect extends JFrame {
 		wall1FLabel[14].setBounds(576, 358, 93, 18);
 		wall1FLabel[15].setBounds(576, 228, 93, 18);
 		wall1FLabel[16].setBounds(765, 0, 50, 60);
-	}
-
+		}
 }
