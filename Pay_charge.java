@@ -26,7 +26,7 @@ public class Pay_charge {
 	String sql="SELECT payment FROM charge WHERE charge_time=?";
 	String str=null;
 	
-	//½Ã°£±Ç°¡°Ý
+	//ì‹œê°„ê¶Œê°€ê²©
 	public String Pay_charge1()
 	{
 		try 
@@ -161,7 +161,7 @@ public class Pay_charge {
 		
 		return str;
 	}
-	//±â°£±Ç °¡°Ý
+	//ê¸°ê°„ê¶Œ ê°€ê²©
 	public String Pay_charge2_1()
 	{
 		

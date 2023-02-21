@@ -90,7 +90,7 @@ implements ActionListener{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //¹è°æÀÌ¹ÌÁö
+        //ë°°ê²½ì´ë¯¸ì§€
         label = new JLabel();
         label.setIcon(new ImageIcon("./Button_Image/family.jpg"));
         label.setBounds(0, 0, 1100, 700);
@@ -105,7 +105,7 @@ implements ActionListener{
 	}
 	public void placeLoginPanel(JPanel panel){
         panel.setLayout(null);
-        Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+        Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
         
         JLabel userLabel = new JLabel("Tell");
         userLabel.setBounds(427, 229, 80, 25);
@@ -127,7 +127,7 @@ implements ActionListener{
         passText.addActionListener(new ActionListener() {          
             @Override
             public void actionPerformed(ActionEvent e) {
-            	//·Î±×ÀÎÃ¼Å©
+            	//ë¡œê·¸ì¸ì²´í¬
             }
         });
        
@@ -149,14 +149,14 @@ implements ActionListener{
         btnInit.addActionListener(this);
         
         
-        btnjoin=new JButton("È¸¿ø°¡ÀÔ");
+        btnjoin=new JButton("íšŒì›ê°€ì…");
         btnjoin.setBackground(Color.yellow);
         btnjoin.setBounds(560, 299, 117, 25);
         btnjoin.setFocusPainted(false);
         panel.add(btnjoin);
         btnjoin.addActionListener(this);
         
-        label2=new JLabel("¾ÆÀÌµğ¿Í ºñ¹øÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+        label2=new JLabel("ì•„ì´ë””ì™€ ë¹„ë²ˆì„ ì…ë ¥í•˜ì„¸ìš”.");
         label2.setOpaque(true); 
         label2.setBackground(Color.pink);
         label2.setFont(font);
@@ -164,7 +164,7 @@ implements ActionListener{
         panel.add(label2);
         
         
-        //¼ıÀÚÅ°ÆĞµå
+        //ìˆ«ìí‚¤íŒ¨ë“œ
         btn0=new JButton("0");
         btn0.setBounds(310,350,50,25);
         btn0.setBackground(Color.yellow);
@@ -235,7 +235,7 @@ implements ActionListener{
         btn9.addActionListener(this);
         panel.add(btn9);
         
-        //¿µ¹®Å°ÆĞµå
+        //ì˜ë¬¸í‚¤íŒ¨ë“œ
         
         btnq=new JButton("q");
         btnq.setBounds(310,375,50,25);
@@ -422,7 +422,7 @@ implements ActionListener{
         
         Manager_pn mgpn=new Manager_pn();
         String str=mgpn.Manager_pn();
-        JLabel managerphone= new JLabel("°ü¸®ÀÚ ¿¬¶ôÃ³:"+str);
+        JLabel managerphone= new JLabel("ê´€ë¦¬ì ì—°ë½ì²˜:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
@@ -442,7 +442,7 @@ implements ActionListener{
 				userText.setText("");
 	            passText.setText("");
 			}
-			//·Î±×ÀÎ¹öÆ°
+			//ë¡œê·¸ì¸ë²„íŠ¼
 			else if (obj==btnLogin)
 			{
 				User_Login_Event login=new User_Login_Event();
@@ -450,18 +450,18 @@ implements ActionListener{
 				if(i == 1){
 					Pay pay=new Pay();
 					pay.setVisible(true);
-					JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
 					dispose();
 					
 				}
 				else
 				{
 
-					JOptionPane.showMessageDialog(null, "·Î±×ÀÎ ½ÇÆĞ");
+					JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ ì‹¤íŒ¨");
 				}
 				
 			}
-			//È¸¿ø°¡ÀÔ¹öÆ°
+			//íšŒì›ê°€ì…ë²„íŠ¼
 			else if(obj==btnjoin)
 			{
 				User_Login_Event join=new User_Login_Event();
@@ -471,12 +471,12 @@ implements ActionListener{
 				dispose();
 				
 			}
-			//µÚ·Î°¡±â¹öÆ°
+			//ë’¤ë¡œê°€ê¸°ë²„íŠ¼
 			else if (obj==back)
 			{
-				//µÚ·Î°¡±â ±â´É
+				//ë’¤ë¡œê°€ê¸° ê¸°ëŠ¥
 			}
-			//Æù¹øÈ£ÀÔ·Â
+			//í°ë²ˆí˜¸ì…ë ¥
 			else if(obj==btn0)
 			{
 				userText.setText(userText.getText() + "0"); 

@@ -39,7 +39,7 @@ implements ActionListener{
 	{
         textField = new JTextField(30);
         textArea = new JTextArea(10, 30);
-        userList = new JList<String>(new String[]{"À¯Àú1", "À¯Àú2", "À¯Àú3"});
+        userList = new JList<String>(new String[]{"ìœ ì €1", "ìœ ì €2", "ìœ ì €3"});
         JScrollPane scrollPane = new JScrollPane(textArea);
         JScrollPane userListScrollPane = new JScrollPane(userList);
         
@@ -47,9 +47,9 @@ implements ActionListener{
         bottomPanel.setPreferredSize(new Dimension(700, 50));
         bottomPanel.setLayout(new BorderLayout());
         bottomPanel.add(textField, BorderLayout.CENTER);
-        sendButton = new JButton("Àü¼Û");
+        sendButton = new JButton("ì „ì†¡");
         sendButton.setBackground(new Color(204,204,204));
-        exitButton=new JButton("³ª°¡±â");
+        exitButton=new JButton("ë‚˜ê°€ê¸°");
         bottomPanel.add(sendButton, BorderLayout.EAST);
         
         userListScrollPane.setPreferredSize(new Dimension(100, 500));
@@ -72,7 +72,7 @@ implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String message = textField.getText();
         if (message.trim().length() > 0) {
-            textArea.append("³ª: " + message + "\n");
+            textArea.append("ë‚˜: " + message + "\n");
             textField.setText("");
         }
 	}

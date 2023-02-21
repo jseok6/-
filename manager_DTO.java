@@ -7,7 +7,7 @@ public class Manager_DTO {
 	private String manager_tel;
 	private String manager_email;
 	
-	//»ı¼ºÀÚ ¿À¹ö·Îµù
+	//ìƒì„±ì ì˜¤ë²„ë¡œë”©
 	Manager_DTO(String manager_id, String manager_pw, String manager_name, String manager_tel, String manager_email)
 	{
 		this.manager_id=manager_id;

@@ -12,12 +12,12 @@ public class QuestUI extends JFrame{
 	private JButton check;
 	private JButton back;
 	
-	Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+	Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
 	
 	ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
 	
 	public QuestUI() {
-		setTitle("Áú¹®Ã¢");
+		setTitle("ì§ˆë¬¸ì°½");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
@@ -57,17 +57,17 @@ public class QuestUI extends JFrame{
 		
 		JTextField title=new JTextField(20);
 		title.setBounds(170, 50, 700, 100);
-		title.setText("                                         Áú¹® ³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		title.setText("                                         ì§ˆë¬¸ ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		title.setFont(font);
 		panel.add(title);
 		
 		JTextField detail=new JTextField(20);
 		detail.setBounds(170,200,700,300);
-		detail.setText("Áú¹®³»¿ë:");
+		detail.setText("ì§ˆë¬¸ë‚´ìš©:");
 		detail.setFont(font);
 		panel.add(detail);
 		
-		JButton check=new JButton("È®ÀÎ");
+		JButton check=new JButton("í™•ì¸");
 		check.setBounds(430, 550, 200, 100);
 		check.setFont(font);
 		check.setBackground(Color.yellow);

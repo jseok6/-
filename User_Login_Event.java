@@ -12,7 +12,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 
-//·Î±×ÀÎÀÌº¥Æ®
+//ë¡œê·¸ì¸ì´ë²¤íŠ¸
 public class User_Login_Event {
 	Connection con=null;
 	PreparedStatement pstmt=null;
@@ -23,7 +23,7 @@ public class User_Login_Event {
 	
 	public int sql_run(int member_tel, String member_pw) {
 		String test = null;
-		//·Î±×ÀÎ
+		//ë¡œê·¸ì¸
 		String queryLogin = "select member_pw  from member where member_tel = ?";
 		try {
 			con=DBconnect.getConnection();
@@ -37,7 +37,7 @@ public class User_Login_Event {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.print("Àß¸øÀÔ·Â");
+			System.out.print("ì˜ëª»ì…ë ¥");
 			e.printStackTrace();	
 		}
 		if(member_pw.equals(test)){
@@ -52,7 +52,7 @@ public class User_Login_Event {
 	}
 	
 
-	//°¡ÀÔ
+	//ê°€ì…
 	public void join(int num,String pass)
 	{	
         String sql = "INSERT INTO member VALUES (?,?,?,?)";
@@ -73,13 +73,13 @@ public class User_Login_Event {
 	    
 	    if (rs==1)
 	    {
-	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ¿Ï·á");
+	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì™„ë£Œ");
 	    	Pay pay=new Pay();
         	pay.setVisible(true);
-        	JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
+        	JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
 	    }
 	    else {
-	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ½ÇÆĞ");
+	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì‹¤íŒ¨");
 	    }
             
         } 

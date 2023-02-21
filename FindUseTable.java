@@ -1,7 +1,7 @@
 package study;
 
 import java.awt.Color;
-//ÀÇÀÚÁ¤º¸(seatÅ×ÀÌºí) °¡Á®¿À±â
+//ì˜ìì •ë³´(seatí…Œì´ë¸”) ê°€ì ¸ì˜¤ê¸°
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,21 +9,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//USE(»ç¿ë)Å×ÀÌºí °Ë»ö
+//USE(ì‚¬ìš©)í…Œì´ë¸” ê²€ìƒ‰
 public class FindUseTable {	
 	
-	//»ç¿ë¹øÈ£ È®ÀÎ- ÀÇÀÚ¹øÈ£·Î Ã£±â
+	//ì‚¬ìš©ë²ˆí˜¸ í™•ì¸- ì˜ìë²ˆí˜¸ë¡œ ì°¾ê¸°
 	public String findUse(int seatnum) throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null, rs2 = null;
 		String queryFindUse="select useNum from `use` "
-				+ "where seatNum = ?"; //»ç¿ë¹øÈ£ È®ÀÎ
+				+ "where seatNum = ?"; //ì‚¬ìš©ë²ˆí˜¸ í™•ì¸
 		String usenumReturn=null;
 		
 		String queryFindmemberTel="select memberTel from `use` "
-				+ "where seatNum = ?"; //¸â¹öÀüÈ­¹øÈ£ È®ÀÎ
+				+ "where seatNum = ?"; //ë©¤ë²„ì „í™”ë²ˆí˜¸ í™•ì¸
 		String memberTel = null;
 		
 		try
@@ -32,19 +32,19 @@ public class FindUseTable {
 			pstmt=con.prepareStatement(queryFindUse);
 			pstmt.setInt(1, seatnum);
 			rs = pstmt.executeQuery();
-			if(rs.next()) //»ç¿ë¹øÈ£°¡ ÀÖÀ¸¸é
+			if(rs.next()) //ì‚¬ìš©ë²ˆí˜¸ê°€ ìˆìœ¼ë©´
 			{
 				pstmt=con.prepareStatement(queryFindmemberTel);
 				pstmt.setInt(1, seatnum);
 				rs2 = pstmt.executeQuery();
-				//È¸¿øÀüÈ­¹øÈ£ Ã£¾Æ¿Í¼­ ¸®ÅÏ
+				//íšŒì›ì „í™”ë²ˆí˜¸ ì°¾ì•„ì™€ì„œ ë¦¬í„´
 				if(rs2.next()) {					
 					usenumReturn=rs2.getString(1);
 				}
 			}
-			else //»ç¿ë¹øÈ£°¡ ¾øÀ¸¸é
+			else //ì‚¬ìš©ë²ˆí˜¸ê°€ ì—†ìœ¼ë©´
 			{
-				usenumReturn="0"; //0 ¸®ÅÏ
+				usenumReturn="0"; //0 ë¦¬í„´
 			}
 		}
 		catch (SQLException e) 

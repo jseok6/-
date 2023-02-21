@@ -19,12 +19,12 @@ public class UserMainUI extends JFrame {
 	private JButton addpay;
 	private JButton exit;
 	private JList list;
-	String [] question= {"Áú¹®:~~~~~"};
+	String [] question= {"ì§ˆë¬¸:~~~~~"};
 	
 	
 
-	private JButton answerButton;//ˆĞº¯¹öÆ°
-	private JButton questButton;//Áú¹®¹öÆ°
+	private JButton answerButton;//ëŒ­ë³€ë²„íŠ¼
+	private JButton questButton;//ì§ˆë¬¸ë²„íŠ¼
 
 	ImageIcon img=new ImageIcon("./Button_Image/addpay.jpg");
 	ImageIcon imgexit=new ImageIcon("./Button_Image/exit.jpg");
@@ -63,26 +63,26 @@ public class UserMainUI extends JFrame {
 	{
 		panel.setLayout(null);
 		
-		Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+		Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
 		
-		JLabel remaintime=new JLabel("³²Àº ½Ã°£:");
+		JLabel remaintime=new JLabel("ë‚¨ì€ ì‹œê°„:");
 		remaintime.setBounds(400,0,100,50);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		
-		//°ü¸®ÀÚ ÀüÈ­¹øÈ£ ¶ß°ÔÇÏ±â
+		//ê´€ë¦¬ì ì „í™”ë²ˆí˜¸ ëœ¨ê²Œí•˜ê¸°
 		Manager_pn mgpn=new Manager_pn();
         String managerphone_str=mgpn.Manager_pn();
-		JLabel ManagerPhone = new JLabel("°ü¸®ÀÚ ¿¬¶ôÃ³:"+managerphone_str);
+		JLabel ManagerPhone = new JLabel("ê´€ë¦¬ì ì—°ë½ì²˜:"+managerphone_str);
 		ManagerPhone.setBounds(400, 20, 300, 50);
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
 		
 		
-		//°ü¸®ÀÚÀÌ¸ŞÀÏ ¶ß°ÔÇÏ±â
+		//ê´€ë¦¬ìì´ë©”ì¼ ëœ¨ê²Œí•˜ê¸°
 		Manager_pn mgem=new Manager_pn();
 		String managerEmail_str=mgem.manager_email();
-		JLabel managerEmail=new JLabel("°ü¸®ÀÚÀÌ¸ŞÀÏ:"+managerEmail_str);
+		JLabel managerEmail=new JLabel("ê´€ë¦¬ìì´ë©”ì¼:"+managerEmail_str);
 		managerEmail.setBounds(400,40,300,50);
 		managerEmail.setFont(font);
 		panel.add(managerEmail);
@@ -104,7 +104,7 @@ public class UserMainUI extends JFrame {
         
         panel.setBackground(Color.pink);
         
-        //Ãß°¡°áÁ¦ ±â´É
+        //ì¶”ê°€ê²°ì œ ê¸°ëŠ¥
         addpay.addActionListener(new ActionListener() {
 			
 			@Override
@@ -116,7 +116,7 @@ public class UserMainUI extends JFrame {
 			}
 		});
         
-        //Åğ½Ç ±â´É
+        //í‡´ì‹¤ ê¸°ëŠ¥
         exit.addActionListener(new ActionListener() {
 			
 			@Override
@@ -132,29 +132,29 @@ public class UserMainUI extends JFrame {
 	public void QuestionPanel(JPanel panel)
 	{
 		panel.setLayout(null);
-		Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+		Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
 		
-		//Áú¹®¸®½ºÆ®µé
+		//ì§ˆë¬¸ë¦¬ìŠ¤íŠ¸ë“¤
 		list=new JList(question);
 		list.setFont(font);		
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);	
 		list.setBounds(730, 100, 320, 500);
 		panel.add(list);
 		
-		JLabel quest=new JLabel("Áú¹®");
+		JLabel quest=new JLabel("ì§ˆë¬¸");
 		quest.setBounds(880,50,100,50);
 		quest.setBackground(Color.cyan);
 		quest.setFont(font);
 		panel.add(quest);
 		
 		
-		JButton questButton=new JButton("Áú¹®ÇÏ±â");
+		JButton questButton=new JButton("ì§ˆë¬¸í•˜ê¸°");
 		questButton.setBounds(700,615,192,50);
 		questButton.setBackground(Color.yellow);
 		questButton.setFont(font);
 		panel.add(questButton);
 		
-		JButton answerButton=new JButton("´äº¯ÇÏ±â");
+		JButton answerButton=new JButton("ë‹µë³€í•˜ê¸°");
 		answerButton.setBounds(892,615,192,50);
 		answerButton.setBackground(Color.yellow);
 		answerButton.setFont(font);
@@ -162,7 +162,7 @@ public class UserMainUI extends JFrame {
 		panel.setBackground(Color.green);
 		
 		
-		//Áú¹®ÇÏ±â¹öÆ°
+		//ì§ˆë¬¸í•˜ê¸°ë²„íŠ¼
 		questButton.addActionListener(new ActionListener() {
 			
 			@Override

@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//°ü¸®ÀÚ ÀÌ¸§ °¡Á®¿À±â
+//ê´€ë¦¬ì ì´ë¦„ ê°€ì ¸ì˜¤ê¸°
 public class FindManagerName {
 	public String managerName(String mid) throws SQLException
 	{

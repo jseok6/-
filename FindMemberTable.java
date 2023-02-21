@@ -1,7 +1,7 @@
 package study;
 
 import java.awt.Color;
-//ÀÇÀÚÁ¤º¸(seatÅ×ÀÌºí) °¡Á®¿À±â
+//ì˜ìì •ë³´(seatí…Œì´ë¸”) ê°€ì ¸ì˜¤ê¸°
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,10 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//Member(È¸¿ø)Å×ÀÌºí °Ë»ö
+//Member(íšŒì›)í…Œì´ë¸” ê²€ìƒ‰
 public class FindMemberTable {	
 	
-	//È¸¿ø ÀüÈ­¹øÈ£ È®ÀÎ- ÀÇÀÚ¹øÈ£·Î Ã£±â
+	//íšŒì› ì „í™”ë²ˆí˜¸ í™•ì¸- ì˜ìë²ˆí˜¸ë¡œ ì°¾ê¸°
 	public String findMemberTel(int seatnum) throws SQLException
 	{
 		Connection con = null;
@@ -28,9 +28,9 @@ public class FindMemberTable {
 			pstmt=con.prepareStatement(queryFindUse);
 			pstmt.setInt(1, seatnum);
 			rs = pstmt.executeQuery();
-			if(rs.next()) //»ç¿ë¹øÈ£°¡ ÀÖÀ¸¸é
+			if(rs.next()) //ì‚¬ìš©ë²ˆí˜¸ê°€ ìˆìœ¼ë©´
 			{
-				//È¸¿øÀüÈ­¹øÈ£ Ã£¾Æ¿Í¼­ usenumReturn°ªÀ¸·Î ³Ö¾îÁÖ±â
+				//íšŒì›ì „í™”ë²ˆí˜¸ ì°¾ì•„ì™€ì„œ usenumReturnê°’ìœ¼ë¡œ ë„£ì–´ì£¼ê¸°
 				usenumReturn=rs.getString(1);
 			}
 			else
