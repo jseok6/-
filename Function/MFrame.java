@@ -1,4 +1,4 @@
-package study.function;
+package function;
 
 import java.awt.Color;
 import java.awt.FlowLayout;

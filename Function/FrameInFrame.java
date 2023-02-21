@@ -1,4 +1,4 @@
-package study.function;
+package function;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
