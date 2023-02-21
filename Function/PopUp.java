@@ -5,12 +5,12 @@ import javax.swing.*;
 public class PopUp {
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
-        int result = JOptionPane.showConfirmDialog(jFrame, "OO¹ø ÀÚ¸®¸¦ ¼±ÅÃ ÇÏ½Ã°Ú½À´Ï±î?");
+        int result = JOptionPane.showConfirmDialog(jFrame, "OOë²ˆ ìë¦¬ë¥¼ ì„ íƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 
         if (result == 0)
-            System.out.println("You pressed È®ÀÎ");
+            System.out.println("You pressed í™•ì¸");
         else if (result == 1)
-        	 System.out.println("You pressed ÀÚ¸® ¼±ÅÃ È­¸éÀ¸·Î");
+        	 System.out.println("You pressed ìë¦¬ ì„ íƒ í™”ë©´ìœ¼ë¡œ");
     }
 
 }
