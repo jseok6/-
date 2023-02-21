@@ -41,9 +41,9 @@ public class Seat2 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ®\\-001.jpg"));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸\\-001.jpg"));
 		frame.setSize(new Dimension(1100, 728));
-		frame.setTitle("2Ãş ÁÂ¼® ¹èÄ¡µµ");
+		frame.setTitle("2ì¸µ ì¢Œì„ ë°°ì¹˜ë„");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
