@@ -71,7 +71,7 @@ public class UserMainUI extends JFrame {
 		panel.add(remaintime);
 		
 		//관리자 전화번호 뜨게하기
-		Manager_pn mgpn=new Manager_pn();
+		ManagerPn mgpn=new ManagerPn();
         String managerphone_str=mgpn.Manager_pn();
 		JLabel ManagerPhone = new JLabel("관리자 연락처:"+managerphone_str);
 		ManagerPhone.setBounds(400, 20, 300, 50);
@@ -80,7 +80,7 @@ public class UserMainUI extends JFrame {
 		
 		
 		//관리자이메일 뜨게하기
-		Manager_pn mgem=new Manager_pn();
+		ManagerPn mgem=new ManagerPn();
 		String managerEmail_str=mgem.manager_email();
 		JLabel managerEmail=new JLabel("관리자이메일:"+managerEmail_str);
 		managerEmail.setBounds(400,40,300,50);

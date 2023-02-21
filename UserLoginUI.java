@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import javax.swing.border.*;
 
-public class User_LoginUI extends JFrame
+public class UserLoginUI extends JFrame
 implements ActionListener{
 	
 	 private JButton btnLogin;
@@ -74,7 +74,7 @@ implements ActionListener{
 	 
 	 
 	 
-	public User_LoginUI() {
+	public UserLoginUI() {
 		 // setting
         setTitle("FamilyStudyCafe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -420,7 +420,7 @@ implements ActionListener{
         panel.add(btnm);
         
         
-        Manager_pn mgpn=new Manager_pn();
+        ManagerPn mgpn=new ManagerPn();
         String str=mgpn.Manager_pn();
         JLabel managerphone= new JLabel("관리자 연락처:"+str);
         managerphone.setFont(font);
@@ -445,7 +445,7 @@ implements ActionListener{
 			//로그인버튼
 			else if (obj==btnLogin)
 			{
-				User_Login_Event login=new User_Login_Event();
+				UserLoginEvent login=new UserLoginEvent();
 				int i = login.sql_run(Integer.parseInt(userText.getText()), passText.getText());
 				if(i == 1){
 					Pay pay=new Pay();
@@ -464,7 +464,7 @@ implements ActionListener{
 			//회원가입버튼
 			else if(obj==btnjoin)
 			{
-				User_Login_Event join=new User_Login_Event();
+				UserLoginEvent join=new UserLoginEvent();
 				join.join(Integer.parseInt(userText.getText()),passText.getText());
 				userText.setText("");
 				passText.setText("");
@@ -632,7 +632,7 @@ implements ActionListener{
 	}
 
 	public static void main(String[] args) {
-		new User_LoginUI();
+		new UserLoginUI();
 
 	}
 

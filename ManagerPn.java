@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Manager_pn {
+public class ManagerPn {
 	Connection con=null;
 	String sql="SELECT manager_tel FROM manager WHERE manager_id=?";
 	String sql2="SELECT manager_email FROM manager WHERE manager_id=?";

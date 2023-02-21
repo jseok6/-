@@ -5,7 +5,7 @@ import java.sql.*;
 
 
 
-public class Pay_charge {
+public class PayCharge {
 	
 	Connection con=null;
 	PreparedStatement pstmt=null;

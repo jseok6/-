@@ -1,6 +1,6 @@
 package study;
 
-public class Manager_DTO {
+public class ManagerDTO {
 	private String manager_id;
 	private String manager_pw;
 	private String manager_name;
@@ -8,7 +8,7 @@ public class Manager_DTO {
 	private String manager_email;
 	
 	//생성자 오버로딩
-	Manager_DTO(String manager_id, String manager_pw, String manager_name, String manager_tel, String manager_email)
+	ManagerDTO(String manager_id, String manager_pw, String manager_name, String manager_tel, String manager_email)
 	{
 		this.manager_id=manager_id;
 		this.manager_pw=manager_pw;

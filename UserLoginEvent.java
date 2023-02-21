@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 
 //로그인이벤트
-public class User_Login_Event {
+public class UserLoginEvent {
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
@@ -48,7 +48,7 @@ public class User_Login_Event {
 	
 	}
 	public static void main(String[] args) {
-		new User_Login_Event();
+		new UserLoginEvent();
 	}
 	
 
