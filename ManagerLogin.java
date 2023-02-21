@@ -3,10 +3,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.TextListener;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,22 +21,17 @@ import javax.swing.JTextField;
 public class ManagerLogin extends JFrame
 implements ActionListener{
 	
+	String host = "127.0.0.1";
+	int port = 3306;
+	Socket sock;
+	
 	 private JButton btnLogin;
 	 private JButton btnInit;
-	 private JButton btnjoin;
 	 private JButton btnBack;
 	 private JPasswordField managerPwText;
 	 private JTextField managerIdText;
-	 private JLabel managerphone;
 	 private JLabel label;
 	 private JLabel infoMsgLabel;
-	 
-	 Socket sock;
-	 String id;
-	 String ip = "127.0.0.1";
-	 int port = 8003;
-	 BufferedReader in;
-	 PrintWriter out;
 	 
 	 private JButton btn1;
 	 private JButton btn2;
@@ -75,10 +73,161 @@ implements ActionListener{
 	 private JButton btnn;
 	 private JButton btnm;
 	 
-	 
 	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
 	 
-	 
+	class IdTextLisener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				Object obj = e.getSource();
+				if(obj==btn0)
+				{
+					managerIdText.setText(managerIdText.getText() + "0"); 
+				}
+				else if(obj==btn1)
+				{
+					managerIdText.setText(managerIdText.getText()+ "1");
+				}
+				else if(obj==btn2)
+				{
+					managerIdText.setText(managerIdText.getText()+ "2");
+				}
+				else if(obj==btn3)
+				{
+					managerIdText.setText(managerIdText.getText()+ "3");
+				}
+				else if(obj==btn4)
+				{
+					managerIdText.setText(managerIdText.getText()+ "4");
+				}
+				else if(obj==btn5)
+				{
+					managerIdText.setText(managerIdText.getText()+ "5");
+				}
+				else if(obj==btn6)
+				{
+					managerIdText.setText(managerIdText.getText()+ "6");
+				}
+				else if(obj==btn7)
+				{
+					managerIdText.setText(managerIdText.getText()+ "7");
+				}
+				else if(obj==btn8)
+				{
+					managerIdText.setText(managerIdText.getText()+ "8");
+				}
+				else if(obj==btn9)
+				{
+					managerIdText.setText(managerIdText.getText()+ "9");
+				}
+				else if(obj==btnq)
+				{
+					managerIdText.setText(managerIdText.getText()+"q");
+				}
+				else if(obj==btnw)
+				{
+					managerIdText.setText(managerIdText.getText()+"w");
+				}
+				else if(obj==btne)
+				{
+					managerIdText.setText(managerIdText.getText()+"e");
+				}
+				else if(obj==btnr)
+				{
+					managerIdText.setText(managerIdText.getText()+"r");
+				}
+				else if(obj==btnt)
+				{
+					managerIdText.setText(managerIdText.getText()+"t");
+				}
+				else if(obj==btny)
+				{
+					managerIdText.setText(managerIdText.getText()+"y");
+				}
+				else if(obj==btnu)
+				{
+					managerIdText.setText(managerIdText.getText()+"u");
+				}
+				else if(obj==btni)
+				{
+					managerIdText.setText(managerIdText.getText()+"i");
+				}
+				else if(obj==btno)
+				{
+					managerIdText.setText(managerIdText.getText()+"o");
+				}
+				else if(obj==btnp)
+				{
+					managerIdText.setText(managerIdText.getText()+"p");
+				}
+				else if(obj==btna)
+				{
+					managerIdText.setText(managerIdText.getText()+"a");
+				}
+				else if(obj==btns)
+				{
+					managerIdText.setText(managerIdText.getText()+"s");
+				}
+				else if(obj==btnd)
+				{
+					managerIdText.setText(managerIdText.getText()+"d");
+				}
+				else if(obj==btnf)
+				{
+					managerIdText.setText(managerIdText.getText()+"f");
+				}
+				else if(obj==btng)
+				{
+					managerIdText.setText(managerIdText.getText()+"g");
+				}
+				else if(obj==btnh)
+				{
+					managerIdText.setText(managerIdText.getText()+"h");
+				}
+				else if(obj==btnj)
+				{
+					managerIdText.setText(managerIdText.getText()+"j");
+				}
+				else if(obj==btnk)
+				{
+					managerIdText.setText(managerIdText.getText()+"k");
+				}
+				else if(obj==btnl)
+				{
+					managerIdText.setText(managerIdText.getText()+"l");
+				}
+				else if(obj==btnz)
+				{
+					managerIdText.setText(managerIdText.getText()+"z");
+				}
+				else if(obj==btnx)
+				{
+					managerIdText.setText(managerIdText.getText()+"x");
+				}
+				else if(obj==btnc)
+				{
+					managerIdText.setText(managerIdText.getText()+"c");
+				}
+				else if(obj==btnv)
+				{
+					managerIdText.setText(managerIdText.getText()+"v");
+				}
+				else if(obj==btnb)
+				{
+					managerIdText.setText(managerIdText.getText()+"b");
+				}
+				else if(obj==btnn)
+				{
+					managerIdText.setText(managerIdText.getText()+"n");
+				}
+				else if(obj==btnm)
+				{
+					managerIdText.setText(managerIdText.getText()+"m");
+				}
+			} catch (Exception e2) {
+			}
+		}	
+	}
 	 
 	public ManagerLogin() {
 		 // setting
@@ -124,6 +273,13 @@ implements ActionListener{
        
         managerIdText = new JTextField(20);
         managerIdText.setBounds(517, 229, 160, 25);
+        managerIdText.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new IdTextLisener().actionPerformed(e);
+			}
+		});
         panel.add(managerIdText);
        
         managerPwText = new JPasswordField(20);
@@ -132,7 +288,7 @@ implements ActionListener{
         managerPwText.addActionListener(new ActionListener() {          
             @Override
             public void actionPerformed(ActionEvent e) {
-            	//로그인체크
+            	
             }
         });
         
@@ -240,7 +396,6 @@ implements ActionListener{
         panel.add(btn9);
         
         //영문키패드
-        
         btnq=new JButton("q");
         btnq.setBounds(310,375,50,25);
         btnq.setBackground(Color.yellow);
@@ -430,6 +585,10 @@ implements ActionListener{
 			Object obj=e.getSource();
 			if(obj==btnInit)
 			{
+//				if(sock==null) 
+//				{
+//					managerConnect();//처음 시도
+//				}
 				managerIdText.setText("");
 	            managerPwText.setText("");
 			}
@@ -456,6 +615,20 @@ implements ActionListener{
 
 		}
 	}
+	
+	public void managerConnect()
+	{
+		try
+		{
+			sock = new Socket(host, port);
+			//in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			//out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}// --connect
 	
 	public static void main(String[] args) {
 		new ManagerLogin();
