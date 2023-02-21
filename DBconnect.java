@@ -7,12 +7,16 @@ public class DBconnect
 {
     public static Connection getConnection() {
         Connection con = null;
-        String url = "jdbc:mysql://localhost/projec";
-        String id = "root";
-        String pw = "whdtjrsq124!";
+//        String url = "jdbc:mysql://localhost/projec";
+//        String id = "root";
+//        String pw = "whdtjrsq124!";
+    	String url = "jdbc:mysql://localhost:3306/familystudycafe";
+		String id = "root";
+		String password = "1234";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, id, pw);
+//            con = DriverManager.getConnection(url, id, pw);
+            con = DriverManager.getConnection(url, id, password);
             return con;
         } catch (Exception e) {
             System.out.println("오류 : " + e.toString());

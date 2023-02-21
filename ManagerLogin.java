@@ -438,7 +438,7 @@ implements ActionListener{
 				ManagerLoginEvent2 mLE2=new ManagerLoginEvent2();
 				int i = mLE2.managerLogin2((managerIdText.getText()), managerPwText.getText());
 				if(i == 1){
-					FindManagerName mgr = new FindManagerName();
+					FindManagerTable mgr = new FindManagerTable();
 					String name = mgr.managerName(managerIdText.getText());//managerName읽어옴
 					ManagerMain managerMain = new ManagerMain(name);
 					managerMain.setTitle("FamilyStudyCafe_ManagerMain");

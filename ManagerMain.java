@@ -71,13 +71,13 @@ class QuestInfoDTO{
 }
 
 class QuestDialog extends JDialog{
-	public QuestDialog(String title, boolean modal, ManagerInfoDTO managerInfo, QuestInfoDTO questInfo,ManagerMain mMain)
+	public QuestDialog(String title, boolean modal, String managerInfo, QuestInfoDTO questInfo,ManagerMain mMain)
 	{
 		//다이얼로그 생성자 호출
 		super(mMain, title, modal);
 		
 		//다이얼로그 설정
-		this.setTitle(managerInfo.getManagerId()+"님 환영합니다."); //매니저 ID 읽어와서 창 제목 변경
+		this.setTitle(managerInfo+" 환영합니다."); //매니저 Name 읽어와서 창 제목 변경
 		this.setBounds(100, 100, 500, 700);
 		this.setLocationRelativeTo(mMain);
 		this.setResizable(false);
@@ -167,7 +167,7 @@ public class ManagerMain extends JFrame {
 
 
 	//프레임 생성
-	public ManagerMain(String name) {
+	public ManagerMain(String name) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1114, 736);
 		contentPane = new JPanel();
@@ -200,11 +200,14 @@ public class ManagerMain extends JFrame {
 		Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
 		
+		JLabel memberTelLabel = new JLabel(); //seatInfo패널 회원전화번호
+		JLabel remainTimeNumLabel = new JLabel("일시분초"); //memberInfo패널 남은시간
+		JLabel idLabel = new JLabel();//관리자 이름 들어가는 라벨
+		
 		setVisible(true);
 			//----------------------------------------------------------------------------	
 			
 			//좌석정보 패널- 켜지면 다른 좌석 버튼등은 다 못누르게 해야함(처음에 활성화안되고 안보이는 상태)
-			//TODO DB연동해서 seatNum, seatAvail 받아와야함
 			JPanel seatInfoPanel = new JPanel();
 			seatInfoPanel.setOpaque(true);
 			seatInfoPanel.setBorder(lb);
@@ -232,48 +235,46 @@ public class ManagerMain extends JFrame {
 			seatInfoStrLabel_1.setBounds(37, 10, 77, 23);
 			memberInfoPanel.add(seatInfoStrLabel_1);
 			
-			//"남은 시간" 글자 라벨
-			JLabel seatNumStrLabel_1 = new JLabel("\uB0A8\uC740\uC2DC\uAC04");
-			seatNumStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			seatNumStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
-			seatNumStrLabel_1.setBackground(new Color(128, 0, 0));
-			seatNumStrLabel_1.setBounds(12, 79, 66, 23);
-			memberInfoPanel.add(seatNumStrLabel_1);
+			//"남은시간" 글자 라벨
+			JLabel remaiinTimeStrLabel = new JLabel("남은시간");
+			remaiinTimeStrLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			remaiinTimeStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			remaiinTimeStrLabel.setBackground(new Color(128, 0, 0));
+			remaiinTimeStrLabel.setBounds(12, 79, 66, 23);
+			memberInfoPanel.add(remaiinTimeStrLabel);
 			
-			//TODO DB의 Member테이블 remainTime 연동필요
 			//남은시간 글자 라벨
-			JLabel seatNumLabel_1 = new JLabel("10일 11시간12분13초");
-			seatNumLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			seatNumLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
-			seatNumLabel_1.setBackground(new Color(128, 0, 0));
-			seatNumLabel_1.setBounds(12, 99, 141, 23);
-			memberInfoPanel.add(seatNumLabel_1);
+			remainTimeNumLabel.setText("00일00시간00분00초");
+			remainTimeNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			remainTimeNumLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			remainTimeNumLabel.setBackground(new Color(128, 0, 0));
+			remainTimeNumLabel.setBounds(12, 99, 141, 23);
+			memberInfoPanel.add(remainTimeNumLabel);
 			
 			//"번 좌석"글자 라벨
-			JLabel memberStrLabel_1 = new JLabel("번 좌석");
-			memberStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			memberStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
-			memberStrLabel_1.setBackground(new Color(128, 0, 0));
-			memberStrLabel_1.setBounds(52, 191, 62, 23);
-			memberInfoPanel.add(memberStrLabel_1);
+			JLabel seatStringLabel = new JLabel("번 좌석");
+			seatStringLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			seatStringLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatStringLabel.setBackground(new Color(128, 0, 0));
+			seatStringLabel.setBounds(52, 191, 62, 23);
+			memberInfoPanel.add(seatStringLabel);
 			
-			//TODO DB의 SEAT테이블 seatNum 연동필요
 	     	//좌석번호 숫자 라벨
-			JLabel seatNumLabel_memberInfoPanel = new JLabel("105");
+			JLabel seatNumLabel_memberInfoPanel = new JLabel("010");
 			seatNumLabel_memberInfoPanel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumLabel_memberInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatNumLabel_memberInfoPanel.setBackground(new Color(128, 0, 0));
 			seatNumLabel_memberInfoPanel.setBounds(12, 191, 39, 23);
 			memberInfoPanel.add(seatNumLabel_memberInfoPanel);
 			
-			//TODO DB의 SEAT테이블 seatAvail 연동필요
+			//TODO DB의 SEAT테이블 seatAvail 연동필요?
 			//좌석상태 글자 라벨(이용중/일시정지?)
-			JLabel memberTelLabel_1 = new JLabel("이용중");
-			memberTelLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			memberTelLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
-			memberTelLabel_1.setBackground(new Color(128, 0, 0));
-			memberTelLabel_1.setBounds(12, 218, 55, 23);
-			memberInfoPanel.add(memberTelLabel_1);
+			JLabel seatAvailLabel = new JLabel("이용중");
+			seatAvailLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			seatAvailLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+			seatAvailLabel.setBackground(new Color(128, 0, 0));
+			seatAvailLabel.setBounds(12, 218, 55, 23);
+			memberInfoPanel.add(seatAvailLabel);
 			
 			//닫기버튼
 			JButton closeBtn_MemberInfoPanel = new JButton("X");
@@ -296,6 +297,14 @@ public class ManagerMain extends JFrame {
 			memberInfoPanel.add(closeBtn_MemberInfoPanel);
 			memberInfoPanel.setBorder(lb);
 			contentPane.add(memberInfoPanel);
+			
+			//회원정보 패널의 회원전화번호
+			JLabel memTelLabel_memInfoPanel = new JLabel("010-0000-0000");
+			memTelLabel_memInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
+			memTelLabel_memInfoPanel.setFont(new Font("Dialog", Font.BOLD, 14));
+			memTelLabel_memInfoPanel.setBackground(new Color(128, 0, 0));
+			memTelLabel_memInfoPanel.setBounds(12, 43, 141, 23);
+			memberInfoPanel.add(memTelLabel_memInfoPanel);
 			contentPane.add(seatInfoPanel);
 			
 			//"좌석정보" 글자 라벨
@@ -316,9 +325,8 @@ public class ManagerMain extends JFrame {
 			seatNumStrLabel.setBounds(12, 79, 66, 23);
 			seatInfoPanel.add(seatNumStrLabel);
 			
-			//TODO DB의 SEAT테이블 seatNum 연동필요
 			//좌석번호 숫자 라벨-DB에서? 클릭한 좌석번호 정보를 읽어와서 출력
-			JLabel seatNumLabel_seatInfoPanel = new JLabel("105");
+			JLabel seatNumLabel_seatInfoPanel = new JLabel("000");
 			seatNumLabel_seatInfoPanel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumLabel_seatInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatNumLabel_seatInfoPanel.setBackground(new Color(128, 0, 0));
@@ -337,8 +345,26 @@ public class ManagerMain extends JFrame {
 	    //회원정보 버튼(클릭시 memberInfo 패널 켜짐)
 			JButton memberInfoBtn = new JButton("정보");
 			memberInfoBtn.setBounds(57, 183, 78, 27);
+			memberInfoBtn.setEnabled(false);//기본적으로 비활성화된 상태
 			memberInfoBtn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) { //정보버튼 클릭시 동작
+	    			//회원정보 패널의 "회원정보" 라벨 아래에 전화번호 들어갈 라벨내용을 memtel으로 변경
+	    			memTelLabel_memInfoPanel.setText(memberTelLabel.getText());
+	    			
+	    			//회원정보 패널의 좌석번호 라벨 내용을 좌석번호패널 좌석번호로 변경
+	    			seatNumLabel_memberInfoPanel.setText(seatNumLabel_seatInfoPanel.getText());
+	    			
+	    			//회원정보 패널의 남은시간을 회원테이블에서 찾아와서 변경 TODO OO일OO시OO분OO초 로 변경?
+	    			FindMemberTable findMemberTable = new FindMemberTable();
+	    			String remtime;
+					try {
+						remtime = findMemberTable.findRemainTime(memTelLabel_memInfoPanel.getText());
+						remainTimeNumLabel.setText(remtime);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+	    			
+	    			//좌석정보 패널 비활성화, 회원정보 패널 활성화
 					seatInfoPanel.setEnabled(false);
 					seatInfoPanel.setVisible(false);					
 					memberInfoPanel.setVisible(true);
@@ -351,10 +377,8 @@ public class ManagerMain extends JFrame {
 			memberInfoBtn.setFocusPainted(false);// hide focus rectangle
 			seatInfoPanel.add(memberInfoBtn);
 			
-			//TODO DB의 MEMBER테이블 memberTEL 연동필요
 			//회원 전화번호 라벨
-			JLabel memberTelLabel = new JLabel("010-1234-1234");
-			//memberTelLabel.setOpaque(true);
+			memberTelLabel.setText("010-0000-0000");
 			memberTelLabel.setHorizontalAlignment(JLabel.CENTER);
 			memberTelLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			memberTelLabel.setBackground(new Color(128, 0, 0));
@@ -370,7 +394,6 @@ public class ManagerMain extends JFrame {
 			//panel1F.setVisible(false); //패널 감추기
 			contentPane.add(panel1F);
 			
-			//TODO DB에서 좌석정보 받아와서 이름(seatNum), 상태(seatAvail)에따라 색 등 지정필요
 			//1층 좌석 버튼 생성, 위치지정
 	    	String[] seat1Farr = {"100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110"
 	    			, "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124"
@@ -403,24 +426,18 @@ public class ManagerMain extends JFrame {
 										seat1FBtn[i].setBackground(Color.RED);
 									}
 								} catch (NumberFormatException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								} catch (SQLException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 						} catch (NumberFormatException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				panel1F.add(seat1FBtn[i]);
@@ -541,7 +558,6 @@ public class ManagerMain extends JFrame {
 		panel2F.setLayout(null);
 		contentPane.add(panel2F);
 
-		//TODO DB에서 좌석정보 받아와서 이름(seatNum), 상태(seatAvail)에따라 색 등 지정필요
 		// 2층 좌석 버튼 생성, 위치지정
     	String[] seat2Farr = {"200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210"
     			, "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224"
@@ -570,17 +586,13 @@ public class ManagerMain extends JFrame {
 							seat2FBtn[i].setBackground(Color.RED);
 						}
 					} catch (NumberFormatException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 			} catch (NumberFormatException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			panel2F.add(seat2FBtn[i]);
@@ -705,8 +717,6 @@ public class ManagerMain extends JFrame {
 		
 		
 		//TODO 임시로 해둠, 실제 DB값 받아오고 지우기
-		//managerInfo, quest값 데이터 매개변수로 가진 객체 생성
-		ManagerInfoDTO manager1 = new ManagerInfoDTO("corlwn");
 		QuestInfoDTO quest1 = new QuestInfoDTO("질문입니다");
 		
 		//TODO DB, 채팅질문목록기능 연동해야함
@@ -721,7 +731,7 @@ public class ManagerMain extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 	              // QuestDialog생성
                 QuestDialog questDialog = new QuestDialog //위에서 정의해놓은 QuestDialog 클래스 객체 생성
-                		("", true, manager1,quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
+                		("", true, idLabel.getText(),quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
                 questDialog.setVisible(true);
 			}
 		});
@@ -759,9 +769,8 @@ public class ManagerMain extends JFrame {
 		});
 		contentPane.add(secondFloorBtn);
 		
-		//TODO DB에서 managerID 읽어와서 연동
 		//매개변수로 지금 로그인한 관리자ID넣기
-		JLabel idLabel = new JLabel("관리자:"+name+" 님"); 
+		idLabel.setText("관리자:"+name+" 님");
 		idLabel.setBounds(71, 0, 197, 38);
 		idLabel.setBackground(new Color(255, 255, 255));
 		idLabel.setFont(logoutBtnFont);
@@ -795,16 +804,21 @@ public class ManagerMain extends JFrame {
 					}
     				if(usestat=="0")//리턴받은값이 0이면 회원전화번호 라벨에서 지우기(공백상태로 둠)
     				{
+    					memberInfoBtn.setEnabled(false);
     					memberTelLabel.setText("");
     				}
     				else
     				{
+    					//seatInfo 패널의 정보 버튼 활성화
+    					memberInfoBtn.setEnabled(true); 					
     					//사용 테이블에서 유저 전화번호 검색해와서 집어넣기
     					memberTelLabel.setText(usestat);
     				}
     				
+    				memberInfoPanel.setEnabled(false);
+    				memberInfoPanel.setVisible(false);
     				seatInfoPanel.setVisible(true);
-    				seatInfoPanel.setEnabled(true);
+    				seatInfoPanel.setEnabled(true);   	
     				
     				//패널 아래의 1층좌석 버튼 비활성화
     				seat1FBtn[10].setEnabled(false);
