@@ -17,6 +17,6 @@ public class DBConnect2
         } catch (Exception e) {
             System.out.println("연결오류 : " + e.toString());
         }
-        return null;	
+        return null;
     }
 }

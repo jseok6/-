@@ -9,16 +9,16 @@ public class DBconnect
         Connection con = null;
         int db_portnumber = 3306;
         String db_hostname = "localhost";
-        String urlFormat = "jdbc:mysql://localhost/study";
+        String urlFormat = "jdbc:mysql://localhost:3306/";
         String id = "root";
-        String pw = "whdtjrsq124!";
+        String pw = "1234";
 //        String url=String.format(urlFormat, db_hostname,db_portn)
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(urlFormat, id, pw);
             return con;
         } catch (Exception e) {
-            System.out.println("¿À·ù : " + e.toString());
+            System.out.println("ì—°ê²°ì˜¤ë¥˜ : " + e.toString());
         }
         return null;	
     }

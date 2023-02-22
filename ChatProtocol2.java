@@ -7,19 +7,19 @@ public class ChatProtocol2 {
 	//(C->S) ID:aaa
 	public static final String ID = "ID";
 	
-	//(C->S) CHAT:¹Ş´Â¾ÆÀÌµğ;¸Ş¼¼Áö ex)CHAT:bbb;¹ä¸ÔÀÚ
-	//(S->C) CHAT:º¸³»´Â¾ÆÀÌµğ;¸Ş¼¼Áö ex)CHAT:aaa;¹ä¸ÔÀÚ
+	//(C->S) CHAT:ë°›ëŠ”ì•„ì´ë””;ë©”ì„¸ì§€ ex)CHAT:bbb;ë°¥ë¨¹ì
+	//(S->C) CHAT:ë³´ë‚´ëŠ”ì•„ì´ë””;ë©”ì„¸ì§€ ex)CHAT:aaa;ë°¥ë¨¹ì
 	public static final String CHAT = "CHAT";
 	
-	//(C->S) CHATALL:¸Ş¼¼Áö
-	//(S->C) CHATALL:[º¸³»´Â¾ÆÀÌµğ]¸Ş¼¼Áö
+	//(C->S) CHATALL:ë©”ì„¸ì§€
+	//(S->C) CHATALL:[ë³´ë‚´ëŠ”ì•„ì´ë””]ë©”ì„¸ì§€
 	public static final String CHATALL = "CHATALL";
 	
-	//(C->S) MESSAGE:¹Ş´Â¾ÆÀÌµğ;ÂÊÁö³»¿ë ex)MESSAGE:bbb;¹ä¸ÔÀÚ
-	//(S->C) MESSAGE:º¸³»´Â¾ÆÀÌµğ;ÂÊÁö³»¿ë ex)MESSAGE:aaa;¹ä¸ÔÀÚ
+	//(C->S) MESSAGE:ë°›ëŠ”ì•„ì´ë””;ìª½ì§€ë‚´ìš© ex)MESSAGE:bbb;ë°¥ë¨¹ì
+	//(S->C) MESSAGE:ë³´ë‚´ëŠ”ì•„ì´ë””;ìª½ì§€ë‚´ìš© ex)MESSAGE:aaa;ë°¥ë¨¹ì
 	public static final String MESSAGE = "MESSAGE";
 	
-	//(S->C) CHATLIST:aaa;bbb;ccc;È«±æµ¿;
+	//(S->C) CHATLIST:aaa;bbb;ccc;í™ê¸¸ë™;
 	public static final String CHATLIST = "CHATLIST";
 	
 	public static final String MODE = ":";
