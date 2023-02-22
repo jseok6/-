@@ -1,85 +1,193 @@
 package study;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.List;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.StringTokenizer;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class ChatUI extends JFrame
 implements ActionListener{
+	 
+	String roomName;
+	List userList;
+	JButton bt1,bt2,bt3;
+	JTextField tf;
+	TextArea ta;
+	String id;
+	BufferedReader in;
+	PrintWriter out;
+	Socket sock;
+	int owner;
 	
-	private JPanel panel1;
-	private JPanel bottomPanel;
-	private JTextField textField;
-	private JTextArea textArea;
-	private JList<String> userList;
-	private JButton sendButton;
-	private JButton exitButton;
 	
-	
-	public ChatUI() {
-		 // setting
-        setTitle("ChatUI");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setResizable(true);
-		this.setVisible(true);
-		
-		// panel
-        JPanel panel1 = new JPanel();
-        Chat(panel1);
-		
-		
-		//initGUI
-//		this.setSize(700,600);
-		this.setLocationRelativeTo(null);
-		
+	public ChatUI(String roomname,BufferedReader in, PrintWriter out, String id) {	// ¥‰∫Ø«“ ªÁ∂˜¿« √§∆√πÊ
+		System.out.println("πÊª˝º∫");
+		setSize(450, 500);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.roomName = roomname;
+		this.in = in;
+		this.out = out;
+		this.id = id;
+		setTitle(this.roomName);
+		// //////////////////////////////////////////////////////////////////////////////////////////
+		ta = new TextArea();
+		ta.setBackground(new Color(230,239,255));
+		ta.setForeground(Color.BLACK);
+		ta.setEditable(false);
+		add(BorderLayout.CENTER, ta);
+		// /////////////////////////////////////////////////////////////////////////////////////////
+		JPanel p2 = new JPanel();
+		p2.setLayout(new BorderLayout());
+		userList = new List();
+		p2.add(BorderLayout.CENTER, userList);
+		JPanel p3 = new JPanel();
+		bt2 = new JButton("≥™∞°±‚");
+		bt2.addActionListener(this);
+		p3.add(bt2);
+		p2.add(BorderLayout.SOUTH, p3);
+		add(BorderLayout.EAST, p2);
+		// ///////////////////////////////////////////////////////////////////////////////////////////
+		JPanel p4 = new JPanel();
+		tf = new JTextField("", 30);
+		bt1 = new JButton("∫∏≥ª±‚");
+		p4.add(tf);
+		p4.add(bt1);
+		add(BorderLayout.SOUTH, p4);
+		bt1.addActionListener(this);
+		tf.addActionListener(this);
+		setVisible(true);
+		validate();
 	}
 	
-	public void Chat(JPanel panel)
-	{
-        textField = new JTextField(30);
-        textArea = new JTextArea(10, 30);
-        userList = new JList<String>(new String[]{"Ïú†Ï†Ä1", "Ïú†Ï†Ä2", "Ïú†Ï†Ä3"});
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        JScrollPane userListScrollPane = new JScrollPane(userList);
-        
-        bottomPanel = new JPanel();
-        bottomPanel.setPreferredSize(new Dimension(700, 50));
-        bottomPanel.setLayout(new BorderLayout());
-        bottomPanel.add(textField, BorderLayout.CENTER);
-        sendButton = new JButton("Ï†ÑÏÜ°");
-        sendButton.setBackground(new Color(204,204,204));
-        exitButton=new JButton("ÎÇòÍ∞ÄÍ∏∞");
-        bottomPanel.add(sendButton, BorderLayout.EAST);
-        
-        userListScrollPane.setPreferredSize(new Dimension(100, 500));
-        userListScrollPane.setMaximumSize(new Dimension(150, Integer.MAX_VALUE));
-        sendButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+	public ChatUI(String roomname,BufferedReader in, PrintWriter out, String id, int owner) { // ¡˙πÆ «—ªÁ∂˜¿« √§∆√πÊ
+		System.out.println("πÊª˝º∫");
+		setSize(450, 500);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.roomName = roomname;
+		this.in = in;
+		this.out = out;
+		this.id = id;
+		this.owner = owner;
+		setTitle(this.roomName);
+		// //////////////////////////////////////////////////////////////////////////////////////////
+		ta = new TextArea();
+		ta.setBackground(new Color(230,239,255));
+		ta.setForeground(Color.BLACK);
+		ta.setEditable(false);
+		add(BorderLayout.CENTER, ta);
+		// /////////////////////////////////////////////////////////////////////////////////////////
+		JPanel p2 = new JPanel();
+		p2.setLayout(new BorderLayout());
+		userList = new List();
+		p2.add(BorderLayout.CENTER, userList);
+		JPanel p3 = new JPanel();
+		bt3 = new JButton("¡˙πÆ ¡æ∑·");
+		bt3.addActionListener(this);
+		p3.add(bt3);
+		p2.add(BorderLayout.SOUTH, p3);
+		add(BorderLayout.EAST, p2);
+		// ///////////////////////////////////////////////////////////////////////////////////////////
+		JPanel p4 = new JPanel();
+		tf = new JTextField("", 30);
+		bt1 = new JButton("∫∏≥ª±‚");
+		p4.add(tf);
+		p4.add(bt1);
+		add(BorderLayout.SOUTH, p4);
+		bt1.addActionListener(this);
+		tf.addActionListener(this);
+		setVisible(true);
+		validate();
+	}
+	
+	
+//	public MChatQuestionRoom(String roomname, String msg) {
+//		if(roomname == this.roomname) {
+//			ta.append(msg);
+//		}
+//	}
+	
 
-        setLayout(new BorderLayout());
-        add(scrollPane, BorderLayout.CENTER);
-        add(bottomPanel, BorderLayout.SOUTH);
-        add(userListScrollPane, BorderLayout.EAST);
-        
-       
-        pack();
-        setVisible(true);
-        
-        sendButton.addActionListener(this);
-        
-	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String message = textField.getText();
-        if (message.trim().length() > 0) {
-            textArea.append("ÎÇò: " + message + "\n");
-            textField.setText("");
-        }
+		Object obj = e.getSource();
+		if(obj == bt2) {	//≥™∞°±‚
+			sendMessage(ChatProtocol2.EXIT+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+id);
+			dispose();
+		}else if(obj == bt1 || obj == tf) {
+			String msg = tf.getText().trim();
+			if(msg.length() != 0) {
+				sendMessage(ChatProtocol2.CHAT+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+id+";"+msg); // -> CHAT:πÊ¿Ã∏ß:aaa;æ»≥Á«œººø‰
+				tf.setText("");
+				tf.requestFocus();
+			}
+		}else if(obj == bt3) {
+			sendMessage(ChatProtocol2.DELETELIST+ChatProtocol2.MODE+roomName);
+			sendMessage(ChatProtocol2.EXIT+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+id);
+			dispose();
+		}
 	}
 	
-	public static void main(String[] args) {
+	
+	public void routine(String line) {
+		System.out.println("∑Î line");
+		int idx = line.indexOf(ChatProtocol2.MODE);
+		String cmd = line.substring(0, idx);
+		String data = line.substring(idx+1);
+		if(cmd == roomName) {
+			ta.append(data+"\n");
+		}
+	}//--routine
+	
+	public void enterRoom() {
+		String msg =  id + ";Enter room";
+		sendMessage(ChatProtocol2.ENTERROOM+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+msg); // ENTERROOM:πÊ¿Ã∏ß:¿Ø¿˙∏Ì;¥‘¿Ã ¿‘¿Â«œø¥Ω¿¥œ¥Ÿ
+	}
+	
+	public void resetList(String str) {
+		String addList = "";
+		userList.removeAll();
+		StringTokenizer st = new StringTokenizer(str, ";");	//πÊ¿Ã∏ß:¿Ø¿˙∏Ì;πÊ¿Ã∏ß:¿Ø¿˙∏Ì;πÊ¿Ã∏ß:¿Ø¿˙∏Ì;...;
+		while(st.hasMoreTokens()) {
+			addList = st.nextToken();
+			System.out.println("addlist"+addList);
+			int idx = addList.indexOf(ChatProtocol2.MODE);
+			String rn = addList.substring(0, idx);
+			String un = addList.substring(idx+1);
+			System.out.println(rn+" "+un);
+			if(rn.equals(roomName)) {
+				userList.add(un);
+			}
 		
-		new ChatUI();
+		}
+	}
+	
+	public void addText(String msg) {
+		ta.append(msg+"\n");
+	}
+	
+	
+	public void sendMessage(String msg) {
+		out.println(msg);
+	}
+	
+	
+	public static void main(String[] args) {
+		new ChatUI(null, null, null, null);
 	}
 
-}
+
+
+}// 

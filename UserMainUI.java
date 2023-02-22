@@ -1,92 +1,336 @@
 package study;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.List;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.PublicKey;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.StringTokenizer;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
-public class UserMainUI extends JFrame {
+
+
+public class UserMainUI extends JFrame
+implements ActionListener, Runnable{
+	JButton bt1, bt2, bt3, bt4;
+	JTextField tf1, tf2, tf3;
+	TextArea area;
+	List list;
+	Socket sock;
+	BufferedReader in;
+	PrintWriter out;
+	String listTitle = "*******¡˙πÆ ∏Ì¥‹*******";
+	String id;
+	JLabel picture;
+	ChatUI[] QR = new ChatUI[100];
+	boolean flag = false;
 	
-	private JLabel RemainTime;
-	private JLabel notification;
-	private JLabel ManagerPhone;
-	private JLabel ManagerNumber;
-	private JLabel ManagerEmail;
-	private JLabel picture;
-	private JLabel quest;
-	private JButton addpay;
-	private JButton exit;
-	private JList list;
-	String [] question= {"ÏßàÎ¨∏:~~~~~"};
-	
-	
-
-	private JButton answerButton;//Îå≠Î≥ÄÎ≤ÑÌäº
-	private JButton questButton;//ÏßàÎ¨∏Î≤ÑÌäº
-
 	ImageIcon img=new ImageIcon("./Button_Image/addpay.jpg");
 	ImageIcon imgexit=new ImageIcon("./Button_Image/exit.jpg");
-	
-	
-	
-	public UserMainUI() {
-        setTitle("UserMain");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setResizable(true);
-		this.setVisible(true);
+
+	public UserMainUI(BufferedReader in, PrintWriter out, String id) {
+		setSize(850,700);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.id = id;
+		this.in = in;
+		this.out = out;
+		setTitle(this.id + "¥‘ æ»≥Á«œººø‰");
+		// //////////////////////////////////////////////////////////////////////////////////////////
+		JPanel p1 = new JPanel();
+		UserMainUIPanel(p1);
+		getContentPane().add(p1);
+		// /////////////////////////////////////////////////////////////////////////////////////////
+		JPanel p2 = new JPanel();
+		p2.setLayout(new BorderLayout());
+		list = new List();
+		list.add(listTitle);
+		p2.add(BorderLayout.CENTER, list);
+		JPanel p3 = new JPanel();
+		p3.setLayout(new GridLayout(1, 2));
+		bt2 = new JButton("¡˙πÆ«œ±‚");
+		bt2.addActionListener(this);
+		bt3 = new JButton("¥‰∫Ø«œ±‚");
+		bt3.addActionListener(this);
+		p3.add(bt2);
+		p3.add(bt3);
+		p2.add(BorderLayout.SOUTH, p3);
+		add(BorderLayout.EAST, p2);
+		// ///////////////////////////////////////////////////////////////////////////////////////////
 		
-		this.setSize(1100,700);
-		this.setLocationRelativeTo(null);
+		new Thread(this).start();
+		setVisible(true);
+		validate();
+	}
+	
+	public void run() {
+		System.out.println("≈¨∂Û¿Ãæ∆Æ run");
+		try {
+			while(true) {
+				String line = in.readLine();
+				if(line==null) {
+					System.out.println("¡æ∑·");
+					break;}
+				else
+					routine(line);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}//--run
+	
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object obj = e.getSource();
+			if(obj == bt2) {// ¡˙πÆ«œ±‚
+			MyDialog md = new MyDialog(this, "¡˙πÆ¿ª ¿‘∑¬«œººø‰", true);
+			//Dialog¿« √¢≈©±‚
+			int width = 300;
+			int height = 200;
+			//int x = fx+getWidth()/2-width/2;
+			//int y = fy+getHeight()/2-height/2;
+			md.setSize(width, height);
+			md.setLocationRelativeTo(this);
+			//md.setBounds(x, y, width, height);
+			md.setVisible(true);
+		}else if(obj == bt3) { // ¥‰∫Ø«œ±‚
+			if(list.getSelectedItem()!=null) {
+			String str = list.getSelectedItem();
+			enterRoom(str);
+			}
+		}else if(obj == tf3) {
+			sendMessage(tf3.getText());
+			tf3.setText("");
+		}
+	}
+	
+	public void routine(String line) {
+		System.out.println("≈¨∂Û¿Ãæ∆Æ line");
+		int idx = line.indexOf(ChatProtocol2.MODE);
+		String cmd = line.substring(0, idx);
+		String data = line.substring(idx+1);
+		if(cmd.equals(ChatProtocol2.ROOMLIST)) {
+			addRoomList(data);}
+		else if(cmd.equals(ChatProtocol2.ENTERROOM)) {	// ENTERROOM:πÊ¿Ã∏ß:¿Ø¿˙∏Ì;¥‘¿Ã ¿‘¿Â«œø¥Ω¿¥œ¥Ÿ
+			int idx1 = data.indexOf(ChatProtocol2.MODE);
+			String Rn = data.substring(0, idx1); //πÊ¿Ã∏ß
+			String str = data.substring(idx1+1); //¿Ø¿˙∏Ì;¥‘¿Ã ¿‘¿Â«œø¥Ω¿¥œ¥Ÿ
+			int idx2 = str.indexOf(";");
+			String Un = str.substring(0, idx2);	//¿Ø¿˙∏Ì
+			String str1 = str.substring(idx2+1); //¥‘¿Ã ¿‘¿Â«œø¥Ω¿¥œ¥Ÿ
+			for(int i = 0; QR.length > i; i++) {
+				if(QR[i] != null) {
+					if(Rn.equals(QR[i].roomName)){
+					QR[i].addText("["+Un+"] " + str1);
+					}
+				}
+				
+			}
+		}else if(cmd.equals(ChatProtocol2.ADDUSER)) {
+			// πÊ¿Ã∏ß:πÊ¿Ã∏ß:¿Ø¿˙∏Ì;πÊ¿Ã∏ß:¿Ø¿˙∏Ì;πÊ¿Ã∏ß:¿Ø¿˙∏Ì;...;
+			int idx1 = data.indexOf(ChatProtocol2.MODE);
+			String Rn = data.substring(0, idx1); //πÊ¿Ã∏ß
+			String str = data.substring(idx1+1); //πÊ¿Ã∏ß:¿Ø¿˙∏Ì;πÊ¿Ã∏ß:¿Ø¿˙∏Ì;πÊ¿Ã∏ß:¿Ø¿˙∏Ì;...;
+			for(int i = 0; QR.length > i; i++) {
+				if(QR[i] != null) {
+					if(Rn.equals(QR[i].roomName)){
+						QR[i].resetList(str);
+						break;
+					}
+				}
+
+			}
+
+
+		}else if(cmd.equals(ChatProtocol2.MESSAGE)) { // MESSAGE:πÊ¿Ã∏ß:[id]+√§∆√≥ªøÎ
+			System.out.println("∏ﬁºº¡ˆ¡¯¿‘");
+			int idx1 = data.indexOf(ChatProtocol2.MODE);
+			String Rn = data.substring(0, idx1); // πÊ¿Ã∏ß
+			System.out.println("Rn:"+Rn);
+			String msg = data.substring(idx1 + 1);	// [id]:√§∆√≥ªøÎ
+			System.out.println("msg:"+msg);
+//			if(Rn.equals(QR[0].roomname)) {
+//				QR[0].addText(msg);
+//			}
+			for(int i = 0; QR.length > i; i++) {
+				if(QR[i] != null) {
+					if(Rn.equals(QR[i].roomName)){
+					System.out.println("√§∆√«— πÊπ¯»£ = " + i);
+					QR[i].addText(msg);
+					}
+				}
+
+			}
+		}else if(cmd.equals(ChatProtocol2.RESETLIST)) {
+			System.out.println("∏ÆΩ∫∆Æ∏Æº¬");
+			System.out.println(data);
+			list.removeAll();
+			list.add(listTitle);
+			StringTokenizer st = new StringTokenizer(data, ";");
+			while(st.hasMoreTokens()) {
+				list.add(st.nextToken());
+			}
+		}else if(cmd.equals(ChatProtocol2.DELETELIST)) {
+			list.remove(data);
+			for(int i = 0; QR.length > i; i++) {
+				if(QR[i] != null) {
+					if(data.equals(QR[i].roomName)){
+					System.out.println("√§∆√«— πÊπ¯»£ = " + i);
+					QR[i].addText("*********OWNER EXIT*********");
+					QR[i].addText("Leave the room in 3 seconds");
+					sendMessage(ChatProtocol2.DELETUSER+ChatProtocol2.MODE+QR[i].roomName);
+					try {
+						QR[i].addText("3");
+						Thread.sleep(1000);
+						QR[i].addText("2");
+						Thread.sleep(1000);
+						QR[i].addText("1");
+						Thread.sleep(1000);
+						QR[i].dispose();
+						QR[i] = null;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					break;
+					}
+				}
+
+			}
+		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:πÊ¿Ã∏ß
+			for(int i = 0; QR.length > i; i++) {
+				if(QR[i] != null) {
+					if(data.equals(QR[i].roomName)) {
+						QR[i] = null;
+						break;
+					}
+				}
+			}
+		}
+	}//--routine
+	
+	class MyDialog extends Dialog implements ActionListener{
+		Button b1, b2;
+		TextField tf;
+		TextArea ta;
+		public MyDialog(Frame owner, String title, boolean modal) {
+			super(owner, title, modal);
+			setLayout(new BorderLayout());
+			tf = new TextField();
+			Panel p = new Panel();
+			
+			b1 = new Button("»Æ¿Œ");
+			b2 = new Button("√Îº“");
+			
+			p.add(b1);
+			p.add(b2);
+			
+			add(p,BorderLayout.SOUTH);
+			add(tf,BorderLayout.CENTER);
+			b1.addActionListener(this);
+			b2.addActionListener(this);
+			tf.addActionListener(this);//Enter ¿Ã∫•∆Æ
+		}
 		
-		JPanel panel1 = new JPanel();
-        UserMainUIPanel(panel1);
-        
-        panel1.setBounds(0,0,700,700);
-        getContentPane().add(panel1);
-        
-		JPanel panel2 = new JPanel();
-		QuestionPanel(panel2);
-        
-        panel2.setBounds(800,0,300,700);
-        getContentPane().add(panel2);
-        
-        setVisible(true);
-                
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Object obj = e.getSource();
+			if(obj == b1 || obj == tf) {
+				String str = tf.getText().trim();
+				sendMessage(ChatProtocol2.ROOMLIST+ChatProtocol2.MODE+id+";"+str);//ROOMRIST:ccc;¿Ã∞≈ ππæﬂ?
+				creatRoom(str);
+				dispose();//ªÁ∂Û¡ˆ¥¬ ±‚¥…
+			}else if(obj == b2) {
+				dispose();
+			}
+		}
+	}//--MyDialog
+	
+	public void creatRoom(String roomname) {
+//		QR[0] = new MChatQuestionRoom(roomname, in, out, id);
+//		System.out.println(QR[0].roomname);
+		int orner = 1;
+		for(int i = 0; QR.length > i; i++) {
+			if(QR[i] == null) {
+				System.out.println("∏∏µÈæÓ¡¯ πÊπ¯»£ = " + i);
+				QR[i] = new ChatUI(roomname, in, out, id, orner);
+				QR[i].enterRoom();
+				break;
+			}
+		}
+	}
+	
+	public void enterRoom(String roomname) {
+		for(int i = 0; QR.length > i; i++) {
+			if(QR[i] == null) {
+				System.out.println("∏∏µÈæÓ¡¯ πÊπ¯»£ = " + i);
+				QR[i] = new ChatUI(roomname, in, out, id);
+				QR[i].enterRoom();
+				break;
+			}
+		}
 	}
 	
 	public void UserMainUIPanel(JPanel panel)
 	{
 		panel.setLayout(null);
 		
-		Font font=new Font("ÎßëÏùÄ Í≥†Îîï", Font.PLAIN, 17);
+		Font font=new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 17);
 		
-		JLabel remaintime=new JLabel("ÎÇ®ÏùÄ ÏãúÍ∞Ñ:");
+		JLabel roomNumber=new JLabel("πÊπ¯»£:");
+		roomNumber.setBounds(0,0,100,50);
+		roomNumber.setFont(font);
+		panel.add(roomNumber);
+		
+		
+		JLabel remaintime=new JLabel("≥≤¿∫ Ω√∞£:");
 		remaintime.setBounds(400,0,100,50);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		
-		//Í¥ÄÎ¶¨Ïûê Ï†ÑÌôîÎ≤àÌò∏ Îú®Í≤åÌïòÍ∏∞
-		FindManagerTable mgpn=new FindManagerTable();
-        String managerphoneStr=mgpn.managerPn();
-		JLabel ManagerPhone = new JLabel("Í¥ÄÎ¶¨Ïûê Ïó∞ÎùΩÏ≤ò:"+managerphoneStr);
-		ManagerPhone.setBounds(400, 20, 300, 50);
+		//∞¸∏Æ¿⁄ ¿¸»≠π¯»£ ∂ﬂ∞‘«œ±‚
+		ManagerEvent mgpn=new ManagerEvent();
+        String managerphone_str=mgpn.Manager_phone();
+		JLabel ManagerPhone = new JLabel("∞¸∏Æ¿⁄ ø¨∂Ù√≥:"+managerphone_str);
+		ManagerPhone.setBounds(0, 40, 300, 50);
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
 		
 		
-		//Í¥ÄÎ¶¨ÏûêÏù¥Î©îÏùº Îú®Í≤åÌïòÍ∏∞
-		//FindManagerTable mgem=new FindManagerTable();
-		String managerEmailStr=mgpn.managerPn();
-		JLabel managerEmail=new JLabel("Í¥ÄÎ¶¨ÏûêÏù¥Î©îÏùº:"+managerEmailStr);
+		//∞¸∏Æ¿⁄¿Ã∏ﬁ¿œ ∂ﬂ∞‘«œ±‚
+		ManagerEvent mgem=new ManagerEvent();
+		String managerEmail_str=mgem.manager_email();
+		JLabel managerEmail=new JLabel("∞¸∏Æ¿⁄¿Ã∏ﬁ¿œ:"+managerEmail_str);
 		managerEmail.setBounds(400,40,300,50);
 		managerEmail.setFont(font);
 		panel.add(managerEmail);
 		
 		picture = new JLabel();
         picture.setIcon(new ImageIcon("./Button_Image/book.jpg"));
-        picture.setBounds(0, 100, 700,365);
+        picture.setBounds(0, 100, 900,365);
         panel.add(picture);
         
         JButton addpay=new JButton(img);
@@ -99,84 +343,54 @@ public class UserMainUI extends JFrame {
         
         
         
-        panel.setBackground(Color.pink);
+        panel.setBackground(new Color(230,239,255));
         
-        //Ï∂îÍ∞ÄÍ≤∞Ï†ú Í∏∞Îä•
+        //√ﬂ∞°∞·¡¶ ±‚¥…
         addpay.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Pay pay=new Pay();
-				pay.setVisible(true);
 				dispose();
 				
 			}
 		});
         
-        //Ìá¥Ïã§ Í∏∞Îä•
+        //≈Ω« ±‚¥…
         exit.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				for(int i = 0;QR.length > i; i++) {
+					if(QR[i] != null) {
+						if(QR[i].owner == 1) {
+							sendMessage(ChatProtocol2.DELETELIST+ChatProtocol2.MODE+QR[i].roomName);
+							sendMessage(ChatProtocol2.EXIT+ChatProtocol2.MODE+QR[i].roomName+ChatProtocol2.MODE+id);
+						}else {
+							sendMessage(ChatProtocol2.EXIT+ChatProtocol2.MODE+QR[i].roomName+ChatProtocol2.MODE+id);
+						}
+					}
+				}
+				System.exit(0);
 			}
 		});
         
 		
 	}
 	
-	public void QuestionPanel(JPanel panel)
-	{
-		panel.setLayout(null);
-		Font font=new Font("ÎßëÏùÄ Í≥†Îîï", Font.PLAIN, 17);
-		
-		//ÏßàÎ¨∏Î¶¨Ïä§Ìä∏Îì§
-		list=new JList(question);
-		list.setFont(font);		
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);	
-		list.setBounds(730, 100, 320, 500);
-		panel.add(list);
-		
-		JLabel quest=new JLabel("ÏßàÎ¨∏");
-		quest.setBounds(880,50,100,50);
-		quest.setBackground(Color.cyan);
-		quest.setFont(font);
-		panel.add(quest);
-		
-		
-		JButton questButton=new JButton("ÏßàÎ¨∏ÌïòÍ∏∞");
-		questButton.setBounds(700,615,192,50);
-		questButton.setBackground(Color.yellow);
-		questButton.setFont(font);
-		panel.add(questButton);
-		
-		JButton answerButton=new JButton("ÎãµÎ≥ÄÌïòÍ∏∞");
-		answerButton.setBounds(892,615,192,50);
-		answerButton.setBackground(Color.yellow);
-		answerButton.setFont(font);
-		panel.add(answerButton);
-		panel.setBackground(Color.green);
-		
-		
-		//ÏßàÎ¨∏ÌïòÍ∏∞Î≤ÑÌäº
-		questButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				QuestUI qui=new QuestUI();
-				qui.setVisible(true);
-				dispose();
-				
-			}
-		});
-		
-		
-       
+	
+	public void addRoomList(String str) {
+		list.add(str);
 	}
+	
+	
+	public void sendMessage(String msg) {
+		out.println(msg);
+	}
+	
 	public static void main(String[] args) {
-		new UserMainUI();
+		new UserMainUI(null, null, null);
 	}
+
 
 
 

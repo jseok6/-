@@ -6,13 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
 
 
-//ë¡œê·¸ì¸ì´ë²¤íŠ¸
+//·Î±×ÀÎÀÌº¥Æ®
 public class UserLoginEvent {
 	Connection con=null;
 	PreparedStatement pstmt=null;
@@ -23,8 +24,8 @@ public class UserLoginEvent {
 	
 	public int sql_run(int member_tel, String member_pw) {
 		String test = null;
-		//ë¡œê·¸ì¸
-		String queryLogin = "select member_pw  from member where member_tel = ?";
+		//·Î±×ÀÎ
+		String queryLogin = "select memberPw from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
 			pstmt = con.prepareStatement(queryLogin);
@@ -37,7 +38,7 @@ public class UserLoginEvent {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.print("ì˜ëª»ì…ë ¥");
+			System.out.print("Àß¸øÀÔ·Â");
 			e.printStackTrace();	
 		}
 		if(member_pw.equals(test)){
@@ -47,12 +48,10 @@ public class UserLoginEvent {
 		}
 	
 	}
-	public static void main(String[] args) {
-		new UserLoginEvent();
-	}
+	
 	
 
-	//ê°€ì…
+	//°¡ÀÔ
 	public void join(int num,String pass)
 	{	
         String sql = "INSERT INTO member VALUES (?,?,?,?)";
@@ -73,13 +72,13 @@ public class UserLoginEvent {
 	    
 	    if (rs==1)
 	    {
-	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì™„ë£Œ");
+	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ¿Ï·á");
 	    	Pay pay=new Pay();
         	pay.setVisible(true);
-        	JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
+        	JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
 	    }
 	    else {
-	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì‹¤íŒ¨");
+	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ½ÇÆĞ");
 	    }
             
         } 
@@ -90,6 +89,33 @@ public class UserLoginEvent {
 		e.printStackTrace();
 		}
 		
+	}
+	
+	public Time user_remain() {
+		Time test=new Time(1);
+		//·Î±×ÀÎ
+		String queryLogin = "select remainTime  from member where memberTel = ?";
+		try {
+			con=DBconnect.getConnection();
+			pstmt = con.prepareStatement(queryLogin);
+			String str=Integer.toString(1234);
+			pstmt.setString(1, str);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				test = rs.getTime(1);
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.print("Àß¸øÀÔ·Â");
+			e.printStackTrace();	
+		}
+		return test;
+	
+	}
+	
+	public static void main(String[] args) {
+		new UserLoginEvent();
 	}
 
 }

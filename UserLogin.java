@@ -3,17 +3,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.border.*;
 
-public class UserLoginUI extends JFrame
+
+public class UserLogin extends JFrame
 implements ActionListener{
+	 JTextField selectedField=null;
 	
 	 private JButton btnLogin;
 	 private JButton btnInit;
@@ -25,7 +31,12 @@ implements ActionListener{
 	 private JLabel label2;
 	 ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
 	 
-
+//	 BufferedReader in;
+//	 PrintWriter out;
+//	 String id;
+//	 String host = "127.0.0.1";
+//	 int port = 8002;
+//	 Socket sock;
 	 
 	 private JButton btn1;
 	 private JButton btn2;
@@ -74,7 +85,7 @@ implements ActionListener{
 	 
 	 
 	 
-	public UserLoginUI() {
+	public UserLogin() {
 		 // setting
         setTitle("FamilyStudyCafe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -90,7 +101,7 @@ implements ActionListener{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //Î∞∞Í≤ΩÏù¥ÎØ∏ÏßÄ
+        //πË∞Ê¿ÃπÃ¡ˆ
         label = new JLabel();
         label.setIcon(new ImageIcon("./Button_Image/family.jpg"));
         label.setBounds(0, 0, 1100, 700);
@@ -105,7 +116,7 @@ implements ActionListener{
 	}
 	public void placeLoginPanel(JPanel panel){
         panel.setLayout(null);
-        Font font=new Font("ÎßëÏùÄ Í≥†Îîï", Font.PLAIN, 17);
+        Font font=new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 17);
         
         JLabel userLabel = new JLabel("Tell");
         userLabel.setBounds(427, 229, 80, 25);
@@ -124,12 +135,7 @@ implements ActionListener{
         passText = new JPasswordField(20);
         passText.setBounds(517, 259, 160, 25);
         panel.add(passText);
-        passText.addActionListener(new ActionListener() {          
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	//Î°úÍ∑∏Ïù∏Ï≤¥ÌÅ¨
-            }
-        });
+        
        
         btnInit = new JButton("Reset");
         btnInit.setFocusPainted(true);
@@ -149,14 +155,14 @@ implements ActionListener{
         btnInit.addActionListener(this);
         
         
-        btnjoin=new JButton("ÌöåÏõêÍ∞ÄÏûÖ");
+        btnjoin=new JButton("»∏ø¯∞°¿‘");
         btnjoin.setBackground(Color.yellow);
         btnjoin.setBounds(560, 299, 117, 25);
         btnjoin.setFocusPainted(false);
         panel.add(btnjoin);
         btnjoin.addActionListener(this);
         
-        label2=new JLabel("ÏïÑÏù¥ÎîîÏôÄ ÎπÑÎ≤àÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî.");
+        label2=new JLabel("æ∆¿ÃµøÕ ∫Òπ¯¿ª ¿‘∑¬«œººø‰.");
         label2.setOpaque(true); 
         label2.setBackground(Color.pink);
         label2.setFont(font);
@@ -164,7 +170,7 @@ implements ActionListener{
         panel.add(label2);
         
         
-        //Ïà´ÏûêÌÇ§Ìå®Îìú
+        //º˝¿⁄≈∞∆–µÂ
         btn0=new JButton("0");
         btn0.setBounds(310,350,50,25);
         btn0.setBackground(Color.yellow);
@@ -235,7 +241,7 @@ implements ActionListener{
         btn9.addActionListener(this);
         panel.add(btn9);
         
-        //ÏòÅÎ¨∏ÌÇ§Ìå®Îìú
+        //øµπÆ≈∞∆–µÂ
         
         btnq=new JButton("q");
         btnq.setBounds(310,375,50,25);
@@ -420,9 +426,9 @@ implements ActionListener{
         panel.add(btnm);
         
         
-        FindManagerTable mgpn=new FindManagerTable();
-        String str=mgpn.managerPn();
-        JLabel managerphone= new JLabel("Í¥ÄÎ¶¨Ïûê Ïó∞ÎùΩÏ≤ò:"+str);
+        ManagerEvent mgpn=new ManagerEvent();
+        String str=mgpn.Manager_phone();
+        JLabel managerphone= new JLabel("∞¸∏Æ¿⁄ ø¨∂Ù√≥:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
@@ -431,6 +437,16 @@ implements ActionListener{
 		back.setBounds(0, 0, 150, 90);
 		back.setBorderPainted(false);
 		panel.add(back);
+		
+		FocusListener focusListener = new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                selectedField = (JTextField) e.getSource(); // ∆˜ƒøΩ∫∏¶ æÚ¿∫ ≈ÿΩ∫∆Æ ªÛ¿⁄ ¿˙¿Â
+            }
+            public void focusLost(FocusEvent e) {}
+        };
+        userText.addFocusListener(focusListener);
+        passText.addFocusListener(focusListener);
+		
             
     }
 	@Override
@@ -442,27 +458,29 @@ implements ActionListener{
 				userText.setText("");
 	            passText.setText("");
 			}
-			//Î°úÍ∑∏Ïù∏Î≤ÑÌäº
-			else if (obj==btnLogin)
+			//∑Œ±◊¿Œπˆ∆∞
+			else if (obj.equals(btnLogin))
 			{
 				UserLoginEvent login=new UserLoginEvent();
 				int i = login.sql_run(Integer.parseInt(userText.getText()), passText.getText());
 				if(i == 1){
 					Pay pay=new Pay();
 					pay.setVisible(true);
-					JOptionPane.showMessageDialog(null, "Î°úÍ∑∏Ïù∏ÏùÑ ÌôòÏòÅÌï©ÎãàÎã§.");
+					JOptionPane.showMessageDialog(null, "∑Œ±◊¿Œ¿ª »Øøµ«’¥œ¥Ÿ.");
 					dispose();
 					
 				}
 				else
 				{
 
-					JOptionPane.showMessageDialog(null, "Î°úÍ∑∏Ïù∏ Ïã§Ìå®");
+					JOptionPane.showMessageDialog(null, "∑Œ±◊¿Œ Ω«∆–");
+					userText.setText("");
+					passText.setText("");
 				}
 				
 			}
-			//ÌöåÏõêÍ∞ÄÏûÖÎ≤ÑÌäº
-			else if(obj==btnjoin)
+			//»∏ø¯∞°¿‘πˆ∆∞
+			else if(obj.equals(btnjoin))
 			{
 				UserLoginEvent join=new UserLoginEvent();
 				join.join(Integer.parseInt(userText.getText()),passText.getText());
@@ -471,164 +489,322 @@ implements ActionListener{
 				dispose();
 				
 			}
-			//Îí§Î°úÍ∞ÄÍ∏∞Î≤ÑÌäº
-			else if (obj==back)
+			//µ⁄∑Œ∞°±‚πˆ∆∞
+			else if (obj.equals(back))
 			{
-				//Îí§Î°úÍ∞ÄÍ∏∞ Í∏∞Îä•
+				//µ⁄∑Œ∞°±‚ ±‚¥…
 			}
-			//Ìè∞Î≤àÌò∏ÏûÖÎ†•
-			else if(obj==btn0)
+			//∆˘π¯»£¿‘∑¬
+			else if(obj.equals(btn0))
 			{
-				userText.setText(userText.getText() + "0"); 
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn0.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn0.getText());
+                }
 			}
-			else if(obj==btn1)
+			else if(obj.equals(btn1))
 			{
-				userText.setText(userText.getText()+ "1");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn1.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn1.getText());
+                }
 			}
-			else if(obj==btn2)
+			else if(obj.equals(btn2))
 			{
-				userText.setText(userText.getText()+ "2");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn2.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn2.getText());
+                }
 			}
-			else if(obj==btn3)
+			else if(obj.equals(btn3))
 			{
-				userText.setText(userText.getText()+ "3");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn3.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn3.getText());
+                }
 			}
-			else if(obj==btn4)
+			else if(obj.equals(btn4))
 			{
-				userText.setText(userText.getText()+ "4");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn4.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn4.getText());
+                }
 			}
-			else if(obj==btn5)
+			else if(obj.equals(btn5))
 			{
-				userText.setText(userText.getText()+ "5");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn5.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn5.getText());
+                }
 			}
-			else if(obj==btn6)
+			else if(obj.equals(btn6))
 			{
-				userText.setText(userText.getText()+ "6");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn6.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn6.getText());
+                }
 			}
-			else if(obj==btn7)
+			else if(obj.equals(btn7))
 			{
-				userText.setText(userText.getText()+ "7");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn7.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn7.getText());
+                }
 			}
-			else if(obj==btn8)
+			else if(obj.equals(btn8))
 			{
-				userText.setText(userText.getText()+ "8");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn8.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn8.getText());
+                }
 			}
-			else if(obj==btn9)
+			else if(obj.equals(btn9))
 			{
-				userText.setText(userText.getText()+ "9");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btn9.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btn9.getText());
+                }
 			}
 			else if(obj==btnq)
 			{
-				passText.setText(passText.getText()+"q");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnq.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnq.getText());
+                }
 			}
 			else if(obj==btnw)
 			{
-				passText.setText(passText.getText()+"w");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnw.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnw.getText());
+                }
 			}
 			else if(obj==btne)
 			{
-				passText.setText(passText.getText()+"e");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btne.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btne.getText());
+                }
 			}
 			else if(obj==btnr)
 			{
-				passText.setText(passText.getText()+"r");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnr.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnr.getText());
+                }
 			}
 			else if(obj==btnt)
 			{
-				passText.setText(passText.getText()+"t");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnt.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnt.getText());
+                }
 			}
 			else if(obj==btny)
 			{
-				passText.setText(passText.getText()+"y");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btny.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btny.getText());
+                }
 			}
 			else if(obj==btnu)
 			{
-				passText.setText(passText.getText()+"u");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnu.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnu.getText());
+                }
 			}
 			else if(obj==btni)
 			{
-				passText.setText(passText.getText()+"i");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btni.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btni.getText());
+                }
 			}
 			else if(obj==btno)
 			{
-				passText.setText(passText.getText()+"o");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btno.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btno.getText());
+                }
 			}
 			else if(obj==btnp)
 			{
-				passText.setText(passText.getText()+"p");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnp.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnp.getText());
+                }
 			}
 			else if(obj==btna)
 			{
-				passText.setText(passText.getText()+"a");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btna.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btna.getText());
+                }
 			}
 			else if(obj==btns)
 			{
-				passText.setText(passText.getText()+"s");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btns.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btns.getText());
+                }
 			}
 			else if(obj==btnd)
 			{
-				passText.setText(passText.getText()+"d");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnd.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnd.getText());
+                }
 			}
 			else if(obj==btnf)
 			{
-				passText.setText(passText.getText()+"f");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnf.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnf.getText());
+                }
 			}
 			else if(obj==btng)
 			{
-				passText.setText(passText.getText()+"g");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btng.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btng.getText());
+                }
 			}
 			else if(obj==btnh)
 			{
-				passText.setText(passText.getText()+"h");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnh.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnh.getText());
+                }
 			}
 			else if(obj==btnj)
 			{
-				passText.setText(passText.getText()+"j");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnj.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnj.getText());
+                }
 			}
 			else if(obj==btnk)
 			{
-				passText.setText(passText.getText()+"k");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnk.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnk.getText());
+                }
 			}
 			else if(obj==btnl)
 			{
-				passText.setText(passText.getText()+"l");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnl.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnl.getText());
+                }
 			}
 			else if(obj==btnz)
 			{
-				passText.setText(passText.getText()+"z");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnz.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnz.getText());
+                }
 			}
 			else if(obj==btnx)
 			{
-				passText.setText(passText.getText()+"x");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnx.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnx.getText());
+                }
 			}
 			else if(obj==btnc)
 			{
-				passText.setText(passText.getText()+"c");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnc.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnc.getText());
+                }
 			}
 			else if(obj==btnv)
 			{
-				passText.setText(passText.getText()+"v");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnv.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnv.getText());
+                }
 			}
 			else if(obj==btnb)
 			{
-				passText.setText(passText.getText()+"b");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnb.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnb.getText());
+                }
 			}
 			else if(obj==btnn)
 			{
-				passText.setText(passText.getText()+"n");
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnn.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnn.getText());
+                }
 			}
 			else if(obj==btnm)
 			{
-				passText.setText(passText.getText()+"m");
-			}			
+				if (selectedField == userText) {
+                    userText.setText(userText.getText() + btnm.getText());
+                } else if (selectedField == passText) {
+                    passText.setText(passText.getText() + btnm.getText());
+                }
+			}
 			
-		} catch (Exception e2) {
 			
-		}		
+		} 
+		catch (Exception e2) {
+			
+		}
+		
 	}
+//	public void connect() {
+//		try {
+//			sock = new Socket(host, port);
+//			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+//			out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}// --connect
+	
+	
 
 	public static void main(String[] args) {
-		new UserLoginUI();
+		new UserLogin();
 
 	}
 

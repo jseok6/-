@@ -5,7 +5,7 @@ import java.sql.*;
 
 
 
-public class PayCharge {
+public class PayEvent {
 	
 	Connection con=null;
 	PreparedStatement pstmt=null;
@@ -23,10 +23,10 @@ public class PayCharge {
 	String num2_5="3600000";
 	String num2_6="7200000";
 	
-	String sql="SELECT payment FROM charge WHERE charge_time=?";
+	String sql="SELECT payment FROM charge WHERE chargeTime=?";
 	String str=null;
 	
-	//ì‹œê°„ê¶Œê°€ê²©
+	//½Ã°£±Ç°¡°Ý
 	public String Pay_charge1()
 	{
 		try 
@@ -161,7 +161,7 @@ public class PayCharge {
 		
 		return str;
 	}
-	//ê¸°ê°„ê¶Œ ê°€ê²©
+	//±â°£±Ç °¡°Ý
 	public String Pay_charge2_1()
 	{
 		

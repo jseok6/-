@@ -1,6 +1,6 @@
 package study;
 
-//ë©”ë‹ˆì € í°ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
+//¸Ş´ÏÀú Æù¹øÈ£ °¡Á®¿À±â
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,13 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ManagerPn {
+public class ManagerEvent {
 	Connection con=null;
-	String sql="SELECT manager_tel FROM manager WHERE manager_id=?";
-	String sql2="SELECT manager_email FROM manager WHERE manager_id=?";
+	String sql="SELECT managerTel FROM manager WHERE managerId=?";
+	String sql2="SELECT managerEmail FROM manager WHERE managerId=?";
 
-	//ê´€ë¦¬ì ì „í™”ë²ˆí˜¸ë¶ˆëŸ¬ì£¼ê¸°
-	public String Manager_pn()
+	//°ü¸®ÀÚ ÀüÈ­¹øÈ£ºÒ·¯ÁÖ±â
+	public String Manager_phone()
 	{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -37,7 +37,7 @@ public class ManagerPn {
 
 		return str;
 	}
-	//ê´€ë¦¬ì ì´ë©”ì¼ ë¶ˆëŸ¬ì£¼ê¸°
+	//°ü¸®ÀÚ ÀÌ¸ŞÀÏ ºÒ·¯ÁÖ±â
 	public String manager_email()
 	{
 		Connection con=null;
@@ -47,7 +47,7 @@ public class ManagerPn {
 		
 		try {
 			con=DBconnect.getConnection();
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql2);
 			pstmt.setString(1,"jseok1");
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next())
