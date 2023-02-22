@@ -108,20 +108,32 @@ class QuestDialog extends JDialog{
 	}
 }
 
-public class ManagerMain extends JFrame {
+public class ManagerMain extends JFrame 
+{
 
+	private static ManagerMain mminstance;
 	private JPanel contentPane;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		//전부 주석처리하면 이파일자체로 실행안됨, 로그인창에서 넘어오는 실행은 그대로 가능
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() 
+		{
 			public void run() {
-				try {
-					ManagerMain Jframe = new ManagerMain("홍길동");
-					Jframe.setVisible(true);
-					Jframe.setResizable(false);
-					Jframe.setTitle("FamilyStudyCafe_ManagerMain");
-				} catch (Exception e) {
+				try 
+				{
+					if (mminstance==null)
+					{
+						synchronized (ManagerMain.class) {
+							ManagerMain Jframe = new ManagerMain("홍길동");
+							Jframe.setVisible(true);
+							Jframe.setResizable(false);
+							Jframe.setTitle("FamilyStudyCafe_ManagerMain");
+						}
+					}
+				} 
+				catch (Exception e) 
+				{
 					e.printStackTrace();
 				}
 			}
@@ -373,17 +385,17 @@ public class ManagerMain extends JFrame {
 				seat1FBtn[i].setFocusPainted(false);
 				//seat1FBtn[i].setBackground(new Color(0, 128, 255));
 		    	try {
-					if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==0) 
+					if (findSeatTable.seatAvail(100+i)==0) 
 					{//사용가능
 						seat1FBtn[i].setBackground(Color.CYAN);
 					} else
 						try {
-							if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==1)
+							if(findSeatTable.seatAvail(100+i)==1)
 							{//사용중
 								seat1FBtn[i].setBackground(Color.ORANGE);
 							} else
 								try {
-									if(findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i]))==2)
+									if(findSeatTable.seatAvail(100+i)==2)
 									{//사용불가
 										seat1FBtn[i].setBackground(Color.RED);
 									}
@@ -532,18 +544,18 @@ public class ManagerMain extends JFrame {
 			seat2FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 			seat2FBtn[i].setBorder(lb);
 			seat2FBtn[i].setFocusPainted(false);
-			//seat2FBtn[i].setBackground(new Color(0, 128, 255)); //seatAvail에따라 변경
+			seat2FBtn[i].setBackground(Color.BLACK); //seatAvail에따라 변경
 	    	try {
-				if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==0) 
+				if (findSeatTable.seatAvail(200+i)==0) 
 				{//사용가능
 					seat2FBtn[i].setBackground(Color.CYAN);
 				} else
 					try {
-						if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==1)
+						if(findSeatTable.seatAvail(200+i)==1)
 						{//사용중
 							seat2FBtn[i].setBackground(Color.ORANGE);
 						}
-						else if(findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i]))==2)
+						else if(findSeatTable.seatAvail(200+i)==2)
 						{//사용불가
 							seat2FBtn[i].setBackground(Color.RED);
 						}
@@ -731,6 +743,27 @@ public class ManagerMain extends JFrame {
 		});
 		contentPane.add(secondFloorBtn);
 		
+		//화면 새로고침 버튼
+		JButton refreshBtn = new JButton("새로고침");
+		refreshBtn.setFont(new Font("Dialog", Font.BOLD, 16));
+		refreshBtn.setFocusPainted(false);
+		refreshBtn.setBackground(Color.WHITE);
+		refreshBtn.setBounds(982, 659, 116, 38);
+		refreshBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				try {
+					new ManagerMain(name);
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		contentPane.add(refreshBtn);
+		
 		//매개변수로 지금 로그인한 관리자ID넣기
 		idLabel.setText("관리자:"+name+" 님");
 		idLabel.setBounds(71, 0, 197, 38);
@@ -853,4 +886,15 @@ public class ManagerMain extends JFrame {
 		seatInfoPanel.add(closeBtn_seatInfoPanel);
 	}	
 	
+//	public static ManagerMain getInstance()
+//	{
+//		if(mminstance==null)
+//		{
+//			synchronized (ManagerMain).class) {
+//				mminstance = new ManagerMain();
+//			}
+//		}
+//		
+//		return mminstance;
+//	}
 }

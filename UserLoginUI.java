@@ -620,15 +620,11 @@ implements ActionListener{
 			else if(obj==btnm)
 			{
 				passText.setText(passText.getText()+"m");
-			}
-			
-			
-		
+			}			
 			
 		} catch (Exception e2) {
-			// TODO: handle exception
-		}
-		
+			
+		}		
 	}
 
 	public static void main(String[] args) {
