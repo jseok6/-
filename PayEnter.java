@@ -1,4 +1,4 @@
-package function;
+package study;
 
 import java.awt.EventQueue;
 import java.awt.Frame;

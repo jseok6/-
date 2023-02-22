@@ -1,4 +1,4 @@
-package function;
+package study;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -36,75 +36,8 @@ import study.FindSeatTable;
 import study.FindUseTable;
 import study.ManagerMain;
 import study.Pay;
-import study.UserLoginUI;
 import javax.swing.SwingConstants;
 
-class MemberInfoDTO {
-	// 회원정보
-	private String memberTel;
-
-	public MemberInfoDTO(String memberTel) {
-		this.memberTel = memberTel;
-	}
-
-	public String getMemberTel() {
-		return memberTel;
-	}
-}
-
-class QuestInfoDTO {
-	// 질문 정보
-	private String question;
-
-	public QuestInfoDTO(String question) {
-		this.question = question;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-}
-
-class QuestDialog extends JDialog {
-	public QuestDialog(String title, boolean modal, String managerInfo, QuestInfoDTO questInfo, SeatSelect mMain) {
-		// 다이얼로그 생성자 호출
-		super(mMain, title, modal);
-
-		// 다이얼로그 설정
-		this.setTitle(managerInfo + " 환영합니다."); // 매니저 Name 읽어와서 창 제목 변경
-		this.setBounds(100, 100, 500, 700);
-		this.setLocationRelativeTo(mMain);
-		this.setResizable(false);
-
-		// 패널추가
-		JPanel questListPanel = new JPanel();
-		questListPanel.setLayout(null);
-		this.setContentPane(questListPanel);
-
-		// --TODO 라벨, 삭제버튼 생성은 DB에서 받아와서 질문개수만큼 반복필요--
-		// 라벨추가
-		// QuestInfo의 정보를 받아와서 라벨에 표시-DB연동 필요
-		JLabel questLabel = new JLabel("질문:" + questInfo.getQuestion());
-		questLabel.setBounds(0, 100, 100, 50);
-		questListPanel.add(questLabel);
-
-		// 삭제버튼 추가
-		JButton questDeleteBtn = new JButton("삭제");
-		questDeleteBtn.setFont(new Font("Dialog", Font.BOLD, 12));
-		questDeleteBtn.setBackground(Color.RED);
-		questDeleteBtn.setFocusPainted(false);
-		questDeleteBtn.setBounds(questLabel.getX(), questLabel.getY() - 20, 80, 30);
-		questDeleteBtn.addMouseListener(new MouseInputAdapter() {
-			// 버튼을 누르면 questLabel 삭제
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				questListPanel.remove(questLabel); // 삭제
-				questListPanel.repaint(); // 다시그리기
-			}
-		});
-		questListPanel.add(questDeleteBtn);
-	}
-}
 
 public class SeatSelect extends JFrame {
 	private static SeatSelect ssinstance;
@@ -718,7 +651,7 @@ public class SeatSelect extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new UserLoginUI(); // 회원로그인 화면으로 이동
+				new UserLogin(); // 회원로그인 화면으로 이동
 				dispose();
 			}
 		});

@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import study.function.PayEnter;
-
 import java.awt.Dimension;
 import java.awt.Button;
 import java.awt.Color;
@@ -59,7 +57,7 @@ public class FirstDisplay extends JFrame{
 				//PayEnter payEnter = new PayEnter();
 				//payEnter.setTitle("FamilyStudyCafe_PayEnter");
 				//payEnter.setVisible(true);
-				new UserLoginUI();
+				new UserLogin();
 				dispose();
 			}
 		});
