@@ -1,6 +1,7 @@
 package study;
 
 import java.awt.Color;
+import java.io.Console;
 //의자정보(seat테이블) 가져오기
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -71,5 +72,37 @@ public class FindSeatTable {
 		}
 		return stateInt;
 	}
+	
+	// seatAvail 업데이트
+		public void seatUpdate(int seatnum, int seatavail) 
+				throws SQLException
+		{
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String queryUpdateSeat="update seat "
+					+ "set seatAvail = ? "
+					+ "where seatNum = ?";
+			try 
+			{
+				con = DBConnect2.getConnection();
+				pstmt=con.prepareStatement(queryUpdateSeat);
+				System.out.println("seatUpdate:"+seatnum+" "+seatavail);
+				pstmt.setInt(1, seatavail);
+				pstmt.setInt(2, seatnum);
+				
+				int cr =pstmt.executeUpdate();
+				System.out.println("change rows:"+cr);
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+			finally 
+			{
+				pstmt.close();
+				con.close();
+			}
+			//return;
+		}
 	
 }

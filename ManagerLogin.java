@@ -1,8 +1,11 @@
 package study;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.TextListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,6 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 public class ManagerLogin extends JFrame
 implements ActionListener{
+	JTextField selectedField = null;
 	
 	String host = "127.0.0.1";
 	int port = 3306;
@@ -73,161 +77,13 @@ implements ActionListener{
 	 private JButton btnn;
 	 private JButton btnm;
 	 
-	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
+	 ImageIcon logoIcon= new ImageIcon
+				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
+     Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
+ 	Image updateLogoImg = logoImg.getScaledInstance(160, 100, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
+     ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
 	 
-	class IdTextLisener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			try {
-				Object obj = e.getSource();
-				if(obj==btn0)
-				{
-					managerIdText.setText(managerIdText.getText() + "0"); 
-				}
-				else if(obj==btn1)
-				{
-					managerIdText.setText(managerIdText.getText()+ "1");
-				}
-				else if(obj==btn2)
-				{
-					managerIdText.setText(managerIdText.getText()+ "2");
-				}
-				else if(obj==btn3)
-				{
-					managerIdText.setText(managerIdText.getText()+ "3");
-				}
-				else if(obj==btn4)
-				{
-					managerIdText.setText(managerIdText.getText()+ "4");
-				}
-				else if(obj==btn5)
-				{
-					managerIdText.setText(managerIdText.getText()+ "5");
-				}
-				else if(obj==btn6)
-				{
-					managerIdText.setText(managerIdText.getText()+ "6");
-				}
-				else if(obj==btn7)
-				{
-					managerIdText.setText(managerIdText.getText()+ "7");
-				}
-				else if(obj==btn8)
-				{
-					managerIdText.setText(managerIdText.getText()+ "8");
-				}
-				else if(obj==btn9)
-				{
-					managerIdText.setText(managerIdText.getText()+ "9");
-				}
-				else if(obj==btnq)
-				{
-					managerIdText.setText(managerIdText.getText()+"q");
-				}
-				else if(obj==btnw)
-				{
-					managerIdText.setText(managerIdText.getText()+"w");
-				}
-				else if(obj==btne)
-				{
-					managerIdText.setText(managerIdText.getText()+"e");
-				}
-				else if(obj==btnr)
-				{
-					managerIdText.setText(managerIdText.getText()+"r");
-				}
-				else if(obj==btnt)
-				{
-					managerIdText.setText(managerIdText.getText()+"t");
-				}
-				else if(obj==btny)
-				{
-					managerIdText.setText(managerIdText.getText()+"y");
-				}
-				else if(obj==btnu)
-				{
-					managerIdText.setText(managerIdText.getText()+"u");
-				}
-				else if(obj==btni)
-				{
-					managerIdText.setText(managerIdText.getText()+"i");
-				}
-				else if(obj==btno)
-				{
-					managerIdText.setText(managerIdText.getText()+"o");
-				}
-				else if(obj==btnp)
-				{
-					managerIdText.setText(managerIdText.getText()+"p");
-				}
-				else if(obj==btna)
-				{
-					managerIdText.setText(managerIdText.getText()+"a");
-				}
-				else if(obj==btns)
-				{
-					managerIdText.setText(managerIdText.getText()+"s");
-				}
-				else if(obj==btnd)
-				{
-					managerIdText.setText(managerIdText.getText()+"d");
-				}
-				else if(obj==btnf)
-				{
-					managerIdText.setText(managerIdText.getText()+"f");
-				}
-				else if(obj==btng)
-				{
-					managerIdText.setText(managerIdText.getText()+"g");
-				}
-				else if(obj==btnh)
-				{
-					managerIdText.setText(managerIdText.getText()+"h");
-				}
-				else if(obj==btnj)
-				{
-					managerIdText.setText(managerIdText.getText()+"j");
-				}
-				else if(obj==btnk)
-				{
-					managerIdText.setText(managerIdText.getText()+"k");
-				}
-				else if(obj==btnl)
-				{
-					managerIdText.setText(managerIdText.getText()+"l");
-				}
-				else if(obj==btnz)
-				{
-					managerIdText.setText(managerIdText.getText()+"z");
-				}
-				else if(obj==btnx)
-				{
-					managerIdText.setText(managerIdText.getText()+"x");
-				}
-				else if(obj==btnc)
-				{
-					managerIdText.setText(managerIdText.getText()+"c");
-				}
-				else if(obj==btnv)
-				{
-					managerIdText.setText(managerIdText.getText()+"v");
-				}
-				else if(obj==btnb)
-				{
-					managerIdText.setText(managerIdText.getText()+"b");
-				}
-				else if(obj==btnn)
-				{
-					managerIdText.setText(managerIdText.getText()+"n");
-				}
-				else if(obj==btnm)
-				{
-					managerIdText.setText(managerIdText.getText()+"m");
-				}
-			} catch (Exception e2) {
-			}
-		}	
-	}
+	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
 	 
 	public ManagerLogin() {
 		 // setting
@@ -240,15 +96,14 @@ implements ActionListener{
         JPanel panel = new JPanel();
         placeLoginPanel(panel);
 		
-		
 		//initGUI
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //배경이미지
+        //로고 라벨
         label = new JLabel();
-        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
-        label.setBounds(0, 0, 1100, 700);
+        label.setIcon(updateLogoIcon);
+        label.setBounds(0, 560, 160, 100);
         panel.add(label);
 
         // add
@@ -273,24 +128,11 @@ implements ActionListener{
        
         managerIdText = new JTextField(20);
         managerIdText.setBounds(517, 229, 160, 25);
-        managerIdText.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new IdTextLisener().actionPerformed(e);
-			}
-		});
         panel.add(managerIdText);
        
         managerPwText = new JPasswordField(20);
         managerPwText.setBounds(517, 259, 160, 25);
         panel.add(managerPwText);
-        managerPwText.addActionListener(new ActionListener() {          
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	
-            }
-        });
         
         //뒤로가기 버튼
         btnBack = new JButton();
@@ -339,60 +181,70 @@ implements ActionListener{
         btn0.setBounds(310,350,50,25);
         btn0.setBackground(Color.yellow);
         btn0.setFocusPainted(false);
+        btn0.addActionListener(this);
         panel.add(btn0);
         
         btn1=new JButton("1");
         btn1.setBounds(360,350,50,25);
         btn1.setBackground(Color.yellow);
         btn1.setFocusPainted(false);
+        btn1.addActionListener(this);
         panel.add(btn1);
         
         btn2=new JButton("2");
         btn2.setBounds(410,350,50,25);
         btn2.setBackground(Color.yellow);
         btn2.setFocusPainted(false);
+        btn2.addActionListener(this);
         panel.add(btn2);
         
         btn3=new JButton("3");
         btn3.setBounds(460,350,50,25);
         btn3.setBackground(Color.yellow);
         btn3.setFocusPainted(false);
+        btn3.addActionListener(this);
         panel.add(btn3);
         
         btn4=new JButton("4");
         btn4.setBounds(510,350,50,25);
         btn4.setBackground(Color.yellow);
         btn4.setFocusPainted(false);
+        btn4.addActionListener(this);
         panel.add(btn4);
         
         btn5=new JButton("5");
         btn5.setBounds(560,350,50,25);
         btn5.setBackground(Color.yellow);
         btn5.setFocusPainted(false);
+        btn5.addActionListener(this);
         panel.add(btn5);
         
         btn6=new JButton("6");
         btn6.setBounds(610,350,50,25);
         btn6.setBackground(Color.yellow);
         btn6.setFocusPainted(false);
+        btn6.addActionListener(this);
         panel.add(btn6);
         
         btn7=new JButton("7");
         btn7.setBounds(660,350,50,25);
         btn7.setBackground(Color.yellow);
         btn7.setFocusPainted(false);
+        btn7.addActionListener(this);
         panel.add(btn7);
         
         btn8=new JButton("8");
         btn8.setBounds(710,350,50,25);
         btn8.setBackground(Color.yellow);
         btn8.setFocusPainted(false);
+        btn8.addActionListener(this);
         panel.add(btn8);
         
         btn9=new JButton("9");
         btn9.setBounds(760,350,50,25);
         btn9.setBackground(Color.yellow);
         btn9.setFocusPainted(false);
+        btn9.addActionListener(this);
         panel.add(btn9);
         
         //영문키패드
@@ -578,7 +430,16 @@ implements ActionListener{
         btnm.addActionListener(this);
         panel.add(btnm);
         
+		FocusListener focusListener = new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                selectedField = (JTextField) e.getSource(); // 포커스를 얻은 텍스트 상자 저장
+            }
+            public void focusLost(FocusEvent e) {}
+        };
+        managerIdText.addFocusListener(focusListener);
+        managerPwText.addFocusListener(focusListener);
     }
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -609,6 +470,294 @@ implements ActionListener{
 					JOptionPane.showMessageDialog(null, "아이디나 비밀번호를 확인하세요");
 				}
 			}
+			else if(obj.equals(btn0))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn0.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn0.getText());
+                }
+			}
+			else if(obj.equals(btn1))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn1.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn1.getText());
+                }
+			}
+			else if(obj.equals(btn2))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn2.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn2.getText());
+                }
+			}
+			else if(obj.equals(btn3))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn3.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn3.getText());
+                }
+			}
+			else if(obj.equals(btn4))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn4.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn4.getText());
+                }
+			}
+			else if(obj.equals(btn5))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn5.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn5.getText());
+                }
+			}
+			else if(obj.equals(btn6))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn6.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn6.getText());
+                }
+			}
+			else if(obj.equals(btn7))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn7.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn7.getText());
+                }
+			}
+			else if(obj.equals(btn8))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn8.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn8.getText());
+                }
+			}
+			else if(obj.equals(btn9))
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btn9.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btn9.getText());
+                }
+			}
+			else if(obj==btnq)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnq.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnq.getText());
+                }
+			}
+			else if(obj==btnw)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnw.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnw.getText());
+                }
+			}
+			else if(obj==btne)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btne.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btne.getText());
+                }
+			}
+			else if(obj==btnr)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnr.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnr.getText());
+                }
+			}
+			else if(obj==btnt)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnt.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnt.getText());
+                }
+			}
+			else if(obj==btny)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btny.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btny.getText());
+                }
+			}
+			else if(obj==btnu)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnu.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnu.getText());
+                }
+			}
+			else if(obj==btni)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btni.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btni.getText());
+                }
+			}
+			else if(obj==btno)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btno.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btno.getText());
+                }
+			}
+			else if(obj==btnp)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnp.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnp.getText());
+                }
+			}
+			else if(obj==btna)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btna.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btna.getText());
+                }
+			}
+			else if(obj==btns)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btns.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btns.getText());
+                }
+			}
+			else if(obj==btnd)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnd.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnd.getText());
+                }
+			}
+			else if(obj==btnf)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnf.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnf.getText());
+                }
+			}
+			else if(obj==btng)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btng.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btng.getText());
+                }
+			}
+			else if(obj==btnh)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnh.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnh.getText());
+                }
+			}
+			else if(obj==btnj)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnj.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnj.getText());
+                }
+			}
+			else if(obj==btnk)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnk.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnk.getText());
+                }
+			}
+			else if(obj==btnl)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnl.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnl.getText());
+                }
+			}
+			else if(obj==btnz)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnz.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnz.getText());
+                }
+			}
+			else if(obj==btnx)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnx.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnx.getText());
+                }
+			}
+			else if(obj==btnc)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnc.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnc.getText());
+                }
+			}
+			else if(obj==btnv)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnv.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnv.getText());
+                }
+			}
+			else if(obj==btnb)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnb.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnb.getText());
+                }
+			}
+			else if(obj==btnn)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnn.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnn.getText());
+                }
+			}
+			else if(obj==btnm)
+			{
+				if (selectedField == managerIdText) {
+                    managerIdText.setText(managerIdText.getText() + btnm.getText());
+                } else if (selectedField == managerPwText) {
+                    managerPwText.setText(managerPwText.getText() + btnm.getText());
+                }
+			}
 		}
 		catch (Exception e2)
 		{
@@ -616,19 +765,19 @@ implements ActionListener{
 		}
 	}
 	
-	public void managerConnect()
-	{
-		try
-		{
-			sock = new Socket(host, port);
-			//in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-			//out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}// --connect
+//	public void managerConnect()
+//	{
+//		try
+//		{
+//			sock = new Socket(host, port);
+//			//in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+//			//out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
+//		} 
+//		catch (Exception e) 
+//		{
+//			e.printStackTrace();
+//		}
+//	}// --connect
 	
 	public static void main(String[] args) {
 		new ManagerLogin();

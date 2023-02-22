@@ -39,4 +39,56 @@ public class FindManagerTable {
 		}
 		return str;
 	}
+	
+	//관리자 전화번호불러주기
+		public String managerPn()
+		{
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			String queryFindmanagerPn="SELECT managerTel FROM manager WHERE managerId=?";
+			String str=null;
+			try {
+				con=DBconnect.getConnection();
+				pstmt = con.prepareStatement(queryFindmanagerPn);
+				pstmt.setString(1,"family");
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next())
+				{
+					str=rs.getString(1);
+				}
+
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return str;
+		}
+		
+		//관리자 이메일 불러주기
+		public String managerEmail()
+		{
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			String queryFindmanagerEmail="SELECT managerEmail "
+					+ "FROM manager WHERE managerId=?";
+			String str=null;
+			
+			try {
+				con=DBconnect.getConnection();
+				pstmt = con.prepareStatement(queryFindmanagerEmail);
+				pstmt.setString(1,"family");
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next())
+				{
+					str=rs.getString(1);
+				}
+
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
 }

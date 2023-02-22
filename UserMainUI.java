@@ -52,11 +52,8 @@ public class UserMainUI extends JFrame {
         panel2.setBounds(800,0,300,700);
         getContentPane().add(panel2);
         
-
         setVisible(true);
-        
-        
-        
+                
 	}
 	
 	public void UserMainUIPanel(JPanel panel)
@@ -71,18 +68,18 @@ public class UserMainUI extends JFrame {
 		panel.add(remaintime);
 		
 		//관리자 전화번호 뜨게하기
-		ManagerPn mgpn=new ManagerPn();
-        String managerphone_str=mgpn.Manager_pn();
-		JLabel ManagerPhone = new JLabel("관리자 연락처:"+managerphone_str);
+		FindManagerTable mgpn=new FindManagerTable();
+        String managerphoneStr=mgpn.managerPn();
+		JLabel ManagerPhone = new JLabel("관리자 연락처:"+managerphoneStr);
 		ManagerPhone.setBounds(400, 20, 300, 50);
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
 		
 		
 		//관리자이메일 뜨게하기
-		ManagerPn mgem=new ManagerPn();
-		String managerEmail_str=mgem.manager_email();
-		JLabel managerEmail=new JLabel("관리자이메일:"+managerEmail_str);
+		//FindManagerTable mgem=new FindManagerTable();
+		String managerEmailStr=mgpn.managerPn();
+		JLabel managerEmail=new JLabel("관리자이메일:"+managerEmailStr);
 		managerEmail.setBounds(400,40,300,50);
 		managerEmail.setFont(font);
 		panel.add(managerEmail);

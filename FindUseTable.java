@@ -17,6 +17,7 @@ public class FindUseTable {
 		PreparedStatement pstmt = null;
 		String queryinsertUse="insert into `Use` "
 				+ "VALUES(null, ?, null, ?, ?, null)";
+		FindSeatTable fst = new FindSeatTable();
 		try 
 		{
 			con = DBConnect2.getConnection();
@@ -27,6 +28,7 @@ public class FindUseTable {
 			pstmt.setInt(3, seatnum);
 			
 			pstmt.executeUpdate();
+			fst.seatUpdate(seatnum, 1);
 		} 
 		catch (SQLException e) 
 		{
@@ -37,7 +39,7 @@ public class FindUseTable {
 			pstmt.close();
 			con.close();
 		}
-		return;
+		//return;
 	}
 	
 	//사용번호 확인- 의자번호로 찾기

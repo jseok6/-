@@ -420,8 +420,8 @@ implements ActionListener{
         panel.add(btnm);
         
         
-        ManagerPn mgpn=new ManagerPn();
-        String str=mgpn.Manager_pn();
+        FindManagerTable mgpn=new FindManagerTable();
+        String str=mgpn.managerPn();
         JLabel managerphone= new JLabel("관리자 연락처:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
