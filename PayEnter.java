@@ -8,6 +8,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -78,10 +79,14 @@ public class PayEnter  extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				Object obj = e.getSource();
 				if ((Button) obj == button2) {
-					Frame fs = new Frame();
-					fs.setVisible(true);
-					fs.setSize(700, 600);
-					fs.setLocation(200, 200);
+					try {
+						SeatSelect ss = new SeatSelect();
+						ss.setTitle("FSC_SeatSelect");
+						dispose();
+					} catch (NumberFormatException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
