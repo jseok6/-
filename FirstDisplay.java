@@ -24,7 +24,7 @@ public class FirstDisplay extends JFrame{
 					FirstDisplay window = new FirstDisplay();
 					window.setVisible(true);
 					window.setResizable(false);
-					window.setTitle("FamilyStudyCafe_FirstDisplay");
+					window.setTitle("FSC_FirstDisplay");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,10 +40,10 @@ public class FirstDisplay extends JFrame{
 		setBounds(100, 100, 1000, 600);
 		frmFamilyStudyCafe = new JPanel();
 		frmFamilyStudyCafe.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		frmFamilyStudyCafe.setBounds(100, 100, 1000, 600);
-		//frmFamilyStudyCafe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFamilyStudyCafe.setLayout(null);
 		setContentPane(frmFamilyStudyCafe);
+		this.setResizable(false);
+		this.setVisible(true);
 		
 		Button button1 = new Button("사용자");
 		button1.setBounds(0, 0, 492, 561);
@@ -54,9 +54,6 @@ public class FirstDisplay extends JFrame{
 		button1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//PayEnter payEnter = new PayEnter();
-				//payEnter.setTitle("FamilyStudyCafe_PayEnter");
-				//payEnter.setVisible(true);
 				new UserLogin();
 				dispose();
 			}

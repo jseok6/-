@@ -1,31 +1,31 @@
 package study;
 
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Frame;
-import javax.swing.JFrame;
-import java.awt.Button;
-import java.awt.Dimension;
-import java.awt.Color;
-import javax.swing.JTextField;
-import study.Pay;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PayEnter {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-	private JFrame frame;
+public class PayEnter  extends JFrame{
+
+	private JPanel payenterPanel;
 	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					PayEnter window = new PayEnter();
-					window.frame.setVisible(true);
+					window.setTitle("FSC_PayEnter");
+					window.setVisible(true);
+					window.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,30 +33,23 @@ public class PayEnter {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public PayEnter() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\dita810\\Desktop\\D팀 프로젝트\\-001.jpg"));
-		frame.setTitle("시간제 & 기간제 결제, 입실");
-		frame.setResizable(false); // 버튼 & 창 고정
-		frame.setBounds(100, 100, 1056, 570);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-
+		setTitle("FamilyStudyCafe_PayEnter");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100,100,1056,570);
+		this.setResizable(false);
+		this.setVisible(true);
+		
+		payenterPanel = new JPanel();
+		payenterPanel.setBounds(100, 100, 1056, 570);
+		payenterPanel.setLayout(null);
+		setContentPane(payenterPanel);
+		
 		Button button1 = new Button("시간제 & 기간제 결제하기");
 		button1.setBounds(0, 20, 528, 510);
 		button1.setBackground(new Color(143, 188, 143));
 		button1.setPreferredSize(new Dimension(216, 0));
-		frame.getContentPane().add(button1);
+		payenterPanel.add(button1);
 		// 시간제 결제하기 버튼 button1
 		button1.addActionListener(new ActionListener() {
 
@@ -78,7 +71,7 @@ public class PayEnter {
 		button2.setBounds(528, 20, 528, 510);
 		button2.setBackground(new Color(112, 128, 144));
 		button2.setPreferredSize(new Dimension(216, 0));
-		frame.getContentPane().add(button2);
+		payenterPanel.add(button2);
 		button2.addActionListener(new ActionListener() {
 
 			@Override
@@ -100,9 +93,7 @@ public class PayEnter {
 		textField.setBackground(new Color(135, 206, 250));
 		textField.setText("결제하기, 입실하기 중에서 선택해주세요");
 		textField.setHorizontalAlignment(JTextField.CENTER);
-		frame.getContentPane().add(textField);
+		payenterPanel.add(textField);
 		textField.setColumns(20);
-
 	}
-
 }
