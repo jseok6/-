@@ -26,8 +26,13 @@ public class PayEvent {
 	String sql="SELECT payment FROM charge WHERE chargeTime=?";
 	String str=null;
 	
+<<<<<<< HEAD
 	//½Ã°£±Ç°¡°Ý
 	public String pay1()
+=======
+	//ì‹œê°„ê¶Œê°€ê²©
+	public String Pay_charge1()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		try 
 		{
@@ -53,7 +58,11 @@ public class PayEvent {
 	
 	
 	
+<<<<<<< HEAD
 	public String pay2()
+=======
+	public String Pay_charge2()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -74,7 +83,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String pay3()
+=======
+	public String Pay_charge3()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		
 		try {
@@ -96,7 +109,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String pay4()
+=======
+	public String Pay_charge4()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		
 		try {
@@ -118,7 +135,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String pay5()
+=======
+	public String Pay_charge5()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		
 		try {
@@ -140,7 +161,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String pay6()
+=======
+	public String Pay_charge6()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		
 		try {
@@ -161,8 +186,13 @@ public class PayEvent {
 		
 		return str;
 	}
+<<<<<<< HEAD
 	//±â°£±Ç °¡°Ý
 	public String payPeriod1()
+=======
+	//ê¸°ê°„ê¶Œ ê°€ê²©
+	public String Pay_charge2_1()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		
 		try {
@@ -184,7 +214,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String payPeriod2()
+=======
+	public String Pay_charge2_2()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -205,7 +239,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String payPeriod3()
+=======
+	public String Pay_charge2_3()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{	
 		try {
 			con=DBconnect.getConnection();
@@ -226,7 +264,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String payPeriod4()
+=======
+	public String Pay_charge2_4()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -247,7 +289,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String payPeriod5()
+=======
+	public String Pay_charge2_5()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -268,7 +314,11 @@ public class PayEvent {
 		return str;
 	}
 	
+<<<<<<< HEAD
 	public String payPeriod6()
+=======
+	public String Pay_charge2_6()
+>>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 	{
 		try {
 			con=DBconnect.getConnection();

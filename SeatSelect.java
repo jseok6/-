@@ -38,7 +38,6 @@ import study.ManagerMain;
 import study.Pay;
 import javax.swing.SwingConstants;
 
-
 public class SeatSelect extends JFrame {
 	private static SeatSelect ssinstance;
 	private JPanel contentPane;
@@ -81,20 +80,20 @@ public class SeatSelect extends JFrame {
 		setVisible(true);
 
 		ImageIcon logoIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg");
+				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
 		Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
 		Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체
 																						// 생성
 		ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg); // 새로운 Image 객체로 ImageIcon 객체 생성
 
 		ImageIcon trashcanIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\trashcan.png");
+				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\trashcan.png");
 		Image trashcanImg = trashcanIcon.getImage();
 		Image updateTrashcanImg = trashcanImg.getScaledInstance(57, 54, Image.SCALE_SMOOTH);
 		ImageIcon updatetrashcanIcon = new ImageIcon(updateTrashcanImg);
 
 		ImageIcon waterPFIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\water.png");
+				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\water.png");
 		Image waterPFImg = waterPFIcon.getImage();
 		Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
@@ -651,7 +650,7 @@ public class SeatSelect extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new UserLogin(); // 회원로그인 화면으로 이동
+				new UserLoginUI(); // 회원로그인 화면으로 이동
 				dispose();
 			}
 		});
