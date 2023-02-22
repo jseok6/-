@@ -426,8 +426,8 @@ implements ActionListener{
         panel.add(btnm);
         
         
-        ManagerEvent mgpn=new ManagerEvent();
-        String str=mgpn.Manager_phone();
+        FindManagerTable mgpn=new FindManagerTable();
+        String str=mgpn.managerPn();
         JLabel managerphone= new JLabel("관리자 연락처:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
@@ -462,12 +462,13 @@ implements ActionListener{
 			else if (obj.equals(btnLogin))
 			{
 				UserLoginEvent login=new UserLoginEvent();
-				int i = login.sql_run(Integer.parseInt(userText.getText()), passText.getText());
+				int i = login.userLogin(Integer.parseInt(userText.getText()), passText.getText());
 				if(i == 1){
-					Pay pay=new Pay();
+					PayEnter pay=new PayEnter();
 					pay.setVisible(true);
-					JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
 					dispose();
+					JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
+					
 					
 				}
 				else
@@ -483,7 +484,7 @@ implements ActionListener{
 			else if(obj.equals(btnjoin))
 			{
 				UserLoginEvent join=new UserLoginEvent();
-				join.join(Integer.parseInt(userText.getText()),passText.getText());
+				join.userJoin(Integer.parseInt(userText.getText()),passText.getText());
 				userText.setText("");
 				passText.setText("");
 				dispose();

@@ -45,7 +45,7 @@ public class Pay extends JFrame{
 		// panel
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
-        PayUI(panel);
+        payUI(panel);
 		
 		
 		//initGUI
@@ -120,7 +120,7 @@ public class Pay extends JFrame{
 		});
 		
 	}
-	public void PayUI(JPanel panel){
+	public void payUI(JPanel panel){
 		panel.setLayout(null);
 		
 		
@@ -138,7 +138,7 @@ public class Pay extends JFrame{
 
 				
 			    PayEvent charge1=new PayEvent();
-		        String str=charge1.Pay_charge1();
+		        String str=charge1.pay1();
 		        payresult.setText("가격:"+str);
 				
 				
@@ -157,7 +157,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge2=new PayEvent();
-				String str=charge2.Pay_charge2();
+				String str=charge2.pay2();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -174,7 +174,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge3=new PayEvent();
-				String str=charge3.Pay_charge3();
+				String str=charge3.pay3();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -191,7 +191,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge4=new PayEvent();
-				String str=charge4.Pay_charge4();
+				String str=charge4.pay4();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -207,7 +207,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge5=new PayEvent();
-				String str=charge5.Pay_charge5();
+				String str=charge5.pay5();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -223,7 +223,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge6=new PayEvent();
-				String str=charge6.Pay_charge6();
+				String str=charge6.pay6();
 				payresult.setText("가격:"+str);
 			}
 		});

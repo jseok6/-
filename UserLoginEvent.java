@@ -21,15 +21,15 @@ public class UserLoginEvent {
 	SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 	Date time=new Date();
 	String time1=format1.format(time);
-	
-	public int sql_run(int member_tel, String member_pw) {
+	//로그인
+	public int userLogin(int memberTel, String memberPw) {
 		String test = null;
-		//로그인
+		
 		String queryLogin = "select memberPw from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
 			pstmt = con.prepareStatement(queryLogin);
-			String str=Integer.toString(member_tel);
+			String str=Integer.toString(memberTel);
 			pstmt.setString(1, str);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -41,7 +41,7 @@ public class UserLoginEvent {
 			System.out.print("잘못입력");
 			e.printStackTrace();	
 		}
-		if(member_pw.equals(test)){
+		if(memberPw.equals(test)){
 			return 1;
 		}else{
 			return 0;
@@ -52,7 +52,7 @@ public class UserLoginEvent {
 	
 
 	//가입
-	public void join(int num,String pass)
+	public void userJoin(int num,String pass)
 	{	
         String sql = "INSERT INTO member VALUES (?,?,?,?)";
 		try {
@@ -91,7 +91,7 @@ public class UserLoginEvent {
 		
 	}
 	
-	public Time user_remain() {
+	public Time userRemain() {
 		Time test=new Time(1);
 		//로그인
 		String queryLogin = "select remainTime  from member where memberTel = ?";

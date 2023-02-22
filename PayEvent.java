@@ -26,8 +26,8 @@ public class PayEvent {
 	String sql="SELECT payment FROM charge WHERE chargeTime=?";
 	String str=null;
 	
-	//ì‹œê°„ê¶Œê°€ê²©
-	public String payCharge1()
+	//½Ã°£±Ç°¡°Ý
+	public String pay1()
 	{
 		try 
 		{
@@ -53,7 +53,7 @@ public class PayEvent {
 	
 	
 	
-	public String payCharge2()
+	public String pay2()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -68,13 +68,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge3()
+	public String pay3()
 	{
 		
 		try {
@@ -90,13 +90,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge4()
+	public String pay4()
 	{
 		
 		try {
@@ -112,13 +112,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge5()
+	public String pay5()
 	{
 		
 		try {
@@ -134,13 +134,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge6()
+	public String pay6()
 	{
 		
 		try {
@@ -156,13 +156,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-		
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
-	//ê¸°ê°„ê¶Œ ê°€ê²©
-	public String payCharge2_1()
+	//±â°£±Ç °¡°Ý
+	public String payPeriod1()
 	{
 		
 		try {
@@ -178,13 +178,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge2_2()
+	public String payPeriod2()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -199,13 +199,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge2_3()
+	public String payPeriod3()
 	{	
 		try {
 			con=DBconnect.getConnection();
@@ -220,12 +220,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
-		}	
+			// TODO: handle exception
+		}
+		
 		return str;
 	}
 	
-	public String payCharge2_4()
+	public String payPeriod4()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -240,13 +241,13 @@ public class PayEvent {
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge2_5()
+	public String payPeriod5()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -257,16 +258,17 @@ public class PayEvent {
 			{
 				str=rs.getString(1);
 			}
+
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
 		
 		return str;
 	}
 	
-	public String payCharge2_6()
+	public String payPeriod6()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -278,11 +280,15 @@ public class PayEvent {
 				str=rs.getString(1);
 			}
 			pstmt.close();
+
 		} 
 		catch (Exception e)
 		{
-			
+			// TODO: handle exception
 		}
+		
 		return str;
 	}
+	
+	
 }

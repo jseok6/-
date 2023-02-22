@@ -46,7 +46,7 @@ public class Pay2 extends JFrame{
 		// panel
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
-        PayUI(panel);
+        payUI(panel);
 		
 		
 		//initGUI
@@ -122,7 +122,7 @@ public class Pay2 extends JFrame{
 		});
 		
 	}
-	public void PayUI(JPanel panel){
+	public void payUI(JPanel panel){
 		panel.setLayout(null);
 		
 		
@@ -137,7 +137,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge1=new PayEvent();
-				String str=charge1.Pay_charge2_1();
+				String str=charge1.payPeriod1();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -154,7 +154,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge2=new PayEvent();
-				String str=charge2.Pay_charge2_2();
+				String str=charge2.payPeriod2();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -170,7 +170,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge3=new PayEvent();
-				String str=charge3.Pay_charge2_3();
+				String str=charge3.payPeriod3();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -187,7 +187,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge4=new PayEvent();
-				String str=charge4.Pay_charge2_4();
+				String str=charge4.payPeriod4();
 				payresult.setText("가격:"+str);
 			}
 		});
@@ -203,7 +203,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge5=new PayEvent();
-				String str=charge5.Pay_charge2_5();
+				String str=charge5.payPeriod5();
 				payresult.setText("가격:"+str);
 				
 			}
@@ -220,7 +220,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge6=new PayEvent();
-				String str=charge6.Pay_charge2_6();
+				String str=charge6.payPeriod6();
 				payresult.setText("가격:"+str);
 			}
 		});
