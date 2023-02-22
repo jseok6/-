@@ -8,9 +8,9 @@ import java.net.URI;
 
 
 public class Pay extends JFrame{
-	private JButton btntime;//ì‹œê°„ê¶Œë²„íŠ¼
-	private JButton btnperiod;//ê¸°ê°„ê¶Œ ë²„íŠ¼
-	private JLabel label;//ë°°ê²½ì´ë¯¸ì§€
+	private JButton btntime;//½Ã°£±Ç¹öÆ°
+	private JButton btnperiod;//±â°£±Ç ¹öÆ°
+	private JLabel label;//¹è°æÀÌ¹ÌÁö
 	private JLabel label2;
 	private JLabel payresult;
 	Desktop desktop = Desktop.getDesktop();
@@ -32,12 +32,12 @@ public class Pay extends JFrame{
 	ImageIcon imgtime=new ImageIcon("./Button_Image/time.jpg");
 	ImageIcon imageperiod=new ImageIcon("./Button_Image/time2.jpg");
 	
-	Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
+	Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
 	
 	
 	
 	public Pay() {
-		setTitle("ì‹œê°„ì œ");
+		setTitle("½Ã°£Á¦");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
@@ -52,7 +52,7 @@ public class Pay extends JFrame{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //ë°°ê²½ì´ë¯¸ì§€
+        //¹è°æÀÌ¹ÌÁö
         label = new JLabel();
 //        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
         label.setBounds(0, 0, 1100, 700);
@@ -62,7 +62,7 @@ public class Pay extends JFrame{
         label2.setBounds(0,0,1100,100);
         label2.setOpaque(true); 
         label2.setBackground(Color.pink);
-        label2.setText("                                                                            ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.");
+        label2.setText("                                                                            ¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.");
         label2.setFont(font);
         panel.add(label2);
 
@@ -72,7 +72,7 @@ public class Pay extends JFrame{
         // visible
         setVisible(true);
         
-        //ê¸°ê°„ê¶Œë²„íŠ¼
+        //±â°£±Ç¹öÆ°
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class Pay extends JFrame{
 			}
 		});
         
-        //ë’¤ë¡œê°€ê¸°ë²„íŠ¼
+        //µÚ·Î°¡±â¹öÆ°
         back.addActionListener(new ActionListener() {
 			
 			@Override
@@ -95,16 +95,16 @@ public class Pay extends JFrame{
 			}
 		});
         
-        //í˜„ê¸ˆê²°ì œ
+        //Çö±İ°áÁ¦
         btncashpay.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "í˜„ê¸ˆì„ ë„£ì–´ì£¼ì„¸ìš”.");
+				JOptionPane.showMessageDialog(null, "Çö±İÀ» ³Ö¾îÁÖ¼¼¿ä.");
 				
 			}
 		});
-        //ì¹´ë“œê²°ì œ
+        //Ä«µå°áÁ¦
         btncardpay.addActionListener(new ActionListener() {
 			
 			@Override
@@ -125,7 +125,7 @@ public class Pay extends JFrame{
 		
 		
 		
-		btntime1=new JButton("1ì‹œê°„ê¶Œ");
+		btntime1=new JButton("1½Ã°£±Ç");
 		btntime1.setBounds(0,167,367,196);
 		btntime1.setBackground(Color.yellow);
 		btntime1.setFont(font);
@@ -138,20 +138,15 @@ public class Pay extends JFrame{
 
 				
 			    PayEvent charge1=new PayEvent();
-<<<<<<< HEAD
 		        String str=charge1.pay1();
 		        payresult.setText("°¡°İ:"+str);
-=======
-		        String str=charge1.Pay_charge1();
-		        payresult.setText("ê°€ê²©:"+str);
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 				
 				
 			}
 		});
 		
 		
-		btntime2=new JButton("2ì‹œê°„ê¶Œ");
+		btntime2=new JButton("2½Ã°£±Ç");
 		btntime2.setBounds(367,167,367,196);
 		btntime2.setBackground(Color.yellow);
 		btntime2.setFont(font);
@@ -162,18 +157,13 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge2=new PayEvent();
-<<<<<<< HEAD
 				String str=charge2.pay2();
 				payresult.setText("°¡°İ:"+str);
-=======
-				String str=charge2.Pay_charge2();
-				payresult.setText("ê°€ê²©:"+str);
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 			}
 		});
 		
 		
-		btntime4=new JButton("4ì‹œê°„ê¶Œ");
+		btntime4=new JButton("4½Ã°£±Ç");
 		btntime4.setBounds(734,167,367,196);
 		btntime4.setBackground(Color.yellow);
 		btntime4.setFont(font);
@@ -184,18 +174,13 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge3=new PayEvent();
-<<<<<<< HEAD
 				String str=charge3.pay3();
 				payresult.setText("°¡°İ:"+str);
-=======
-				String str=charge3.Pay_charge3();
-				payresult.setText("ê°€ê²©:"+str);
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 			}
 		});
 		
 		
-		btntime6=new JButton("6ì‹œê°„ê¶Œ");
+		btntime6=new JButton("6½Ã°£±Ç");
 		btntime6.setBounds(0,363,367,196);
 		btntime6.setBackground(Color.yellow);
 		btntime6.setFont(font);
@@ -206,17 +191,12 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge4=new PayEvent();
-<<<<<<< HEAD
 				String str=charge4.pay4();
 				payresult.setText("°¡°İ:"+str);
-=======
-				String str=charge4.Pay_charge4();
-				payresult.setText("ê°€ê²©:"+str);
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 			}
 		});
 		
-		btntime9=new JButton("8ì‹œê°„ê¶Œ");
+		btntime9=new JButton("8½Ã°£±Ç");
 		btntime9.setBounds(367,363,367,196);
 		btntime9.setBackground(Color.yellow);
 		btntime9.setFont(font);
@@ -227,17 +207,12 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge5=new PayEvent();
-<<<<<<< HEAD
 				String str=charge5.pay5();
 				payresult.setText("°¡°İ:"+str);
-=======
-				String str=charge5.Pay_charge5();
-				payresult.setText("ê°€ê²©:"+str);
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 			}
 		});
 		
-		btntime12=new JButton("12ì‹œê°„ê¶Œ");
+		btntime12=new JButton("12½Ã°£±Ç");
 		btntime12.setBounds(734,363,367,196);
 		btntime12.setBackground(Color.yellow);
 		btntime12.setFont(font);
@@ -248,24 +223,19 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PayEvent charge6=new PayEvent();
-<<<<<<< HEAD
 				String str=charge6.pay6();
 				payresult.setText("°¡°İ:"+str);
-=======
-				String str=charge6.Pay_charge6();
-				payresult.setText("ê°€ê²©:"+str);
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 			}
 		});
 		
-		btncardpay=new JButton("ì¹´ë“œê²°ì œ");
+		btncardpay=new JButton("Ä«µå°áÁ¦");
 		btncardpay.setBounds(800,560,300,100);
 		btncardpay.setBackground(Color.red);
 		btncardpay.setFont(font);
 		btncardpay.setBorderPainted(false);
 		panel.add(btncardpay);
 		
-		btncashpay=new JButton("í˜„ê¸ˆê²°ì œ");
+		btncashpay=new JButton("Çö±İ°áÁ¦");
 		btncashpay.setBounds(500,560,300,100);
 		btncashpay.setBackground(Color.cyan);
 		btncashpay.setBorderPainted(false);
@@ -288,7 +258,7 @@ public class Pay extends JFrame{
 		panel.add(btnperiod);
 		
 		payresult=new JLabel();
-		payresult.setText("ê°€ê²©:0");
+		payresult.setText("°¡°İ:0");
 		payresult.setBounds(330, 618, 100, 50);
 		
 		payresult.setFont(font);
