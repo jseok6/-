@@ -650,7 +650,7 @@ public class SeatSelect extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new UserLoginUI(); // 회원로그인 화면으로 이동
+				new UserLogin(); // 회원로그인 화면으로 이동
 				dispose();
 			}
 		});

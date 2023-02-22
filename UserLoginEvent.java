@@ -13,7 +13,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 
-//·Î±×ÀÎÀÌº¥Æ®
+//ë¡œê·¸ì¸ì´ë²¤íŠ¸
 public class UserLoginEvent {
 	Connection con=null;
 	PreparedStatement pstmt=null;
@@ -21,7 +21,7 @@ public class UserLoginEvent {
 	SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 	Date time=new Date();
 	String time1=format1.format(time);
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public int userLogin(int memberTel, String memberPw) {
 		String test = null;
 		
@@ -38,7 +38,7 @@ public class UserLoginEvent {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.print("Àß¸øÀÔ·Â");
+			System.out.print("ì˜ëª»ì…ë ¥");
 			e.printStackTrace();	
 		}
 		if(memberPw.equals(test)){
@@ -51,7 +51,7 @@ public class UserLoginEvent {
 	
 	
 
-	//°¡ÀÔ
+	//ê°€ì…
 	public void userJoin(int num,String pass)
 	{	
         String sql = "INSERT INTO member VALUES (?,?,?,?)";
@@ -72,13 +72,13 @@ public class UserLoginEvent {
 	    
 	    if (rs==1)
 	    {
-	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ¿Ï·á");
+	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì™„ë£Œ");
 	    	Pay pay=new Pay();
         	pay.setVisible(true);
-        	JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
+        	JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
 	    }
 	    else {
-	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ½ÇÆĞ");
+	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì‹¤íŒ¨");
 	    }
             
         } 
@@ -93,7 +93,7 @@ public class UserLoginEvent {
 	
 	public Time userRemain() {
 		Time test=new Time(1);
-		//·Î±×ÀÎ
+		//ë¡œê·¸ì¸
 		String queryLogin = "select remainTime  from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
@@ -107,7 +107,7 @@ public class UserLoginEvent {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.print("Àß¸øÀÔ·Â");
+			System.out.print("ì˜ëª»ì…ë ¥");
 			e.printStackTrace();	
 		}
 		return test;

@@ -42,7 +42,7 @@ implements ActionListener, Runnable{
 	Socket sock;
 	BufferedReader in;
 	PrintWriter out;
-	String listTitle = "*******Áú¹® ¸í´Ü*******";
+	String listTitle = "*******ì§ˆë¬¸ ëª…ë‹¨*******";
 	String id;
 	JLabel picture;
 	ChatUI[] QR = new ChatUI[100];
@@ -57,7 +57,7 @@ implements ActionListener, Runnable{
 		this.id = id;
 		this.in = in;
 		this.out = out;
-		setTitle(this.id + "´Ô ¾È³çÇÏ¼¼¿ä");
+		setTitle(this.id + "ë‹˜ ì•ˆë…•í•˜ì„¸ìš”");
 		// //////////////////////////////////////////////////////////////////////////////////////////
 		JPanel p1 = new JPanel();
 		UserMainUIPanel(p1);
@@ -70,9 +70,9 @@ implements ActionListener, Runnable{
 		p2.add(BorderLayout.CENTER, list);
 		JPanel p3 = new JPanel();
 		p3.setLayout(new GridLayout(1, 2));
-		bt2 = new JButton("Áú¹®ÇÏ±â");
+		bt2 = new JButton("ì§ˆë¬¸í•˜ê¸°");
 		bt2.addActionListener(this);
-		bt3 = new JButton("´äº¯ÇÏ±â");
+		bt3 = new JButton("ë‹µë³€í•˜ê¸°");
 		bt3.addActionListener(this);
 		p3.add(bt2);
 		p3.add(bt3);
@@ -86,12 +86,12 @@ implements ActionListener, Runnable{
 	}
 	
 	public void run() {
-		System.out.println("Å¬¶óÀÌ¾ğÆ® run");
+		System.out.println("í´ë¼ì´ì–¸íŠ¸ run");
 		try {
 			while(true) {
 				String line = in.readLine();
 				if(line==null) {
-					System.out.println("Á¾·á");
+					System.out.println("ì¢…ë£Œ");
 					break;}
 				else
 					routine(line);
@@ -106,9 +106,9 @@ implements ActionListener, Runnable{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-			if(obj == bt2) {// Áú¹®ÇÏ±â
-			MyDialog md = new MyDialog(this, "Áú¹®À» ÀÔ·ÂÇÏ¼¼¿ä", true);
-			//DialogÀÇ Ã¢Å©±â
+			if(obj == bt2) {// ì§ˆë¬¸í•˜ê¸°
+			MyDialog md = new MyDialog(this, "ì§ˆë¬¸ì„ ì…ë ¥í•˜ì„¸ìš”", true);
+			//Dialogì˜ ì°½í¬ê¸°
 			int width = 300;
 			int height = 200;
 			//int x = fx+getWidth()/2-width/2;
@@ -117,7 +117,7 @@ implements ActionListener, Runnable{
 			md.setLocationRelativeTo(this);
 			//md.setBounds(x, y, width, height);
 			md.setVisible(true);
-		}else if(obj == bt3) { // ´äº¯ÇÏ±â
+		}else if(obj == bt3) { // ë‹µë³€í•˜ê¸°
 			if(list.getSelectedItem()!=null) {
 			String str = list.getSelectedItem();
 			enterRoom(str);
@@ -129,19 +129,19 @@ implements ActionListener, Runnable{
 	}
 	
 	public void routine(String line) {
-		System.out.println("Å¬¶óÀÌ¾ğÆ® line");
+		System.out.println("í´ë¼ì´ì–¸íŠ¸ line");
 		int idx = line.indexOf(ChatProtocol2.MODE);
 		String cmd = line.substring(0, idx);
 		String data = line.substring(idx+1);
 		if(cmd.equals(ChatProtocol2.ROOMLIST)) {
 			addRoomList(data);}
-		else if(cmd.equals(ChatProtocol2.ENTERROOM)) {	// ENTERROOM:¹æÀÌ¸§:À¯Àú¸í;´ÔÀÌ ÀÔÀåÇÏ¿´½À´Ï´Ù
+		else if(cmd.equals(ChatProtocol2.ENTERROOM)) {	// ENTERROOM:ë°©ì´ë¦„:ìœ ì €ëª…;ë‹˜ì´ ì…ì¥í•˜ì˜€ìŠµë‹ˆë‹¤
 			int idx1 = data.indexOf(ChatProtocol2.MODE);
-			String Rn = data.substring(0, idx1); //¹æÀÌ¸§
-			String str = data.substring(idx1+1); //À¯Àú¸í;´ÔÀÌ ÀÔÀåÇÏ¿´½À´Ï´Ù
+			String Rn = data.substring(0, idx1); //ë°©ì´ë¦„
+			String str = data.substring(idx1+1); //ìœ ì €ëª…;ë‹˜ì´ ì…ì¥í•˜ì˜€ìŠµë‹ˆë‹¤
 			int idx2 = str.indexOf(";");
-			String Un = str.substring(0, idx2);	//À¯Àú¸í
-			String str1 = str.substring(idx2+1); //´ÔÀÌ ÀÔÀåÇÏ¿´½À´Ï´Ù
+			String Un = str.substring(0, idx2);	//ìœ ì €ëª…
+			String str1 = str.substring(idx2+1); //ë‹˜ì´ ì…ì¥í•˜ì˜€ìŠµë‹ˆë‹¤
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(Rn.equals(QR[i].roomName)){
@@ -151,10 +151,10 @@ implements ActionListener, Runnable{
 				
 			}
 		}else if(cmd.equals(ChatProtocol2.ADDUSER)) {
-			// ¹æÀÌ¸§:¹æÀÌ¸§:À¯Àú¸í;¹æÀÌ¸§:À¯Àú¸í;¹æÀÌ¸§:À¯Àú¸í;...;
+			// ë°©ì´ë¦„:ë°©ì´ë¦„:ìœ ì €ëª…;ë°©ì´ë¦„:ìœ ì €ëª…;ë°©ì´ë¦„:ìœ ì €ëª…;...;
 			int idx1 = data.indexOf(ChatProtocol2.MODE);
-			String Rn = data.substring(0, idx1); //¹æÀÌ¸§
-			String str = data.substring(idx1+1); //¹æÀÌ¸§:À¯Àú¸í;¹æÀÌ¸§:À¯Àú¸í;¹æÀÌ¸§:À¯Àú¸í;...;
+			String Rn = data.substring(0, idx1); //ë°©ì´ë¦„
+			String str = data.substring(idx1+1); //ë°©ì´ë¦„:ìœ ì €ëª…;ë°©ì´ë¦„:ìœ ì €ëª…;ë°©ì´ë¦„:ìœ ì €ëª…;...;
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(Rn.equals(QR[i].roomName)){
@@ -166,12 +166,12 @@ implements ActionListener, Runnable{
 			}
 
 
-		}else if(cmd.equals(ChatProtocol2.MESSAGE)) { // MESSAGE:¹æÀÌ¸§:[id]+Ã¤ÆÃ³»¿ë
-			System.out.println("¸Ş¼¼ÁöÁøÀÔ");
+		}else if(cmd.equals(ChatProtocol2.MESSAGE)) { // MESSAGE:ë°©ì´ë¦„:[id]+ì±„íŒ…ë‚´ìš©
+			System.out.println("ë©”ì„¸ì§€ì§„ì…");
 			int idx1 = data.indexOf(ChatProtocol2.MODE);
-			String Rn = data.substring(0, idx1); // ¹æÀÌ¸§
+			String Rn = data.substring(0, idx1); // ë°©ì´ë¦„
 			System.out.println("Rn:"+Rn);
-			String msg = data.substring(idx1 + 1);	// [id]:Ã¤ÆÃ³»¿ë
+			String msg = data.substring(idx1 + 1);	// [id]:ì±„íŒ…ë‚´ìš©
 			System.out.println("msg:"+msg);
 //			if(Rn.equals(QR[0].roomname)) {
 //				QR[0].addText(msg);
@@ -179,14 +179,14 @@ implements ActionListener, Runnable{
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(Rn.equals(QR[i].roomName)){
-					System.out.println("Ã¤ÆÃÇÑ ¹æ¹øÈ£ = " + i);
+					System.out.println("ì±„íŒ…í•œ ë°©ë²ˆí˜¸ = " + i);
 					QR[i].addText(msg);
 					}
 				}
 
 			}
 		}else if(cmd.equals(ChatProtocol2.RESETLIST)) {
-			System.out.println("¸®½ºÆ®¸®¼Â");
+			System.out.println("ë¦¬ìŠ¤íŠ¸ë¦¬ì…‹");
 			System.out.println(data);
 			list.removeAll();
 			list.add(listTitle);
@@ -199,7 +199,7 @@ implements ActionListener, Runnable{
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(data.equals(QR[i].roomName)){
-					System.out.println("Ã¤ÆÃÇÑ ¹æ¹øÈ£ = " + i);
+					System.out.println("ì±„íŒ…í•œ ë°©ë²ˆí˜¸ = " + i);
 					QR[i].addText("*********OWNER EXIT*********");
 					QR[i].addText("Leave the room in 3 seconds");
 					sendMessage(ChatProtocol2.DELETUSER+ChatProtocol2.MODE+QR[i].roomName);
@@ -220,7 +220,7 @@ implements ActionListener, Runnable{
 				}
 
 			}
-		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:¹æÀÌ¸§
+		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:ë°©ì´ë¦„
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(data.equals(QR[i].roomName)) {
@@ -242,8 +242,8 @@ implements ActionListener, Runnable{
 			tf = new TextField();
 			Panel p = new Panel();
 			
-			b1 = new Button("È®ÀÎ");
-			b2 = new Button("Ãë¼Ò");
+			b1 = new Button("í™•ì¸");
+			b2 = new Button("ì·¨ì†Œ");
 			
 			p.add(b1);
 			p.add(b2);
@@ -252,7 +252,7 @@ implements ActionListener, Runnable{
 			add(tf,BorderLayout.CENTER);
 			b1.addActionListener(this);
 			b2.addActionListener(this);
-			tf.addActionListener(this);//Enter ÀÌº¥Æ®
+			tf.addActionListener(this);//Enter ì´ë²¤íŠ¸
 		}
 		
 		@Override
@@ -260,9 +260,9 @@ implements ActionListener, Runnable{
 			Object obj = e.getSource();
 			if(obj == b1 || obj == tf) {
 				String str = tf.getText().trim();
-				sendMessage(ChatProtocol2.ROOMLIST+ChatProtocol2.MODE+id+";"+str);//ROOMRIST:ccc;ÀÌ°Å ¹¹¾ß?
+				sendMessage(ChatProtocol2.ROOMLIST+ChatProtocol2.MODE+id+";"+str);//ROOMRIST:ccc;ì´ê±° ë­ì•¼?
 				creatRoom(str);
-				dispose();//»ç¶óÁö´Â ±â´É
+				dispose();//ì‚¬ë¼ì§€ëŠ” ê¸°ëŠ¥
 			}else if(obj == b2) {
 				dispose();
 			}
@@ -275,7 +275,7 @@ implements ActionListener, Runnable{
 		int orner = 1;
 		for(int i = 0; QR.length > i; i++) {
 			if(QR[i] == null) {
-				System.out.println("¸¸µé¾îÁø ¹æ¹øÈ£ = " + i);
+				System.out.println("ë§Œë“¤ì–´ì§„ ë°©ë²ˆí˜¸ = " + i);
 				QR[i] = new ChatUI(roomname, in, out, id, orner);
 				QR[i].enterRoom();
 				break;
@@ -286,7 +286,7 @@ implements ActionListener, Runnable{
 	public void enterRoom(String roomname) {
 		for(int i = 0; QR.length > i; i++) {
 			if(QR[i] == null) {
-				System.out.println("¸¸µé¾îÁø ¹æ¹øÈ£ = " + i);
+				System.out.println("ë§Œë“¤ì–´ì§„ ë°©ë²ˆí˜¸ = " + i);
 				QR[i] = new ChatUI(roomname, in, out, id);
 				QR[i].enterRoom();
 				break;
@@ -298,32 +298,32 @@ implements ActionListener, Runnable{
 	{
 		panel.setLayout(null);
 		
-		Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+		Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
 		
-		JLabel roomNumber=new JLabel("¹æ¹øÈ£:");
+		JLabel roomNumber=new JLabel("ë°©ë²ˆí˜¸:");
 		roomNumber.setBounds(0,0,100,50);
 		roomNumber.setFont(font);
 		panel.add(roomNumber);
 		
 		
-		JLabel remaintime=new JLabel("³²Àº ½Ã°£:");
+		JLabel remaintime=new JLabel("ë‚¨ì€ ì‹œê°„:");
 		remaintime.setBounds(400,0,100,50);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		
-		//°ü¸®ÀÚ ÀüÈ­¹øÈ£ ¶ß°ÔÇÏ±â
-		ManagerEvent mgpn=new ManagerEvent();
-        String managerphone_str=mgpn.Manager_phone();
-		JLabel ManagerPhone = new JLabel("°ü¸®ÀÚ ¿¬¶ôÃ³:"+managerphone_str);
+		//ê´€ë¦¬ì ì „í™”ë²ˆí˜¸ ëœ¨ê²Œí•˜ê¸°
+		FindManagerTable mgpn=new FindManagerTable();
+        String managerphone_str=mgpn.managerPn();
+		JLabel ManagerPhone = new JLabel("ê´€ë¦¬ì ì—°ë½ì²˜:"+managerphone_str);
 		ManagerPhone.setBounds(0, 40, 300, 50);
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
 		
 		
-		//°ü¸®ÀÚÀÌ¸ŞÀÏ ¶ß°ÔÇÏ±â
-		ManagerEvent mgem=new ManagerEvent();
-		String managerEmail_str=mgem.manager_email();
-		JLabel managerEmail=new JLabel("°ü¸®ÀÚÀÌ¸ŞÀÏ:"+managerEmail_str);
+		//ê´€ë¦¬ìì´ë©”ì¼ ëœ¨ê²Œí•˜ê¸°
+		FindManagerTable mgem=new FindManagerTable();
+		String managerEmail_str=mgem.managerEmail();
+		JLabel managerEmail=new JLabel("ê´€ë¦¬ìì´ë©”ì¼:"+managerEmail_str);
 		managerEmail.setBounds(400,40,300,50);
 		managerEmail.setFont(font);
 		panel.add(managerEmail);
@@ -345,7 +345,7 @@ implements ActionListener, Runnable{
         
         panel.setBackground(new Color(230,239,255));
         
-        //Ãß°¡°áÁ¦ ±â´É
+        //ì¶”ê°€ê²°ì œ ê¸°ëŠ¥
         addpay.addActionListener(new ActionListener() {
 			
 			@Override
@@ -355,7 +355,7 @@ implements ActionListener, Runnable{
 			}
 		});
         
-        //Åğ½Ç ±â´É
+        //í‡´ì‹¤ ê¸°ëŠ¥
         exit.addActionListener(new ActionListener() {
 			
 			@Override

@@ -425,17 +425,14 @@ implements ActionListener{
         btnm.addActionListener(this);
         panel.add(btnm);
         
-<<<<<<< HEAD
         
         FindManagerTable mgpn=new FindManagerTable();
         String str=mgpn.managerPn();
-        JLabel managerphone= new JLabel("°ü¸®ÀÚ ¿¬¶ôÃ³:"+str);
+        JLabel managerphone= new JLabel("ê´€ë¦¬ì ì—°ë½ì²˜:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
         
-=======
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
         back=new JButton(img);
 		back.setBounds(0, 0, 150, 90);
 		back.setBorderPainted(false);
@@ -469,12 +466,8 @@ implements ActionListener{
 				if(i == 1){
 					PayEnter pay=new PayEnter();
 					pay.setVisible(true);
-<<<<<<< HEAD
-=======
-					JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
->>>>>>> cb5399a3cbe245dcec10526c45c239495a213359
 					dispose();
-					JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, "í™˜ì˜í•©ë‹ˆë‹¤.");
 					
 					
 				}

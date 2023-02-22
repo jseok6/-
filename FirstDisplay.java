@@ -32,9 +32,6 @@ public class FirstDisplay extends JFrame{
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public FirstDisplay() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
