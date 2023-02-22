@@ -1,4 +1,4 @@
-package function;
+package study.function;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -34,6 +34,7 @@ import javax.swing.text.StyledEditorKit.FontFamilyAction;
 
 import study.FindSeatTable;
 import study.FindUseTable;
+import study.ManagerMain;
 import study.Pay;
 import study.UserLoginUI;
 import javax.swing.SwingConstants;
@@ -106,7 +107,7 @@ class QuestDialog extends JDialog {
 }
 
 public class SeatSelect extends JFrame {
-
+	private static SeatSelect ssinstance;
 	private JPanel contentPane;
 
 	public static void main(String[] args) {
@@ -114,10 +115,15 @@ public class SeatSelect extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SeatSelect Jframe = new SeatSelect("홍길동");
-					Jframe.setVisible(true);
-					Jframe.setResizable(false);
-					Jframe.setTitle("FamilyStudyCafe_SeatSelect");
+					if(ssinstance==null)
+					{
+						synchronized (SeatSelect.class) {
+							SeatSelect Jframe = new SeatSelect();
+							Jframe.setVisible(true);
+							Jframe.setResizable(false);
+							Jframe.setTitle("FSC_SeatSelect");
+						}
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -126,7 +132,7 @@ public class SeatSelect extends JFrame {
 	}
 
 	// 프레임 생성
-	public SeatSelect(String name) throws NumberFormatException, SQLException {
+	public SeatSelect() throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1214, 836);
 		contentPane = new JPanel();
@@ -613,26 +619,6 @@ public class SeatSelect extends JFrame {
 		wall2FLabel[11].setBounds(380, 184, 23, 140);
 		wall2FLabel[12].setBounds(285, 184, 27, 140);
 
-		// TODO 임시로 해둠, 실제 DB값 받아오고 지우기
-//		QuestInfoDTO quest1 = new QuestInfoDTO("질문입니다");
-//		
-//		//TODO DB, 채팅질문목록기능 연동해야함
-//		//질문확인 버튼
-//		JButton searchQuestionBtn = new JButton("<html><body><center>질"
-//        		+ "<br>문</center><br>확<br>인</body></html>");
-//		searchQuestionBtn.setBounds(1036, 140, 62, 395);
-//		searchQuestionBtn.setBackground(new Color(0, 255, 64));
-//		searchQuestionBtn.setFont(logoutBtnFont);
-//		searchQuestionBtn.setFocusPainted(false);// hide focus rectangle
-//		searchQuestionBtn.addActionListener(new ActionListener() {//누르면 아래 기능 동작
-//			public void actionPerformed(ActionEvent e) {
-//	              // QuestDialog생성
-//                QuestDialog questDialog = new QuestDialog //위에서 정의해놓은 QuestDialog 클래스 객체 생성
-//                		("", true, idLabel.getText(),quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
-//                questDialog.setVisible(true);
-//			}
-//		});
-//		contentPane.add(searchQuestionBtn);
 		// 구역(1층) 선택 버튼
 		JButton firstFloorBtn = new JButton("1층");
 		firstFloorBtn.setBounds(0, 759, 116, 38);
@@ -664,39 +650,63 @@ public class SeatSelect extends JFrame {
 			}
 		});
 		contentPane.add(secondFloorBtn);
+		
+		//화면 새로고침 버튼
+		JButton refreshBtn = new JButton("새로고침");
+		refreshBtn.setFont(new Font("Dialog", Font.BOLD, 16));
+		refreshBtn.setFocusPainted(false);
+		refreshBtn.setBackground(Color.WHITE);
+		refreshBtn.setBounds(1047, 745, 150, 50);
+		refreshBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				try {
+					new SeatSelect();
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		contentPane.add(refreshBtn);
 
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel.setBackground(Color.CYAN);
-		panel.setBounds(384, 696, 55, 56);
-		contentPane.add(panel);
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_1.setBackground(Color.ORANGE);
-		panel_1.setBounds(510, 696, 55, 56);
-		contentPane.add(panel_1);
-
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_2.setBackground(Color.RED);
-		panel_2.setBounds(636, 696, 55, 56);
-		contentPane.add(panel_2);
-
-		JLabel lblNewLabel = new JLabel("사용가능");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(384, 759, 57, 15);
-		contentPane.add(lblNewLabel);
-
-		JLabel lblNewLabel_1 = new JLabel("사용중");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(510, 759, 57, 15);
-		contentPane.add(lblNewLabel_1);
-
-		JLabel lblNewLabel_2 = new JLabel("사용불가능");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(625, 759, 75, 15);
-		contentPane.add(lblNewLabel_2);
+		//화면 아래쪽 색상별 상태 안내 패널, 라벨
+		
+		//하늘색
+		JPanel cyanPanel = new JPanel();
+		cyanPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		cyanPanel.setBackground(Color.CYAN);
+		cyanPanel.setBounds(384, 696, 55, 56);
+		contentPane.add(cyanPanel);
+		//주황색
+		JPanel orangePanel = new JPanel();
+		orangePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		orangePanel.setBackground(Color.ORANGE);
+		orangePanel.setBounds(510, 696, 55, 56);
+		contentPane.add(orangePanel);
+		//빨강색
+		JPanel redPanel = new JPanel();
+		redPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		redPanel.setBackground(Color.RED);
+		redPanel.setBounds(636, 696, 55, 56);
+		contentPane.add(redPanel);
+		//"사용가능" 글자
+		JLabel useavailLabel = new JLabel("사용가능");
+		useavailLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		useavailLabel.setBounds(384, 759, 57, 15);
+		contentPane.add(useavailLabel);
+		//"사용중" 글자
+		JLabel useAlreadyLabel = new JLabel("사용중");
+		useAlreadyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		useAlreadyLabel.setBounds(510, 759, 57, 15);
+		contentPane.add(useAlreadyLabel);
+		//"사용불가" 글자
+		JLabel useDenyLabel = new JLabel("사용불가");
+		useDenyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		useDenyLabel.setBounds(625, 759, 75, 15);
+		contentPane.add(useDenyLabel);
 
 		// 뒤로가기 버튼
 		JButton btnBack = new JButton();
@@ -713,74 +723,5 @@ public class SeatSelect extends JFrame {
 			}
 		});
 		// --------------------------------------------------------------------------------------------------
-		class SeatBtnListener implements ActionListener {
-			// 의자버튼 눌렀을때 동작 seat2FBtn[0] //200번 의자
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JButton seatSource = (JButton) e.getSource(); // 클릭한 버튼의 라벨값 읽어옴
-//    			FindUseTable findUseTable = new FindUseTable();
-				String usestat = null; // seatInfoPanel의 memberTelLabel에 들어갈
-
-				// 의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
-//    			seatNumLabel_seatInfoPanel.setText(seatSource.getText());
-				// if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false)
-				// //TODO 조건문 미동작?
-				// {
-				// 클릭한 의자라벨값 읽어와서 findUse 실행(사용중인지 검사)
-				try {
-//						usestat = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
-				} catch (NumberFormatException e1) {
-					e1.printStackTrace();
-//					} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-				if (usestat == "0")// 리턴받은값이 0이면 회원전화번호 라벨에서 지우기(공백상태로 둠)
-				{
-//    					memberInfoBtn.setEnabled(false);
-//    					memberTelLabel.setText("");
-				} else {
-					// seatInfo 패널의 정보 버튼 활성화
-//    					memberInfoBtn.setEnabled(true); 					
-					// 사용 테이블에서 유저 전화번호 검색해와서 집어넣기
-//    					memberTelLabel.setText(usestat);
-				}
-
-//    				memberInfoPanel.setEnabled(false);
-//    				memberInfoPanel.setVisible(false);
-//    				seatInfoPanel.setVisible(true);
-//    				seatInfoPanel.setEnabled(true);   	
-
-				// 패널 아래의 1층좌석 버튼 비활성화
-//    				seat1FBtn[10].setEnabled(false);
-//    				seat1FBtn[10].setVisible(false);
-//    				seat1FBtn[11].setEnabled(false);
-//    				seat1FBtn[11].setVisible(false);
-//    				seat1FBtn[12].setEnabled(false);
-//    				seat1FBtn[12].setVisible(false);
-//    				seat1FBtn[13].setEnabled(false);
-//    				seat1FBtn[13].setVisible(false);
-//
-//    				//패널 아래의 2층좌석 버튼 비활성화
-//    				seat2FBtn[8].setEnabled(false);
-//    				seat2FBtn[8].setVisible(false);
-//    				seat2FBtn[9].setEnabled(false);
-//    				seat2FBtn[9].setVisible(false);
-//    				seat2FBtn[11].setEnabled(false);
-//    				seat2FBtn[11].setVisible(false);
-//    				seat2FBtn[12].setEnabled(false);
-//    				seat2FBtn[12].setVisible(false);
-			}
-		}
-		// }
-
-		// 좌석버튼에 액션리스너 기능 추가
-		SeatBtnListener seatBtnListener = new SeatBtnListener();
-		for (int i = 0; i < seat1Farr.length; i++) {
-			seat1FBtn[i].addActionListener(seatBtnListener);
-		}
-		for (int i = 0; i < seat2Farr.length; i++) {
-			seat2FBtn[i].addActionListener(seatBtnListener);
-		}
 	}
-
 }

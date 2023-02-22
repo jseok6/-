@@ -128,7 +128,7 @@ public class ManagerMain extends JFrame
 							ManagerMain Jframe = new ManagerMain("홍길동");
 							Jframe.setVisible(true);
 							Jframe.setResizable(false);
-							Jframe.setTitle("FamilyStudyCafe_ManagerMain");
+							Jframe.setTitle("FSC_ManagerMain");
 						}
 					}
 				} 
