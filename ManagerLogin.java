@@ -87,7 +87,7 @@ implements ActionListener{
 	 
 	public ManagerLogin() {
 		 // setting
-        setTitle("FamilyStudyCafe_ManagerLogin");
+        setTitle("FSC_ManagerLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);

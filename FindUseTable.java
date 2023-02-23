@@ -1,15 +1,15 @@
 package study;
 
-//ÀÇÀÚÁ¤º¸(seatÅ×ÀÌºí) °¡Á®¿À±â
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(seatï¿½ï¿½ï¿½Ìºï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//USE(»ç¿ë)Å×ÀÌºí °Ë»ö
+//USE(ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ë»ï¿½
 public class FindUseTable {	
 	
-	//»ç¿ëÁ¤º¸ Insert
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Insert
 	public void insertUse(String checkintime
 			, String membertel, int seatnum) throws SQLException
 	{
@@ -20,7 +20,7 @@ public class FindUseTable {
 		FindSeatTable fst = new FindSeatTable();
 		try 
 		{
-			con = DBConnect2.getConnection();
+			con = DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryinsertUse);
 			
 			pstmt.setString(1, checkintime);
@@ -42,39 +42,39 @@ public class FindUseTable {
 		//return;
 	}
 	
-	//»ç¿ë¹øÈ£ È®ÀÎ- ÀÇÀÚ¹øÈ£·Î Ã£±â
+	//ï¿½ï¿½ï¿½ï¿½È£ È®ï¿½ï¿½- ï¿½ï¿½ï¿½Ú¹ï¿½È£ï¿½ï¿½ Ã£ï¿½ï¿½
 	public String findUse(int seatnum) throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null, rs2 = null;
 		String queryFindUse="select useNum from `use` "
-				+ "where seatNum = ?"; //»ç¿ë¹øÈ£ È®ÀÎ
+				+ "where seatNum = ?"; //ï¿½ï¿½ï¿½ï¿½È£ È®ï¿½ï¿½
 		String usenumReturn=null;
 		
 		String queryFindmemberTel="select memberTel from `use` "
-				+ "where seatNum = ?"; //¸â¹öÀüÈ­¹øÈ£ È®ÀÎ
+				+ "where seatNum = ?"; //ï¿½ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½È£ È®ï¿½ï¿½
 		String memberTel = null;
 		
 		try
 		{
-			con = DBConnect2.getConnection();
+			con = DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryFindUse);
 			pstmt.setInt(1, seatnum);
 			rs = pstmt.executeQuery();
-			if(rs.next()) //»ç¿ë¹øÈ£°¡ ÀÖÀ¸¸é
+			if(rs.next()) //ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			{
 				pstmt=con.prepareStatement(queryFindmemberTel);
 				pstmt.setInt(1, seatnum);
 				rs2 = pstmt.executeQuery();
-				//È¸¿øÀüÈ­¹øÈ£ Ã£¾Æ¿Í¼­ ¸®ÅÏ
+				//È¸ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½È£ Ã£ï¿½Æ¿Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if(rs2.next()) {					
 					usenumReturn=rs2.getString(1);
 				}
 			}
-			else //»ç¿ë¹øÈ£°¡ ¾øÀ¸¸é
+			else //ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			{
-				usenumReturn="0"; //0 ¸®ÅÏ
+				usenumReturn="0"; //0 ï¿½ï¿½ï¿½ï¿½
 			}
 		}
 		catch (SQLException e) 

@@ -25,7 +25,7 @@ public class ManagerLoginEvent2 {
 				+ "where managerId = ?";
 		
 		try {
-			con=DBConnect2.getConnection();
+			con=DBconnect.getConnection();
 			pstmt = con.prepareStatement(queryManagerLogin);
 			pstmt.setString(1, managerid);
 			rs = pstmt.executeQuery();

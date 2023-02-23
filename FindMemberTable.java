@@ -62,7 +62,7 @@ public class FindMemberTable {
 				+ "where memberTel = ?";
 
 		try {
-			con=DBConnect2.getConnection();
+			con=DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryFindremTime);
 			pstmt.setString(1, membertel);
 			rs = pstmt.executeQuery();
