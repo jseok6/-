@@ -1,15 +1,14 @@
 package study;
 
-//��������(seat���̺�) ��������
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//USE(���)���̺� �˻�
+//USE(사용)테이블 검색
 public class FindUseTable {	
 	
-	//������� Insert
+	//새로운 USE데이터 Insert
 	public void insertUse(String checkintime
 			, String membertel, int seatnum) throws SQLException
 	{
@@ -42,18 +41,18 @@ public class FindUseTable {
 		//return;
 	}
 	
-	//����ȣ Ȯ��- ���ڹ�ȣ�� ã��
+	//의자번호로 사용번호 찾기
 	public String findUse(int seatnum) throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null, rs2 = null;
 		String queryFindUse="select useNum from `use` "
-				+ "where seatNum = ?"; //����ȣ Ȯ��
+				+ "where seatNum = ?";
 		String usenumReturn=null;
 		
 		String queryFindmemberTel="select memberTel from `use` "
-				+ "where seatNum = ?"; //�����ȭ��ȣ Ȯ��
+				+ "where seatNum = ?";
 		String memberTel = null;
 		
 		try
@@ -62,19 +61,18 @@ public class FindUseTable {
 			pstmt=con.prepareStatement(queryFindUse);
 			pstmt.setInt(1, seatnum);
 			rs = pstmt.executeQuery();
-			if(rs.next()) //����ȣ�� ������
+			if(rs.next()) 
 			{
 				pstmt=con.prepareStatement(queryFindmemberTel);
 				pstmt.setInt(1, seatnum);
 				rs2 = pstmt.executeQuery();
-				//ȸ����ȭ��ȣ ã�ƿͼ� ����
 				if(rs2.next()) {					
 					usenumReturn=rs2.getString(1);
 				}
 			}
-			else //����ȣ�� ������
+			else
 			{
-				usenumReturn="0"; //0 ����
+				usenumReturn="0";
 			}
 		}
 		catch (SQLException e) 
