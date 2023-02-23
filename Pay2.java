@@ -9,15 +9,9 @@ import java.net.URI;
 
 
 public class Pay2 extends JFrame{
-<<<<<<< HEAD
-	private JButton btntime;//�ð��ǹ�ư
-	private JButton btnperiod;//�Ⱓ�� ��ư
-	private JLabel label;//����̹���
-=======
 	private JButton btntime;//시간권버튼
 	private JButton btnperiod;//기간권 버튼
 	private JLabel label;//배경이미지
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 	private JLabel label2;
 	Desktop desktop = Desktop.getDesktop();
 	private JLabel payresult;
@@ -110,13 +104,9 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "현금을 넣어주세요.");
-<<<<<<< HEAD
 				PayEnter enter=new PayEnter(membertel);
                 enter.setVisible(true);
                 dispose();
-=======
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
-				
 			}
 		});
         //카드결제

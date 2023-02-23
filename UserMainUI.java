@@ -106,15 +106,9 @@ implements ActionListener, Runnable{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-<<<<<<< HEAD
-			if(obj == bt2) {// �����ϱ�
-				MyDialog md = new MyDialog(this, "질문을 입력하세요", true);
-			//Dialog�� âũ��
-=======
 			if(obj == bt2) {// 질문하기
 			MyDialog md = new MyDialog(this, "질문을 입력하세요", true);
 			//Dialog의 창크기
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 			int width = 300;
 			int height = 200;
 			//int x = fx+getWidth()/2-width/2;
@@ -123,11 +117,7 @@ implements ActionListener, Runnable{
 			md.setLocationRelativeTo(this);
 			//md.setBounds(x, y, width, height);
 			md.setVisible(true);
-<<<<<<< HEAD
-		}else if(obj == bt3) { // �亯�ϱ�
-=======
 		}else if(obj == bt3) { // 답변하기
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 			if(list.getSelectedItem()!=null) {
 			String str = list.getSelectedItem();
 			enterRoom(str);
@@ -179,11 +169,7 @@ implements ActionListener, Runnable{
 		}else if(cmd.equals(ChatProtocol2.MESSAGE)) { // MESSAGE:방이름:[id]+채팅내용
 			System.out.println("메세지진입");
 			int idx1 = data.indexOf(ChatProtocol2.MODE);
-<<<<<<< HEAD
-			String Rn = data.substring(0, idx1); //방이름
-=======
 			String Rn = data.substring(0, idx1); // 방이름
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 			System.out.println("Rn:"+Rn);
 			String msg = data.substring(idx1 + 1);	// [id]:채팅내용
 			System.out.println("msg:"+msg);
@@ -193,11 +179,7 @@ implements ActionListener, Runnable{
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(Rn.equals(QR[i].roomName)){
-<<<<<<< HEAD
-						System.out.println("채팅한 방번호 = " + i);
-=======
 					System.out.println("채팅한 방번호 = " + i);
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 					QR[i].addText(msg);
 					}
 				}
@@ -217,11 +199,7 @@ implements ActionListener, Runnable{
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(data.equals(QR[i].roomName)){
-<<<<<<< HEAD
-						System.out.println("채팅한 방번호 = " + i);
-=======
 					System.out.println("채팅한 방번호 = " + i);
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 					QR[i].addText("*********OWNER EXIT*********");
 					QR[i].addText("Leave the room in 3 seconds");
 					sendMessage(ChatProtocol2.DELETUSER+ChatProtocol2.MODE+QR[i].roomName);
@@ -242,11 +220,7 @@ implements ActionListener, Runnable{
 				}
 
 			}
-<<<<<<< HEAD
-		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:���̸�
-=======
 		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:방이름
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(data.equals(QR[i].roomName)) {
@@ -278,11 +252,7 @@ implements ActionListener, Runnable{
 			add(tf,BorderLayout.CENTER);
 			b1.addActionListener(this);
 			b2.addActionListener(this);
-<<<<<<< HEAD
 			tf.addActionListener(this);//Enter이벤트
-=======
-			tf.addActionListener(this);//Enter 이벤트
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 		}
 		
 		@Override
@@ -290,11 +260,7 @@ implements ActionListener, Runnable{
 			Object obj = e.getSource();
 			if(obj == b1 || obj == tf) {
 				String str = tf.getText().trim();
-<<<<<<< HEAD
 				sendMessage(ChatProtocol2.ROOMLIST+ChatProtocol2.MODE+id+";"+str);
-=======
-				sendMessage(ChatProtocol2.ROOMLIST+ChatProtocol2.MODE+id+";"+str);//ROOMRIST:ccc;이거 뭐야?
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 				creatRoom(str);
 				dispose();//사라지는 기능
 			}else if(obj == b2) {
@@ -348,11 +314,7 @@ implements ActionListener, Runnable{
 		//관리자 전화번호 뜨게하기
 		FindManagerTable mgpn=new FindManagerTable();
         String managerphone_str=mgpn.managerPn();
-<<<<<<< HEAD
         JLabel ManagerPhone = new JLabel("관리자 연락처:"+managerphone_str);
-=======
-		JLabel ManagerPhone = new JLabel("관리자 연락처:"+managerphone_str);
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 		ManagerPhone.setBounds(0, 40, 300, 50);
 		ManagerPhone.setFont(font);
 		panel.add(ManagerPhone);
@@ -383,11 +345,7 @@ implements ActionListener, Runnable{
         
         panel.setBackground(new Color(230,239,255));
         
-<<<<<<< HEAD
       //추가결제 기능
-=======
-        //추가결제 기능
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         addpay.addActionListener(new ActionListener() {
 			
 			@Override

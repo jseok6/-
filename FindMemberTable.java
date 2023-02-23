@@ -1,11 +1,7 @@
 package study;
 
 import java.awt.Color;
-<<<<<<< HEAD
-//��������(seat���̺�) ��������
-=======
 //의자정보(seat테이블) 가져오기
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -56,11 +52,7 @@ public class FindMemberTable {
 //	}
 	
 	//회원 남은시간 확인- 회원 전화번호로 찾기
-<<<<<<< HEAD
-	public String findRemainTime(String membertel) throws SQLException//매니저 이름 찾기
-=======
 	public String findRemainTime(String membertel) throws SQLException //매니저 이름 찾기
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 	{
 		Connection con=null;
 		PreparedStatement pstmt = null;

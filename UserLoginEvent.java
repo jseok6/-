@@ -52,11 +52,7 @@ public class UserLoginEvent {
 	
 
 	//가입
-<<<<<<< HEAD
 	public void userJoin(String num,String pass)
-=======
-	public void userJoin(int num,String pass)
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 	{	
         String sql = "INSERT INTO member VALUES (?,?,?,?)";
 		try {
@@ -77,11 +73,7 @@ public class UserLoginEvent {
 	    if (rs==1)
 	    {
 	    	JOptionPane.showMessageDialog(null, "회원 가입 완료");
-<<<<<<< HEAD
 	    	Pay pay=new Pay(num);
-=======
-	    	Pay pay=new Pay(Integer.toString(num));
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         	pay.setVisible(true);
         	JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
 	    }

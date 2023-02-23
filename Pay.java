@@ -8,13 +8,8 @@ import java.net.URI;
 
 
 public class Pay extends JFrame{
-<<<<<<< HEAD
-	private JButton btntime;//시간권
-	private JButton btnperiod;//기간권
-=======
 	private JButton btntime;//시간권버튼
 	private JButton btnperiod;//기간권 버튼
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 	private JLabel label;//배경이미지
 	private JLabel label2;
 	private JLabel payresult;
@@ -58,11 +53,7 @@ public class Pay extends JFrame{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-<<<<<<< HEAD
-		 //배경이미지
-=======
         //배경이미지
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         label = new JLabel();
 //        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
         label.setBounds(0, 0, 1100, 700);
@@ -82,11 +73,7 @@ public class Pay extends JFrame{
         // visible
         setVisible(true);
         
-<<<<<<< HEAD
-        //�Ⱓ�ǹ�ư
-=======
         //기간권버튼
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -97,11 +84,7 @@ public class Pay extends JFrame{
 			}
 		});
         
-<<<<<<< HEAD
-      //기간권버튼
-=======
         //뒤로가기버튼
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         back.addActionListener(new ActionListener() {
 			
 			@Override
@@ -113,11 +96,7 @@ public class Pay extends JFrame{
 			}
 		});
         
-<<<<<<< HEAD
       //현금결제
-=======
-        //현금결제
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         btncashpay.addActionListener(new ActionListener() {
 			
 			@Override
@@ -128,11 +107,7 @@ public class Pay extends JFrame{
                 dispose();
 			}
 		});
-<<<<<<< HEAD
       //카드결제
-=======
-        //카드결제
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         btncardpay.addActionListener(new ActionListener() {
 			
 			@Override

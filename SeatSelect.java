@@ -94,11 +94,7 @@ public class SeatSelect extends JFrame {
 		System.out.println("SeatSelect:"+membertel);
 
 		// 폰트(맑은고딕 굵게 16)
-<<<<<<< HEAD
-		Font logoutBtnFont = new Font("������� ����", Font.BOLD, 16);
-=======
 		Font logoutBtnFont = new Font("맑은고딕 굵게", Font.BOLD, 16);
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 		// 테두리선 굵게
 		LineBorder lb = new LineBorder(Color.BLACK, 2);
 		setVisible(true);
@@ -129,13 +125,8 @@ public class SeatSelect extends JFrame {
 		JPanel panel1F = new JPanel();
 		panel1F.setBounds(121, 87, 945, 599);
 		panel1F.setLayout(null);
-<<<<<<< HEAD
 //		panel1F.setEnabled(false); //패널 비활성화
 //		panel1F.setVisible(false); //패널 감추기
-=======
-//			panel1F.setEnabled(false); //패널 비활성화
-//			panel1F.setVisible(false); //패널 감추기
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 		contentPane.add(panel1F);
 
 		// 1층 좌석 버튼 생성, 위치지정
@@ -227,11 +218,7 @@ public class SeatSelect extends JFrame {
 					fs.setVisible(true);
 					fs.setIconImage(Toolkit.getDefaultToolkit().getImage(
 							"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
-<<<<<<< HEAD
-					fs.setFont(new Font("����", Font.PLAIN, 12));
-=======
 					fs.setFont(new Font("굴림", Font.PLAIN, 12));
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 					fs.setResizable(false);
 					fs.setBounds(370, 289, 465, 260);
 					fs.getContentPane().setLayout(null);
@@ -252,17 +239,14 @@ public class SeatSelect extends JFrame {
 							// Object obj = new Object();
 							fs.setVisible(false);
 							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-<<<<<<< HEAD
 							
 							if(sock==null)
 							{
 								connect();
 							}
 							
-=======
 							new Pay(membertel);
 
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
@@ -277,15 +261,10 @@ public class SeatSelect extends JFrame {
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
 									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
 									fs.setVisible(false);
-<<<<<<< HEAD
 									fs.dispose(); 
 									String roomNum=seatSource.getText();
 									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
 									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
-=======
-									fs.dispose(); // 踰꾪듉 �늻瑜쇰븣 洹� 李쎈쭔 醫낅즺�븯寃� �븯�뒗 硫붿냼�뱶
-									new UserMainUI(null, null, membertel);
->>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 								}
 								else 
 								{
