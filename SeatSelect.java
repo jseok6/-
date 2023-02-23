@@ -244,8 +244,6 @@ public class SeatSelect extends JFrame {
 							{
 								connect();
 							}
-							
-							new Pay(membertel);
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
@@ -259,7 +257,7 @@ public class SeatSelect extends JFrame {
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
-									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
+									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
 									fs.setVisible(false);
 									fs.dispose(); 
 									String roomNum=seatSource.getText();
