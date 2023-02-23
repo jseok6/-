@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class FirstDisplay extends JFrame{
 
@@ -32,13 +33,17 @@ public class FirstDisplay extends JFrame{
 		});
 	}
 
-	public FirstDisplay() {
+	public FirstDisplay() throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
 		frmFamilyStudyCafe = new JPanel();
 		frmFamilyStudyCafe.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frmFamilyStudyCafe.setLayout(null);
 		setContentPane(frmFamilyStudyCafe);
+		DBconnect dbConnect = new DBconnect();
+		
+		dbConnect.conAccept(); //다른컴에 DB연결 권한주기
+		
 		this.setResizable(false);
 		this.setVisible(true);
 		

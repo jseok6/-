@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.border.*;
@@ -439,10 +440,15 @@ implements ActionListener{
 		back.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FirstDisplay fDisplay = new FirstDisplay();
-				fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
-				fDisplay.setVisible(true);
-				dispose(); // 이창 닫기
+				FirstDisplay fDisplay;
+				try {
+					fDisplay = new FirstDisplay();
+					fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+					fDisplay.setVisible(true);
+					dispose(); // 이창 닫기
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel.add(back);

@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.sql.SQLException;
 
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
@@ -142,10 +143,15 @@ implements ActionListener{
         		{
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        		FirstDisplay fDisplay = new FirstDisplay();
-        		fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
-        		fDisplay.setVisible(true);
-             	dispose(); //이창 닫기
+        		FirstDisplay fDisplay;
+				try {
+					fDisplay = new FirstDisplay();
+					fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+	        		fDisplay.setVisible(true);
+	             	dispose(); //이창 닫기
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} 	
         	}
         		});
         btnBack.setBounds(0,0,100,50);
