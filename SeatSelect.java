@@ -216,30 +216,36 @@ public class SeatSelect extends JFrame {
 					checkBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							String checkStat;
-							// Object obj = new Object();
-							fs.setVisible(false);
-							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-							new Pay(membertel);
+							String checkStat;	
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
-							try {
+							try 
+							{
 								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
 								if (checkStat == "0")// 사용중인 좌석이 아니면
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
 									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
-								} else {
+									fs.setVisible(false);
+									fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
+									new UserMainUI(null, null, membertel);
+								}
+								else 
+								{
 									System.out.println("Already using seat");
 								}
-							} catch (NumberFormatException e1) {
+							} 
+							catch (NumberFormatException e1) 
+							{
 								e1.printStackTrace();
-							} catch (SQLException e1) {
+							} 
+							catch (SQLException e1) 
+							{
 								e1.printStackTrace();
 							}
 						}
