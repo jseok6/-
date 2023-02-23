@@ -464,7 +464,7 @@ implements ActionListener{
 				UserLoginEvent login=new UserLoginEvent();
 				int i = login.userLogin(Integer.parseInt(userText.getText()), passText.getText());
 				if(i == 1){
-					PayEnter pay=new PayEnter();
+					PayEnter pay=new PayEnter(userText.getText());
 					pay.setVisible(true);
 					dispose();
 					JOptionPane.showMessageDialog(null, "환영합니다.");

@@ -50,7 +50,7 @@ public class SeatSelect extends JFrame {
 					if(ssinstance==null)
 					{
 						synchronized (SeatSelect.class) {
-							SeatSelect Jframe = new SeatSelect();
+							SeatSelect Jframe = new SeatSelect("-test-");
 							Jframe.setVisible(true);
 							Jframe.setResizable(false);
 							Jframe.setTitle("FSC_SeatSelect");
@@ -64,7 +64,7 @@ public class SeatSelect extends JFrame {
 	}
 
 	// 프레임 생성
-	public SeatSelect() throws NumberFormatException, SQLException {
+	public SeatSelect(String membertel) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1214, 836);
 		contentPane = new JPanel();
@@ -72,6 +72,7 @@ public class SeatSelect extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
+		System.out.println("SeatSelect:"+membertel);
 
 		// 폰트(맑은고딕 굵게 16)
 		Font logoutBtnFont = new Font("맑은고딕 굵게", Font.BOLD, 16);
@@ -219,7 +220,7 @@ public class SeatSelect extends JFrame {
 							// Object obj = new Object();
 							fs.setVisible(false);
 							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-							new Pay();
+							new Pay(membertel);
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
@@ -440,7 +441,7 @@ public class SeatSelect extends JFrame {
 							// Object obj = new Object();
 							fs.setVisible(false);
 							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-							new Pay();
+							new Pay(membertel);
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
@@ -594,7 +595,7 @@ public class SeatSelect extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				try {
-					new SeatSelect();
+					new SeatSelect(membertel);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (SQLException e1) {

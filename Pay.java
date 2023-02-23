@@ -36,11 +36,12 @@ public class Pay extends JFrame{
 	
 	
 	
-	public Pay() {
+	public Pay(String membertel) {
 		setTitle("시간제");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
+		System.out.println("Pay:"+membertel);
 		
 		// panel
         JPanel panel = new JPanel();
@@ -76,7 +77,7 @@ public class Pay extends JFrame{
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Pay2 pay2=new Pay2();
+				Pay2 pay2=new Pay2(membertel);
 				pay2.setVisible(true);
 				dispose();
 				
@@ -268,7 +269,7 @@ public class Pay extends JFrame{
 	
 	}
 	public static void main(String[] args) {
-		new Pay();
+		new Pay("test");
 		
 	}
 	

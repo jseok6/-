@@ -23,7 +23,7 @@ public class PayEnter  extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PayEnter window = new PayEnter();
+					PayEnter window = new PayEnter("-test-");
 					window.setTitle("FSC_PayEnter");
 					window.setVisible(true);
 					window.setResizable(false);
@@ -34,12 +34,13 @@ public class PayEnter  extends JFrame{
 		});
 	}
 
-	public PayEnter() {
+	public PayEnter(String membertel) {
 		setTitle("FamilyStudyCafe_PayEnter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100,100,1056,570);
 		this.setResizable(false);
 		this.setVisible(true);
+		System.out.println("PayEnter:"+membertel);
 		
 		payenterPanel = new JPanel();
 		payenterPanel.setBounds(100, 100, 1056, 570);
@@ -63,7 +64,7 @@ public class PayEnter  extends JFrame{
 //					fs.setSize(700, 600);
 //					fs.setLocation(200, 200);
 //					fs.dispose();
-					new Pay();
+					new Pay(membertel);
 				}
 			}
 		});// 시간제 & 기간제 결제창 실행
@@ -80,7 +81,7 @@ public class PayEnter  extends JFrame{
 				Object obj = e.getSource();
 				if ((Button) obj == button2) {
 					try {
-						SeatSelect ss = new SeatSelect();
+						SeatSelect ss = new SeatSelect(membertel);
 						ss.setTitle("FSC_SeatSelect");
 						dispose();
 					} catch (NumberFormatException | SQLException e1) {
