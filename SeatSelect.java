@@ -100,20 +100,20 @@ public class SeatSelect extends JFrame {
 		setVisible(true);
 
 		ImageIcon logoIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
+				"C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
 		Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
 		Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체
 																						// 생성
 		ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg); // 새로운 Image 객체로 ImageIcon 객체 생성
 
 		ImageIcon trashcanIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\trashcan.png");
+				"C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\trashcan.png");
 		Image trashcanImg = trashcanIcon.getImage();
 		Image updateTrashcanImg = trashcanImg.getScaledInstance(57, 54, Image.SCALE_SMOOTH);
 		ImageIcon updatetrashcanIcon = new ImageIcon(updateTrashcanImg);
 
 		ImageIcon waterPFIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\water.png");
+				"C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\water.png");
 		Image waterPFImg = waterPFIcon.getImage();
 		Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
@@ -217,7 +217,7 @@ public class SeatSelect extends JFrame {
 					fs.setTitle("자리 선택 여부");
 					fs.setVisible(true);
 					fs.setIconImage(Toolkit.getDefaultToolkit().getImage(
-							"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
+							"C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg"));
 					fs.setFont(new Font("굴림", Font.PLAIN, 12));
 					fs.setResizable(false);
 					fs.setBounds(370, 289, 465, 260);
@@ -456,7 +456,7 @@ public class SeatSelect extends JFrame {
 					fs.setTitle("자리 선택 여부");
 					fs.setVisible(true);
 					fs.setIconImage(Toolkit.getDefaultToolkit().getImage(
-							"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\family.jpg"));
+							"C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg"));
 					fs.setFont(new Font("굴림", Font.PLAIN, 12));
 					fs.setResizable(false);
 					fs.setBounds(370, 289, 465, 260);
@@ -683,7 +683,7 @@ public class SeatSelect extends JFrame {
 		btnBack.setBounds(0, 0, 115, 60);
 		contentPane.add(btnBack);
 		btnBack.setIcon(new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\D팀 프로젝트 자료\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
+				"C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
 		btnBack.setFocusPainted(false);
 		btnBack.addActionListener(new ActionListener() {
 			@Override

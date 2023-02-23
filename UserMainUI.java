@@ -48,8 +48,8 @@ implements ActionListener, Runnable{
 	ChatUI[] QR = new ChatUI[100];
 	boolean flag = false;
 	
-	ImageIcon img=new ImageIcon("./Button_Image/addpay.jpg");
-	ImageIcon imgexit=new ImageIcon("./Button_Image/exit.jpg");
+	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/addpay.jpg");
+	ImageIcon imgexit=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/exit.jpg");
 
 	public UserMainUI(BufferedReader in, PrintWriter out, String id, String num) {
 		setSize(850,700);
@@ -329,7 +329,7 @@ implements ActionListener, Runnable{
 		panel.add(managerEmail);
 		
 		picture = new JLabel();
-        picture.setIcon(new ImageIcon("./Button_Image/book.jpg"));
+        picture.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/hanbook.jpg"));
         picture.setBounds(0, 100, 900,365);
         panel.add(picture);
         

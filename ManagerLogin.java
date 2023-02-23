@@ -78,7 +78,7 @@ implements ActionListener{
 	 private JButton btnm;
 	 
 	 ImageIcon logoIcon= new ImageIcon
-				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
+				("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
      Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
  	Image updateLogoImg = logoImg.getScaledInstance(160, 100, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
      ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
@@ -136,8 +136,7 @@ implements ActionListener{
         
         //뒤로가기 버튼
         btnBack = new JButton();
-        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\"
-        		+ "src\\img\\Button_image\\back.jpg"));
+        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
         btnBack.setFocusPainted(false);
         btnBack.addActionListener(new ActionListener()
         		{
