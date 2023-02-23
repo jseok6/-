@@ -216,30 +216,44 @@ public class SeatSelect extends JFrame {
 					checkBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 							String checkStat;
 							// Object obj = new Object();
 							fs.setVisible(false);
 							fs.dispose(); // ¹öÆ° ´©¸¦¶§ ±× Ã¢¸¸ Á¾·áÇÏ°Ô ÇÏ´Â ¸Ş¼Òµå
 							new Pay(membertel);
+=======
+							String checkStat;	
+>>>>>>> ed36a6e9c86348c546f9488b8f8a5cf27dc16997
 
 							// use Å×ÀÌºí¿¡¼­ »ç¿ëÁßÀÎÁö °Ë»ç
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
-							try {
+							try 
+							{
 								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
 								if (checkStat == "0")// »ç¿ëÁßÀÎ ÁÂ¼®ÀÌ ¾Æ´Ï¸é
 								{
 									// »ç¿ë¹øÈ£ ,Ã¼Å©ÀÎ½Ã°£, ÀüÈ­¹øÈ£, ÀÇÀÚ¹øÈ£
 									// TODO Ã¼Å©ÀÎ½Ã°£ ÇöÀç½Ã°£ÀÌ¶û µ¿±âÈ­/ÀüÈ­¹øÈ£ Áßº¹¹æÁö Àû¿ëÇÊ¿ä
 									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
-								} else {
+									fs.setVisible(false);
+									fs.dispose(); // ë²„íŠ¼ ëˆ„ë¥¼ë•Œ ê·¸ ì°½ë§Œ ì¢…ë£Œí•˜ê²Œ í•˜ëŠ” ë©”ì†Œë“œ
+									new UserMainUI(null, null, membertel);
+								}
+								else 
+								{
 									System.out.println("Already using seat");
 								}
-							} catch (NumberFormatException e1) {
+							} 
+							catch (NumberFormatException e1) 
+							{
 								e1.printStackTrace();
-							} catch (SQLException e1) {
+							} 
+							catch (SQLException e1) 
+							{
 								e1.printStackTrace();
 							}
 						}
