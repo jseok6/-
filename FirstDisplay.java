@@ -47,7 +47,11 @@ public class FirstDisplay extends JFrame{
 		button1.setBackground(new Color(205, 133, 63));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.add(button1);
+<<<<<<< HEAD
 		// ����� button1
+=======
+		// 사용자 button1
+>>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 		button1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

@@ -3,7 +3,9 @@ package study;
 import java.text.SimpleDateFormat;
 import java.sql.*;
 
-public class PayEvent {
+
+
+public class PayCharge {
 	
 	Connection con=null;
 	PreparedStatement pstmt=null;
@@ -24,8 +26,8 @@ public class PayEvent {
 	String sql="SELECT payment FROM charge WHERE chargeTime=?";
 	String str=null;
 	
-	//�ð���
-	public String pay1()
+	//시간권가격
+	public String PayCharge1()
 	{
 		try 
 		{
@@ -51,7 +53,7 @@ public class PayEvent {
 	
 	
 	
-	public String pay2()
+	public String PayCharge2()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -72,7 +74,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String pay3()
+	public String PayCharge3()
 	{
 		
 		try {
@@ -94,7 +96,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String pay4()
+	public String PayCharge4()
 	{
 		
 		try {
@@ -116,7 +118,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String pay5()
+	public String PayCharge5()
 	{
 		
 		try {
@@ -138,7 +140,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String pay6()
+	public String PayCharge6()
 	{
 		
 		try {
@@ -159,8 +161,8 @@ public class PayEvent {
 		
 		return str;
 	}
-	//�Ⱓ��
-	public String payPeriod1()
+	//기간권 가격
+	public String Pay_charge2_1()
 	{
 		
 		try {
@@ -182,7 +184,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String payPeriod2()
+	public String Pay_charge2_2()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -203,7 +205,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String payPeriod3()
+	public String Pay_charge2_3()
 	{	
 		try {
 			con=DBconnect.getConnection();
@@ -224,7 +226,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String payPeriod4()
+	public String Pay_charge2_4()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -245,7 +247,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String payPeriod5()
+	public String Pay_charge2_5()
 	{
 		try {
 			con=DBconnect.getConnection();
@@ -266,7 +268,7 @@ public class PayEvent {
 		return str;
 	}
 	
-	public String payPeriod6()
+	public String Pay_charge2_6()
 	{
 		try {
 			con=DBconnect.getConnection();

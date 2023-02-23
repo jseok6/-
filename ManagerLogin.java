@@ -79,7 +79,11 @@ implements ActionListener{
 	 
 	 ImageIcon logoIcon= new ImageIcon
 				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
+<<<<<<< HEAD
      Image logoImg = logoIcon.getImage();// ImageIcon 객체에서 Image 추출
+=======
+     Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
+>>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
  	Image updateLogoImg = logoImg.getScaledInstance(160, 100, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
      ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
 	 
@@ -87,7 +91,7 @@ implements ActionListener{
 	 
 	public ManagerLogin() {
 		 // setting
-        setTitle("FamilyStudyCafe_ManagerLogin");
+        setTitle("FSC_ManagerLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
@@ -100,7 +104,11 @@ implements ActionListener{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
+<<<<<<< HEAD
 		 //로고 라벨
+=======
+        //로고 라벨
+>>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
         label = new JLabel();
         label.setIcon(updateLogoIcon);
         label.setBounds(0, 560, 160, 100);
@@ -459,7 +467,11 @@ implements ActionListener{
 				int i = mLE2.managerLogin2((managerIdText.getText()), managerPwText.getText());
 				if(i == 1){
 					FindManagerTable mgr = new FindManagerTable();
+<<<<<<< HEAD
 					String name = mgr.managerName(managerIdText.getText());//managerName�о��
+=======
+					String name = mgr.managerName(managerIdText.getText());//managerName읽어옴
+>>>>>>> ba7c08fe9b149fe21e93043ea02d93012e48ae98
 					ManagerMain managerMain = new ManagerMain(name);
 					managerMain.setTitle("FamilyStudyCafe_ManagerMain");
 					managerMain.setResizable(false);
