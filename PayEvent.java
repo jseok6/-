@@ -3,6 +3,8 @@ package study;
 import java.text.SimpleDateFormat;
 import java.sql.*;
 
+
+
 public class PayEvent {
 	
 	Connection con=null;
@@ -24,7 +26,7 @@ public class PayEvent {
 	String sql="SELECT payment FROM charge WHERE chargeTime=?";
 	String str=null;
 	
-	//�ð���
+	
 	public String pay1()
 	{
 		try 

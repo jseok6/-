@@ -8,8 +8,8 @@ import java.net.URI;
 
 
 public class Pay extends JFrame{
-	private JButton btntime;//시간권버튼
-	private JButton btnperiod;//기간권 버튼
+	private JButton btntime;//시간권
+	private JButton btnperiod;//기간권
 	private JLabel label;//배경이미지
 	private JLabel label2;
 	private JLabel payresult;
@@ -27,10 +27,10 @@ public class Pay extends JFrame{
 	private JButton btncashpay;
 	private JButton back;
 	
-	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton.jpg");
-	ImageIcon img2=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton2.jpg");
-	ImageIcon imgtime=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time.jpg");
-	ImageIcon imageperiod=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time2.jpg");
+	ImageIcon img=new ImageIcon("./Button_Image/image_exitButton.jpg");
+	ImageIcon img2=new ImageIcon("./Button_Image/image_exitButton2.jpg");
+	ImageIcon imgtime=new ImageIcon("./Button_Image/time.jpg");
+	ImageIcon imageperiod=new ImageIcon("./Button_Image/time2.jpg");
 	
 	Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 	
@@ -53,7 +53,7 @@ public class Pay extends JFrame{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //배경이미지
+		 //배경이미지
         label = new JLabel();
 //        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
         label.setBounds(0, 0, 1100, 700);
@@ -73,7 +73,7 @@ public class Pay extends JFrame{
         // visible
         setVisible(true);
         
-        //기간권버튼
+        //�Ⱓ�ǹ�ư
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -84,7 +84,7 @@ public class Pay extends JFrame{
 			}
 		});
         
-        //뒤로가기버튼
+      //기간권버튼
         back.addActionListener(new ActionListener() {
 			
 			@Override
@@ -101,7 +101,12 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "현금을 넣어주세요.");
+				int result = JOptionPane.showConfirmDialog(null, "현금을 넣어주세요.", "결제", JOptionPane.OK_CANCEL_OPTION);
+				if(result == JOptionPane.OK_OPTION) {
+				    // 확인 버튼이 눌렸을 때의 액션
+				    UserLoginEvent remainplus=new UserLoginEvent();
+				    remainplus.remainTimeplus(membertel);
+				}
 				PayEnter enter=new PayEnter(membertel);
                 enter.setVisible(true);
                 dispose();
@@ -113,7 +118,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					URI uri = new URI("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe/pay.html");
+					URI uri = new URI("C:/Users/dita810/Desktop/pay.html");
 	                desktop.browse(uri);
 	                PayEnter enter=new PayEnter(membertel);
 	                enter.setVisible(true);

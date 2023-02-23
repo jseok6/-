@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.border.*;
@@ -30,7 +29,7 @@ implements ActionListener{
 	 private JLabel managerphone;
 	 private JLabel label;
 	 private JLabel label2;
-	 ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/back.jpg");
+	 ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
 	 
 //	 BufferedReader in;
 //	 PrintWriter out;
@@ -104,7 +103,7 @@ implements ActionListener{
 		
         //배경이미지
         label = new JLabel();
-        label.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/family.jpg"));
+        label.setIcon(new ImageIcon("./Button_Image/family.jpg"));
         label.setBounds(0, 0, 1100, 700);
         panel.add(label);
 
@@ -434,23 +433,9 @@ implements ActionListener{
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
         
-		back = new JButton(img);
+        back=new JButton(img);
 		back.setBounds(0, 0, 150, 90);
 		back.setBorderPainted(false);
-		back.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FirstDisplay fDisplay;
-				try {
-					fDisplay = new FirstDisplay();
-					fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
-					fDisplay.setVisible(true);
-					dispose(); // 이창 닫기
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
 		panel.add(back);
 		
 		FocusListener focusListener = new FocusListener() {

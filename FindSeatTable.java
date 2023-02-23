@@ -11,13 +11,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class FindSeatTable {	
-	//의자번호 검색
+	//의자번호확인
 	public String findSeatNum() throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String queryFindSeatNum="SELECT seatNum FROM seat";
+		String queryFindSeatNum="SELECT seatNum FROM seat"; //의자번호 찾기
 		String str=null;
 		try {
 			con = DBconnect.getConnection();
@@ -40,7 +40,7 @@ public class FindSeatTable {
 		return str;
 	}
 	
-	//의자상태 검색(의자번호이용)
+	//의자상태확인
 	public Integer seatAvail(int seatnum) throws SQLException
 	{
 		Connection con = null;

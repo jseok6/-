@@ -20,7 +20,7 @@ public class FindManagerTable {
 				+ "where managerId = ?";
 
 		try {
-			con=DBconnect.getConnection();
+			con=DBConnect2.getConnection();
 			pstmt=con.prepareStatement(queryFindManagerName);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
@@ -51,7 +51,7 @@ public class FindManagerTable {
 			try {
 				con=DBconnect.getConnection();
 				pstmt = con.prepareStatement(queryFindmanagerPn);
-				pstmt.setString(1,"jseok1");
+				pstmt.setString(1,"family");
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next())
 				{
@@ -79,7 +79,7 @@ public class FindManagerTable {
 			try {
 				con=DBconnect.getConnection();
 				pstmt = con.prepareStatement(queryFindmanagerEmail);
-				pstmt.setString(1,"jseok1");
+				pstmt.setString(1,"family");
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next())
 				{

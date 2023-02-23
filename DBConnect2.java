@@ -3,11 +3,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*;
-public class DBconnect 
+public class DBConnect2 
 {
     public static Connection getConnection() {
         Connection con = null;
-    	String url = "jdbc:mysql://113.198.238.101:3306/familystudycafe";
+    	String url = "jdbc:mysql://localhost:3306/familystudycafe";
 		String id = "root";
 		String password = "1234";
         try {
@@ -15,7 +15,7 @@ public class DBconnect
             con = DriverManager.getConnection(url, id, password);
             return con;
         } catch (Exception e) {
-            System.out.println("ì—°ê²°ì˜¤ë¥˜ :" + e.toString());
+            System.out.println("¿¬°á¿À·ù :" + e.toString());
         }
         return null;
     }

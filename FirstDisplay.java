@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 public class FirstDisplay extends JFrame{
 
@@ -33,17 +32,13 @@ public class FirstDisplay extends JFrame{
 		});
 	}
 
-	public FirstDisplay() throws SQLException {
+	public FirstDisplay() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
 		frmFamilyStudyCafe = new JPanel();
 		frmFamilyStudyCafe.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frmFamilyStudyCafe.setLayout(null);
 		setContentPane(frmFamilyStudyCafe);
-		DBconnect dbConnect = new DBconnect();
-		
-		dbConnect.conAccept(); //다른컴에 DB연결 권한주기
-		
 		this.setResizable(false);
 		this.setVisible(true);
 		
@@ -52,7 +47,7 @@ public class FirstDisplay extends JFrame{
 		button1.setBackground(new Color(205, 133, 63));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.add(button1);
-		// 사용자 button1
+		// ����� button1
 		button1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

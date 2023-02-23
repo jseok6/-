@@ -1,7 +1,7 @@
 package study;
 
 import java.awt.Color;
-//의자정보(seat테이블) 가져오기
+//��������(seat���̺�) ��������
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -52,7 +52,7 @@ public class FindMemberTable {
 //	}
 	
 	//회원 남은시간 확인- 회원 전화번호로 찾기
-	public String findRemainTime(String membertel) throws SQLException //매니저 이름 찾기
+	public String findRemainTime(String membertel) throws SQLException//매니저 이름 찾기
 	{
 		Connection con=null;
 		PreparedStatement pstmt = null;
@@ -62,7 +62,7 @@ public class FindMemberTable {
 				+ "where memberTel = ?";
 
 		try {
-			con=DBconnect.getConnection();
+			con=DBConnect2.getConnection();
 			pstmt=con.prepareStatement(queryFindremTime);
 			pstmt.setString(1, membertel);
 			rs = pstmt.executeQuery();

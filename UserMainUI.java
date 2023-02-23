@@ -21,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.StringTokenizer;
 
 import javax.swing.ImageIcon;
@@ -44,12 +46,14 @@ implements ActionListener, Runnable{
 	PrintWriter out;
 	String listTitle = "*******질문 명단*******";
 	String id;
+	String num;
 	JLabel picture;
 	ChatUI[] QR = new ChatUI[100];
 	boolean flag = false;
+	Time date=null;
 	
-	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\addpay.jpg");
-	ImageIcon imgexit=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\exit.jpg");
+	ImageIcon img=new ImageIcon("./Button_Image/addpay.jpg");
+	ImageIcon imgexit=new ImageIcon("./Button_Image/exit.jpg");
 
 	public UserMainUI(BufferedReader in, PrintWriter out, String id, String num) {
 		setSize(850,700);
@@ -57,6 +61,8 @@ implements ActionListener, Runnable{
 		this.id = id;
 		this.in = in;
 		this.out = out;
+		this.num=num;
+	
 		setTitle(this.id + "님 안녕하세요");
 		// //////////////////////////////////////////////////////////////////////////////////////////
 		JPanel p1 = new JPanel();
@@ -106,9 +112,9 @@ implements ActionListener, Runnable{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-			if(obj == bt2) {// 질문하기
-			MyDialog md = new MyDialog(this, "질문을 입력하세요", true);
-			//Dialog의 창크기
+			if(obj == bt2) {
+				MyDialog md = new MyDialog(this, "질문을 입력하세요", true);
+			
 			int width = 300;
 			int height = 200;
 			//int x = fx+getWidth()/2-width/2;
@@ -117,7 +123,7 @@ implements ActionListener, Runnable{
 			md.setLocationRelativeTo(this);
 			//md.setBounds(x, y, width, height);
 			md.setVisible(true);
-		}else if(obj == bt3) { // 답변하기
+		}else if(obj == bt3) { 
 			if(list.getSelectedItem()!=null) {
 			String str = list.getSelectedItem();
 			enterRoom(str);
@@ -169,7 +175,7 @@ implements ActionListener, Runnable{
 		}else if(cmd.equals(ChatProtocol2.MESSAGE)) { // MESSAGE:방이름:[id]+채팅내용
 			System.out.println("메세지진입");
 			int idx1 = data.indexOf(ChatProtocol2.MODE);
-			String Rn = data.substring(0, idx1); // 방이름
+			String Rn = data.substring(0, idx1); //방이름
 			System.out.println("Rn:"+Rn);
 			String msg = data.substring(idx1 + 1);	// [id]:채팅내용
 			System.out.println("msg:"+msg);
@@ -179,7 +185,7 @@ implements ActionListener, Runnable{
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(Rn.equals(QR[i].roomName)){
-					System.out.println("채팅한 방번호 = " + i);
+						System.out.println("채팅한 방번호 = " + i);
 					QR[i].addText(msg);
 					}
 				}
@@ -199,7 +205,7 @@ implements ActionListener, Runnable{
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(data.equals(QR[i].roomName)){
-					System.out.println("채팅한 방번호 = " + i);
+						System.out.println("채팅한 방번호 = " + i);
 					QR[i].addText("*********OWNER EXIT*********");
 					QR[i].addText("Leave the room in 3 seconds");
 					sendMessage(ChatProtocol2.DELETUSER+ChatProtocol2.MODE+QR[i].roomName);
@@ -220,7 +226,7 @@ implements ActionListener, Runnable{
 				}
 
 			}
-		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:방이름
+		}else if(cmd.equals(ChatProtocol2.EXIT)) {	//EXIT:���̸�
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(data.equals(QR[i].roomName)) {
@@ -300,14 +306,15 @@ implements ActionListener, Runnable{
 		
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
-		JLabel roomNumber=new JLabel("방번호:");
+		JLabel roomNumber=new JLabel("방번호:"+num);
 		roomNumber.setBounds(0,0,100,50);
 		roomNumber.setFont(font);
 		panel.add(roomNumber);
 		
-		
-		JLabel remaintime=new JLabel("남은 시간:");
-		remaintime.setBounds(400,0,100,50);
+		UserLoginEvent remain=new UserLoginEvent();
+		Time date=remain.userRemain(id);
+		JLabel remaintime=new JLabel("남은 시간:"+date);
+		remaintime.setBounds(400,0,300,50);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		
@@ -329,7 +336,7 @@ implements ActionListener, Runnable{
 		panel.add(managerEmail);
 		
 		picture = new JLabel();
-        picture.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\book.jpg"));
+        picture.setIcon(new ImageIcon("./Button_Image/book.jpg"));
         picture.setBounds(0, 100, 900,365);
         panel.add(picture);
         

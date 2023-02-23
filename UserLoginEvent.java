@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -91,15 +93,14 @@ public class UserLoginEvent {
 		
 	}
 	
-	public Time userRemain() {
-		Time test=new Time(1);
-		//로그인
+	public Time userRemain(String id) {
+		Time test=new Time(0);
+		//시간
 		String queryLogin = "select remainTime  from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
 			pstmt = con.prepareStatement(queryLogin);
-			String str=Integer.toString(1234);
-			pstmt.setString(1, str);
+			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				test = rs.getTime(1);
@@ -114,8 +115,53 @@ public class UserLoginEvent {
 	
 	}
 	
+	public void remainTimeplus(String id)
+	{
+		//날짜형식 String으로 변환하기위한 포맷
+		DateFormat format = new SimpleDateFormat("HHH:MM:SS");
+		Time test=new Time(0);
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				test=rs.getTime(1);
+			}
+			System.out.println("time:"+test);
+			//추가
+			System.out.println("시간추가1");
+			System.out.println(test);
+			Calendar cal1 = Calendar.getInstance();
+			cal1.setTime(test); 
+			cal1.add(Calendar.HOUR_OF_DAY, 3); // 시간 연산
+			
+			String qwe=format.format(cal1.getTime());
+			System.out.println(cal1);
+			remaintime2=remaintime2+qwe;
+			System.out.println(remaintime2);
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			System.out.println("시간추가2");
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			int result=pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		new UserLoginEvent();
 	}
 
 }
