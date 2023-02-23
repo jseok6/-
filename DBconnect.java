@@ -7,19 +7,16 @@ public class DBconnect
 {
     public static Connection getConnection() {
         Connection con = null;
-        int db_portnumber = 3306;
-        String db_hostname = "localhost";
-        String urlFormat = "jdbc:mysql://localhost/study";
-        String id = "root";
-        String pw = "whdtjrsq124!";
-//        String url=String.format(urlFormat, db_hostname,db_portn)
+    	String url = "jdbc:mysql://localhost:3306/familystudycafe";
+		String id = "root";
+		String password = "1234";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(urlFormat, id, pw);
+            con = DriverManager.getConnection(url, id, password);
             return con;
         } catch (Exception e) {
-        	 System.out.println("¿¬°á¿À·ù : " + e.toString());
+            System.out.println("ì—°ê²°ì˜¤ë¥˜ :" + e.toString());
         }
-        return null;	
+        return null;
     }
 }

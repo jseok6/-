@@ -2,7 +2,7 @@ package study;
 
 import java.awt.Color;
 import java.io.Console;
-//ÀÇÀÚÁ¤º¸(seatÅ×ÀÌºí) °¡Á®¿À±â
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(seatï¿½ï¿½ï¿½Ìºï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,13 +11,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class FindSeatTable {	
-	//ÀÇÀÚ¹øÈ£È®ÀÎ
+	//ì˜ìë²ˆí˜¸í™•ì¸
 	public String findSeatNum() throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String queryFindSeatNum="SELECT seatNum FROM seat"; //ÀÇÀÚ¹øÈ£ Ã£±â
+		String queryFindSeatNum="SELECT seatNum FROM seat"; //ì˜ìë²ˆí˜¸ ì°¾ê¸°
 		String str=null;
 		try {
 			con = DBconnect.getConnection();
@@ -40,7 +40,7 @@ public class FindSeatTable {
 		return str;
 	}
 	
-	//ÀÇÀÚ»óÅÂÈ®ÀÎ
+	//ì˜ììƒíƒœí™•ì¸
 	public Integer seatAvail(int seatnum) throws SQLException
 	{
 		Connection con = null;
@@ -58,7 +58,7 @@ public class FindSeatTable {
 			
 			while(rs.next())
 			{
-				stateInt=rs.getInt("seatAvail");//°ıÈ£¾È¿¡ ÄÃ·³¸íÀÌ µé¾î°¡¾ßÇÔ
+				stateInt=rs.getInt("seatAvail");//ê´„í˜¸ì•ˆì— ì»¬ëŸ¼ëª…ì´ ë“¤ì–´ê°€ì•¼í•¨
 			}
 		} 
 		catch (Exception e) {
@@ -73,7 +73,7 @@ public class FindSeatTable {
 		return stateInt;
 	}
 	
-	// seatAvail ¾÷µ¥ÀÌÆ®
+	// seatAvail ì—…ë°ì´íŠ¸
 		public void seatUpdate(int seatnum, int seatavail) 
 				throws SQLException
 		{

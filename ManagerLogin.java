@@ -79,9 +79,9 @@ implements ActionListener{
 	 
 	 ImageIcon logoIcon= new ImageIcon
 				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
-     Image logoImg = logoIcon.getImage(); // ImageIcon °´Ã¼¿¡¼­ Image ÃßÃâ
- 	Image updateLogoImg = logoImg.getScaledInstance(160, 100, Image.SCALE_SMOOTH); // ÃßÃâµÈ ImageÀÇ Å©±â Á¶ÀıÇÏ¿© »õ·Î¿î Image °´Ã¼ »ı¼º
-     ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // »õ·Î¿î Image °´Ã¼·Î ImageIcon °´Ã¼ »ı¼º
+     Image logoImg = logoIcon.getImage();// ImageIcon ê°ì²´ì—ì„œ Image ì¶”ì¶œ
+ 	Image updateLogoImg = logoImg.getScaledInstance(160, 100, Image.SCALE_SMOOTH); // ì¶”ì¶œëœ Imageì˜ í¬ê¸° ì¡°ì ˆí•˜ì—¬ ìƒˆë¡œìš´ Image ê°ì²´ ìƒì„±
+     ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // ìƒˆë¡œìš´ Image ê°ì²´ë¡œ ImageIcon ê°ì²´ ìƒì„±
 	 
 	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
 	 
@@ -100,7 +100,7 @@ implements ActionListener{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //·Î°í ¶óº§
+		 //ë¡œê³  ë¼ë²¨
         label = new JLabel();
         label.setIcon(updateLogoIcon);
         label.setBounds(0, 560, 160, 100);
@@ -114,7 +114,7 @@ implements ActionListener{
 	}
 	public void placeLoginPanel(JPanel panel){
         panel.setLayout(null);
-        Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
+        Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
         
         JLabel userLabel = new JLabel("ID");
         userLabel.setBounds(427, 229, 80, 25);
@@ -134,7 +134,7 @@ implements ActionListener{
         managerPwText.setBounds(517, 259, 160, 25);
         panel.add(managerPwText);
         
-        //µÚ·Î°¡±â ¹öÆ°
+        //ë’¤ë¡œê°€ê¸° ë²„íŠ¼
         btnBack = new JButton();
         btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\"
         		+ "src\\img\\Button_image\\back.jpg"));
@@ -146,7 +146,7 @@ implements ActionListener{
         		FirstDisplay fDisplay = new FirstDisplay();
         		fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
         		fDisplay.setVisible(true);
-             	dispose(); //ÀÌÃ¢ ´İ±â
+             	dispose(); //ì´ì°½ ë‹«ê¸°
         	}
         		});
         btnBack.setBounds(0,0,100,50);
@@ -168,7 +168,7 @@ implements ActionListener{
         btnLogin.addActionListener(this);
         btnInit.addActionListener(this);
         
-        infoMsgLabel=new JLabel("¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+        infoMsgLabel=new JLabel("ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
         infoMsgLabel.setOpaque(true); 
         infoMsgLabel.setBackground(Color.pink);
         infoMsgLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -176,7 +176,7 @@ implements ActionListener{
         infoMsgLabel.setBounds(400, 180, 300, 20);
         panel.add(infoMsgLabel);
         
-        //¼ıÀÚÅ°ÆĞµå
+        //ìˆ«ìí‚¤íŒ¨ë“œ
         btn0=new JButton("0");
         btn0.setBounds(310,350,50,25);
         btn0.setBackground(Color.yellow);
@@ -247,7 +247,7 @@ implements ActionListener{
         btn9.addActionListener(this);
         panel.add(btn9);
         
-        //¿µ¹®Å°ÆĞµå
+        //ì˜ë¬¸í‚¤íŒ¨ë“œ
         btnq=new JButton("q");
         btnq.setBounds(310,375,50,25);
         btnq.setBackground(Color.yellow);
@@ -432,7 +432,7 @@ implements ActionListener{
         
 		FocusListener focusListener = new FocusListener() {
             public void focusGained(FocusEvent e) {
-                selectedField = (JTextField) e.getSource(); // Æ÷Ä¿½º¸¦ ¾òÀº ÅØ½ºÆ® »óÀÚ ÀúÀå
+                selectedField = (JTextField) e.getSource(); // í¬ì»¤ìŠ¤ë¥¼ ì–»ì€ í…ìŠ¤íŠ¸ ìƒì ì €ì¥
             }
             public void focusLost(FocusEvent e) {}
         };
@@ -448,7 +448,7 @@ implements ActionListener{
 			{
 //				if(sock==null) 
 //				{
-//					managerConnect();//Ã³À½ ½Ãµµ
+//					managerConnect();//ì²˜ìŒ ì‹œë„
 //				}
 				managerIdText.setText("");
 	            managerPwText.setText("");
@@ -459,15 +459,15 @@ implements ActionListener{
 				int i = mLE2.managerLogin2((managerIdText.getText()), managerPwText.getText());
 				if(i == 1){
 					FindManagerTable mgr = new FindManagerTable();
-					String name = mgr.managerName(managerIdText.getText());//managerNameÀĞ¾î¿È
+					String name = mgr.managerName(managerIdText.getText());//managerNameï¿½Ğ¾ï¿½ï¿½
 					ManagerMain managerMain = new ManagerMain(name);
 					managerMain.setTitle("FamilyStudyCafe_ManagerMain");
 					managerMain.setResizable(false);
 					//managerMain.setVisible(true);
-					JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ³ª ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇÏ¼¼¿ä");
+					JOptionPane.showMessageDialog(null, "ì•„ì´ë””ë‚˜ ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•˜ì„¸ìš”");
 				}
 			}
 			else if(obj.equals(btn0))

@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//Manager(°ü¸®ÀÚ) Å×ÀÌºí °Ë»ö
+//Manager(ê´€ë¦¬ì) í…Œì´ë¸” ê²€ìƒ‰
 public class FindManagerTable {
 	
-	public String managerName(String mid) throws SQLException //¸Å´ÏÀú ÀÌ¸§ Ã£±â
+	public String managerName(String mid) throws SQLException //ë§¤ë‹ˆì € ì´ë¦„ ì°¾ê¸°
 	{
 		Connection con=null;
 		PreparedStatement pstmt = null;
@@ -41,7 +41,7 @@ public class FindManagerTable {
 		return str;
 	}
 	
-	//°ü¸®ÀÚ ÀüÈ­¹øÈ£ºÒ·¯ÁÖ±â
+	//ê´€ë¦¬ì ì „í™”ë²ˆí˜¸ë¶ˆëŸ¬ì£¼ê¸°
 		public String managerPn()
 		{
 			Connection con=null;
@@ -67,7 +67,7 @@ public class FindManagerTable {
 			return str;
 		}
 		
-		//°ü¸®ÀÚ ÀÌ¸ŞÀÏ ºÒ·¯ÁÖ±â
+		//ê´€ë¦¬ì ì´ë©”ì¼ ë¶ˆëŸ¬ì£¼ê¸°
 		public String managerEmail()
 		{
 			Connection con=null;

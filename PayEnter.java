@@ -47,12 +47,12 @@ public class PayEnter  extends JFrame{
 		payenterPanel.setLayout(null);
 		setContentPane(payenterPanel);
 		
-		Button button1 = new Button("½Ã°£Á¦ & ±â°£Á¦ °áÁ¦ÇÏ±â");
+		Button button1 = new Button("ì‹œê°„ì œ & ê¸°ê°„ì œ ê²°ì œí•˜ê¸°");
 		button1.setBounds(0, 20, 528, 510);
 		button1.setBackground(new Color(143, 188, 143));
 		button1.setPreferredSize(new Dimension(216, 0));
 		payenterPanel.add(button1);
-		// ½Ã°£Á¦ °áÁ¦ÇÏ±â ¹öÆ° button1
+		// ì‹œê°„ì œ ê²°ì œí•˜ê¸° ë²„íŠ¼ button1
 		button1.addActionListener(new ActionListener() {
 
 			@Override
@@ -68,9 +68,9 @@ public class PayEnter  extends JFrame{
 					dispose();
 				}
 			}
-		});// ½Ã°£Á¦ & ±â°£Á¦ °áÁ¦Ã¢ ½ÇÇà
+		});// ì‹œê°„ì œ & ê¸°ê°„ì œ ê²°ì œì°½ ì‹¤í–‰
 		
-		Button button2 = new Button("ÀÔ½ÇÇÏ±â");
+		Button button2 = new Button("ì…ì‹¤í•˜ê¸°");
 		button2.setBounds(528, 20, 528, 510);
 		button2.setBackground(new Color(112, 128, 144));
 		button2.setPreferredSize(new Dimension(216, 0));
@@ -93,12 +93,12 @@ public class PayEnter  extends JFrame{
 			}
 		});
 
-		// ÀÔ½ÇÇÏ±â ¹öÆ° button2
+		// ì…ì‹¤í•˜ê¸° ë²„íŠ¼ button2
 
 		textField = new JTextField();
 		textField.setBounds(0, 0, 1040, 20);
 		textField.setBackground(new Color(135, 206, 250));
-		textField.setText("°áÁ¦ÇÏ±â, ÀÔ½ÇÇÏ±â Áß¿¡¼­ ¼±ÅÃÇØÁÖ¼¼¿ä");
+		textField.setText("ê²°ì œí•˜ê¸°, ì…ì‹¤í•˜ê¸° ì¤‘ì—ì„œ ì„ íƒí•´ì£¼ì„¸ìš”");
 		textField.setHorizontalAlignment(JTextField.CENTER);
 		payenterPanel.add(textField);
 		textField.setColumns(20);
