@@ -74,7 +74,6 @@ public class MChatServer {
 	
 	
 	
-	
 	class ClientThread2 extends Thread{
 		
 		Socket sock;

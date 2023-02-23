@@ -15,7 +15,7 @@ public class DBConnect2
             con = DriverManager.getConnection(url, id, password);
             return con;
         } catch (Exception e) {
-            System.out.println("¿¬°á¿À·ù :" + e.toString());
+            System.out.println("ì—°ê²°ì˜¤ë¥˜ :" + e.toString());
         }
         return null;
     }
