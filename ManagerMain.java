@@ -35,7 +35,7 @@ import javax.swing.SwingConstants;
 
 class MemberInfoDTO
 {
-	//íšŒì›ì •ë³´
+	//È¸¿øÁ¤º¸
 	private String memberTel;
 	
 	public MemberInfoDTO(String memberTel) 
@@ -51,7 +51,7 @@ class MemberInfoDTO
 
 class QuestInfoDTO
 {
-	//ì§ˆë¬¸ ì •ë³´
+	//Áú¹® Á¤º¸
 	private String question;
 	
 	public QuestInfoDTO(String question) 
@@ -68,40 +68,40 @@ class QuestInfoDTO
 class QuestDialog extends JDialog{
 	public QuestDialog(String title, boolean modal, String managerInfo, QuestInfoDTO questInfo,ManagerMain mMain)
 	{
-		//ë‹¤ì´ì–¼ë¡œê·¸ ìƒì„±ì í˜¸ì¶œ
+		//´ÙÀÌ¾ó·Î±× »ı¼ºÀÚ È£Ãâ
 		super(mMain, title, modal);
 		
-		//ë‹¤ì´ì–¼ë¡œê·¸ ì„¤ì •
-		this.setTitle(managerInfo+" í™˜ì˜í•©ë‹ˆë‹¤."); //ë§¤ë‹ˆì € Name ì½ì–´ì™€ì„œ ì°½ ì œëª© ë³€ê²½
+		//´ÙÀÌ¾ó·Î±× ¼³Á¤
+		this.setTitle(managerInfo+" È¯¿µÇÕ´Ï´Ù."); //¸Å´ÏÀú Name ÀĞ¾î¿Í¼­ Ã¢ Á¦¸ñ º¯°æ
 		this.setBounds(100, 100, 500, 700);
 		this.setLocationRelativeTo(mMain);
 		this.setResizable(false);
 		
-		//íŒ¨ë„ì¶”ê°€
+		//ÆĞ³ÎÃß°¡
 		JPanel questListPanel = new JPanel();
 		questListPanel.setLayout(null);
 		this.setContentPane(questListPanel);
 		
-		//--TODO ë¼ë²¨, ì‚­ì œë²„íŠ¼ ìƒì„±ì€ DBì—ì„œ ë°›ì•„ì™€ì„œ ì§ˆë¬¸ê°œìˆ˜ë§Œí¼ ë°˜ë³µí•„ìš”--
-		//ë¼ë²¨ì¶”ê°€
-        //QuestInfoì˜ ì •ë³´ë¥¼ ë°›ì•„ì™€ì„œ ë¼ë²¨ì— í‘œì‹œ-DBì—°ë™ í•„ìš”
-        JLabel questLabel = new JLabel("ì§ˆë¬¸:"+questInfo.getQuestion());
+		//--TODO ¶óº§, »èÁ¦¹öÆ° »ı¼ºÀº DB¿¡¼­ ¹Ş¾Æ¿Í¼­ Áú¹®°³¼ö¸¸Å­ ¹İº¹ÇÊ¿ä--
+		//¶óº§Ãß°¡
+        //QuestInfoÀÇ Á¤º¸¸¦ ¹Ş¾Æ¿Í¼­ ¶óº§¿¡ Ç¥½Ã-DB¿¬µ¿ ÇÊ¿ä
+        JLabel questLabel = new JLabel("Áú¹®:"+questInfo.getQuestion());
         questLabel.setBounds(0, 100, 100, 50);
         questListPanel.add(questLabel);
 		
-		//ì‚­ì œë²„íŠ¼ ì¶”ê°€
-        JButton questDeleteBtn = new JButton("ì‚­ì œ");
+		//»èÁ¦¹öÆ° Ãß°¡
+        JButton questDeleteBtn = new JButton("»èÁ¦");
         questDeleteBtn.setFont(new Font("Dialog", Font.BOLD, 12));
         questDeleteBtn.setBackground(Color.RED);
         questDeleteBtn.setFocusPainted(false);
         questDeleteBtn.setBounds
         (questLabel.getX(), questLabel.getY()-20,80, 30);
         questDeleteBtn.addMouseListener(new MouseInputAdapter() {
-		//ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ questLabel ì‚­ì œ
+		//¹öÆ°À» ´©¸£¸é questLabel »èÁ¦
             @Override
             public void mouseClicked(MouseEvent e) {
-            	questListPanel.remove(questLabel); //ì‚­ì œ
-            	questListPanel.repaint(); //ë‹¤ì‹œê·¸ë¦¬ê¸°
+            	questListPanel.remove(questLabel); //»èÁ¦
+            	questListPanel.repaint(); //´Ù½Ã±×¸®±â
             }
         });
         questListPanel.add(questDeleteBtn);   
@@ -116,7 +116,7 @@ public class ManagerMain extends JFrame
 	
 	public static void main(String[] args) 
 	{
-		//ì „ë¶€ ì£¼ì„ì²˜ë¦¬í•˜ë©´ ì´íŒŒì¼ìì²´ë¡œ ì‹¤í–‰ì•ˆë¨, ë¡œê·¸ì¸ì°½ì—ì„œ ë„˜ì–´ì˜¤ëŠ” ì‹¤í–‰ì€ ê·¸ëŒ€ë¡œ ê°€ëŠ¥
+		//ÀüºÎ ÁÖ¼®Ã³¸®ÇÏ¸é ÀÌÆÄÀÏÀÚÃ¼·Î ½ÇÇà¾ÈµÊ, ·Î±×ÀÎÃ¢¿¡¼­ ³Ñ¾î¿À´Â ½ÇÇàÀº ±×´ë·Î °¡´É
 		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() {
@@ -125,7 +125,7 @@ public class ManagerMain extends JFrame
 					if (mminstance==null)
 					{
 						synchronized (ManagerMain.class) {
-							ManagerMain Jframe = new ManagerMain("í™ê¸¸ë™");
+							ManagerMain Jframe = new ManagerMain("È«±æµ¿");
 							Jframe.setVisible(true);
 							Jframe.setResizable(false);
 							Jframe.setTitle("FSC_ManagerMain");
@@ -140,7 +140,7 @@ public class ManagerMain extends JFrame
 		});
 	}
 
-	//í”„ë ˆì„ ìƒì„±
+	//ÇÁ·¹ÀÓ »ı¼º
 	public ManagerMain(String name) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1114, 736);
@@ -150,17 +150,17 @@ public class ManagerMain extends JFrame
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		  //í°íŠ¸(ë§‘ì€ê³ ë”• êµµê²Œ 16)
-		Font logoutBtnFont = new Font("ë§‘ì€ê³ ë”• êµµê²Œ", Font.BOLD, 16);
-		 //í…Œë‘ë¦¬ì„  êµµê²Œ
+		  //ÆùÆ®(¸¼Àº°íµñ ±½°Ô 16)
+		Font logoutBtnFont = new Font("¸¼Àº°íµñ ±½°Ô", Font.BOLD, 16);
+		 //Å×µÎ¸®¼± ±½°Ô
 		 LineBorder lb = new LineBorder(Color.BLACK,2);
 		setVisible(true);
 		
 		ImageIcon logoIcon= new ImageIcon
 				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
-        Image logoImg = logoIcon.getImage(); // ImageIcon ê°ì²´ì—ì„œ Image ì¶”ì¶œ
-    	Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // ì¶”ì¶œëœ Imageì˜ í¬ê¸° ì¡°ì ˆí•˜ì—¬ ìƒˆë¡œìš´ Image ê°ì²´ ìƒì„±
-        ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // ìƒˆë¡œìš´ Image ê°ì²´ë¡œ ImageIcon ê°ì²´ ìƒì„±
+        Image logoImg = logoIcon.getImage(); // ImageIcon °´Ã¼¿¡¼­ Image ÃßÃâ
+    	Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // ÃßÃâµÈ ImageÀÇ Å©±â Á¶ÀıÇÏ¿© »õ·Î¿î Image °´Ã¼ »ı¼º
+        ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // »õ·Î¿î Image °´Ã¼·Î ImageIcon °´Ã¼ »ı¼º
         
 		ImageIcon trashcanIcon= new ImageIcon
 				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\trashcan.png");
@@ -174,14 +174,14 @@ public class ManagerMain extends JFrame
 		Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
 		
-		JLabel memberTelLabel = new JLabel(); //seatInfoíŒ¨ë„ íšŒì›ì „í™”ë²ˆí˜¸
-		JLabel remainTimeNumLabel = new JLabel("ì¼ì‹œë¶„ì´ˆ"); //memberInfoíŒ¨ë„ ë‚¨ì€ì‹œê°„
-		JLabel idLabel = new JLabel();//ê´€ë¦¬ì ì´ë¦„ ë“¤ì–´ê°€ëŠ” ë¼ë²¨
+		JLabel memberTelLabel = new JLabel(); //seatInfoÆĞ³Î È¸¿øÀüÈ­¹øÈ£
+		JLabel remainTimeNumLabel = new JLabel("ÀÏ½ÃºĞÃÊ"); //memberInfoÆĞ³Î ³²Àº½Ã°£
+		JLabel idLabel = new JLabel();//°ü¸®ÀÚ ÀÌ¸§ µé¾î°¡´Â ¶óº§
 		
 		setVisible(true);
 			//----------------------------------------------------------------------------	
 			
-			//ì¢Œì„ì •ë³´ íŒ¨ë„- ì¼œì§€ë©´ ë‹¤ë¥¸ ì¢Œì„ ë²„íŠ¼ë“±ì€ ë‹¤ ëª»ëˆ„ë¥´ê²Œ í•´ì•¼í•¨(ì²˜ìŒì— í™œì„±í™”ì•ˆë˜ê³  ì•ˆë³´ì´ëŠ” ìƒíƒœ)
+			//ÁÂ¼®Á¤º¸ ÆĞ³Î- ÄÑÁö¸é ´Ù¸¥ ÁÂ¼® ¹öÆ°µîÀº ´Ù ¸ø´©¸£°Ô ÇØ¾ßÇÔ(Ã³À½¿¡ È°¼ºÈ­¾ÈµÇ°í ¾Èº¸ÀÌ´Â »óÅÂ)
 			JPanel seatInfoPanel = new JPanel();
 			seatInfoPanel.setOpaque(true);
 			seatInfoPanel.setBorder(lb);
@@ -192,7 +192,7 @@ public class ManagerMain extends JFrame
 			seatInfoPanel.setVisible(false);
 			
 			//------------------------------------------------------------------------------------------------------------
-			//íšŒì›ì •ë³´ íŒ¨ë„
+			//È¸¿øÁ¤º¸ ÆĞ³Î
 			JPanel memberInfoPanel = new JPanel();
 			memberInfoPanel.setLayout(null);
 			memberInfoPanel.setOpaque(true);
@@ -201,39 +201,39 @@ public class ManagerMain extends JFrame
 			memberInfoPanel.setEnabled(false);
 			memberInfoPanel.setVisible(false);	
 			
-			//"íšŒì› ì •ë³´" ê¸€ì ë¼ë²¨
-			JLabel seatInfoStrLabel_1 = new JLabel("íšŒì›ì •ë³´");
+			//"È¸¿ø Á¤º¸" ±ÛÀÚ ¶óº§
+			JLabel seatInfoStrLabel_1 = new JLabel("È¸¿øÁ¤º¸");
 			seatInfoStrLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			seatInfoStrLabel_1.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatInfoStrLabel_1.setBackground(new Color(128, 0, 0));
 			seatInfoStrLabel_1.setBounds(37, 10, 77, 23);
 			memberInfoPanel.add(seatInfoStrLabel_1);
 			
-			//"ë‚¨ì€ì‹œê°„" ê¸€ì ë¼ë²¨
-			JLabel remaiinTimeStrLabel = new JLabel("ë‚¨ì€ì‹œê°„");
+			//"³²Àº½Ã°£" ±ÛÀÚ ¶óº§
+			JLabel remaiinTimeStrLabel = new JLabel("³²Àº½Ã°£");
 			remaiinTimeStrLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			remaiinTimeStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			remaiinTimeStrLabel.setBackground(new Color(128, 0, 0));
 			remaiinTimeStrLabel.setBounds(12, 79, 66, 23);
 			memberInfoPanel.add(remaiinTimeStrLabel);
 			
-			//ë‚¨ì€ì‹œê°„ ê¸€ì ë¼ë²¨
-			remainTimeNumLabel.setText("00ì¼00ì‹œê°„00ë¶„00ì´ˆ");
+			//³²Àº½Ã°£ ±ÛÀÚ ¶óº§
+			remainTimeNumLabel.setText("00ÀÏ00½Ã°£00ºĞ00ÃÊ");
 			remainTimeNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			remainTimeNumLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 			remainTimeNumLabel.setBackground(new Color(128, 0, 0));
 			remainTimeNumLabel.setBounds(12, 99, 141, 23);
 			memberInfoPanel.add(remainTimeNumLabel);
 			
-			//"ë²ˆ ì¢Œì„"ê¸€ì ë¼ë²¨
-			JLabel seatStringLabel = new JLabel("ë²ˆ ì¢Œì„");
+			//"¹ø ÁÂ¼®"±ÛÀÚ ¶óº§
+			JLabel seatStringLabel = new JLabel("¹ø ÁÂ¼®");
 			seatStringLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			seatStringLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatStringLabel.setBackground(new Color(128, 0, 0));
 			seatStringLabel.setBounds(52, 191, 62, 23);
 			memberInfoPanel.add(seatStringLabel);
 			
-	     	//ì¢Œì„ë²ˆí˜¸ ìˆ«ì ë¼ë²¨
+	     	//ÁÂ¼®¹øÈ£ ¼ıÀÚ ¶óº§
 			JLabel seatNumLabel_memberInfoPanel = new JLabel("010");
 			seatNumLabel_memberInfoPanel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumLabel_memberInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -241,16 +241,16 @@ public class ManagerMain extends JFrame
 			seatNumLabel_memberInfoPanel.setBounds(12, 191, 39, 23);
 			memberInfoPanel.add(seatNumLabel_memberInfoPanel);
 			
-			//TODO DBì˜ SEATí…Œì´ë¸” seatAvail ì—°ë™í•„ìš”?
-			//ì¢Œì„ìƒíƒœ ê¸€ì ë¼ë²¨(ì´ìš©ì¤‘/ì¼ì‹œì •ì§€?)
-			JLabel seatAvailLabel = new JLabel("ì´ìš©ì¤‘");
+			//TODO DBÀÇ SEATÅ×ÀÌºí seatAvail ¿¬µ¿ÇÊ¿ä?
+			//ÁÂ¼®»óÅÂ ±ÛÀÚ ¶óº§(ÀÌ¿ëÁß/ÀÏ½ÃÁ¤Áö?)
+			JLabel seatAvailLabel = new JLabel("ÀÌ¿ëÁß");
 			seatAvailLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			seatAvailLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatAvailLabel.setBackground(new Color(128, 0, 0));
 			seatAvailLabel.setBounds(12, 218, 55, 23);
 			memberInfoPanel.add(seatAvailLabel);
 			
-			//ë‹«ê¸°ë²„íŠ¼
+			//´İ±â¹öÆ°
 			JButton closeBtn_MemberInfoPanel = new JButton("X");
 			closeBtn_MemberInfoPanel.setOpaque(true);
 			closeBtn_MemberInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -272,7 +272,7 @@ public class ManagerMain extends JFrame
 			memberInfoPanel.setBorder(lb);
 			contentPane.add(memberInfoPanel);
 			
-			//íšŒì›ì •ë³´ íŒ¨ë„ì˜ íšŒì›ì „í™”ë²ˆí˜¸
+			//È¸¿øÁ¤º¸ ÆĞ³ÎÀÇ È¸¿øÀüÈ­¹øÈ£
 			JLabel memTelLabel_memInfoPanel = new JLabel("010-0000-0000");
 			memTelLabel_memInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
 			memTelLabel_memInfoPanel.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -281,8 +281,8 @@ public class ManagerMain extends JFrame
 			memberInfoPanel.add(memTelLabel_memInfoPanel);
 			contentPane.add(seatInfoPanel);
 			
-			//"ì¢Œì„ì •ë³´" ê¸€ì ë¼ë²¨
-			JLabel seatInfoStrLabel = new JLabel("ì¢Œì„ì •ë³´");
+			//"ÁÂ¼®Á¤º¸" ±ÛÀÚ ¶óº§
+			JLabel seatInfoStrLabel = new JLabel("ÁÂ¼®Á¤º¸");
 			//seatInfoStrLabel.setOpaque(true);
 			seatInfoStrLabel.setHorizontalAlignment(JLabel.CENTER);
 			seatInfoStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -290,8 +290,8 @@ public class ManagerMain extends JFrame
 			seatInfoStrLabel.setBounds(48, 10, 66, 23);
 			seatInfoPanel.add(seatInfoStrLabel);
 			
-			//"ì¢Œì„ë²ˆí˜¸" ê¸€ì ë¼ë²¨
-			JLabel seatNumStrLabel = new JLabel("ì¢Œì„ë²ˆí˜¸");
+			//"ÁÂ¼®¹øÈ£" ±ÛÀÚ ¶óº§
+			JLabel seatNumStrLabel = new JLabel("ÁÂ¼®¹øÈ£");
 			//seatNumStrLabel.setOpaque(true);
 			seatNumStrLabel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -299,7 +299,7 @@ public class ManagerMain extends JFrame
 			seatNumStrLabel.setBounds(12, 79, 66, 23);
 			seatInfoPanel.add(seatNumStrLabel);
 			
-			//ì¢Œì„ë²ˆí˜¸ ìˆ«ì ë¼ë²¨-DBì—ì„œ? í´ë¦­í•œ ì¢Œì„ë²ˆí˜¸ ì •ë³´ë¥¼ ì½ì–´ì™€ì„œ ì¶œë ¥
+			//ÁÂ¼®¹øÈ£ ¼ıÀÚ ¶óº§-DB¿¡¼­? Å¬¸¯ÇÑ ÁÂ¼®¹øÈ£ Á¤º¸¸¦ ÀĞ¾î¿Í¼­ Ãâ·Â
 			JLabel seatNumLabel_seatInfoPanel = new JLabel("000");
 			seatNumLabel_seatInfoPanel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumLabel_seatInfoPanel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -307,8 +307,8 @@ public class ManagerMain extends JFrame
 			seatNumLabel_seatInfoPanel.setBounds(22, 99, 27, 23);
 			seatInfoPanel.add(seatNumLabel_seatInfoPanel);
 			
-			//"íšŒì›"ê¸€ì ë¼ë²¨
-			JLabel memberStrLabel = new JLabel("íšŒì›");
+			//"È¸¿ø"±ÛÀÚ ¶óº§
+			JLabel memberStrLabel = new JLabel("È¸¿ø");
 			//memberStrLabel.setOpaque(true);
 			memberStrLabel.setHorizontalAlignment(JLabel.CENTER);
 			memberStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -316,19 +316,19 @@ public class ManagerMain extends JFrame
 			memberStrLabel.setBounds(16, 185, 33, 23);
 			seatInfoPanel.add(memberStrLabel);
 			
-	    //íšŒì›ì •ë³´ ë²„íŠ¼(í´ë¦­ì‹œ memberInfo íŒ¨ë„ ì¼œì§)
-			JButton memberInfoBtn = new JButton("ì •ë³´");
+	    //È¸¿øÁ¤º¸ ¹öÆ°(Å¬¸¯½Ã memberInfo ÆĞ³Î ÄÑÁü)
+			JButton memberInfoBtn = new JButton("Á¤º¸");
 			memberInfoBtn.setBounds(57, 183, 78, 27);
-			memberInfoBtn.setEnabled(false);//ê¸°ë³¸ì ìœ¼ë¡œ ë¹„í™œì„±í™”ëœ ìƒíƒœ
+			memberInfoBtn.setEnabled(false);//±âº»ÀûÀ¸·Î ºñÈ°¼ºÈ­µÈ »óÅÂ
 			memberInfoBtn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) { //ì •ë³´ë²„íŠ¼ í´ë¦­ì‹œ ë™ì‘
-	    			//íšŒì›ì •ë³´ íŒ¨ë„ì˜ "íšŒì›ì •ë³´" ë¼ë²¨ ì•„ë˜ì— ì „í™”ë²ˆí˜¸ ë“¤ì–´ê°ˆ ë¼ë²¨ë‚´ìš©ì„ memtelìœ¼ë¡œ ë³€ê²½
+				public void actionPerformed(ActionEvent e) { //Á¤º¸¹öÆ° Å¬¸¯½Ã µ¿ÀÛ
+	    			//È¸¿øÁ¤º¸ ÆĞ³ÎÀÇ "È¸¿øÁ¤º¸" ¶óº§ ¾Æ·¡¿¡ ÀüÈ­¹øÈ£ µé¾î°¥ ¶óº§³»¿ëÀ» memtelÀ¸·Î º¯°æ
 	    			memTelLabel_memInfoPanel.setText(memberTelLabel.getText());
 	    			
-	    			//íšŒì›ì •ë³´ íŒ¨ë„ì˜ ì¢Œì„ë²ˆí˜¸ ë¼ë²¨ ë‚´ìš©ì„ ì¢Œì„ë²ˆí˜¸íŒ¨ë„ ì¢Œì„ë²ˆí˜¸ë¡œ ë³€ê²½
+	    			//È¸¿øÁ¤º¸ ÆĞ³ÎÀÇ ÁÂ¼®¹øÈ£ ¶óº§ ³»¿ëÀ» ÁÂ¼®¹øÈ£ÆĞ³Î ÁÂ¼®¹øÈ£·Î º¯°æ
 	    			seatNumLabel_memberInfoPanel.setText(seatNumLabel_seatInfoPanel.getText());
 	    			
-	    			//íšŒì›ì •ë³´ íŒ¨ë„ì˜ ë‚¨ì€ì‹œê°„ì„ íšŒì›í…Œì´ë¸”ì—ì„œ ì°¾ì•„ì™€ì„œ ë³€ê²½ TODO OOì¼OOì‹œOOë¶„OOì´ˆ ë¡œ ë³€ê²½?
+	    			//È¸¿øÁ¤º¸ ÆĞ³ÎÀÇ ³²Àº½Ã°£À» È¸¿øÅ×ÀÌºí¿¡¼­ Ã£¾Æ¿Í¼­ º¯°æ TODO OOÀÏOO½ÃOOºĞOOÃÊ ·Î º¯°æ?
 	    			FindMemberTable findMemberTable = new FindMemberTable();
 	    			String remtime;
 					try {
@@ -338,7 +338,7 @@ public class ManagerMain extends JFrame
 						e1.printStackTrace();
 					}
 	    			
-	    			//ì¢Œì„ì •ë³´ íŒ¨ë„ ë¹„í™œì„±í™”, íšŒì›ì •ë³´ íŒ¨ë„ í™œì„±í™”
+	    			//ÁÂ¼®Á¤º¸ ÆĞ³Î ºñÈ°¼ºÈ­, È¸¿øÁ¤º¸ ÆĞ³Î È°¼ºÈ­
 					seatInfoPanel.setEnabled(false);
 					seatInfoPanel.setVisible(false);					
 					memberInfoPanel.setVisible(true);
@@ -351,7 +351,7 @@ public class ManagerMain extends JFrame
 			memberInfoBtn.setFocusPainted(false);// hide focus rectangle
 			seatInfoPanel.add(memberInfoBtn);
 			
-			//íšŒì› ì „í™”ë²ˆí˜¸ ë¼ë²¨
+			//È¸¿ø ÀüÈ­¹øÈ£ ¶óº§
 			memberTelLabel.setText("010-0000-0000");
 			memberTelLabel.setHorizontalAlignment(JLabel.CENTER);
 			memberTelLabel.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -360,15 +360,15 @@ public class ManagerMain extends JFrame
 			seatInfoPanel.add(memberTelLabel);
 					
 		//-----------------------------------------------------------------------------------------------------------
-			//1ì¸µ ë°°ì¹˜ë„ íŒë„¬
+			//1Ãş ¹èÄ¡µµ ÆÇ³Ú
 			JPanel panel1F = new JPanel();
 			panel1F.setBounds(71, 37, 945, 599);
 			panel1F.setLayout(null);
-			//panel1F.setEnabled(false); //íŒ¨ë„ ë¹„í™œì„±í™”
-			//panel1F.setVisible(false); //íŒ¨ë„ ê°ì¶”ê¸°
+			//panel1F.setEnabled(false); //ÆĞ³Î ºñÈ°¼ºÈ­
+			//panel1F.setVisible(false); //ÆĞ³Î °¨Ãß±â
 			contentPane.add(panel1F);
 			
-			//1ì¸µ ì¢Œì„ ë²„íŠ¼ ìƒì„±, ìœ„ì¹˜ì§€ì •
+			//1Ãş ÁÂ¼® ¹öÆ° »ı¼º, À§Ä¡ÁöÁ¤
 	    	String[] seat1Farr = {"100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110"
 	    			, "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124"
 	    			,"125", "126","127", "128", "129", "130"};
@@ -386,17 +386,17 @@ public class ManagerMain extends JFrame
 				//seat1FBtn[i].setBackground(new Color(0, 128, 255));
 		    	try {
 					if (findSeatTable.seatAvail(100+i)==0) 
-					{//ì‚¬ìš©ê°€ëŠ¥
+					{//»ç¿ë°¡´É
 						seat1FBtn[i].setBackground(Color.CYAN);
 					} else
 						try {
 							if(findSeatTable.seatAvail(100+i)==1)
-							{//ì‚¬ìš©ì¤‘
+							{//»ç¿ëÁß
 								seat1FBtn[i].setBackground(Color.ORANGE);
 							} else
 								try {
 									if(findSeatTable.seatAvail(100+i)==2)
-									{//ì‚¬ìš©ë¶ˆê°€
+									{//»ç¿ëºÒ°¡
 										seat1FBtn[i].setBackground(Color.RED);
 									}
 								} catch (NumberFormatException e1) {
@@ -417,10 +417,10 @@ public class ManagerMain extends JFrame
 				panel1F.add(seat1FBtn[i]);
 			}
 	    	
-	    	//ì¸ë±ìŠ¤(i)ì˜ ê°’ì„ seatNumìœ¼ë¡œ ê°€ì§€ëŠ” seatAvail ê²€ìƒ‰
+	    	//ÀÎµ¦½º(i)ÀÇ °ªÀ» seatNumÀ¸·Î °¡Áö´Â seatAvail °Ë»ö
 	    	Integer.parseInt(seat1Farr[0]);
 	    	
-			seat1FBtn[0].setBounds(114, 0, 72, 60); //100ë²ˆ ì¢Œì„
+			seat1FBtn[0].setBounds(114, 0, 72, 60); //100¹ø ÁÂ¼®
 			seat1FBtn[1].setBounds(186, 0, 72, 60);
 			seat1FBtn[2].setBounds(259, 0, 72, 60);
 			seat1FBtn[3].setBounds(402, 0, 72, 60);
@@ -452,8 +452,8 @@ public class ManagerMain extends JFrame
 			seat1FBtn[29].setBounds(871, 358, 72, 60);
 			seat1FBtn[30].setBounds(871, 241, 72, 60);
 			
-		//í™”ì¥ì‹¤
-		JLabel toiletLabel1_1 = new JLabel("<html><body><center>í™”<br>ì¥<br>ì‹¤</center></body></html>");
+		//È­Àå½Ç
+		JLabel toiletLabel1_1 = new JLabel("<html><body><center>È­<br>Àå<br>½Ç</center></body></html>");
 		toiletLabel1_1.setOpaque(true);
 		toiletLabel1_1.setHorizontalAlignment(JLabel.CENTER);
 		toiletLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -462,8 +462,8 @@ public class ManagerMain extends JFrame
 		panel1F.add(toiletLabel1_1);
 		
 		
-		//ë¬¸
-		JLabel doorLabel1_1 = new JLabel("ë¬¸");
+		//¹®
+		JLabel doorLabel1_1 = new JLabel("¹®");
 		doorLabel1_1.setOpaque(true);
 		doorLabel1_1.setHorizontalAlignment(JLabel.CENTER);
 		doorLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -471,7 +471,7 @@ public class ManagerMain extends JFrame
 		doorLabel1_1.setBounds(882, 74, 61, 69);
 		panel1F.add(doorLabel1_1);
 		
-		//1ì¸µ ë²½ë¼ë²¨ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		//1Ãş º®¶óº§ »ı¼º, À§Ä¡ÁöÁ¤
     	JLabel[] wall1FLabel = new JLabel[17];
     	
     	for (int i = 0; i < wall1FLabel.length; i++) {
@@ -500,39 +500,39 @@ public class ManagerMain extends JFrame
     	wall1FLabel[15].setBounds(576, 228, 93, 18);
     	wall1FLabel[16].setBounds(765, 0, 50, 60);
 		
-		//ì“°ë ˆê¸°í†µ ì´ë¯¸ì§€
-		JLabel trashcanLabel1_1 = new JLabel(); //í™”ì¥ì‹¤ì˜†
+		//¾²·¹±âÅë ÀÌ¹ÌÁö
+		JLabel trashcanLabel1_1 = new JLabel(); //È­Àå½Ç¿·
 		trashcanLabel1_1.setBounds(70, 53, 57, 54);
 		trashcanLabel1_1.setIcon(updatetrashcanIcon);
 		panel1F.add(trashcanLabel1_1);
 		
-		JLabel trashcanLabel1_2 = new JLabel(); //ë¬¸ì˜†
+		JLabel trashcanLabel1_2 = new JLabel(); //¹®¿·
 		trashcanLabel1_2.setBounds(814, 0, 57, 54);
 		trashcanLabel1_2.setIcon(updatetrashcanIcon);
 		panel1F.add(trashcanLabel1_2);
 		
-		//ì •ìˆ˜ê¸° ì´ë¯¸ì§€
-		JLabel waterPFLabel1_1 = new JLabel(); // í™”ì¥ì‹¤ì˜†
+		//Á¤¼ö±â ÀÌ¹ÌÁö
+		JLabel waterPFLabel1_1 = new JLabel(); // È­Àå½Ç¿·
 		waterPFLabel1_1.setBounds(70, 166, 35, 54);
 		waterPFLabel1_1.setIcon(updateWaterPFIcon);
 		panel1F.add(waterPFLabel1_1);
 		
-		JLabel waterPFLabel1_2 = new JLabel(); // ë¬¸ì˜†
+		JLabel waterPFLabel1_2 = new JLabel(); // ¹®¿·
 		waterPFLabel1_2.setBounds(876, 6, 57, 54);
 		waterPFLabel1_2.setIcon(updateWaterPFIcon);
 		panel1F.add(waterPFLabel1_2);
 					
 		//-------------------------------------------------------------------------------------------------------------
-		//2ì¸µ ë°°ì¹˜ë„ íŒë„¬
+		//2Ãş ¹èÄ¡µµ ÆÇ³Ú
 		JPanel panel2F = new JPanel();
 		panel2F.setBounds(71, 37, 945, 599);
 		//panel2F.setBackground(Color.WHITE);
-	    panel2F.setEnabled(false); //íŒ¨ë„ ë¹„í™œì„±í™”
-		panel2F.setVisible(false); //íŒ¨ë„ ê°ì¶”ê¸°
+	    panel2F.setEnabled(false); //ÆĞ³Î ºñÈ°¼ºÈ­
+		panel2F.setVisible(false); //ÆĞ³Î °¨Ãß±â
 		panel2F.setLayout(null);
 		contentPane.add(panel2F);
 
-		// 2ì¸µ ì¢Œì„ ë²„íŠ¼ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		// 2Ãş ÁÂ¼® ¹öÆ° »ı¼º, À§Ä¡ÁöÁ¤
     	String[] seat2Farr = {"200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210"
     			, "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224"
     			,"225", "226","227", "228", "229", "230", "231", "232"};
@@ -544,19 +544,19 @@ public class ManagerMain extends JFrame
 			seat2FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 			seat2FBtn[i].setBorder(lb);
 			seat2FBtn[i].setFocusPainted(false);
-			seat2FBtn[i].setBackground(Color.BLACK); //seatAvailì—ë”°ë¼ ë³€ê²½
+			seat2FBtn[i].setBackground(Color.BLACK); //seatAvail¿¡µû¶ó º¯°æ
 	    	try {
 				if (findSeatTable.seatAvail(200+i)==0) 
-				{//ì‚¬ìš©ê°€ëŠ¥
+				{//»ç¿ë°¡´É
 					seat2FBtn[i].setBackground(Color.CYAN);
 				} else
 					try {
 						if(findSeatTable.seatAvail(200+i)==1)
-						{//ì‚¬ìš©ì¤‘
+						{//»ç¿ëÁß
 							seat2FBtn[i].setBackground(Color.ORANGE);
 						}
 						else if(findSeatTable.seatAvail(200+i)==2)
-						{//ì‚¬ìš©ë¶ˆê°€
+						{//»ç¿ëºÒ°¡
 							seat2FBtn[i].setBackground(Color.RED);
 						}
 					} catch (NumberFormatException e1) {
@@ -572,7 +572,7 @@ public class ManagerMain extends JFrame
 			panel2F.add(seat2FBtn[i]);
 		}
 
-		seat2FBtn[0].setBounds(190, 0, 72, 60); //200ë²ˆ ì˜ì
+		seat2FBtn[0].setBounds(190, 0, 72, 60); //200¹ø ÀÇÀÚ
 		seat2FBtn[1].setBounds(264, 0, 72, 60);
 		seat2FBtn[2].setBounds(338, 0, 72, 60);
 		seat2FBtn[3].setBounds(414, 0, 72, 60);
@@ -606,7 +606,7 @@ public class ManagerMain extends JFrame
 		seat2FBtn[31].setBounds(871, 416, 72, 60);
 		seat2FBtn[32].setBounds(871, 184, 72, 60);
 
-		JLabel doorLabel2_1 = new JLabel("ë¬¸");
+		JLabel doorLabel2_1 = new JLabel("¹®");
 		doorLabel2_1.setOpaque(true);
 		doorLabel2_1.setHorizontalAlignment(JLabel.CENTER);
 		doorLabel2_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -614,8 +614,8 @@ public class ManagerMain extends JFrame
 		doorLabel2_1.setBounds(882, 72, 61, 69);
 		panel2F.add(doorLabel2_1);
 
-		// í™”ì¥ì‹¤
-		JLabel toiletLabel2_1 = new JLabel("<html><body><center>í™”<br>ì¥<br>ì‹¤</center></body></html>");
+		// È­Àå½Ç
+		JLabel toiletLabel2_1 = new JLabel("<html><body><center>È­<br>Àå<br>½Ç</center></body></html>");
 		toiletLabel2_1.setOpaque(true);
 		toiletLabel2_1.setHorizontalAlignment(JLabel.CENTER);
 		toiletLabel2_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -623,29 +623,29 @@ public class ManagerMain extends JFrame
 		toiletLabel2_1.setBounds(0, 60, 72, 180);
 		panel2F.add(toiletLabel2_1);
 		
-		//ì“°ë ˆê¸°í†µ ì´ë¯¸ì§€
-		JLabel trashcanLabel2_1 = new JLabel(); //í™”ì¥ì‹¤ì˜†
+		//¾²·¹±âÅë ÀÌ¹ÌÁö
+		JLabel trashcanLabel2_1 = new JLabel(); //È­Àå½Ç¿·
 		trashcanLabel2_1.setBounds(76, 184, 57, 54);   
 		trashcanLabel2_1.setIcon(updatetrashcanIcon);
 		panel2F.add(trashcanLabel2_1);
 		
-		JLabel trashcanLabel2_2 = new JLabel(); //ë¬¸ì˜†
+		JLabel trashcanLabel2_2 = new JLabel(); //¹®¿·
 		trashcanLabel2_2.setBounds(871, 6, 57, 54);
 		trashcanLabel2_2.setIcon(updatetrashcanIcon);
 		panel2F.add(trashcanLabel2_2);
 		
-		//ì •ìˆ˜ê¸° ì´ë¯¸ì§€
-		JLabel waterPFLabel2_1 = new JLabel(); //í™”ì¥ì‹¤ì˜†
+		//Á¤¼ö±â ÀÌ¹ÌÁö
+		JLabel waterPFLabel2_1 = new JLabel(); //È­Àå½Ç¿·
 		waterPFLabel2_1.setBounds(152, 0, 35, 70);   
 		waterPFLabel2_1.setIcon(updateWaterPFIcon);
 		panel2F.add(waterPFLabel2_1);
 		
-		JLabel waterPFLabel2_2 = new JLabel(); //ë¬¸ì˜†
+		JLabel waterPFLabel2_2 = new JLabel(); //¹®¿·
 		waterPFLabel2_2.setBounds(839, 6, 35, 54);
 		waterPFLabel2_2.setIcon(updateWaterPFIcon);
 		panel2F.add(waterPFLabel2_2);
 		
-		// 2ì¸µ ë²½ë¼ë²¨ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		// 2Ãş º®¶óº§ »ı¼º, À§Ä¡ÁöÁ¤
     	//String[] wall2Farr = {};
     	JLabel[] wall2FLabel = new JLabel[13];
     	
@@ -674,77 +674,77 @@ public class ManagerMain extends JFrame
 //		setVisible(true);	
 		//-----------------------------------------------------------------------------------------
 
-			//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼--ëˆ„ë¥´ë©´ ê´€ë¦¬ìë¡œê·¸ì¸ì°½ìœ¼ë¡œ
-		JButton logoutBtn = new JButton("ë¡œê·¸ì•„ì›ƒ");
+			//·Î±×¾Æ¿ô ¹öÆ°--´©¸£¸é °ü¸®ÀÚ·Î±×ÀÎÃ¢À¸·Î
+		JButton logoutBtn = new JButton("·Î±×¾Æ¿ô");
 		logoutBtn.setBounds(982, 0, 116, 31);
 		logoutBtn.setBackground(new Color(255, 0, 0));
 		logoutBtn.setFont(logoutBtnFont);
         logoutBtn.setFocusPainted(false);// hide focus rectangle
     	logoutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.exit(0); //ë§¤ë‹ˆì € ë©”ì¸í™”ë©´ ë‹«ê¸°(0 == ì •ìƒì¢…ë£Œ)  <=ì´ê±°ì“°ë©´ ìƒˆì°½ë„ ì•ˆë‚˜ì˜´
-				dispose(); //ì´ê±¸ì“°ì
-				new ManagerLogin();//ê´€ë¦¬ì ë¡œê·¸ì¸ ì°½ ë„ì›€- ê´€ë¦¬ìë¡œê·¸ì¸ì°½ ê³ ì¹˜ê³  ìˆ˜ì •í•„ìš”
+				//System.exit(0); //¸Å´ÏÀú ¸ŞÀÎÈ­¸é ´İ±â(0 == Á¤»óÁ¾·á)  <=ÀÌ°Å¾²¸é »õÃ¢µµ ¾È³ª¿È
+				dispose(); //ÀÌ°É¾²ÀÚ
+				new ManagerLogin();//°ü¸®ÀÚ ·Î±×ÀÎ Ã¢ ¶ç¿ò- °ü¸®ÀÚ·Î±×ÀÎÃ¢ °íÄ¡°í ¼öÁ¤ÇÊ¿ä
 			}
 		});
 		contentPane.add(logoutBtn);
 		
 		
-		//TODO ì„ì‹œë¡œ í•´ë‘ , ì‹¤ì œ DBê°’ ë°›ì•„ì˜¤ê³  ì§€ìš°ê¸°
-		QuestInfoDTO quest1 = new QuestInfoDTO("ì§ˆë¬¸ì…ë‹ˆë‹¤");
+		//TODO ÀÓ½Ã·Î ÇØµÒ, ½ÇÁ¦ DB°ª ¹Ş¾Æ¿À°í Áö¿ì±â
+		QuestInfoDTO quest1 = new QuestInfoDTO("Áú¹®ÀÔ´Ï´Ù");
 		
-		//TODO DB, ì±„íŒ…ì§ˆë¬¸ëª©ë¡ê¸°ëŠ¥ ì—°ë™í•´ì•¼í•¨
-		//ì§ˆë¬¸í™•ì¸ ë²„íŠ¼
-		JButton searchQuestionBtn = new JButton("<html><body><center>ì§ˆ"
-        		+ "<br>ë¬¸</center><br>í™•<br>ì¸</body></html>");
+		//TODO DB, Ã¤ÆÃÁú¹®¸ñ·Ï±â´É ¿¬µ¿ÇØ¾ßÇÔ
+		//Áú¹®È®ÀÎ ¹öÆ°
+		JButton searchQuestionBtn = new JButton("<html><body><center>Áú"
+        		+ "<br>¹®</center><br>È®<br>ÀÎ</body></html>");
 		searchQuestionBtn.setBounds(1036, 140, 62, 395);
 		searchQuestionBtn.setBackground(new Color(0, 255, 64));
 		searchQuestionBtn.setFont(logoutBtnFont);
 		searchQuestionBtn.setFocusPainted(false);// hide focus rectangle
-		searchQuestionBtn.addActionListener(new ActionListener() {//ëˆ„ë¥´ë©´ ì•„ë˜ ê¸°ëŠ¥ ë™ì‘
+		searchQuestionBtn.addActionListener(new ActionListener() {//´©¸£¸é ¾Æ·¡ ±â´É µ¿ÀÛ
 			public void actionPerformed(ActionEvent e) {
-	              // QuestDialogìƒì„±
-                QuestDialog questDialog = new QuestDialog //ìœ„ì—ì„œ ì •ì˜í•´ë†“ì€ QuestDialog í´ë˜ìŠ¤ ê°ì²´ ìƒì„±
-                		("", true, idLabel.getText(),quest1, ManagerMain.this); //ë§¤ê°œë³€ìˆ˜(ìœ„ì—ì„œ ì •í•œë§Œí¼)
+	              // QuestDialog»ı¼º
+                QuestDialog questDialog = new QuestDialog //À§¿¡¼­ Á¤ÀÇÇØ³õÀº QuestDialog Å¬·¡½º °´Ã¼ »ı¼º
+                		("", true, idLabel.getText(),quest1, ManagerMain.this); //¸Å°³º¯¼ö(À§¿¡¼­ Á¤ÇÑ¸¸Å­)
                 questDialog.setVisible(true);
 			}
 		});
 		contentPane.add(searchQuestionBtn);
 		
-		//êµ¬ì—­(1ì¸µ) ì„ íƒ ë²„íŠ¼
-		JButton firstFloorBtn = new JButton("1ì¸µ");
+		//±¸¿ª(1Ãş) ¼±ÅÃ ¹öÆ°
+		JButton firstFloorBtn = new JButton("1Ãş");
 		firstFloorBtn.setBounds(0, 659, 116, 38);
 		firstFloorBtn.setBackground(new Color(245, 134, 52));
 		firstFloorBtn.setFont(logoutBtnFont);
 		firstFloorBtn.setFocusPainted(false);// hide focus rectangle
 		firstFloorBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel2F.setEnabled(false); //2ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel2F.setVisible(false); //2ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
-				panel1F.setEnabled(true); //1ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel1F.setVisible(true); //1ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
+				panel2F.setEnabled(false); //2Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel2F.setVisible(false); //2Ãş ¹èÄ¡µµ °¨Ãß±â
+				panel1F.setEnabled(true); //1Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel1F.setVisible(true); //1Ãş ¹èÄ¡µµ °¨Ãß±â
 			}
 		});
 		contentPane.add(firstFloorBtn);
 		
-		//êµ¬ì—­(2ì¸µ) ì„ íƒ ë²„íŠ¼
-		JButton secondFloorBtn = new JButton("2ì¸µ");
+		//±¸¿ª(2Ãş) ¼±ÅÃ ¹öÆ°
+		JButton secondFloorBtn = new JButton("2Ãş");
 		secondFloorBtn.setBounds(0, 625, 116, 38);
 		secondFloorBtn.setBackground(new Color(248, 211, 129));
 		secondFloorBtn.setFont(logoutBtnFont);
 		secondFloorBtn.setFocusPainted(false);// hide focus rectangle
 		secondFloorBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel1F.setEnabled(false); //1ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel1F.setVisible(false); //1ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
-				panel2F.setEnabled(true); //2ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel2F.setVisible(true); //2ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
+				panel1F.setEnabled(false); //1Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel1F.setVisible(false); //1Ãş ¹èÄ¡µµ °¨Ãß±â
+				panel2F.setEnabled(true); //2Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel2F.setVisible(true); //2Ãş ¹èÄ¡µµ °¨Ãß±â
 			}
 		});
 		contentPane.add(secondFloorBtn);
 		
-		//í™”ë©´ ìƒˆë¡œê³ ì¹¨ ë²„íŠ¼
-		JButton refreshBtn = new JButton("ìƒˆë¡œê³ ì¹¨");
+		//È­¸é »õ·Î°íÄ§ ¹öÆ°
+		JButton refreshBtn = new JButton("»õ·Î°íÄ§");
 		refreshBtn.setFont(new Font("Dialog", Font.BOLD, 16));
 		refreshBtn.setFocusPainted(false);
 		refreshBtn.setBackground(Color.WHITE);
@@ -764,32 +764,32 @@ public class ManagerMain extends JFrame
 		});
 		contentPane.add(refreshBtn);
 		
-		//ë§¤ê°œë³€ìˆ˜ë¡œ ì§€ê¸ˆ ë¡œê·¸ì¸í•œ ê´€ë¦¬ìIDë„£ê¸°
-		idLabel.setText("ê´€ë¦¬ì:"+name+" ë‹˜");
+		//¸Å°³º¯¼ö·Î Áö±İ ·Î±×ÀÎÇÑ °ü¸®ÀÚID³Ö±â
+		idLabel.setText("°ü¸®ÀÚ:"+name+" ´Ô");
 		idLabel.setBounds(71, 0, 197, 38);
 		idLabel.setBackground(new Color(255, 255, 255));
 		idLabel.setFont(logoutBtnFont);
 		contentPane.add(idLabel);
 		
-		//ì¢Œì¸¡ìƒë‹¨ ë¡œê³ ì´ë¯¸ì§€
+		//ÁÂÃø»ó´Ü ·Î°íÀÌ¹ÌÁö
 		JLabel logoLabel = new JLabel();
 		logoLabel.setBounds(0, 0, 70, 69);       
         logoLabel.setIcon(updateLogoIcon);
         getContentPane().add(logoLabel);
         //--------------------------------------------------------------------------------------------------
     	class SeatBtnListener implements ActionListener {
-    		//ì˜ìë²„íŠ¼ ëˆŒë €ì„ë•Œ ë™ì‘ 		seat2FBtn[0] //200ë²ˆ ì˜ì
+    		//ÀÇÀÚ¹öÆ° ´­·¶À»¶§ µ¿ÀÛ 		seat2FBtn[0] //200¹ø ÀÇÀÚ
     		@Override
     		public void actionPerformed(ActionEvent e) {
-    			JButton seatSource = (JButton)e.getSource(); //í´ë¦­í•œ ë²„íŠ¼ì˜ ë¼ë²¨ê°’ ì½ì–´ì˜´
+    			JButton seatSource = (JButton)e.getSource(); //Å¬¸¯ÇÑ ¹öÆ°ÀÇ ¶óº§°ª ÀĞ¾î¿È
     			FindUseTable findUseTable = new FindUseTable();
-    			String usestat = null; //seatInfoPanelì˜ memberTelLabelì— ë“¤ì–´ê°ˆ 
+    			String usestat = null; //seatInfoPanelÀÇ memberTelLabel¿¡ µé¾î°¥ 
     			
-    			//ì˜ì ë¼ë²¨ì˜ ê°’ ì½ì–´ì™€ì„œ ì˜ìì •ë³´ íŒ¨ë„ì˜ ì˜ìë²ˆí˜¸ ë¼ë²¨ì— ë¶™ì„
+    			//ÀÇÀÚ ¶óº§ÀÇ °ª ÀĞ¾î¿Í¼­ ÀÇÀÚÁ¤º¸ ÆĞ³ÎÀÇ ÀÇÀÚ¹øÈ£ ¶óº§¿¡ ºÙÀÓ
     			seatNumLabel_seatInfoPanel.setText(seatSource.getText());
-    			//if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false) //TODO ì¡°ê±´ë¬¸ ë¯¸ë™ì‘?
+    			//if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false) //TODO Á¶°Ç¹® ¹Ìµ¿ÀÛ?
     			//{
-    				//í´ë¦­í•œ ì˜ìë¼ë²¨ê°’ ì½ì–´ì™€ì„œ findUse ì‹¤í–‰(ì‚¬ìš©ì¤‘ì¸ì§€ ê²€ì‚¬)
+    				//Å¬¸¯ÇÑ ÀÇÀÚ¶óº§°ª ÀĞ¾î¿Í¼­ findUse ½ÇÇà(»ç¿ëÁßÀÎÁö °Ë»ç)
     				try {
 						usestat = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
 					} catch (NumberFormatException e1) {
@@ -797,16 +797,16 @@ public class ManagerMain extends JFrame
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-    				if(usestat=="0")//ë¦¬í„´ë°›ì€ê°’ì´ 0ì´ë©´ íšŒì›ì „í™”ë²ˆí˜¸ ë¼ë²¨ì—ì„œ ì§€ìš°ê¸°(ê³µë°±ìƒíƒœë¡œ ë‘ )
+    				if(usestat=="0")//¸®ÅÏ¹ŞÀº°ªÀÌ 0ÀÌ¸é È¸¿øÀüÈ­¹øÈ£ ¶óº§¿¡¼­ Áö¿ì±â(°ø¹é»óÅÂ·Î µÒ)
     				{
     					memberInfoBtn.setEnabled(false);
     					memberTelLabel.setText("");
     				}
     				else
     				{
-    					//seatInfo íŒ¨ë„ì˜ ì •ë³´ ë²„íŠ¼ í™œì„±í™”
+    					//seatInfo ÆĞ³ÎÀÇ Á¤º¸ ¹öÆ° È°¼ºÈ­
     					memberInfoBtn.setEnabled(true); 					
-    					//ì‚¬ìš© í…Œì´ë¸”ì—ì„œ ìœ ì € ì „í™”ë²ˆí˜¸ ê²€ìƒ‰í•´ì™€ì„œ ì§‘ì–´ë„£ê¸°
+    					//»ç¿ë Å×ÀÌºí¿¡¼­ À¯Àú ÀüÈ­¹øÈ£ °Ë»öÇØ¿Í¼­ Áı¾î³Ö±â
     					memberTelLabel.setText(usestat);
     				}
     				
@@ -815,7 +815,7 @@ public class ManagerMain extends JFrame
     				seatInfoPanel.setVisible(true);
     				seatInfoPanel.setEnabled(true);   	
     				
-    				//íŒ¨ë„ ì•„ë˜ì˜ 1ì¸µì¢Œì„ ë²„íŠ¼ ë¹„í™œì„±í™”
+    				//ÆĞ³Î ¾Æ·¡ÀÇ 1ÃşÁÂ¼® ¹öÆ° ºñÈ°¼ºÈ­
     				seat1FBtn[10].setEnabled(false);
     				seat1FBtn[10].setVisible(false);
     				seat1FBtn[11].setEnabled(false);
@@ -825,7 +825,7 @@ public class ManagerMain extends JFrame
     				seat1FBtn[13].setEnabled(false);
     				seat1FBtn[13].setVisible(false);
 
-    				//íŒ¨ë„ ì•„ë˜ì˜ 2ì¸µì¢Œì„ ë²„íŠ¼ ë¹„í™œì„±í™”
+    				//ÆĞ³Î ¾Æ·¡ÀÇ 2ÃşÁÂ¼® ¹öÆ° ºñÈ°¼ºÈ­
     				seat2FBtn[8].setEnabled(false);
     				seat2FBtn[8].setVisible(false);
     				seat2FBtn[9].setEnabled(false);
@@ -838,7 +838,7 @@ public class ManagerMain extends JFrame
     		}
     	//}
     	
-    	//ì¢Œì„ë²„íŠ¼ì— ì•¡ì…˜ë¦¬ìŠ¤ë„ˆ ê¸°ëŠ¥ ì¶”ê°€
+    	//ÁÂ¼®¹öÆ°¿¡ ¾×¼Ç¸®½º³Ê ±â´É Ãß°¡
     	SeatBtnListener seatBtnListener = new SeatBtnListener();
     	for (int i = 0; i < seat1Farr.length; i++) {
     		seat1FBtn[i].addActionListener(seatBtnListener);
@@ -847,20 +847,20 @@ public class ManagerMain extends JFrame
 			seat2FBtn[i].addActionListener(seatBtnListener);
 		}
     	
-    	//ë‹«ê¸°ë²„íŠ¼x
+    	//´İ±â¹öÆ°x
 		JButton closeBtn_seatInfoPanel = new JButton("X");
 		closeBtn_seatInfoPanel.setOpaque(true);
 		closeBtn_seatInfoPanel.setBounds(116, 0, 49, 38);
 		closeBtn_seatInfoPanel.setFont(new Font("Dialog", Font.BOLD, 13));
 		closeBtn_seatInfoPanel.setHorizontalAlignment(JLabel.CENTER);
-		closeBtn_seatInfoPanel.setBackground(new Color(128, 255, 128));//íŒ¨ë„ì´ë‘ ë¹„ìŠ·í•œìƒ‰ìœ¼ë¡œ?
+		closeBtn_seatInfoPanel.setBackground(new Color(128, 255, 128));//ÆĞ³ÎÀÌ¶û ºñ½ÁÇÑ»öÀ¸·Î?
 		closeBtn_seatInfoPanel.setForeground(Color.RED);
 		closeBtn_seatInfoPanel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				seatInfoPanel.setEnabled(false);
 				seatInfoPanel.setVisible(false);
 				
-				//íŒ¨ë„ ì•„ë˜ì˜ 1ì¸µì¢Œì„ ë²„íŠ¼ í™œì„±í™”
+				//ÆĞ³Î ¾Æ·¡ÀÇ 1ÃşÁÂ¼® ¹öÆ° È°¼ºÈ­
 				seat1FBtn[10].setEnabled(true);
 				seat1FBtn[10].setVisible(true);
 				seat1FBtn[11].setEnabled(true);
@@ -870,7 +870,7 @@ public class ManagerMain extends JFrame
 				seat1FBtn[13].setEnabled(true);
 				seat1FBtn[13].setVisible(true);
 
-				//íŒ¨ë„ ì•„ë˜ì˜ 2ì¸µì¢Œì„ ë²„íŠ¼ í™œì„±í™”
+				//ÆĞ³Î ¾Æ·¡ÀÇ 2ÃşÁÂ¼® ¹öÆ° È°¼ºÈ­
 				seat2FBtn[8].setEnabled(true);
 				seat2FBtn[8].setVisible(true);
 				seat2FBtn[9].setEnabled(true);

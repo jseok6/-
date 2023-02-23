@@ -101,7 +101,7 @@ implements ActionListener{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-        //ë°°ê²½ì´ë¯¸ì§€
+        //¹è°æÀÌ¹ÌÁö
         label = new JLabel();
         label.setIcon(new ImageIcon("./Button_Image/family.jpg"));
         label.setBounds(0, 0, 1100, 700);
@@ -116,7 +116,7 @@ implements ActionListener{
 	}
 	public void placeLoginPanel(JPanel panel){
         panel.setLayout(null);
-        Font font=new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17);
+        Font font=new Font("¸¼Àº °íµñ", Font.PLAIN, 17);
         
         JLabel userLabel = new JLabel("Tell");
         userLabel.setBounds(427, 229, 80, 25);
@@ -155,14 +155,14 @@ implements ActionListener{
         btnInit.addActionListener(this);
         
         
-        btnjoin=new JButton("íšŒì›ê°€ì…");
+        btnjoin=new JButton("È¸¿ø°¡ÀÔ");
         btnjoin.setBackground(Color.yellow);
         btnjoin.setBounds(560, 299, 117, 25);
         btnjoin.setFocusPainted(false);
         panel.add(btnjoin);
         btnjoin.addActionListener(this);
         
-        label2=new JLabel("ì•„ì´ë””ì™€ ë¹„ë²ˆì„ ì…ë ¥í•˜ì„¸ìš”.");
+        label2=new JLabel("¾ÆÀÌµğ¿Í ºñ¹øÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
         label2.setOpaque(true); 
         label2.setBackground(Color.pink);
         label2.setFont(font);
@@ -170,7 +170,7 @@ implements ActionListener{
         panel.add(label2);
         
         
-        //ìˆ«ìí‚¤íŒ¨ë“œ
+        //¼ıÀÚÅ°ÆĞµå
         btn0=new JButton("0");
         btn0.setBounds(310,350,50,25);
         btn0.setBackground(Color.yellow);
@@ -241,7 +241,7 @@ implements ActionListener{
         btn9.addActionListener(this);
         panel.add(btn9);
         
-        //ì˜ë¬¸í‚¤íŒ¨ë“œ
+        //¿µ¹®Å°ÆĞµå
         
         btnq=new JButton("q");
         btnq.setBounds(310,375,50,25);
@@ -428,7 +428,7 @@ implements ActionListener{
         
         FindManagerTable mgpn=new FindManagerTable();
         String str=mgpn.managerPn();
-        JLabel managerphone= new JLabel("ê´€ë¦¬ì ì—°ë½ì²˜:"+str);
+        JLabel managerphone= new JLabel("°ü¸®ÀÚ ¿¬¶ôÃ³:"+str);
         managerphone.setFont(font);
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
@@ -440,7 +440,7 @@ implements ActionListener{
 		
 		FocusListener focusListener = new FocusListener() {
             public void focusGained(FocusEvent e) {
-                selectedField = (JTextField) e.getSource(); // í¬ì»¤ìŠ¤ë¥¼ ì–»ì€ í…ìŠ¤íŠ¸ ìƒì ì €ì¥
+                selectedField = (JTextField) e.getSource(); // Æ÷Ä¿½º¸¦ ¾òÀº ÅØ½ºÆ® »óÀÚ ÀúÀå
             }
             public void focusLost(FocusEvent e) {}
         };
@@ -458,29 +458,29 @@ implements ActionListener{
 				userText.setText("");
 	            passText.setText("");
 			}
-			//ë¡œê·¸ì¸ë²„íŠ¼
+			//·Î±×ÀÎ¹öÆ°
 			else if (obj.equals(btnLogin))
 			{
 				UserLoginEvent login=new UserLoginEvent();
-				int i = login.userLogin(Integer.parseInt(userText.getText()), passText.getText());
+				int i = login.userLogin(userText.getText(), passText.getText());
 				if(i == 1){
 					PayEnter pay=new PayEnter(userText.getText());
 					pay.setVisible(true);
 					dispose();
-					JOptionPane.showMessageDialog(null, "í™˜ì˜í•©ë‹ˆë‹¤.");
+					JOptionPane.showMessageDialog(null, "È¯¿µÇÕ´Ï´Ù.");
 					
 					
 				}
 				else
 				{
 
-					JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ ì‹¤íŒ¨");
+					JOptionPane.showMessageDialog(null, "·Î±×ÀÎ ½ÇÆĞ");
 					userText.setText("");
 					passText.setText("");
 				}
 				
 			}
-			//íšŒì›ê°€ì…ë²„íŠ¼
+			//È¸¿ø°¡ÀÔ¹öÆ°
 			else if(obj.equals(btnjoin))
 			{
 				UserLoginEvent join=new UserLoginEvent();
@@ -490,12 +490,12 @@ implements ActionListener{
 				dispose();
 				
 			}
-			//ë’¤ë¡œê°€ê¸°ë²„íŠ¼
+			//µÚ·Î°¡±â¹öÆ°
 			else if (obj.equals(back))
 			{
-				//ë’¤ë¡œê°€ê¸° ê¸°ëŠ¥
+				//µÚ·Î°¡±â ±â´É
 			}
-			//í°ë²ˆí˜¸ì…ë ¥
+			//Æù¹øÈ£ÀÔ·Â
 			else if(obj.equals(btn0))
 			{
 				if (selectedField == userText) {
@@ -810,4 +810,3 @@ implements ActionListener{
 	}
 
 }
-

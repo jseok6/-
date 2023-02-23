@@ -1,6 +1,6 @@
 package study;
 
-//ë©”ë‹ˆì € í°ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
+//¸Ş´ÏÀú Æù¹øÈ£ °¡Á®¿À±â
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class ManagerPn {
 	String sql="SELECT manager_tel FROM manager WHERE manager_id=?";
 	String sql2="SELECT manager_email FROM manager WHERE manager_id=?";
 
-	//ê´€ë¦¬ì ì „í™”ë²ˆí˜¸ë¶ˆëŸ¬ì£¼ê¸°
+	//°ü¸®ÀÚ ÀüÈ­¹øÈ£ºÒ·¯ÁÖ±â
 	public String Manager_pn()
 	{
 		Connection con=null;
@@ -37,7 +37,7 @@ public class ManagerPn {
 
 		return str;
 	}
-	//ê´€ë¦¬ì ì´ë©”ì¼ ë¶ˆëŸ¬ì£¼ê¸°
+	//°ü¸®ÀÚ ÀÌ¸ŞÀÏ ºÒ·¯ÁÖ±â
 	public String manager_email()
 	{
 		Connection con=null;

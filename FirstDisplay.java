@@ -42,12 +42,12 @@ public class FirstDisplay extends JFrame{
 		this.setResizable(false);
 		this.setVisible(true);
 		
-		Button button1 = new Button("ì‚¬ìš©ì");
+		Button button1 = new Button("»ç¿ëÀÚ");
 		button1.setBounds(0, 0, 492, 561);
 		button1.setBackground(new Color(205, 133, 63));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.add(button1);
-		// ì‚¬ìš©ì button1
+		// »ç¿ëÀÚ button1
 		button1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -56,12 +56,12 @@ public class FirstDisplay extends JFrame{
 			}
 		});
 		
-		Button button2 = new Button("ê´€ë¦¬ì");
+		Button button2 = new Button("°ü¸®ÀÚ");
 		button2.setBounds(492, 0, 492, 561);
 		button2.setBackground(new Color(102, 205, 170));
 		button2.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.add(button2);
-		// ê´€ë¦¬ì button2
+		// °ü¸®ÀÚ button2
 		button2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {	

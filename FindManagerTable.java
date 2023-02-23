@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//Manager(ê´€ë¦¬ì) í…Œì´ë¸” ê²€ìƒ‰
+//Manager(°ü¸®ÀÚ) Å×ÀÌºí °Ë»ö
 public class FindManagerTable {
-	public String managerName(String mid) throws SQLException //ë§¤ë‹ˆì € ì´ë¦„ ì°¾ê¸°
+	
+	public String managerName(String mid) throws SQLException //¸Å´ÏÀú ÀÌ¸§ Ã£±â
 	{
 		Connection con=null;
 		PreparedStatement pstmt = null;
@@ -40,7 +41,7 @@ public class FindManagerTable {
 		return str;
 	}
 	
-	//ê´€ë¦¬ì ì „í™”ë²ˆí˜¸ë¶ˆëŸ¬ì£¼ê¸°
+	//°ü¸®ÀÚ ÀüÈ­¹øÈ£ºÒ·¯ÁÖ±â
 		public String managerPn()
 		{
 			Connection con=null;
@@ -50,7 +51,7 @@ public class FindManagerTable {
 			try {
 				con=DBconnect.getConnection();
 				pstmt = con.prepareStatement(queryFindmanagerPn);
-				pstmt.setString(1,"family");
+				pstmt.setString(1,"jseok1");
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next())
 				{
@@ -66,7 +67,7 @@ public class FindManagerTable {
 			return str;
 		}
 		
-		//ê´€ë¦¬ì ì´ë©”ì¼ ë¶ˆëŸ¬ì£¼ê¸°
+		//°ü¸®ÀÚ ÀÌ¸ŞÀÏ ºÒ·¯ÁÖ±â
 		public String managerEmail()
 		{
 			Connection con=null;
@@ -78,7 +79,7 @@ public class FindManagerTable {
 			try {
 				con=DBconnect.getConnection();
 				pstmt = con.prepareStatement(queryFindmanagerEmail);
-				pstmt.setString(1,"family");
+				pstmt.setString(1,"jseok1");
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next())
 				{

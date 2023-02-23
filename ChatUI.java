@@ -33,8 +33,8 @@ implements ActionListener{
 	int owner;
 	
 	
-	public ChatUI(String roomname,BufferedReader in, PrintWriter out, String id) {	// ë‹µë³€í•  ì‚¬ëŒì˜ ì±„íŒ…ë°©
-		System.out.println("ë°©ìƒì„±");
+	public ChatUI(String roomname,BufferedReader in, PrintWriter out, String id) {	// ´äº¯ÇÒ »ç¶÷ÀÇ Ã¤ÆÃ¹æ
+		System.out.println("¹æ»ı¼º");
 		setSize(450, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.roomName = roomname;
@@ -54,7 +54,7 @@ implements ActionListener{
 		userList = new List();
 		p2.add(BorderLayout.CENTER, userList);
 		JPanel p3 = new JPanel();
-		bt2 = new JButton("ë‚˜ê°€ê¸°");
+		bt2 = new JButton("³ª°¡±â");
 		bt2.addActionListener(this);
 		p3.add(bt2);
 		p2.add(BorderLayout.SOUTH, p3);
@@ -62,7 +62,7 @@ implements ActionListener{
 		// ///////////////////////////////////////////////////////////////////////////////////////////
 		JPanel p4 = new JPanel();
 		tf = new JTextField("", 30);
-		bt1 = new JButton("ë³´ë‚´ê¸°");
+		bt1 = new JButton("º¸³»±â");
 		p4.add(tf);
 		p4.add(bt1);
 		add(BorderLayout.SOUTH, p4);
@@ -72,8 +72,8 @@ implements ActionListener{
 		validate();
 	}
 	
-	public ChatUI(String roomname,BufferedReader in, PrintWriter out, String id, int owner) { // ì§ˆë¬¸ í•œì‚¬ëŒì˜ ì±„íŒ…ë°©
-		System.out.println("ë°©ìƒì„±");
+	public ChatUI(String roomname,BufferedReader in, PrintWriter out, String id, int owner) { // Áú¹® ÇÑ»ç¶÷ÀÇ Ã¤ÆÃ¹æ
+		System.out.println("¹æ»ı¼º");
 		setSize(450, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.roomName = roomname;
@@ -94,7 +94,7 @@ implements ActionListener{
 		userList = new List();
 		p2.add(BorderLayout.CENTER, userList);
 		JPanel p3 = new JPanel();
-		bt3 = new JButton("ì§ˆë¬¸ ì¢…ë£Œ");
+		bt3 = new JButton("Áú¹® Á¾·á");
 		bt3.addActionListener(this);
 		p3.add(bt3);
 		p2.add(BorderLayout.SOUTH, p3);
@@ -102,7 +102,7 @@ implements ActionListener{
 		// ///////////////////////////////////////////////////////////////////////////////////////////
 		JPanel p4 = new JPanel();
 		tf = new JTextField("", 30);
-		bt1 = new JButton("ë³´ë‚´ê¸°");
+		bt1 = new JButton("º¸³»±â");
 		p4.add(tf);
 		p4.add(bt1);
 		add(BorderLayout.SOUTH, p4);
@@ -123,13 +123,13 @@ implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-		if(obj == bt2) {	//ë‚˜ê°€ê¸°
+		if(obj == bt2) {	//³ª°¡±â
 			sendMessage(ChatProtocol2.EXIT+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+id);
 			dispose();
 		}else if(obj == bt1 || obj == tf) {
 			String msg = tf.getText().trim();
 			if(msg.length() != 0) {
-				sendMessage(ChatProtocol2.CHAT+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+id+";"+msg); // -> CHAT:ë°©ì´ë¦„:aaa;ì•ˆë…•í•˜ì„¸ìš”
+				sendMessage(ChatProtocol2.CHAT+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+id+";"+msg); // -> CHAT:¹æÀÌ¸§:aaa;¾È³çÇÏ¼¼¿ä
 				tf.setText("");
 				tf.requestFocus();
 			}
@@ -142,7 +142,7 @@ implements ActionListener{
 	
 	
 	public void routine(String line) {
-		System.out.println("ë£¸ line");
+		System.out.println("·ë line");
 		int idx = line.indexOf(ChatProtocol2.MODE);
 		String cmd = line.substring(0, idx);
 		String data = line.substring(idx+1);
@@ -153,13 +153,13 @@ implements ActionListener{
 	
 	public void enterRoom() {
 		String msg =  id + ";Enter room";
-		sendMessage(ChatProtocol2.ENTERROOM+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+msg); // ENTERROOM:ë°©ì´ë¦„:ìœ ì €ëª…;ë‹˜ì´ ì…ì¥í•˜ì˜€ìŠµë‹ˆë‹¤
+		sendMessage(ChatProtocol2.ENTERROOM+ChatProtocol2.MODE+roomName+ChatProtocol2.MODE+msg); // ENTERROOM:¹æÀÌ¸§:À¯Àú¸í;´ÔÀÌ ÀÔÀåÇÏ¿´½À´Ï´Ù
 	}
 	
 	public void resetList(String str) {
 		String addList = "";
 		userList.removeAll();
-		StringTokenizer st = new StringTokenizer(str, ";");	//ë°©ì´ë¦„:ìœ ì €ëª…;ë°©ì´ë¦„:ìœ ì €ëª…;ë°©ì´ë¦„:ìœ ì €ëª…;...;
+		StringTokenizer st = new StringTokenizer(str, ";");	//¹æÀÌ¸§:À¯Àú¸í;¹æÀÌ¸§:À¯Àú¸í;¹æÀÌ¸§:À¯Àú¸í;...;
 		while(st.hasMoreTokens()) {
 			addList = st.nextToken();
 			System.out.println("addlist"+addList);

@@ -43,7 +43,7 @@ public class SeatSelect extends JFrame {
 	private JPanel contentPane;
 
 	public static void main(String[] args) {
-		// ì „ë¶€ ì£¼ì„ì²˜ë¦¬í•˜ë©´ ì´íŒŒì¼ìì²´ë¡œ ì‹¤í–‰ì•ˆë¨, ë¡œê·¸ì¸ì°½ì—ì„œ ë„˜ì–´ì˜¤ëŠ” ì‹¤í–‰ì€ ê·¸ëŒ€ë¡œ ê°€ëŠ¥
+		// ÀüºÎ ÁÖ¼®Ã³¸®ÇÏ¸é ÀÌÆÄÀÏÀÚÃ¼·Î ½ÇÇà¾ÈµÊ, ·Î±×ÀÎÃ¢¿¡¼­ ³Ñ¾î¿À´Â ½ÇÇàÀº ±×´ë·Î °¡´É
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -63,7 +63,7 @@ public class SeatSelect extends JFrame {
 		});
 	}
 
-	// í”„ë ˆì„ ìƒì„±
+	// ÇÁ·¹ÀÓ »ı¼º
 	public SeatSelect(String membertel) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1214, 836);
@@ -74,27 +74,27 @@ public class SeatSelect extends JFrame {
 		setContentPane(contentPane);
 		System.out.println("SeatSelect:"+membertel);
 
-		// í°íŠ¸(ë§‘ì€ê³ ë”• êµµê²Œ 16)
-		Font logoutBtnFont = new Font("ë§‘ì€ê³ ë”• êµµê²Œ", Font.BOLD, 16);
-		// í…Œë‘ë¦¬ì„  êµµê²Œ
+		// ÆùÆ®(¸¼Àº°íµñ ±½°Ô 16)
+		Font logoutBtnFont = new Font("¸¼Àº°íµñ ±½°Ô", Font.BOLD, 16);
+		// Å×µÎ¸®¼± ±½°Ô
 		LineBorder lb = new LineBorder(Color.BLACK, 2);
 		setVisible(true);
 
 		ImageIcon logoIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
-		Image logoImg = logoIcon.getImage(); // ImageIcon ê°ì²´ì—ì„œ Image ì¶”ì¶œ
-		Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // ì¶”ì¶œëœ Imageì˜ í¬ê¸° ì¡°ì ˆí•˜ì—¬ ìƒˆë¡œìš´ Image ê°ì²´
-																						// ìƒì„±
-		ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg); // ìƒˆë¡œìš´ Image ê°ì²´ë¡œ ImageIcon ê°ì²´ ìƒì„±
+				"C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
+		Image logoImg = logoIcon.getImage(); // ImageIcon °´Ã¼¿¡¼­ Image ÃßÃâ
+		Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // ÃßÃâµÈ ImageÀÇ Å©±â Á¶ÀıÇÏ¿© »õ·Î¿î Image °´Ã¼
+																						// »ı¼º
+		ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg); // »õ·Î¿î Image °´Ã¼·Î ImageIcon °´Ã¼ »ı¼º
 
 		ImageIcon trashcanIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\Button_image\\trashcan.png");
+				"C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\Button_image\\trashcan.png");
 		Image trashcanImg = trashcanIcon.getImage();
 		Image updateTrashcanImg = trashcanImg.getScaledInstance(57, 54, Image.SCALE_SMOOTH);
 		ImageIcon updatetrashcanIcon = new ImageIcon(updateTrashcanImg);
 
 		ImageIcon waterPFIcon = new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\Button_image\\water.png");
+				"C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\Button_image\\water.png");
 		Image waterPFImg = waterPFIcon.getImage();
 		Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
@@ -102,15 +102,15 @@ public class SeatSelect extends JFrame {
 		setVisible(true);
 
 		// -----------------------------------------------------------------------------------------------------------
-		// 1ì¸µ ë°°ì¹˜ë„ íŒë„¬
+		// 1Ãş ¹èÄ¡µµ ÆÇ³Ú
 		JPanel panel1F = new JPanel();
 		panel1F.setBounds(121, 87, 945, 599);
 		panel1F.setLayout(null);
-//			panel1F.setEnabled(false); //íŒ¨ë„ ë¹„í™œì„±í™”
-//			panel1F.setVisible(false); //íŒ¨ë„ ê°ì¶”ê¸°
+//			panel1F.setEnabled(false); //ÆĞ³Î ºñÈ°¼ºÈ­
+//			panel1F.setVisible(false); //ÆĞ³Î °¨Ãß±â
 		contentPane.add(panel1F);
 
-		// 1ì¸µ ì¢Œì„ ë²„íŠ¼ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		// 1Ãş ÁÂ¼® ¹öÆ° »ı¼º, À§Ä¡ÁöÁ¤
 		String[] seat1Farr = { "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111",
 				"112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126",
 				"127", "128", "129", "130" };
@@ -126,15 +126,15 @@ public class SeatSelect extends JFrame {
 			seat1FBtn[i].setFocusPainted(false);
 //				seat1FBtn[i].setBackground(new Color(0, 128, 255));
 			try {
-				if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 0) {// ì‚¬ìš©ê°€ëŠ¥
+				if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 0) {// »ç¿ë°¡´É
 					seat1FBtn[i].setBackground(Color.CYAN);
 				} else
 					try {
-						if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 1) {// ì‚¬ìš©ì¤‘
+						if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 1) {// »ç¿ëÁß
 							seat1FBtn[i].setBackground(Color.ORANGE);
 						} else
 							try {
-								if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 2) {// ì‚¬ìš©ë¶ˆê°€
+								if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 2) {// »ç¿ëºÒ°¡
 									seat1FBtn[i].setBackground(Color.RED);
 								}
 							} catch (NumberFormatException e1) {
@@ -155,10 +155,10 @@ public class SeatSelect extends JFrame {
 			panel1F.add(seat1FBtn[i]);
 		}
 
-		// ì¸ë±ìŠ¤(i)ì˜ ê°’ì„ seatNumìœ¼ë¡œ ê°€ì§€ëŠ” seatAvail ê²€ìƒ‰
+		// ÀÎµ¦½º(i)ÀÇ °ªÀ» seatNumÀ¸·Î °¡Áö´Â seatAvail °Ë»ö
 		Integer.parseInt(seat1Farr[0]);
 
-		seat1FBtn[0].setBounds(114, 0, 72, 60); // 100ë²ˆ ì¢Œì„
+		seat1FBtn[0].setBounds(114, 0, 72, 60); // 100¹ø ÁÂ¼®
 		seat1FBtn[1].setBounds(186, 0, 72, 60);
 		seat1FBtn[2].setBounds(259, 0, 72, 60);
 		seat1FBtn[3].setBounds(402, 0, 72, 60);
@@ -195,44 +195,44 @@ public class SeatSelect extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					JFrame fs = new JFrame();
-					fs.setTitle("ìë¦¬ ì„ íƒ ì—¬ë¶€");
+					fs.setTitle("ÀÚ¸® ¼±ÅÃ ¿©ºÎ");
 					fs.setVisible(true);
 					fs.setIconImage(Toolkit.getDefaultToolkit().getImage(
-							"C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\family.jpg"));
-					fs.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 12));
+							"C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\family.jpg"));
+					fs.setFont(new Font("±¼¸²", Font.PLAIN, 12));
 					fs.setResizable(false);
 					fs.setBounds(370, 289, 465, 260);
 					fs.getContentPane().setLayout(null);
 
 					JButton seatSource = (JButton) e.getSource();
-					JLabel guideLabel = new JLabel(seatSource.getText() + "ë²ˆ ìë¦¬ë¥¼ ì„ íƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+					JLabel guideLabel = new JLabel(seatSource.getText() + "¹ø ÀÚ¸®¸¦ ¼±ÅÃ ÇÏ½Ã°Ú½À´Ï±î?");
 					guideLabel.setHorizontalAlignment(SwingConstants.CENTER);
-					guideLabel.setFont(new Font("í•¨ì´ˆë¡¬ë°”íƒ•", Font.PLAIN, 18));
+					guideLabel.setFont(new Font("ÇÔÃÊ·Ò¹ÙÅÁ", Font.PLAIN, 18));
 					guideLabel.setBounds(75, 40, 317, 78);
 					fs.getContentPane().add(guideLabel);
 
-					// í™•ì¸ë²„íŠ¼
-					JButton checkBtn = new JButton("í™•ì¸");
+					// È®ÀÎ¹öÆ°
+					JButton checkBtn = new JButton("È®ÀÎ");
 					checkBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							String checkStat;
 							// Object obj = new Object();
 							fs.setVisible(false);
-							fs.dispose(); // ë²„íŠ¼ ëˆ„ë¥¼ë•Œ ê·¸ ì°½ë§Œ ì¢…ë£Œí•˜ê²Œ í•˜ëŠ” ë©”ì†Œë“œ
+							fs.dispose(); // ¹öÆ° ´©¸¦¶§ ±× Ã¢¸¸ Á¾·áÇÏ°Ô ÇÏ´Â ¸Ş¼Òµå
 							new Pay(membertel);
 
-							// use í…Œì´ë¸”ì—ì„œ ì‚¬ìš©ì¤‘ì¸ì§€ ê²€ì‚¬
+							// use Å×ÀÌºí¿¡¼­ »ç¿ëÁßÀÎÁö °Ë»ç
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
 							try {
 								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
-								if (checkStat == "0")// ì‚¬ìš©ì¤‘ì¸ ì¢Œì„ì´ ì•„ë‹ˆë©´
+								if (checkStat == "0")// »ç¿ëÁßÀÎ ÁÂ¼®ÀÌ ¾Æ´Ï¸é
 								{
-									// ì‚¬ìš©ë²ˆí˜¸ ,ì²´í¬ì¸ì‹œê°„, ì „í™”ë²ˆí˜¸, ì˜ìë²ˆí˜¸
-									// TODO ì²´í¬ì¸ì‹œê°„ í˜„ì¬ì‹œê°„ì´ë‘ ë™ê¸°í™”/ì „í™”ë²ˆí˜¸ ì¤‘ë³µë°©ì§€ ì ìš©í•„ìš”
+									// »ç¿ë¹øÈ£ ,Ã¼Å©ÀÎ½Ã°£, ÀüÈ­¹øÈ£, ÀÇÀÚ¹øÈ£
+									// TODO Ã¼Å©ÀÎ½Ã°£ ÇöÀç½Ã°£ÀÌ¶û µ¿±âÈ­/ÀüÈ­¹øÈ£ Áßº¹¹æÁö Àû¿ëÇÊ¿ä
 									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
 								} else {
 									System.out.println("Already using seat");
@@ -245,12 +245,12 @@ public class SeatSelect extends JFrame {
 						}
 					});
 					checkBtn.setSelected(true);
-					checkBtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
+					checkBtn.setFont(new Font("±¼¸²", Font.PLAIN, 15));
 					checkBtn.setBounds(99, 139, 109, 50);
 					fs.getContentPane().add(checkBtn);
 
-					// ë‹¤ì‹œì„ íƒë²„íŠ¼
-					JButton reChoiceBtn = new JButton("ë‹¤ì‹œ ì„ íƒ");
+					// ´Ù½Ã¼±ÅÃ¹öÆ°
+					JButton reChoiceBtn = new JButton("´Ù½Ã ¼±ÅÃ");
 					reChoiceBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
@@ -259,15 +259,15 @@ public class SeatSelect extends JFrame {
 						}
 					});
 					reChoiceBtn.setSelected(true);
-					reChoiceBtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
+					reChoiceBtn.setFont(new Font("±¼¸²", Font.PLAIN, 15));
 					reChoiceBtn.setBounds(258, 139, 109, 50);
 					fs.getContentPane().add(reChoiceBtn);
 				}
 			});
 		}
 
-		// í™”ì¥ì‹¤
-		JLabel toiletLabel1_1 = new JLabel("<html><body><center>í™”<br>ì¥<br>ì‹¤</center></body></html>");
+		// È­Àå½Ç
+		JLabel toiletLabel1_1 = new JLabel("<html><body><center>È­<br>Àå<br>½Ç</center></body></html>");
 		toiletLabel1_1.setOpaque(true);
 		toiletLabel1_1.setHorizontalAlignment(JLabel.CENTER);
 		toiletLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -275,8 +275,8 @@ public class SeatSelect extends JFrame {
 		toiletLabel1_1.setBounds(0, 60, 72, 160);
 		panel1F.add(toiletLabel1_1);
 
-		// ë¬¸
-		JLabel doorLabel1_1 = new JLabel("ë¬¸");
+		// ¹®
+		JLabel doorLabel1_1 = new JLabel("¹®");
 		doorLabel1_1.setOpaque(true);
 		doorLabel1_1.setHorizontalAlignment(JLabel.CENTER);
 		doorLabel1_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -284,7 +284,7 @@ public class SeatSelect extends JFrame {
 		doorLabel1_1.setBounds(882, 74, 61, 69);
 		panel1F.add(doorLabel1_1);
 
-		// 1ì¸µ ë²½ë¼ë²¨ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		// 1Ãş º®¶óº§ »ı¼º, À§Ä¡ÁöÁ¤
 		JLabel[] wall1FLabel = new JLabel[17];
 
 		for (int i = 0; i < wall1FLabel.length; i++) {
@@ -313,39 +313,39 @@ public class SeatSelect extends JFrame {
 		wall1FLabel[15].setBounds(576, 228, 93, 18);
 		wall1FLabel[16].setBounds(765, 0, 50, 60);
 
-		// ì“°ë ˆê¸°í†µ ì´ë¯¸ì§€
-		JLabel trashcanLabel1_1 = new JLabel(); // í™”ì¥ì‹¤ì˜†
+		// ¾²·¹±âÅë ÀÌ¹ÌÁö
+		JLabel trashcanLabel1_1 = new JLabel(); // È­Àå½Ç¿·
 		trashcanLabel1_1.setBounds(70, 53, 57, 54);
 		trashcanLabel1_1.setIcon(updatetrashcanIcon);
 		panel1F.add(trashcanLabel1_1);
 
-		JLabel trashcanLabel1_2 = new JLabel(); // ë¬¸ì˜†
+		JLabel trashcanLabel1_2 = new JLabel(); // ¹®¿·
 		trashcanLabel1_2.setBounds(814, 0, 57, 54);
 		trashcanLabel1_2.setIcon(updatetrashcanIcon);
 		panel1F.add(trashcanLabel1_2);
 
-		// ì •ìˆ˜ê¸° ì´ë¯¸ì§€
-		JLabel waterPFLabel1_1 = new JLabel(); // í™”ì¥ì‹¤ì˜†
+		// Á¤¼ö±â ÀÌ¹ÌÁö
+		JLabel waterPFLabel1_1 = new JLabel(); // È­Àå½Ç¿·
 		waterPFLabel1_1.setBounds(70, 166, 35, 54);
 		waterPFLabel1_1.setIcon(updateWaterPFIcon);
 		panel1F.add(waterPFLabel1_1);
 
-		JLabel waterPFLabel1_2 = new JLabel(); // ë¬¸ì˜†
+		JLabel waterPFLabel1_2 = new JLabel(); // ¹®¿·
 		waterPFLabel1_2.setBounds(876, 6, 57, 54);
 		waterPFLabel1_2.setIcon(updateWaterPFIcon);
 		panel1F.add(waterPFLabel1_2);
 
 		// -------------------------------------------------------------------------------------------------------------
-		// 2ì¸µ ë°°ì¹˜ë„ íŒë„¬
+		// 2Ãş ¹èÄ¡µµ ÆÇ³Ú
 		JPanel panel2F = new JPanel();
 		panel2F.setBounds(121, 87, 945, 599);
 		// panel2F.setBackground(Color.WHITE);
-		panel2F.setEnabled(false); // íŒ¨ë„ ë¹„í™œì„±í™”
-		panel2F.setVisible(false); // íŒ¨ë„ ê°ì¶”ê¸°
+		panel2F.setEnabled(false); // ÆĞ³Î ºñÈ°¼ºÈ­
+		panel2F.setVisible(false); // ÆĞ³Î °¨Ãß±â
 		panel2F.setLayout(null);
 		contentPane.add(panel2F);
 
-		// 2ì¸µ ì¢Œì„ ë²„íŠ¼ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		// 2Ãş ÁÂ¼® ¹öÆ° »ı¼º, À§Ä¡ÁöÁ¤
 		String[] seat2Farr = { "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211",
 				"212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226",
 				"227", "228", "229", "230", "231", "232" };
@@ -357,15 +357,15 @@ public class SeatSelect extends JFrame {
 			seat2FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 			seat2FBtn[i].setBorder(lb);
 			seat2FBtn[i].setFocusPainted(false);
-			// seat2FBtn[i].setBackground(new Color(0, 128, 255)); //seatAvailì—ë”°ë¼ ë³€ê²½
+			// seat2FBtn[i].setBackground(new Color(0, 128, 255)); //seatAvail¿¡µû¶ó º¯°æ
 			try {
-				if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 0) {// ì‚¬ìš©ê°€ëŠ¥
+				if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 0) {// »ç¿ë°¡´É
 					seat2FBtn[i].setBackground(Color.CYAN);
 				} else
 					try {
-						if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 1) {// ì‚¬ìš©ì¤‘
+						if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 1) {// »ç¿ëÁß
 							seat2FBtn[i].setBackground(Color.ORANGE);
-						} else if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 2) {// ì‚¬ìš©ë¶ˆê°€
+						} else if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 2) {// »ç¿ëºÒ°¡
 							seat2FBtn[i].setBackground(Color.RED);
 						}
 					} catch (NumberFormatException e1) {
@@ -377,7 +377,7 @@ public class SeatSelect extends JFrame {
 			panel2F.add(seat2FBtn[i]);
 		}
 
-		seat2FBtn[0].setBounds(190, 0, 72, 60); // 200ë²ˆ ì˜ì
+		seat2FBtn[0].setBounds(190, 0, 72, 60); // 200¹ø ÀÇÀÚ
 		seat2FBtn[1].setBounds(264, 0, 72, 60);
 		seat2FBtn[2].setBounds(338, 0, 72, 60);
 		seat2FBtn[3].setBounds(414, 0, 72, 60);
@@ -416,44 +416,44 @@ public class SeatSelect extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					JFrame fs = new JFrame();
-					fs.setTitle("ìë¦¬ ì„ íƒ ì—¬ë¶€");
+					fs.setTitle("ÀÚ¸® ¼±ÅÃ ¿©ºÎ");
 					fs.setVisible(true);
 					fs.setIconImage(Toolkit.getDefaultToolkit().getImage(
-							"C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\family.jpg"));
-					fs.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 12));
+							"C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\family.jpg"));
+					fs.setFont(new Font("±¼¸²", Font.PLAIN, 12));
 					fs.setResizable(false);
 					fs.setBounds(370, 289, 465, 260);
 					fs.getContentPane().setLayout(null);
 
 					JButton seatSource = (JButton) e.getSource();
-					JLabel guideLabel = new JLabel(seatSource.getText() + "ë²ˆ ìë¦¬ë¥¼ ì„ íƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+					JLabel guideLabel = new JLabel(seatSource.getText() + "¹ø ÀÚ¸®¸¦ ¼±ÅÃ ÇÏ½Ã°Ú½À´Ï±î?");
 					guideLabel.setHorizontalAlignment(SwingConstants.CENTER);
-					guideLabel.setFont(new Font("í•¨ì´ˆë¡¬ë°”íƒ•", Font.PLAIN, 18));
+					guideLabel.setFont(new Font("ÇÔÃÊ·Ò¹ÙÅÁ", Font.PLAIN, 18));
 					guideLabel.setBounds(75, 40, 317, 78);
 					fs.getContentPane().add(guideLabel);
 
-					// í™•ì¸ë²„íŠ¼
-					JButton checkBtn = new JButton("í™•ì¸");
+					// È®ÀÎ¹öÆ°
+					JButton checkBtn = new JButton("È®ÀÎ");
 					checkBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							String checkStat;
 							// Object obj = new Object();
 							fs.setVisible(false);
-							fs.dispose(); // ë²„íŠ¼ ëˆ„ë¥¼ë•Œ ê·¸ ì°½ë§Œ ì¢…ë£Œí•˜ê²Œ í•˜ëŠ” ë©”ì†Œë“œ
+							fs.dispose(); // ¹öÆ° ´©¸¦¶§ ±× Ã¢¸¸ Á¾·áÇÏ°Ô ÇÏ´Â ¸Ş¼Òµå
 							new Pay(membertel);
 
-							// use í…Œì´ë¸”ì—ì„œ ì‚¬ìš©ì¤‘ì¸ì§€ ê²€ì‚¬
+							// use Å×ÀÌºí¿¡¼­ »ç¿ëÁßÀÎÁö °Ë»ç
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
 							try {
 								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
-								if (checkStat == "0")// ì‚¬ìš©ì¤‘ì¸ ì¢Œì„ì´ ì•„ë‹ˆë©´
+								if (checkStat == "0")// »ç¿ëÁßÀÎ ÁÂ¼®ÀÌ ¾Æ´Ï¸é
 								{
-									// ì‚¬ìš©ë²ˆí˜¸ ,ì²´í¬ì¸ì‹œê°„, ì „í™”ë²ˆí˜¸, ì˜ìë²ˆí˜¸
-									// TODO ì²´í¬ì¸ì‹œê°„ í˜„ì¬ì‹œê°„ì´ë‘ ë™ê¸°í™”/ì „í™”ë²ˆí˜¸ ì¤‘ë³µë°©ì§€ ì ìš©í•„ìš”
+									// »ç¿ë¹øÈ£ ,Ã¼Å©ÀÎ½Ã°£, ÀüÈ­¹øÈ£, ÀÇÀÚ¹øÈ£
+									// TODO Ã¼Å©ÀÎ½Ã°£ ÇöÀç½Ã°£ÀÌ¶û µ¿±âÈ­/ÀüÈ­¹øÈ£ Áßº¹¹æÁö Àû¿ëÇÊ¿ä
 									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
 								} else {
 									System.out.println("Already using seat");
@@ -466,12 +466,12 @@ public class SeatSelect extends JFrame {
 						}
 					});
 					checkBtn.setSelected(true);
-					checkBtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
+					checkBtn.setFont(new Font("±¼¸²", Font.PLAIN, 15));
 					checkBtn.setBounds(99, 139, 109, 50);
 					fs.getContentPane().add(checkBtn);
 
-					// ë‹¤ì‹œì„ íƒë²„íŠ¼
-					JButton reChoiceBtn = new JButton("ë‹¤ì‹œ ì„ íƒ");
+					// ´Ù½Ã¼±ÅÃ¹öÆ°
+					JButton reChoiceBtn = new JButton("´Ù½Ã ¼±ÅÃ");
 					reChoiceBtn.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
@@ -480,14 +480,14 @@ public class SeatSelect extends JFrame {
 						}
 					});
 					reChoiceBtn.setSelected(true);
-					reChoiceBtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
+					reChoiceBtn.setFont(new Font("±¼¸²", Font.PLAIN, 15));
 					reChoiceBtn.setBounds(258, 139, 109, 50);
 					fs.getContentPane().add(reChoiceBtn);
 				}
 			});
 		}
 
-		JLabel doorLabel2_1 = new JLabel("ë¬¸");
+		JLabel doorLabel2_1 = new JLabel("¹®");
 		doorLabel2_1.setOpaque(true);
 		doorLabel2_1.setHorizontalAlignment(JLabel.CENTER);
 		doorLabel2_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -495,8 +495,8 @@ public class SeatSelect extends JFrame {
 		doorLabel2_1.setBounds(882, 72, 61, 69);
 		panel2F.add(doorLabel2_1);
 
-		// í™”ì¥ì‹¤
-		JLabel toiletLabel2_1 = new JLabel("<html><body><center>í™”<br>ì¥<br>ì‹¤</center></body></html>");
+		// È­Àå½Ç
+		JLabel toiletLabel2_1 = new JLabel("<html><body><center>È­<br>Àå<br>½Ç</center></body></html>");
 		toiletLabel2_1.setOpaque(true);
 		toiletLabel2_1.setHorizontalAlignment(JLabel.CENTER);
 		toiletLabel2_1.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -504,29 +504,29 @@ public class SeatSelect extends JFrame {
 		toiletLabel2_1.setBounds(0, 60, 72, 180);
 		panel2F.add(toiletLabel2_1);
 
-		// ì“°ë ˆê¸°í†µ ì´ë¯¸ì§€
-		JLabel trashcanLabel2_1 = new JLabel(); // í™”ì¥ì‹¤ì˜†
+		// ¾²·¹±âÅë ÀÌ¹ÌÁö
+		JLabel trashcanLabel2_1 = new JLabel(); // È­Àå½Ç¿·
 		trashcanLabel2_1.setBounds(76, 184, 57, 54);
 		trashcanLabel2_1.setIcon(updatetrashcanIcon);
 		panel2F.add(trashcanLabel2_1);
 
-		JLabel trashcanLabel2_2 = new JLabel(); // ë¬¸ì˜†
+		JLabel trashcanLabel2_2 = new JLabel(); // ¹®¿·
 		trashcanLabel2_2.setBounds(871, 6, 57, 54);
 		trashcanLabel2_2.setIcon(updatetrashcanIcon);
 		panel2F.add(trashcanLabel2_2);
 
-		// ì •ìˆ˜ê¸° ì´ë¯¸ì§€
-		JLabel waterPFLabel2_1 = new JLabel(); // í™”ì¥ì‹¤ì˜†
+		// Á¤¼ö±â ÀÌ¹ÌÁö
+		JLabel waterPFLabel2_1 = new JLabel(); // È­Àå½Ç¿·
 		waterPFLabel2_1.setBounds(152, 0, 35, 70);
 		waterPFLabel2_1.setIcon(updateWaterPFIcon);
 		panel2F.add(waterPFLabel2_1);
 
-		JLabel waterPFLabel2_2 = new JLabel(); // ë¬¸ì˜†
+		JLabel waterPFLabel2_2 = new JLabel(); // ¹®¿·
 		waterPFLabel2_2.setBounds(839, 6, 35, 54);
 		waterPFLabel2_2.setIcon(updateWaterPFIcon);
 		panel2F.add(waterPFLabel2_2);
 
-		// 2ì¸µ ë²½ë¼ë²¨ ìƒì„±, ìœ„ì¹˜ì§€ì •
+		// 2Ãş º®¶óº§ »ı¼º, À§Ä¡ÁöÁ¤
 		// String[] wall2Farr = {};
 		JLabel[] wall2FLabel = new JLabel[13];
 
@@ -552,40 +552,40 @@ public class SeatSelect extends JFrame {
 		wall2FLabel[11].setBounds(380, 184, 23, 140);
 		wall2FLabel[12].setBounds(285, 184, 27, 140);
 
-		// êµ¬ì—­(1ì¸µ) ì„ íƒ ë²„íŠ¼
-		JButton firstFloorBtn = new JButton("1ì¸µ");
+		// ±¸¿ª(1Ãş) ¼±ÅÃ ¹öÆ°
+		JButton firstFloorBtn = new JButton("1Ãş");
 		firstFloorBtn.setBounds(0, 759, 116, 38);
 		firstFloorBtn.setBackground(new Color(245, 134, 52));
 		firstFloorBtn.setFont(logoutBtnFont);
 		firstFloorBtn.setFocusPainted(false);// hide focus rectangle
 		firstFloorBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel2F.setEnabled(false); // 2ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel2F.setVisible(false); // 2ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
-				panel1F.setEnabled(true); // 1ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel1F.setVisible(true); // 1ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
+				panel2F.setEnabled(false); // 2Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel2F.setVisible(false); // 2Ãş ¹èÄ¡µµ °¨Ãß±â
+				panel1F.setEnabled(true); // 1Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel1F.setVisible(true); // 1Ãş ¹èÄ¡µµ °¨Ãß±â
 			}
 		});
 		contentPane.add(firstFloorBtn);
 
-		// êµ¬ì—­(2ì¸µ) ì„ íƒ ë²„íŠ¼
-		JButton secondFloorBtn = new JButton("2ì¸µ");
+		// ±¸¿ª(2Ãş) ¼±ÅÃ ¹öÆ°
+		JButton secondFloorBtn = new JButton("2Ãş");
 		secondFloorBtn.setBounds(0, 725, 116, 38);
 		secondFloorBtn.setBackground(new Color(248, 211, 129));
 		secondFloorBtn.setFont(logoutBtnFont);
 		secondFloorBtn.setFocusPainted(false);// hide focus rectangle
 		secondFloorBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel1F.setEnabled(false); // 1ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel1F.setVisible(false); // 1ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
-				panel2F.setEnabled(true); // 2ì¸µ ë°°ì¹˜ë„ ë¹„í™œì„±í™”
-				panel2F.setVisible(true); // 2ì¸µ ë°°ì¹˜ë„ ê°ì¶”ê¸°
+				panel1F.setEnabled(false); // 1Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel1F.setVisible(false); // 1Ãş ¹èÄ¡µµ °¨Ãß±â
+				panel2F.setEnabled(true); // 2Ãş ¹èÄ¡µµ ºñÈ°¼ºÈ­
+				panel2F.setVisible(true); // 2Ãş ¹èÄ¡µµ °¨Ãß±â
 			}
 		});
 		contentPane.add(secondFloorBtn);
 		
-		//í™”ë©´ ìƒˆë¡œê³ ì¹¨ ë²„íŠ¼
-		JButton refreshBtn = new JButton("ìƒˆë¡œê³ ì¹¨");
+		//È­¸é »õ·Î°íÄ§ ¹öÆ°
+		JButton refreshBtn = new JButton("»õ·Î°íÄ§");
 		refreshBtn.setFont(new Font("Dialog", Font.BOLD, 16));
 		refreshBtn.setFocusPainted(false);
 		refreshBtn.setBackground(Color.WHITE);
@@ -605,53 +605,53 @@ public class SeatSelect extends JFrame {
 		});
 		contentPane.add(refreshBtn);
 
-		//í™”ë©´ ì•„ë˜ìª½ ìƒ‰ìƒë³„ ìƒíƒœ ì•ˆë‚´ íŒ¨ë„, ë¼ë²¨
+		//È­¸é ¾Æ·¡ÂÊ »ö»óº° »óÅÂ ¾È³» ÆĞ³Î, ¶óº§
 		
-		//í•˜ëŠ˜ìƒ‰
+		//ÇÏ´Ã»ö
 		JPanel cyanPanel = new JPanel();
 		cyanPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		cyanPanel.setBackground(Color.CYAN);
 		cyanPanel.setBounds(384, 696, 55, 56);
 		contentPane.add(cyanPanel);
-		//ì£¼í™©ìƒ‰
+		//ÁÖÈ²»ö
 		JPanel orangePanel = new JPanel();
 		orangePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		orangePanel.setBackground(Color.ORANGE);
 		orangePanel.setBounds(510, 696, 55, 56);
 		contentPane.add(orangePanel);
-		//ë¹¨ê°•ìƒ‰
+		//»¡°­»ö
 		JPanel redPanel = new JPanel();
 		redPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		redPanel.setBackground(Color.RED);
 		redPanel.setBounds(636, 696, 55, 56);
 		contentPane.add(redPanel);
-		//"ì‚¬ìš©ê°€ëŠ¥" ê¸€ì
-		JLabel useavailLabel = new JLabel("ì‚¬ìš©ê°€ëŠ¥");
+		//"»ç¿ë°¡´É" ±ÛÀÚ
+		JLabel useavailLabel = new JLabel("»ç¿ë°¡´É");
 		useavailLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		useavailLabel.setBounds(384, 759, 57, 15);
 		contentPane.add(useavailLabel);
-		//"ì‚¬ìš©ì¤‘" ê¸€ì
-		JLabel useAlreadyLabel = new JLabel("ì‚¬ìš©ì¤‘");
+		//"»ç¿ëÁß" ±ÛÀÚ
+		JLabel useAlreadyLabel = new JLabel("»ç¿ëÁß");
 		useAlreadyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		useAlreadyLabel.setBounds(510, 759, 57, 15);
 		contentPane.add(useAlreadyLabel);
-		//"ì‚¬ìš©ë¶ˆê°€" ê¸€ì
-		JLabel useDenyLabel = new JLabel("ì‚¬ìš©ë¶ˆê°€");
+		//"»ç¿ëºÒ°¡" ±ÛÀÚ
+		JLabel useDenyLabel = new JLabel("»ç¿ëºÒ°¡");
 		useDenyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		useDenyLabel.setBounds(625, 759, 75, 15);
 		contentPane.add(useDenyLabel);
 
-		// ë’¤ë¡œê°€ê¸° ë²„íŠ¼
+		// µÚ·Î°¡±â ¹öÆ°
 		JButton btnBack = new JButton();
 		btnBack.setBounds(0, 0, 115, 60);
 		contentPane.add(btnBack);
 		btnBack.setIcon(new ImageIcon(
-				"C:\\Users\\dita810\\Desktop\\DíŒ€ í”„ë¡œì íŠ¸ ìë£Œ\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
+				"C:\\Users\\dita810\\Desktop\\DÆÀ ÇÁ·ÎÁ§Æ® ÀÚ·á\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
 		btnBack.setFocusPainted(false);
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new UserLogin(); // íšŒì›ë¡œê·¸ì¸ í™”ë©´ìœ¼ë¡œ ì´ë™
+				new UserLogin(); // È¸¿ø·Î±×ÀÎ È­¸éÀ¸·Î ÀÌµ¿
 				dispose();
 			}
 		});

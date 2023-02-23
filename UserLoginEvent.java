@@ -13,7 +13,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 
-//ë¡œê·¸ì¸ì´ë²¤íŠ¸
+//·Î±×ÀÎÀÌº¥Æ®
 public class UserLoginEvent {
 	Connection con=null;
 	PreparedStatement pstmt=null;
@@ -21,16 +21,16 @@ public class UserLoginEvent {
 	SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 	Date time=new Date();
 	String time1=format1.format(time);
-	//ë¡œê·¸ì¸
-	public int userLogin(int memberTel, String memberPw) {
+	//·Î±×ÀÎ
+	public int userLogin(String memberTel, String memberPw) {
 		String test = null;
 		
 		String queryLogin = "select memberPw from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
 			pstmt = con.prepareStatement(queryLogin);
-			String str=Integer.toString(memberTel);
-			pstmt.setString(1, str);
+//			String str=Integer.toString(memberTel);
+			pstmt.setString(1, memberTel);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				test = rs.getString(1);
@@ -38,7 +38,7 @@ public class UserLoginEvent {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.print("ì˜ëª»ì…ë ¥");
+			System.out.print("Àß¸øÀÔ·Â");
 			e.printStackTrace();	
 		}
 		if(memberPw.equals(test)){
@@ -51,7 +51,7 @@ public class UserLoginEvent {
 	
 	
 
-	//ê°€ì…
+	//°¡ÀÔ
 	public void userJoin(int num,String pass)
 	{	
         String sql = "INSERT INTO member VALUES (?,?,?,?)";
@@ -72,13 +72,13 @@ public class UserLoginEvent {
 	    
 	    if (rs==1)
 	    {
-	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì™„ë£Œ");
+	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ¿Ï·á");
 	    	Pay pay=new Pay(Integer.toString(num));
         	pay.setVisible(true);
-        	JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
+        	JOptionPane.showMessageDialog(null, "·Î±×ÀÎÀ» È¯¿µÇÕ´Ï´Ù.");
 	    }
 	    else {
-	    	JOptionPane.showMessageDialog(null, "íšŒì› ê°€ì… ì‹¤íŒ¨");
+	    	JOptionPane.showMessageDialog(null, "È¸¿ø °¡ÀÔ ½ÇÆĞ");
 	    }
             
         } 
@@ -93,7 +93,7 @@ public class UserLoginEvent {
 	
 	public Time userRemain() {
 		Time test=new Time(1);
-		//ë¡œê·¸ì¸
+		//·Î±×ÀÎ
 		String queryLogin = "select remainTime  from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
@@ -107,7 +107,7 @@ public class UserLoginEvent {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.print("ì˜ëª»ì…ë ¥");
+			System.out.print("Àß¸øÀÔ·Â");
 			e.printStackTrace();	
 		}
 		return test;

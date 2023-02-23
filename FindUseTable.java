@@ -1,15 +1,15 @@
 package study;
 
-//ì˜ìì •ë³´(seatí…Œì´ë¸”) ê°€ì ¸ì˜¤ê¸°
+//ÀÇÀÚÁ¤º¸(seatÅ×ÀÌºí) °¡Á®¿À±â
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//USE(ì‚¬ìš©)í…Œì´ë¸” ê²€ìƒ‰
+//USE(»ç¿ë)Å×ÀÌºí °Ë»ö
 public class FindUseTable {	
 	
-	//ì‚¬ìš©ì •ë³´ Insert
+	//»ç¿ëÁ¤º¸ Insert
 	public void insertUse(String checkintime
 			, String membertel, int seatnum) throws SQLException
 	{
@@ -42,18 +42,18 @@ public class FindUseTable {
 		//return;
 	}
 	
-	//ì‚¬ìš©ë²ˆí˜¸ í™•ì¸- ì˜ìë²ˆí˜¸ë¡œ ì°¾ê¸°
+	//»ç¿ë¹øÈ£ È®ÀÎ- ÀÇÀÚ¹øÈ£·Î Ã£±â
 	public String findUse(int seatnum) throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null, rs2 = null;
 		String queryFindUse="select useNum from `use` "
-				+ "where seatNum = ?"; //ì‚¬ìš©ë²ˆí˜¸ í™•ì¸
+				+ "where seatNum = ?"; //»ç¿ë¹øÈ£ È®ÀÎ
 		String usenumReturn=null;
 		
 		String queryFindmemberTel="select memberTel from `use` "
-				+ "where seatNum = ?"; //ë©¤ë²„ì „í™”ë²ˆí˜¸ í™•ì¸
+				+ "where seatNum = ?"; //¸â¹öÀüÈ­¹øÈ£ È®ÀÎ
 		String memberTel = null;
 		
 		try
@@ -62,19 +62,19 @@ public class FindUseTable {
 			pstmt=con.prepareStatement(queryFindUse);
 			pstmt.setInt(1, seatnum);
 			rs = pstmt.executeQuery();
-			if(rs.next()) //ì‚¬ìš©ë²ˆí˜¸ê°€ ìˆìœ¼ë©´
+			if(rs.next()) //»ç¿ë¹øÈ£°¡ ÀÖÀ¸¸é
 			{
 				pstmt=con.prepareStatement(queryFindmemberTel);
 				pstmt.setInt(1, seatnum);
 				rs2 = pstmt.executeQuery();
-				//íšŒì›ì „í™”ë²ˆí˜¸ ì°¾ì•„ì™€ì„œ ë¦¬í„´
+				//È¸¿øÀüÈ­¹øÈ£ Ã£¾Æ¿Í¼­ ¸®ÅÏ
 				if(rs2.next()) {					
 					usenumReturn=rs2.getString(1);
 				}
 			}
-			else //ì‚¬ìš©ë²ˆí˜¸ê°€ ì—†ìœ¼ë©´
+			else //»ç¿ë¹øÈ£°¡ ¾øÀ¸¸é
 			{
-				usenumReturn="0"; //0 ë¦¬í„´
+				usenumReturn="0"; //0 ¸®ÅÏ
 			}
 		}
 		catch (SQLException e) 

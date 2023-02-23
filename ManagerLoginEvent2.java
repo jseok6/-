@@ -12,10 +12,10 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 
-//ë§¤ë‹ˆì €ë¡œê·¸ì¸
+//¸Å´ÏÀú·Î±×ÀÎ
 public class ManagerLoginEvent2 {
 	
-	//ë¡œê·¸ì¸
+	//·Î±×ÀÎ
 	public int managerLogin2(String managerid, String managerpw) throws SQLException {
 		Connection con=null;
 		PreparedStatement pstmt=null;

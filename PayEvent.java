@@ -26,7 +26,7 @@ public class PayEvent {
 	String sql="SELECT payment FROM charge WHERE chargeTime=?";
 	String str=null;
 	
-	//ï¿½Ã°ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
+	//½Ã°£±Ç
 	public String pay1()
 	{
 		try 
@@ -161,7 +161,7 @@ public class PayEvent {
 		
 		return str;
 	}
-	//ï¿½â°£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//±â°£±Ç
 	public String payPeriod1()
 	{
 		

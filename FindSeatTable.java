@@ -2,7 +2,7 @@ package study;
 
 import java.awt.Color;
 import java.io.Console;
-//ì˜ìì •ë³´(seatí…Œì´ë¸”) ê°€ì ¸ì˜¤ê¸°
+//ÀÇÀÚÁ¤º¸(seatÅ×ÀÌºí) °¡Á®¿À±â
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,16 +11,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class FindSeatTable {	
-	//ì˜ìë²ˆí˜¸í™•ì¸
+	//ÀÇÀÚ¹øÈ£È®ÀÎ
 	public String findSeatNum() throws SQLException
 	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String queryFindSeatNum="SELECT seatNum FROM seat"; //ì˜ìë²ˆí˜¸ ì°¾ê¸°
+		String queryFindSeatNum="SELECT seatNum FROM seat"; //ÀÇÀÚ¹øÈ£ Ã£±â
 		String str=null;
 		try {
-			con = DBConnect2.getConnection();
+			con = DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryFindSeatNum);
 			rs = pstmt.executeQuery();
 			while(rs.next())
@@ -40,7 +40,7 @@ public class FindSeatTable {
 		return str;
 	}
 	
-	//ì˜ììƒíƒœí™•ì¸
+	//ÀÇÀÚ»óÅÂÈ®ÀÎ
 	public Integer seatAvail(int seatnum) throws SQLException
 	{
 		Connection con = null;
@@ -51,14 +51,14 @@ public class FindSeatTable {
 				+ "where seatNum = ?";
 		
 		try {
-			con = DBConnect2.getConnection();
+			con = DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryFindSeatAvail);
 			pstmt.setInt(1, seatnum);
 			 rs=pstmt.executeQuery();
 			
 			while(rs.next())
 			{
-				stateInt=rs.getInt("seatAvail");//ê´„í˜¸ì•ˆì— ì»¬ëŸ¼ëª…ì´ ë“¤ì–´ê°€ì•¼í•¨
+				stateInt=rs.getInt("seatAvail");//°ıÈ£¾È¿¡ ÄÃ·³¸íÀÌ µé¾î°¡¾ßÇÔ
 			}
 		} 
 		catch (Exception e) {
@@ -73,7 +73,7 @@ public class FindSeatTable {
 		return stateInt;
 	}
 	
-	// seatAvail ì—…ë°ì´íŠ¸
+	// seatAvail ¾÷µ¥ÀÌÆ®
 		public void seatUpdate(int seatnum, int seatavail) 
 				throws SQLException
 		{
@@ -84,7 +84,7 @@ public class FindSeatTable {
 					+ "where seatNum = ?";
 			try 
 			{
-				con = DBConnect2.getConnection();
+				con = DBconnect.getConnection();
 				pstmt=con.prepareStatement(queryUpdateSeat);
 				System.out.println("seatUpdate:"+seatnum+" "+seatavail);
 				pstmt.setInt(1, seatavail);
