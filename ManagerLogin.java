@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.sql.SQLException;
 
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
@@ -21,13 +22,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import aaa.ChatProtocol2;
 public class ManagerLogin extends JFrame
 implements ActionListener{
 	JTextField selectedField = null;
 	
-	String host = "127.0.0.1";
-	int port = 3306;
+	String host = "113.198.238.111";
+	int port = 8002;
 	Socket sock;
+	BufferedReader in;
+	PrintWriter out;
 	
 	 private JButton btnLogin;
 	 private JButton btnInit;
@@ -78,8 +83,8 @@ implements ActionListener{
 	 private JButton btnm;
 	 
 	 ImageIcon logoIcon= new ImageIcon
-				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
-     Image logoImg = logoIcon.getImage();// ImageIcon 객체에서 Image 추출
+				("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
+     Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
  	Image updateLogoImg = logoImg.getScaledInstance(160, 100, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
      ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
 	 
@@ -87,7 +92,7 @@ implements ActionListener{
 	 
 	public ManagerLogin() {
 		 // setting
-        setTitle("FamilyStudyCafe_ManagerLogin");
+        setTitle("FSC_ManagerLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
@@ -100,7 +105,7 @@ implements ActionListener{
 		this.setSize(1100,700);
 		this.setLocationRelativeTo(null);
 		
-		 //로고 라벨
+        //로고 라벨
         label = new JLabel();
         label.setIcon(updateLogoIcon);
         label.setBounds(0, 560, 160, 100);
@@ -136,17 +141,21 @@ implements ActionListener{
         
         //뒤로가기 버튼
         btnBack = new JButton();
-        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\"
-        		+ "src\\img\\Button_image\\back.jpg"));
+        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
         btnBack.setFocusPainted(false);
         btnBack.addActionListener(new ActionListener()
         		{
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        		FirstDisplay fDisplay = new FirstDisplay();
-        		fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
-        		fDisplay.setVisible(true);
-             	dispose(); //이창 닫기
+        		FirstDisplay fDisplay;
+				try {
+					fDisplay = new FirstDisplay();
+					fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+	        		fDisplay.setVisible(true);
+	             	dispose(); //이창 닫기
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} 	
         	}
         		});
         btnBack.setBounds(0,0,100,50);
@@ -440,6 +449,16 @@ implements ActionListener{
         managerPwText.addFocusListener(focusListener);
     }
 	
+	public void connect() {
+		try {
+			sock = new Socket(host, port);
+			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}// --connect
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -459,8 +478,11 @@ implements ActionListener{
 				int i = mLE2.managerLogin2((managerIdText.getText()), managerPwText.getText());
 				if(i == 1){
 					FindManagerTable mgr = new FindManagerTable();
-					String name = mgr.managerName(managerIdText.getText());//managerName�о��
-					ManagerMain managerMain = new ManagerMain(name);
+					String name = mgr.managerName(managerIdText.getText());//managerName읽어옴
+					if(sock==null) {
+						connect();
+					}
+					ManagerMain managerMain = new ManagerMain(in, out, name);
 					managerMain.setTitle("FamilyStudyCafe_ManagerMain");
 					managerMain.setResizable(false);
 					//managerMain.setVisible(true);
