@@ -311,9 +311,9 @@ implements ActionListener, Runnable{
 		panel.add(roomNumber);
 		
 		UserLoginEvent remain=new UserLoginEvent();
-		Time date=remain.userRemain(id);
-		JLabel remaintime=new JLabel("남은 시간:"+date);
-		remaintime.setBounds(400,0,300,50);
+		String time=remain.userRemain(id);
+		JLabel remaintime=new JLabel("남은 시간:"+time);
+		remaintime.setBounds(400,0,300,100);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		
