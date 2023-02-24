@@ -49,6 +49,9 @@ implements ActionListener, Runnable{
 	ChatUI[] QR = new ChatUI[100];
 	boolean flag = false;
 	int seatnum;
+	int rmtime1;
+	int rmtime2;
+	int rmtime3;
 	
 	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\addpay.jpg");
 	ImageIcon imgexit=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\exit.jpg");
@@ -60,6 +63,11 @@ implements ActionListener, Runnable{
 		this.in = in;
 		this.out = out;
 		this.num = num;
+		this.seatnum=seatnum;
+		this.rmtime1=rmtime1;
+		this.rmtime2=rmtime2;
+		this.rmtime3=rmtime3;
+		
 		setTitle(this.id + "님 안녕하세요");
 		// //////////////////////////////////////////////////////////////////////////////////////////
 		JPanel p1 = new JPanel();
@@ -355,14 +363,52 @@ implements ActionListener, Runnable{
 		
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
-		JLabel roomNumber=new JLabel("방번호:");
+		JLabel roomNumber=new JLabel("방번호:"+seatnum);
 		roomNumber.setBounds(0,0,100,50);
 		roomNumber.setFont(font);
 		panel.add(roomNumber);
 		
 		
-		JLabel remaintime=new JLabel("남은 시간:");
-		remaintime.setBounds(400,0,100,50);
+		//남은시간
+		UserLoginEvent remain=new UserLoginEvent();
+		String date=remain.userRemain(id);
+		String[] arr=date.split(":");
+	    rmtime1=Integer.parseInt(arr[0]);
+	    rmtime2=Integer.parseInt(arr[1]);
+	    rmtime3=Integer.parseInt(arr[2]);
+		JLabel remaintime=new JLabel("남은 시간:"+date);
+		new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    
+                    try {
+                        Thread.sleep(1000);
+                        if (rmtime3==0)
+                        {
+                        	if (rmtime2==0)
+                        	{
+                        		rmtime1=rmtime1-1;
+                        		rmtime2=59;
+                        		rmtime3=59;
+                        	}
+                        	else {
+                        		rmtime2=rmtime2-1;
+                        		rmtime3=59;
+                        	}
+                        }
+                        else {
+                        	rmtime3=rmtime3-1;
+                        }
+                        String dtime=rmtime1+"시"+rmtime2+"분"+rmtime3+"초";
+                        remaintime.setText("남은 시간:"+ dtime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+		remaintime.setBounds(400,0,300,50);
 		remaintime.setFont(font);
 		panel.add(remaintime);
 		

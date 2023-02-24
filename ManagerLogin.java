@@ -147,14 +147,10 @@ implements ActionListener{
         	@Override
         	public void actionPerformed(ActionEvent e) {
         		FirstDisplay fDisplay;
-				try {
-					fDisplay = new FirstDisplay();
-					fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
-	        		fDisplay.setVisible(true);
-	             	dispose(); //이창 닫기
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} 	
+				fDisplay = new FirstDisplay();
+				fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+				fDisplay.setVisible(true);
+				dispose(); //이창 닫기 	
         	}
         		});
         btnBack.setBounds(0,0,100,50);
