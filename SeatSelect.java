@@ -242,13 +242,14 @@ public class SeatSelect extends JFrame {
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
+							FindSeatTable fst = new FindSeatTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-							String formatNow = nowDateTime.format(dfm);
+							String formatNow = nowDateTime.format(dfm); //체크인 시간으로 들어갈 현재 시간
 							try 
 							{
-								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
-								if (checkStat == "0")// 사용중인 좌석이 아니면
+							int checkStat1 = fst.seatAvail(Integer.parseInt(seatSource.getText()));
+								if (checkStat1 == 0)// 사용중인 좌석이 아니면
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
@@ -479,13 +480,14 @@ public class SeatSelect extends JFrame {
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
+							FindSeatTable fst = new FindSeatTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
 							try 
 							{
-								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
-								if (checkStat == "0")// 사용중인 좌석이 아니면
+								Integer checkStat1 = fst.seatAvail(Integer.parseInt(seatSource.getText()));
+								if (checkStat1 == 0)// 사용중인 좌석이 아니면
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
