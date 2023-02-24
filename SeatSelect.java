@@ -49,7 +49,7 @@ public class SeatSelect extends JFrame {
 	Socket sock;
 	BufferedReader in;
 	PrintWriter out;
-	String host="113.198.238.111";
+	String host="113.198.238.101";
 	int port=8002;
 
 	public static void main(String[] args) {
@@ -243,9 +243,7 @@ public class SeatSelect extends JFrame {
 							if(sock==null)
 							{
 								connect();
-							}
-							
-							
+							}				
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
@@ -259,7 +257,7 @@ public class SeatSelect extends JFrame {
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
-									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
+									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
 									fs.setVisible(false);
 									fs.dispose(); 
 									String roomNum=seatSource.getText();
@@ -492,7 +490,7 @@ public class SeatSelect extends JFrame {
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
-									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
+									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
 								} else {
 									System.out.println("Already using seat");
 								}

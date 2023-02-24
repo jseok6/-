@@ -405,8 +405,8 @@ implements ActionListener, Runnable{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new Pay(id);
 				dispose();
-				
 			}
 		});
         
