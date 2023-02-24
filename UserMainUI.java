@@ -60,7 +60,7 @@ implements ActionListener, Runnable{
 		this.id = id;
 		this.in = in;
 		this.out = out;
-		this.num=num;
+		this.seatnum=seatnum;
 	
 		setTitle(this.id + "님 안녕하세요");
 		// //////////////////////////////////////////////////////////////////////////////////////////
@@ -381,6 +381,7 @@ implements ActionListener, Runnable{
 					FindUseTable fut = new FindUseTable();
 					FindMemberTable fmt = new FindMemberTable();
 					// 입실시간 찾아오기
+					System.out.println("UserMainUI_seatnum:"+seatnum);
 					String usenum = fut.findUse(seatnum);
 					String inTime = fut.findInTime(usenum);
 					LocalDateTime nowDateTime = LocalDateTime.now();
