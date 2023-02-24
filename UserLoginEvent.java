@@ -93,33 +93,32 @@ public class UserLoginEvent {
 		
 	}
 	
-	public Time userRemain(String id) {
-		Time test=new Time(0);
+	public String userRemain(String id) {
 		//시간
-		String queryLogin = "select remainTime  from member where memberTel = ?";
+		String time=null;
+		String queryLogin = "select remainTime from member where memberTel = ?";
 		try {
 			con=DBconnect.getConnection();
 			pstmt = con.prepareStatement(queryLogin);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				test = rs.getTime(1);
+				time = rs.getTime(1).toString();
 			}
+			
 
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.print("잘못입력");
 			e.printStackTrace();	
 		}
-		return test;
+		return time;
 	
 	}
 	
-	public void remainTimeplus(String id)
+	public void remainTimeplus1(String id)
 	{
-		//날짜형식 String으로 변환하기위한 포맷
-		DateFormat format = new SimpleDateFormat("HHH:MM:SS");
-		Time test=new Time(0);
+		String time=null;
 
 		String remaintime2 = "Update member SET remainTime='";
 		String remaintime3="'WHERE memberTel=?";
@@ -132,29 +131,371 @@ public class UserLoginEvent {
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next())
 			{
-				test=rs.getTime(1);
+				time=rs.getTime(1).toString();
 			}
-			System.out.println("time:"+test);
-			//추가
-			System.out.println("시간추가1");
-			System.out.println(test);
-			Calendar cal1 = Calendar.getInstance();
-			cal1.setTime(test); 
-			cal1.add(Calendar.HOUR_OF_DAY, 3); // 시간 연산
-			
-			String qwe=format.format(cal1.getTime());
-			System.out.println(cal1);
-			remaintime2=remaintime2+qwe;
-			System.out.println(remaintime2);
+			String[] remain=time.split(":");
+			remain[0]+=1;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
-			System.out.println("시간추가2");
 			pstmt.setString(1, id);
 			
 			System.out.println(remaintime2);
-			int result=pstmt.executeUpdate();
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	public void remainTimeplus2(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=2;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
 			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus3(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=4;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus4(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=6;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus5(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=8;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus6(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=12;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus7(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=24;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus8(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=72;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus9(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=168;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus10(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=240;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus11(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=360;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public void remainTimeplus12(String id)
+	{
+		String time=null;
+
+		String remaintime2 = "Update member SET remainTime='";
+		String remaintime3="'WHERE memberTel=?";
+		String remaintime1 = "select remainTime  from member where memberTel = ?";
+		try {
+			//연결및 남은시간가져오기
+			con=DBconnect.getConnection();
+			pstmt=con.prepareStatement(remaintime1);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				time=rs.getTime(1).toString();
+			}
+			String[] remain=time.split(":");
+			remain[0]+=720;
+			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			remaintime2=remaintime2+remaintime3;
+			
+			pstmt=con.prepareStatement(remaintime2);
+			pstmt.setString(1, id);
+			
+			System.out.println(remaintime2);
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

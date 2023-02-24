@@ -7,7 +7,7 @@ public class DBconnect
 {
     public static Connection getConnection() {
         Connection con = null;
-    	String url = "jdbc:mysql://localhost:3306/familystudycafe";
+    	String url = "jdbc:mysql://113.198.238.101:3306/familystudycafe";
 		String id = "root";
 		String password = "1234";
         try {
