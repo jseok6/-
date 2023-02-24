@@ -13,8 +13,11 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.security.PublicKey;
 import java.sql.SQLException;
+import java.util.StringTokenizer;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -106,49 +109,61 @@ class QuestDialog extends JDialog{
         });
         questListPanel.add(questDeleteBtn);   
 	}
+
+
 }
 
 public class ManagerMain extends JFrame 
-{
+implements Runnable{
 
 	private static ManagerMain mminstance;
 	private JPanel contentPane;
-	
+	BufferedReader in;
+	PrintWriter out;
+	String id;
+	ManagerQuestionList MQL;
 	public static void main(String[] args) 
 	{
 		//전부 주석처리하면 이파일자체로 실행안됨, 로그인창에서 넘어오는 실행은 그대로 가능
-		EventQueue.invokeLater(new Runnable() 
-		{
-			public void run() {
-				try 
-				{
-					if (mminstance==null)
-					{
-						synchronized (ManagerMain.class) {
-							ManagerMain Jframe = new ManagerMain("홍길동");
-							Jframe.setVisible(true);
-							Jframe.setResizable(false);
-							Jframe.setTitle("FSC_ManagerMain");
-						}
-					}
-				} 
-				catch (Exception e) 
-				{
-					e.printStackTrace();
-				}
-			}
-		});
+//		EventQueue.invokeLater(new Runnable() 
+//		{
+//			public void run() {
+//				try 
+//				{
+//					if (mminstance==null)
+//					{
+//						synchronized (ManagerMain.class) {
+//							ManagerMain Jframe = new ManagerMain("홍길동");
+//							Jframe.setVisible(true);
+//							Jframe.setResizable(false);
+//							Jframe.setTitle("FSC_ManagerMain");
+//						}
+//					}
+//				} 
+//				catch (Exception e) 
+//				{
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	//프레임 생성
-	public ManagerMain(String name) throws NumberFormatException, SQLException {
+	public ManagerMain(BufferedReader in,PrintWriter out,String name) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1114, 736);
+		
+		this.in = in;
+		this.out = out;
+		this.id = name;
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(249, 228, 166));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
+		
+		new Thread(this).start();
 		
 		  //폰트(맑은고딕 굵게 16)
 		Font logoutBtnFont = new Font("맑은고딕 굵게", Font.BOLD, 16);
@@ -157,19 +172,19 @@ public class ManagerMain extends JFrame
 		setVisible(true);
 		
 		ImageIcon logoIcon= new ImageIcon
-				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\family.jpg");
+				("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\family.jpg");
         Image logoImg = logoIcon.getImage(); // ImageIcon 객체에서 Image 추출
     	Image updateLogoImg = logoImg.getScaledInstance(70, 69, Image.SCALE_SMOOTH); // 추출된 Image의 크기 조절하여 새로운 Image 객체 생성
         ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
         
 		ImageIcon trashcanIcon= new ImageIcon
-				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\trashcan.png");
+				("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\trashcan.png");
 		Image trashcanImg = trashcanIcon.getImage();
 		Image updateTrashcanImg = trashcanImg.getScaledInstance(57, 54, Image.SCALE_SMOOTH);
         ImageIcon updatetrashcanIcon = new ImageIcon(updateTrashcanImg);        
         
 		ImageIcon waterPFIcon = new ImageIcon
-				("C:\\Users\\dita810\\Desktop\\JAVA_TeamProject\\ProjectFolder02.13\\-\\src\\img\\water.png");
+				("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\water.png");
 		Image waterPFImg = waterPFIcon.getImage();
 		Image updateWaterPFImg = waterPFImg.getScaledInstance(35, 54, Image.SCALE_SMOOTH);
 		ImageIcon updateWaterPFIcon = new ImageIcon(updateWaterPFImg);
@@ -704,9 +719,12 @@ public class ManagerMain extends JFrame
 		searchQuestionBtn.addActionListener(new ActionListener() {//누르면 아래 기능 동작
 			public void actionPerformed(ActionEvent e) {
 	              // QuestDialog생성
-                QuestDialog questDialog = new QuestDialog //위에서 정의해놓은 QuestDialog 클래스 객체 생성
-                		("", true, idLabel.getText(),quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
-                questDialog.setVisible(true);
+//                QuestDialog questDialog = new QuestDialog //위에서 정의해놓은 QuestDialog 클래스 객체 생성
+//                		("", true, idLabel.getText(),quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
+//                questDialog.setVisible(true);
+				
+				MQL = new ManagerQuestionList(in, out, name);
+				MQL.open();
 			}
 		});
 		contentPane.add(searchQuestionBtn);
@@ -754,7 +772,7 @@ public class ManagerMain extends JFrame
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				try {
-					new ManagerMain(name);
+					new ManagerMain(in, out, id);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (SQLException e1) {
@@ -884,7 +902,41 @@ public class ManagerMain extends JFrame
 		closeBtn_seatInfoPanel.setBorder(lb);
 		closeBtn_seatInfoPanel.setFocusPainted(false);
 		seatInfoPanel.add(closeBtn_seatInfoPanel);
-	}	
+	}
+
+	@Override
+	public void run() {
+		try {
+			while(true) {
+				System.out.println("Manager in");
+				String line = in.readLine();
+				if(line==null) {
+					System.out.println("종료");
+					break;}
+				else
+					routine(line);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void routine(String line) {
+		System.out.println("Manager:"+line);
+		int idx = line.indexOf(ChatProtocol2.MODE);
+		String cmd = line.substring(0, idx);
+		String data = line.substring(idx+1);
+		System.out.println("Manager "+cmd+" "+data);
+		if(cmd.equals(ChatProtocol2.RESETLIST)) {
+			MQL.questionList.removeAll();
+			MQL.addList("*********질문목록*********");
+			StringTokenizer st = new StringTokenizer(data, ";");
+			while(st.hasMoreTokens()) {
+				MQL.addList(st.nextToken());
+			}
+		}else if(cmd.equals(ChatProtocol2.ROOMLIST)) {
+			MQL.addList(data);}
+	}
 	
 //	public static ManagerMain getInstance()
 //	{
