@@ -305,13 +305,13 @@ implements ActionListener, Runnable{
 		
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
-		JLabel roomNumber=new JLabel("방번호:"+num);
+		JLabel roomNumber=new JLabel("방번호:"+seatnum);
 		roomNumber.setBounds(0,0,100,50);
 		roomNumber.setFont(font);
 		panel.add(roomNumber);
 		
 		UserLoginEvent remain=new UserLoginEvent();
-		Time date=remain.userRemain(id);
+		String date=remain.userRemain(id);
 		JLabel remaintime=new JLabel("남은 시간:"+date);
 		remaintime.setBounds(400,0,300,50);
 		remaintime.setFont(font);

@@ -54,7 +54,7 @@ public class SeatSelect extends JFrame {
 	Socket sock;
 	BufferedReader in;
 	PrintWriter out;
-	String host="113.198.238.101";
+	String host="127.0.0.1";
 	int port=8002;
 
 	public static void main(String[] args) {

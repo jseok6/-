@@ -134,14 +134,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=1;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+1;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -167,14 +165,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=2;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+2;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -199,14 +195,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=4;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+4;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -231,14 +225,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=6;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+6;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -263,14 +255,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=8;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+8;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -295,14 +285,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=12;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+12;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -327,14 +315,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=24;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+24;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -359,14 +345,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=72;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+72;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -391,14 +375,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=168;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+168;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -423,14 +405,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=240;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+240;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -455,14 +435,12 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=360;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+360;
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
 			pstmt.setString(1, id);
-			
-			System.out.println(remaintime2);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -487,8 +465,8 @@ public class UserLoginEvent {
 				time=rs.getTime(1).toString();
 			}
 			String[] remain=time.split(":");
-			remain[0]+=720;
-			remaintime2=remaintime2+remain[0]+remain[1]+remain[2];
+			int retime=Integer.parseInt(remain[0])+720;		
+			remaintime2=remaintime2+retime+remain[1]+remain[2];
 			remaintime2=remaintime2+remaintime3;
 			
 			pstmt=con.prepareStatement(remaintime2);
