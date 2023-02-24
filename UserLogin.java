@@ -29,7 +29,7 @@ implements ActionListener{
 	 private JLabel managerphone;
 	 private JLabel label;
 	 private JLabel label2;
-	 ImageIcon img=new ImageIcon("./Button_Image/back.jpg");
+	 ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/back.jpg");
 	 
 //	 BufferedReader in;
 //	 PrintWriter out;
@@ -78,7 +78,7 @@ implements ActionListener{
 	 private JButton btnn;
 	 private JButton btnm;
 	 
-	 private JButton back;
+	 private JButton btnBack;
 	 
 	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
 	 
@@ -87,7 +87,7 @@ implements ActionListener{
 	 
 	public UserLogin() {
 		 // setting
-        setTitle("FamilyStudyCafe");
+        setTitle("FamilyStudyCafe_UserLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
@@ -103,7 +103,7 @@ implements ActionListener{
 		
         //배경이미지
         label = new JLabel();
-        label.setIcon(new ImageIcon("./Button_Image/family.jpg"));
+        label.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/family.jpg"));
         label.setBounds(0, 0, 1100, 700);
         panel.add(label);
 
@@ -433,10 +433,23 @@ implements ActionListener{
         managerphone.setBounds(800, 620, 300, 50);
         panel.add(managerphone);
         
-        back=new JButton(img);
-		back.setBounds(0, 0, 150, 90);
-		back.setBorderPainted(false);
-		panel.add(back);
+        //뒤로가기 버튼
+        btnBack = new JButton();
+        btnBack.setIcon(new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\back.jpg"));
+        btnBack.setFocusPainted(false);
+        btnBack.addActionListener(new ActionListener()
+        		{
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		FirstDisplay fDisplay;
+				fDisplay = new FirstDisplay();
+				fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+				fDisplay.setVisible(true);
+				dispose(); //이창 닫기 	
+        	}
+        		});
+        btnBack.setBounds(0,0,100,50);
+        panel.add(btnBack);
 		
 		FocusListener focusListener = new FocusListener() {
             public void focusGained(FocusEvent e) {
@@ -489,11 +502,6 @@ implements ActionListener{
 				passText.setText("");
 				dispose();
 				
-			}
-			//뒤로가기버튼
-			else if (obj.equals(back))
-			{
-				//뒤로가기 기능
 			}
 			//폰번호입력
 			else if(obj.equals(btn0))

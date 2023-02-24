@@ -9,9 +9,9 @@ import java.net.URI;
 
 
 public class Pay2 extends JFrame{
-	private JButton btntime;//�ð��ǹ�ư
-	private JButton btnperiod;//�Ⱓ�� ��ư
-	private JLabel label;//����̹���
+	private JButton btntime;
+	private JButton btnperiod;
+	private JLabel label;
 	private JLabel label2;
 	Desktop desktop = Desktop.getDesktop();
 	private JLabel payresult;
@@ -28,10 +28,10 @@ public class Pay2 extends JFrame{
 	private JButton btncashpay;
 	private JButton back;
 	
-	ImageIcon img=new ImageIcon("./Button_Image/image_exitButton.jpg");
-	ImageIcon img2=new ImageIcon("./Button_Image/image_exitButton2.jpg");
-	ImageIcon imgtime=new ImageIcon("./Button_Image/time.jpg");
-	ImageIcon imageperiod=new ImageIcon("./Button_Image/time2.jpg");
+	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton.jpg");
+	ImageIcon img2=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton2.jpg");
+	ImageIcon imgtime=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time.jpg");
+	ImageIcon imageperiod=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time2.jpg");
 	
 	Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 	
@@ -116,7 +116,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					URI uri = new URI("C:/Users/dita810/Desktop/pay.html");
+					URI uri = new URI("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe/pay.html");
 	                desktop.browse(uri);
 	                PayEnter enter=new PayEnter(membertel);
 	                enter.setVisible(true);

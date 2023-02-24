@@ -801,32 +801,48 @@ implements Runnable{
     		public void actionPerformed(ActionEvent e) {
     			JButton seatSource = (JButton)e.getSource(); //클릭한 버튼의 라벨값 읽어옴
     			FindUseTable findUseTable = new FindUseTable();
-    			String usestat = null; //seatInfoPanel의 memberTelLabel에 들어갈 
-    			
+    			String usenum = null; //seatInfoPanel의 memberTelLabel에 들어갈 
+    			int seatInt = Integer.parseInt(seatSource.getText());
     			//의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
     			seatNumLabel_seatInfoPanel.setText(seatSource.getText());
     			//if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false) //TODO 조건문 미동작?
     			//{
     				//클릭한 의자라벨값 읽어와서 findUse 실행(사용중인지 검사)
-    				try {
-						usestat = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
+    			try {
+					usenum = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				if(usenum=="0")//리턴받은값이 0이면 회원전화번호 라벨에서 지우기(공백상태로 둠)
+				{
+					memberInfoBtn.setEnabled(false);
+					memberTelLabel.setText("");
+				}
+				else
+				{
+					//seatInfo 패널의 정보 버튼 활성화
+					memberInfoBtn.setEnabled(true); 					
+					//사용 테이블에서 유저 전화번호 검색해와서 집어넣기
+					String memtelt;
+					try {
+						memtelt = findUseTable.findmemt(Integer.parseInt(usenum));					
+						if(findSeatTable.seatAvail(seatInt)==1)
+						{
+							memberTelLabel.setText(memtelt);
+						}
+						else
+						{
+							memberTelLabel.setText("");
+							memberInfoBtn.setEnabled(false);
+						}
 					} catch (NumberFormatException e1) {
 						e1.printStackTrace();
 					} catch (SQLException e1) {
 						e1.printStackTrace();
-					}
-    				if(usestat=="0")//리턴받은값이 0이면 회원전화번호 라벨에서 지우기(공백상태로 둠)
-    				{
-    					memberInfoBtn.setEnabled(false);
-    					memberTelLabel.setText("");
-    				}
-    				else
-    				{
-    					//seatInfo 패널의 정보 버튼 활성화
-    					memberInfoBtn.setEnabled(true); 					
-    					//사용 테이블에서 유저 전화번호 검색해와서 집어넣기
-    					memberTelLabel.setText(usestat);
-    				}
+					}			
+				}
     				
     				memberInfoPanel.setEnabled(false);
     				memberInfoPanel.setVisible(false);

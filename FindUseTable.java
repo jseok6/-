@@ -1,15 +1,18 @@
 package study;
 
-//¿«¿⁄¡§∫∏(seat≈◊¿Ã∫Ì) ∞°¡Æø¿±‚
+//ÏùòÏûêÏ†ïÎ≥¥(seatÌÖåÏù¥Î∏î) Í∞ÄÏ†∏Ïò§Í∏∞
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-//USE(ªÁøÎ)≈◊¿Ã∫Ì ∞Àªˆ
+//USE(ÏÇ¨Ïö©)ÌÖåÏù¥Î∏î Í≤ÄÏÉâ
 public class FindUseTable {	
 	
-	//ªÁøÎ¡§∫∏ Insert
+	//ÏÇ¨Ïö©Ï†ïÎ≥¥ Insert
 	public void insertUse(String checkintime
 			, String membertel, int seatnum) throws SQLException
 	{
@@ -20,7 +23,7 @@ public class FindUseTable {
 		FindSeatTable fst = new FindSeatTable();
 		try 
 		{
-			con = DBConnect2.getConnection();
+			con = DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryinsertUse);
 			
 			pstmt.setString(1, checkintime);
@@ -42,55 +45,207 @@ public class FindUseTable {
 		//return;
 	}
 	
-	//ªÁøÎπ¯»£ »Æ¿Œ- ¿«¿⁄π¯»£∑Œ √£±‚
-	public String findUse(int seatnum) throws SQLException
-	{
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null, rs2 = null;
-		String queryFindUse="select useNum from `use` "
-				+ "where seatNum = ?"; //ªÁøÎπ¯»£ »Æ¿Œ
-		String usenumReturn=null;
-		
-		String queryFindmemberTel="select memberTel from `use` "
-				+ "where seatNum = ?"; //∏‚πˆ¿¸»≠π¯»£ »Æ¿Œ
-		String memberTel = null;
-		
-		try
+	//ÏùòÏûêÎ≤àÌò∏Î°ú ÏÇ¨Ïö©Î≤àÌò∏ Ï∞æÍ∏∞
+		public String findUse(int seatnum) throws SQLException
 		{
-			con = DBConnect2.getConnection();
-			pstmt=con.prepareStatement(queryFindUse);
-			pstmt.setInt(1, seatnum);
-			rs = pstmt.executeQuery();
-			if(rs.next()) //ªÁøÎπ¯»£∞° ¿÷¿∏∏È
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String queryFindUse="select useNum from `use` "
+					+ "where seatNum = ?";
+			String usenumReturn=null;
+			
+			try
 			{
-				pstmt=con.prepareStatement(queryFindmemberTel);
+				con = DBconnect.getConnection();
+				pstmt=con.prepareStatement(queryFindUse);
 				pstmt.setInt(1, seatnum);
-				rs2 = pstmt.executeQuery();
-				//»∏ø¯¿¸»≠π¯»£ √£æ∆øÕº≠ ∏Æ≈œ
-				if(rs2.next()) {					
-					usenumReturn=rs2.getString(1);
+				rs = pstmt.executeQuery();
+				if(rs.next()) 
+				{
+					usenumReturn=rs.getString("useNum");
+				}
+				else
+				{
+					usenumReturn="0";
 				}
 			}
-			else //ªÁøÎπ¯»£∞° æ¯¿∏∏È
+			catch (SQLException e) 
+			{ 
+				e.printStackTrace();
+			} 
+			finally 
 			{
-				usenumReturn="0"; //0 ∏Æ≈œ
+				rs.close();
+				pstmt.close();
+				con.close();
 			}
+			System.out.println("usenumReturn:"+usenumReturn);
+			return usenumReturn;
 		}
-		catch (SQLException e) 
-		{ 
-			e.printStackTrace();
-		} 
-		finally 
+		
+		//useNumÏúºÎ°ú memberTelÏ∞æÍ∏∞
+		public String findmemt(int usenum) throws SQLException
 		{
-			rs.close();
-			if(rs2!=null)
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String queryFindmemt="select memberTel from `use` "
+					+ "where useNum = ?";
+			String memtelReturn=null;
+			
+			try
 			{
-				rs2.close();
+				con = DBconnect.getConnection();
+				pstmt=con.prepareStatement(queryFindmemt);
+				pstmt.setInt(1, usenum);
+				rs = pstmt.executeQuery();
+				if(rs.next()) 
+				{
+					memtelReturn=rs.getString(1);
+				}
+				else
+				{
+					memtelReturn="0";
+				}
 			}
-			pstmt.close();
-			con.close();
+			catch (SQLException e) 
+			{ 
+				e.printStackTrace();
+			} 
+			finally 
+			{
+				rs.close();
+				pstmt.close();
+				con.close();
+			}
+			System.out.println("memtelReturn:"+memtelReturn);
+			return memtelReturn;
 		}
-		return usenumReturn;
-	}
+		
+		//USEÌÖåÏù¥Î∏îÏóêÏÑú ÏûÖÏã§ÏãúÍ∞Ñ Ï∞æÏïÑÏò§Í∏∞
+		public String findInTime(String usenum) throws SQLException
+		{
+			String inTime=null;
+			Connection con=null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+		
+			String queryFindInTime = "select checkinTime from `USE` "
+					+ "where useNum = ?";
+
+			try {
+				con=DBconnect.getConnection();
+				pstmt=con.prepareStatement(queryFindInTime);
+				pstmt.setString(1, usenum);
+				rs = pstmt.executeQuery();
+				if(rs.next())
+				{
+					inTime = rs.getString("checkInTime");
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			finally 
+			{
+				rs.close();
+				pstmt.close();
+				con.close();
+			}
+			System.out.println("findInTime:"+inTime);
+			return inTime;
+		}
+		
+		//useTime(ÏÇ¨Ïö©ÏãúÍ∞Ñ) Í≥ÑÏÇ∞
+		public String usetimeC(String checkintime,
+				String checkouttime) throws ParseException
+		{
+			String usetime;
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+//			// ÎπÑÍµêÌï† ÏãúÍ∞Ñ (Î¨∏ÏûêÏó¥) 
+//			String checkinTime = "";
+//			String checkoutTime = "";
+			
+			// Î¨∏ÏûêÏó¥ -> Date 
+			Date checkindate = sdf.parse(checkintime);
+			Date checkoutdate = sdf.parse(checkouttime);
+			
+			// Date -> Î∞ÄÎ¶¨ÏÑ∏Ïª®Ï¶à 
+			long cintimeMil = checkindate.getTime();
+			long couttimeMil = checkoutdate.getTime();
+			
+			// ÎπÑÍµê 
+			long diff = couttimeMil - cintimeMil;
+			//System.out.println("diff:"+diff);
+			int diffTime = (int) (diff/ (1000 * 60 * 60));
+			int diffMin = (int) (diff / (1000 * 60)-(diffTime*60));
+			int diffSec = (int) (diff / 1000 - (diffTime*3600)-(diffMin*60));
+
+			
+			
+			usetime = diffTime+":"+diffMin+":"+diffSec;
+			//System.out.println("useTimeC:use time is "+usetime);
+			return usetime;
+		}
+		
+		//USEÌÖåÏù¥Î∏î Îç∞Ïù¥ÌÑ∞ UPDATE(checkoutTime, useTime)
+			public void updateUse(String checkouttime,
+					String usetime, String usenum) throws SQLException
+			{
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String queryupdateUse="update `use` set checkoutTime = ?, "
+						+ "useTime = ? where useNum = ?;";
+				int seatnum=0;
+				try
+				{
+					con = DBconnect.getConnection();
+					pstmt=con.prepareStatement(queryupdateUse);
+					pstmt.setString(1, checkouttime);
+					pstmt.setString(2, usetime);
+					pstmt.setString(3, usenum);
+					pstmt.executeUpdate();		
+				}
+				catch (SQLException e) 
+				{ 
+					e.printStackTrace();
+				} 
+				finally 
+				{
+					pstmt.close();
+					con.close();
+				}
+			}
+			
+			//ÏùòÏûêÎ≤àÌò∏ Í≤ÄÏÉâ(ÏÇ¨Ïö©Î≤àÌò∏Ïù¥Ïö©)
+			public String findSeatNum(int usenum) throws SQLException
+			{
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String queryFindSeatNum="SELECT seatNum FROM `use`"
+						+ "where useNum = ?";
+				String seatnum=null;
+				try {
+					con = DBconnect.getConnection();
+					pstmt=con.prepareStatement(queryFindSeatNum);
+					pstmt.setInt(1, usenum);
+					rs = pstmt.executeQuery();
+					while(rs.next())
+					{
+						seatnum=rs.getString(1);
+					}				
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				finally 
+				{
+					rs.close();
+					pstmt.close();
+					con.close();
+				}
+				return seatnum;
+			}
 }

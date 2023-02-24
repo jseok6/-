@@ -20,7 +20,7 @@ public class FindManagerTable {
 				+ "where managerId = ?";
 
 		try {
-			con=DBConnect2.getConnection();
+			con=DBconnect.getConnection();
 			pstmt=con.prepareStatement(queryFindManagerName);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();

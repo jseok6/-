@@ -24,7 +24,7 @@ public class FirstDisplay extends JFrame{
 					FirstDisplay window = new FirstDisplay();
 					window.setVisible(true);
 					window.setResizable(false);
-					window.setTitle("FSC_FirstDisplay");
+					window.setTitle("FamilyStudyCafe_FirstDisplay");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,7 +47,7 @@ public class FirstDisplay extends JFrame{
 		button1.setBackground(new Color(205, 133, 63));
 		button1.setPreferredSize(new Dimension(216, 0));
 		frmFamilyStudyCafe.add(button1);
-		// ����� button1
+		// 사용자 button1
 		button1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
