@@ -4,23 +4,22 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dialog;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.List;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.StringTokenizer;
 
 import javax.swing.ImageIcon;
@@ -49,6 +48,7 @@ implements ActionListener, Runnable{
 	JLabel picture;
 	ChatUI[] QR = new ChatUI[100];
 	boolean flag = false;
+	int seatnum;
 	
 	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\addpay.jpg");
 	ImageIcon imgexit=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\exit.jpg");
@@ -425,6 +425,33 @@ implements ActionListener, Runnable{
 						}
 					}
 				}
+		
+				try {
+					FindUseTable fut = new FindUseTable();
+					FindMemberTable fmt = new FindMemberTable();
+					// 입실시간 찾아오기
+					String usenum = fut.findUse(seatnum);
+					String inTime = fut.findInTime(usenum);
+					LocalDateTime nowDateTime = LocalDateTime.now();
+					DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+					String formatNow = nowDateTime.format(dfm);
+					try {
+						// USE테이블의 퇴실시간을 현재시간으로 설정, 퇴실시간-입실시간 = 사용시간
+						String useTime = fut.usetimeC(inTime, formatNow);
+						fut.updateUse(formatNow, useTime, usenum);
+						// Member테이블의 남은시간 - 사용시간
+						fmt.updateRemainTime(useTime, id);
+						// Seat테이블의 SeatAvail 상태 0으로 변경
+						FindSeatTable fst = new FindSeatTable();
+						fst.seatUpdate(seatnum, 0);
+						
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+
 				System.exit(0);
 			}
 		});

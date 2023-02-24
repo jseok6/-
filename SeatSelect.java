@@ -238,12 +238,7 @@ public class SeatSelect extends JFrame {
 							String checkStat;
 							// Object obj = new Object();
 							fs.setVisible(false);
-							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-							
-							if(sock==null)
-							{
-								connect();
-							}				
+							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드		
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
@@ -260,6 +255,10 @@ public class SeatSelect extends JFrame {
 									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
 									fs.setVisible(false);
 									fs.dispose(); 
+									if(sock==null)
+									{
+										connect();
+									}		
 									String roomNum=seatSource.getText();
 									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
 									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
@@ -447,7 +446,7 @@ public class SeatSelect extends JFrame {
 		seat2FBtn[31].setBounds(871, 416, 72, 60);
 		seat2FBtn[32].setBounds(871, 184, 72, 60);
 		
-		for (int i = 0; i < seat1FBtn.length; i++) {
+		for (int i = 0; i < seat2FBtn.length; i++) {
 			seat2FBtn[i].addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -476,27 +475,43 @@ public class SeatSelect extends JFrame {
 							String checkStat;
 							// Object obj = new Object();
 							fs.setVisible(false);
-							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-							new Pay(membertel);
+							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드		
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
-							try {
+							try 
+							{
 								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
 								if (checkStat == "0")// 사용중인 좌석이 아니면
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
 									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
-								} else {
+									fs.setVisible(false);
+									fs.dispose(); 
+									if(sock==null)
+									{
+										connect();
+									}		
+									String roomNum=seatSource.getText();
+									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
+									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
+									dispose();
+								}
+								else 
+								{
 									System.out.println("Already using seat");
 								}
-							} catch (NumberFormatException e1) {
+							} 
+							catch (NumberFormatException e1) 
+							{
 								e1.printStackTrace();
-							} catch (SQLException e1) {
+							} 
+							catch (SQLException e1) 
+							{
 								e1.printStackTrace();
 							}
 						}
