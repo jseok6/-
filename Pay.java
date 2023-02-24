@@ -4,10 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.net.URI;
 
 
 public class Pay extends JFrame{
+	JButton selectedButton=null;
 	private JButton btntime;//시간권
 	private JButton btnperiod;//기간권
 	private JLabel label;//배경이미지
@@ -27,10 +30,10 @@ public class Pay extends JFrame{
 	private JButton btncashpay;
 	private JButton back;
 	
-	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton.jpg");
-	ImageIcon img2=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton2.jpg");
-	ImageIcon imgtime=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time.jpg");
-	ImageIcon imageperiod=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time2.jpg");
+	ImageIcon img=new ImageIcon("./Button_Image/image_exitButton.jpg");
+	ImageIcon img2=new ImageIcon("./Button_Image/image_exitButton2.jpg");
+	ImageIcon imgtime=new ImageIcon("./Button_Image/time.jpg");
+	ImageIcon imageperiod=new ImageIcon("./Button_Image/time2.jpg");
 	
 	Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 	
@@ -55,7 +58,6 @@ public class Pay extends JFrame{
 		
 		 //배경이미지
         label = new JLabel();
-//        label.setIcon(new ImageIcon("C:\\Java\\eclipse-workspace\\myjava\\study\\family.jpg"));
         label.setBounds(0, 0, 1100, 700);
         panel.add(label);
         
@@ -96,6 +98,19 @@ public class Pay extends JFrame{
 			}
 		});
         
+        FocusListener focusListener = new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                selectedButton = (JButton) e.getSource(); // 포커스를 얻은 텍스트 상자 저장
+            }
+            public void focusLost(FocusEvent e) {}
+        };
+        btntime1.addFocusListener(focusListener);
+        btntime2.addFocusListener(focusListener);
+        btntime4.addFocusListener(focusListener);
+        btntime6.addFocusListener(focusListener);
+        btntime9.addFocusListener(focusListener);
+        btntime12.addFocusListener(focusListener);
+        
       //현금결제
         btncashpay.addActionListener(new ActionListener() {
 			
@@ -105,7 +120,30 @@ public class Pay extends JFrame{
 				if(result == JOptionPane.OK_OPTION) {
 				    // 확인 버튼이 눌렸을 때의 액션
 				    UserLoginEvent remainplus=new UserLoginEvent();
-				    remainplus.remainTimeplus(membertel);
+				    if (selectedButton.equals(btntime1))
+				    {
+				    	remainplus.remainTimeplus1(membertel);
+				    }
+				    else if (selectedButton.equals(btntime2))
+				    {
+				    	remainplus.remainTimeplus2(membertel);
+				    }
+				    else if (selectedButton.equals(btntime4))
+				    {
+				    	remainplus.remainTimeplus3(membertel);
+				    }
+				    else if (selectedButton.equals(btntime6))
+				    {
+				    	remainplus.remainTimeplus4(membertel);
+				    }
+				    else if (selectedButton.equals(btntime9))
+				    {
+				    	remainplus.remainTimeplus5(membertel);
+				    }
+				    else if (selectedButton.equals(btntime12))
+				    {
+				    	remainplus.remainTimeplus6(membertel);
+				    }  
 				}
 				PayEnter enter=new PayEnter(membertel);
                 enter.setVisible(true);
@@ -118,7 +156,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					URI uri = new URI("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe/pay.html");
+					URI uri = new URI("C:/Users/dita810/Desktop/pay.html");
 	                desktop.browse(uri);
 	                PayEnter enter=new PayEnter(membertel);
 	                enter.setVisible(true);
@@ -129,6 +167,8 @@ public class Pay extends JFrame{
 				
 			}
 		});
+        
+        
 		
 	}
 	public void payUI(JPanel panel){
