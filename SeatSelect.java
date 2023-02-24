@@ -42,11 +42,6 @@ import study.ManagerMain;
 import study.Pay;
 import javax.swing.SwingConstants;
 
-class SeatSelectPopUp extends JDialog{
-	public SeatSelectPopUp(int seatnum, boolean modal, SeatSelect sset) {
-	}
-}
-
 public class SeatSelect extends JFrame {
 	private static SeatSelect ssinstance;
 	private JPanel contentPane;
@@ -54,7 +49,7 @@ public class SeatSelect extends JFrame {
 	Socket sock;
 	BufferedReader in;
 	PrintWriter out;
-	String host="127.0.0.1";
+	String host="113.198.238.111";
 	int port=8002;
 
 	public static void main(String[] args) {
@@ -249,6 +244,8 @@ public class SeatSelect extends JFrame {
 							{
 								connect();
 							}
+							
+							
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
@@ -262,10 +259,10 @@ public class SeatSelect extends JFrame {
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
-									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
+									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
 									fs.setVisible(false);
 									fs.dispose(); 
-									int roomNum=Integer.parseInt(seatSource.getText());
+									String roomNum=seatSource.getText();
 									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
 									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
 									dispose();
@@ -452,7 +449,7 @@ public class SeatSelect extends JFrame {
 		seat2FBtn[31].setBounds(871, 416, 72, 60);
 		seat2FBtn[32].setBounds(871, 184, 72, 60);
 		
-		for (int i = 0; i < seat2FBtn.length; i++) {
+		for (int i = 0; i < seat1FBtn.length; i++) {
 			seat2FBtn[i].addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -482,43 +479,26 @@ public class SeatSelect extends JFrame {
 							// Object obj = new Object();
 							fs.setVisible(false);
 							fs.dispose(); // 버튼 누를때 그 창만 종료하게 하는 메소드
-							
-							if(sock==null)
-							{
-								connect();
-							}
+							new Pay(membertel);
 
 							// use 테이블에서 사용중인지 검사
 							FindUseTable fut = new FindUseTable();
 							LocalDateTime nowDateTime = LocalDateTime.now();
 							DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 							String formatNow = nowDateTime.format(dfm);
-							try 
-							{
+							try {
 								checkStat = fut.findUse(Integer.parseInt(seatSource.getText()));
 								if (checkStat == "0")// 사용중인 좌석이 아니면
 								{
 									// 사용번호 ,체크인시간, 전화번호, 의자번호
 									// TODO 체크인시간 현재시간이랑 동기화/전화번호 중복방지 적용필요
-									fut.insertUse(formatNow, membertel, Integer.parseInt(seatSource.getText()));
-									fs.setVisible(false);
-									fs.dispose(); 
-									int roomNum=Integer.parseInt(seatSource.getText());
-									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
-									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
-									dispose();
-								}
-								else 
-								{
+									fut.insertUse(formatNow, "010-1234-1234", Integer.parseInt(seatSource.getText()));
+								} else {
 									System.out.println("Already using seat");
 								}
-							} 
-							catch (NumberFormatException e1) 
-							{
+							} catch (NumberFormatException e1) {
 								e1.printStackTrace();
-							} 
-							catch (SQLException e1) 
-							{
+							} catch (SQLException e1) {
 								e1.printStackTrace();
 							}
 						}

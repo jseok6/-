@@ -37,4 +37,7 @@ public class ChatProtocol2 {
 	public static final String EXIT = "EXIT";
 	
 	public static final String DELETUSER = "DELETUSER";
+	
+	public static final String LISTCHECK = "LISTCHECK";
+	
 }

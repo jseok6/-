@@ -60,7 +60,6 @@ implements ActionListener{
 			if(questionList.getSelectedItem() != null) {
 				String str = questionList.getSelectedItem();
 				out.println(ChatProtocol2.DELETELIST+ChatProtocol2.MODE+str);
-				questionList.remove(str);
 			}
 		}else if(obj == bt2) {
 			dispose();
@@ -68,8 +67,12 @@ implements ActionListener{
 	}
 	
 	public void open() {
-		out.println(ChatProtocol2.ID+ChatProtocol2.MODE+
+		out.println(ChatProtocol2.LISTCHECK+ChatProtocol2.MODE+
 				id);
+	}
+	
+	public void removeList(String str) {
+		questionList.remove(str);
 	}
 	
 	public void addList(String str) {

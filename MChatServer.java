@@ -182,6 +182,15 @@ public class MChatServer {
 						roomlist[i] = null;
 					}
 				}
+			}else if(cmd.equals(ChatProtocol2.LISTCHECK)) {
+				String roomreset = "";
+				for(int i = 0;roomlist.length>i;i++) {
+					if(roomlist[i] != null) {
+						roomreset += roomlist[i]+";";
+					}
+				}
+				System.out.println(roomreset);
+				sendAllMessage(ChatProtocol2.LISTCHECK+ChatProtocol2.MODE+roomreset);
 			}else if(cmd.equals(ChatProtocol2.DELETUSER)) {
 				int idx1 = 0;
 				System.out.println("채팅방유저리스트 삭제진입:"+data);

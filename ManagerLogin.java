@@ -147,21 +147,27 @@ implements ActionListener{
         	@Override
         	public void actionPerformed(ActionEvent e) {
         		FirstDisplay fDisplay;
-				fDisplay = new FirstDisplay();
-				fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
-				fDisplay.setVisible(true);
-				dispose(); //이창 닫기 	
+				try {
+					fDisplay = new FirstDisplay();
+					fDisplay.setTitle("FamilyStudyCafe_FirstDisplay");
+	        		fDisplay.setVisible(true);
+	             	dispose(); //이창 닫기
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} 	
         	}
         		});
         btnBack.setBounds(0,0,100,50);
         panel.add(btnBack);
         
+       
         btnInit = new JButton("Reset");
         btnInit.setFocusPainted(false);
         btnInit.setBackground(Color.yellow);
         btnInit.setBounds(480, 300, 140, 25);
         panel.add(btnInit);
         
+       
         btnLogin = new JButton("Login");
         btnLogin.setFocusPainted(false);
         btnLogin.setBackground(Color.yellow);
