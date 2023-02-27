@@ -363,7 +363,7 @@ implements ActionListener, Runnable{
 		
 		Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 		
-		JLabel roomNumber=new JLabel("방번호:"+seatnum);
+		JLabel roomNumber=new JLabel("방번호:"+num);
 		roomNumber.setBounds(0,0,100,50);
 		roomNumber.setFont(font);
 		panel.add(roomNumber);
@@ -476,7 +476,7 @@ implements ActionListener, Runnable{
 					FindUseTable fut = new FindUseTable();
 					FindMemberTable fmt = new FindMemberTable();
 					// 입실시간 찾아오기
-					String usenum = fut.findUse(Integer.parseInt(num));
+					String usenum = fut.findUse(seatnum);
 					String inTime = fut.findInTime(usenum);
 					LocalDateTime nowDateTime = LocalDateTime.now();
 					DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
