@@ -476,7 +476,7 @@ implements ActionListener, Runnable{
 					FindUseTable fut = new FindUseTable();
 					FindMemberTable fmt = new FindMemberTable();
 					// 입실시간 찾아오기
-					String usenum = fut.findUse(seatnum);
+					String usenum = fut.findUse(Integer.parseInt(num));
 					String inTime = fut.findInTime(usenum);
 					LocalDateTime nowDateTime = LocalDateTime.now();
 					DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

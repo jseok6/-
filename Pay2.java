@@ -159,7 +159,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					URI uri = new URI("C:/Users/dita810/Desktop/pay.html");
+					URI uri = new URI("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe/pay.html");
 	                desktop.browse(uri);
 	                PayEnter enter=new PayEnter(membertel);
 	                enter.setVisible(true);
