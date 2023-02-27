@@ -476,7 +476,7 @@ implements ActionListener, Runnable{
 					FindUseTable fut = new FindUseTable();
 					FindMemberTable fmt = new FindMemberTable();
 					// 입실시간 찾아오기
-					String usenum = fut.findUse(seatnum);
+					String usenum = fut.findUse(Integer.parseInt(num));
 					String inTime = fut.findInTime(usenum);
 					LocalDateTime nowDateTime = LocalDateTime.now();
 					DateTimeFormatter dfm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -489,7 +489,7 @@ implements ActionListener, Runnable{
 						fmt.updateRemainTime(useTime, id);
 						// Seat테이블의 SeatAvail 상태 0으로 변경
 						FindSeatTable fst = new FindSeatTable();
-						fst.seatUpdate(seatnum, 0);
+						fst.seatUpdate(Integer.parseInt(num), 0);
 						
 					} catch (ParseException e1) {
 						e1.printStackTrace();
