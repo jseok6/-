@@ -87,18 +87,23 @@ public class PayEnter  extends JFrame{
 				FindMemberTable fmt = new FindMemberTable();
 				try 
 				{
-					String remaintime = fmt.findRemainTime(membertel);
+					String remtime = fmt.findRemainTime(membertel);
 					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 					// 문자열 -> Time
-					LocalTime remaintimedate = LocalTime.parse(remaintime);		
-					System.out.println("PayEnter_remtime:"+remaintimedate);
-					// Time -> Sec(초) 추출
-					long remaintimeSec = remaintimedate.getSecond();
-					System.out.println("PayEnter_Member is:"+membertel+ " RemainSec:"+ remaintimeSec);
-					if (remaintimeSec > 0) {
+					LocalTime remLocalTime = LocalTime.parse(remtime);		
+					System.out.println("PayEnter_remtime:"+remLocalTime);
+					// 남은시간 시/분/초 추출
+					long remTimeHour = remLocalTime.getHour();
+					long remTimeMin = remLocalTime.getMinute();
+					long remTimeSec = remLocalTime.getSecond();
+					System.out.println("PayEnter_Member is:"+membertel+ 
+							" remTime:"+ remTimeHour+"시간 "+remTimeMin+"분 "
+							+remTimeSec+"초");
+					//남은시간 검사
+					if (remTimeHour>0||remTimeMin>0||remTimeSec > 0) {
 						try {
 							SeatSelect ss = new SeatSelect(membertel);
-							ss.setTitle("FSC_SeatSelect");
+							ss.setTitle("FamilyStudyCafe_SeatSelect");
 							dispose();
 						} catch (NumberFormatException | SQLException e1) {
 							e1.printStackTrace();
