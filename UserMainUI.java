@@ -400,7 +400,7 @@ implements ActionListener, Runnable{
                         else {
                         	rmtime3=rmtime3-1;
                         }
-                        String dtime=rmtime1+"시"+rmtime2+"분"+rmtime3+"초";
+                        String dtime=rmtime1+"시간"+rmtime2+"분"+rmtime3+"초";
                         remaintime.setText("남은 시간:"+ dtime);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
