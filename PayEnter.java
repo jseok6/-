@@ -4,13 +4,16 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Frame;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -80,16 +83,35 @@ public class PayEnter  extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj = e.getSource();
-				if ((Button) obj == button2) {
-					try {
-						SeatSelect ss = new SeatSelect(membertel);
-						ss.setTitle("FSC_SeatSelect");
-						dispose();
-					} catch (NumberFormatException | SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+				//조건에 회원의 남은시간 가져와서 남은시간이 0시간0분0초보다 많은지 확인
+				FindMemberTable fmt = new FindMemberTable();
+				try 
+				{
+					String remaintime = fmt.findRemainTime(membertel);
+					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+					// 문자열 -> Time
+					LocalTime remaintimedate = LocalTime.parse(remaintime);		
+					System.out.println("PayEnter_remtime:"+remaintimedate);
+					// Time -> Sec(초) 추출
+					long remaintimeSec = remaintimedate.getSecond();
+					System.out.println("PayEnter_Member is:"+membertel+ " RemainSec:"+ remaintimeSec);
+					if (remaintimeSec > 0) {
+						try {
+							SeatSelect ss = new SeatSelect(membertel);
+							ss.setTitle("FSC_SeatSelect");
+							dispose();
+						} catch (NumberFormatException | SQLException e1) {
+							e1.printStackTrace();
+						}
 					}
-				}
+					else {
+						JOptionPane.showMessageDialog(null, "시간 결제 후 이용해주세요");
+					}
+				} 
+				catch (SQLException e1) 
+				{
+					e1.printStackTrace();
+				}			
 			}
 		});
 
