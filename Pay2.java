@@ -174,9 +174,10 @@ public class Pay2 extends JFrame{
 	}
 	public void payUI(JPanel panel){
 		panel.setLayout(null);
+		PayEvent charge=new PayEvent();
 		
-		
-		btntime1=new JButton("1일권");
+		btntime1=new JButton();
+		btntime1.setText(charge.payName("7"));
 		btntime1.setBounds(0,167,367,196);
 		btntime1.setBackground(Color.yellow);
 		btntime1.setFocusPainted(false);
@@ -185,15 +186,14 @@ public class Pay2 extends JFrame{
 		btntime1.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				PayEvent charge1=new PayEvent();
-				String str=charge1.payPeriod1();
+			public void actionPerformed(ActionEvent e) {	
+				String str=charge.pay("7");
 				payresult.setText("가격:"+str);
 			}
 		});
 		
-		
-		btntime2=new JButton("3일권");
+		btntime2=new JButton();
+		btntime2.setText(charge.payName("8"));
 		btntime2.setBounds(367,167,367,196);
 		btntime2.setBackground(Color.yellow);
 		btntime2.setFocusPainted(false);
@@ -203,13 +203,13 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PayEvent charge2=new PayEvent();
-				String str=charge2.payPeriod2();
+				String str=charge.pay("8");
 				payresult.setText("가격:"+str);
 			}
 		});
 		
-		btntime4=new JButton("7일권");
+		btntime4=new JButton();
+		btntime4.setText(charge.payName("9"));
 		btntime4.setBounds(734,167,367,196);
 		btntime4.setBackground(Color.yellow);
 		btntime4.setFocusPainted(false);
@@ -219,14 +219,13 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PayEvent charge3=new PayEvent();
-				String str=charge3.payPeriod3();
+				String str=charge.pay("9");
 				payresult.setText("가격:"+str);
 			}
 		});
 		
-		
-		btntime6=new JButton("10일권");
+		btntime6=new JButton();
+		btntime6.setText(charge.payName("10"));
 		btntime6.setBounds(0,363,367,196);
 		btntime6.setBackground(Color.yellow);
 		btntime6.setFocusPainted(false);
@@ -236,13 +235,13 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PayEvent charge4=new PayEvent();
-				String str=charge4.payPeriod4();
+				String str=charge.pay("10");
 				payresult.setText("가격:"+str);
 			}
 		});
 		
-		btntime9=new JButton("15일권");
+		btntime9=new JButton();
+		btntime9.setText(charge.payName("11"));
 		btntime9.setBounds(367,363,367,196);
 		btntime9.setBackground(Color.yellow);
 		btntime9.setFocusPainted(false);
@@ -251,15 +250,15 @@ public class Pay2 extends JFrame{
 		btntime9.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				PayEvent charge5=new PayEvent();
-				String str=charge5.payPeriod5();
+			public void actionPerformed(ActionEvent e) {	
+				String str=charge.pay("11");
 				payresult.setText("가격:"+str);
 				
 			}
 		});
-		
-		btntime12=new JButton("30일권");
+
+		btntime12=new JButton();
+		btntime12.setText(charge.payName("12"));
 		btntime12.setBounds(734,363,367,196);
 		btntime12.setBackground(Color.yellow);
 		btntime12.setFocusPainted(false);
@@ -269,8 +268,7 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PayEvent charge6=new PayEvent();
-				String str=charge6.payPeriod6();
+				String str=charge.pay("12");
 				payresult.setText("가격:"+str);
 			}
 		});
