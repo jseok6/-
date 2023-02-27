@@ -99,6 +99,7 @@ public class PayEnter  extends JFrame{
 		textField.setBounds(0, 0, 1040, 20);
 		textField.setBackground(new Color(135, 206, 250));
 		textField.setText("결제하기, 입실하기 중에서 선택해주세요");
+		textField.setEditable(false);
 		textField.setHorizontalAlignment(JTextField.CENTER);
 		payenterPanel.add(textField);
 		textField.setColumns(20);
