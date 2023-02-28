@@ -295,7 +295,7 @@ implements Runnable{
 			contentPane.add(memberInfoPanel);
 			
 			//회원정보 패널의 회원전화번호
-			JLabel memTelLabel_memInfoPanel = new JLabel("010-0000-0000");
+			JLabel memTelLabel_memInfoPanel = new JLabel("");
 			memTelLabel_memInfoPanel.setHorizontalAlignment(SwingConstants.CENTER);
 			memTelLabel_memInfoPanel.setFont(new Font("Dialog", Font.BOLD, 14));
 			memTelLabel_memInfoPanel.setBackground(new Color(128, 0, 0));
@@ -810,7 +810,12 @@ implements Runnable{
     		public void actionPerformed(ActionEvent e) {
     			JButton seatSource = (JButton)e.getSource(); //클릭한 버튼의 라벨값 읽어옴
     			FindUseTable findUseTable = new FindUseTable();
-    			String usestat = null; //seatInfoPanel의 memberTelLabel에 들어갈 
+    			FindSeatTable fst = new FindSeatTable();
+    			String usenum = ""; //사용번호
+    			int seatavail = 0;
+    			String telMember = ""; //seatInfoPanel의 memberTelLabel에 들어갈 전화번호
+    	
+    			memberInfoBtn.setEnabled(false);
     			
     			//의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
     			seatNumLabel_seatInfoPanel.setText(seatSource.getText());
@@ -818,23 +823,27 @@ implements Runnable{
     			//{
     				//클릭한 의자라벨값 읽어와서 findUse 실행(사용중인지 검사)
     				try {
-						usestat = findUseTable.findUse(Integer.parseInt(seatSource.getText()));
+    					usenum = findUseTable.findUse(Integer.parseInt(seatSource.getText()));//사용번호 찾아오기
+    					seatavail = fst.seatAvail(Integer.parseInt(seatSource.getText()));//의자상태 확인
+                        telMember = findUseTable.findmemt(Integer.parseInt(usenum)); //사용번호로 전화번호 검색
+                        System.out.println("ManagerMain.usestat: "+usenum);
+                        System.out.println("ManagerMain.telMember: "+telMember);
 					} catch (NumberFormatException e1) {
 						e1.printStackTrace();
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-    				if(usestat=="0")//리턴받은값이 0이면 회원전화번호 라벨에서 지우기(공백상태로 둠)
-    				{
-    					memberInfoBtn.setEnabled(false);
-    					memberTelLabel.setText("");
-    				}
-    				else
+    				if(seatavail == 1)//의자가 사용중이면
     				{
     					//seatInfo 패널의 정보 버튼 활성화
     					memberInfoBtn.setEnabled(true); 					
     					//사용 테이블에서 유저 전화번호 검색해와서 집어넣기
-    					memberTelLabel.setText(usestat);
+    					memberTelLabel.setText(telMember);
+    				}
+    				else
+    				{
+    					memberInfoBtn.setEnabled(false);
+    					memberTelLabel.setText("");
     				}
     				
     				memberInfoPanel.setEnabled(false);
@@ -886,7 +895,7 @@ implements Runnable{
 			public void actionPerformed(ActionEvent e) {
 				seatInfoPanel.setEnabled(false);
 				seatInfoPanel.setVisible(false);
-				
+				memberInfoBtn.setEnabled(false);
 				//패널 아래의 1층좌석 버튼 활성화
 				seat1FBtn[10].setEnabled(true);
 				seat1FBtn[10].setVisible(true);
@@ -953,16 +962,4 @@ implements Runnable{
 		}
 
 	}
-	
-//	public static ManagerMain getInstance()
-//	{
-//		if(mminstance==null)
-//		{
-//			synchronized (ManagerMain).class) {
-//				mminstance = new ManagerMain();
-//			}
-//		}
-//		
-//		return mminstance;
-//	}
 }

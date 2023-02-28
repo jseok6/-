@@ -27,7 +27,7 @@ public class ManagerLogin extends JFrame
 implements ActionListener{
 	JTextField selectedField = null;
 	
-	String host = "113.198.238.111";
+	String host = "113.198.238.101";
 	int port = 8002;
 	Socket sock;
 	BufferedReader in;

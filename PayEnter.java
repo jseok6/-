@@ -7,10 +7,9 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -88,45 +87,48 @@ public class PayEnter  extends JFrame{
 		button2.setPreferredSize(new Dimension(216, 0));
 		payenterPanel.add(button2);
 		button2.addActionListener(new ActionListener() {
-
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				Object obj = e.getSource();
-				//조건에 회원의 남은시간 가져와서 남은시간이 0시간0분0초보다 많은지 확인
-				FindMemberTable fmt = new FindMemberTable();
-				try 
-				{
-					String remtime = fmt.findRemainTime(membertel);
-					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-					// 문자열 -> Time
-					LocalTime remLocalTime = LocalTime.parse(remtime);		
-					System.out.println("PayEnter_remtime:"+remLocalTime);
-					// 남은시간 시/분/초 추출
-					long remTimeHour = remLocalTime.getHour();
-					long remTimeMin = remLocalTime.getMinute();
-					long remTimeSec = remLocalTime.getSecond();
-					System.out.println("PayEnter_Member is:"+membertel+ 
-							" remTime:"+ remTimeHour+"시간 "+remTimeMin+"분 "
-							+remTimeSec+"초");
-					//남은시간 검사
-					if (remTimeHour>0||remTimeMin>0||remTimeSec > 0) {
-						
-							SeatSelect ss = SeatSelect.getInstance(membertel);
-							ss.setTitle("FamilyStudyCafe_SeatSelect");
-							dispose();
-						
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "시간 결제 후 이용해주세요");
-					}
-				} 
-				catch (SQLException e1) 
-				{
-					e1.printStackTrace();
-				}			
-			}
-		});
+            public void actionPerformed(ActionEvent e) {
+                FindMemberTable fmt = new FindMemberTable();
+                try {
+                    String remtime = fmt.findRemainTime(membertel);
+                    String rtsplit[] = remtime.split("");
+                    System.out.println("PayEnter_remtime is:" + remtime);
+                    System.out.println("PayEnter_rtsplit is:" + rtsplit[0] + rtsplit[1] + rtsplit[2] + rtsplit[3]
+                            + rtsplit[4] + rtsplit[5] + rtsplit[6] + rtsplit[7]);
+                    // List로 바꿔서 : 제거 후 다시 배열으로
+                    List<String> rtList = new ArrayList<>(Arrays.asList(rtsplit));
+                    rtList.removeAll(Arrays.asList(":"));
+                    rtsplit = rtList.toArray(new String[0]);
 
+                    System.out.println("PayEnter_new rtsplit is:" + rtsplit[0] + rtsplit[1] + rtsplit[2] + rtsplit[3]
+                            + rtsplit[4] + rtsplit[5]);
+                    if (remtime.equals("00:00:00")) 
+                    { //시간이 없으면 안내 메세지 띄움
+                        JOptionPane.showMessageDialog(null, "시간 결제 후 이용해주세요");
+                    }
+                    else 
+                    { 
+                        {
+                            SeatSelect ss = SeatSelect.getInstance(membertel);
+                            ss.setTitle("FamilyStudyCafe_SeatSelect");
+                            dispose();
+                        }
+//                        for (int i = 0; i < rtsplit.length; i++) 
+//                        {
+//                            if (Integer.parseInt(rtsplit[i]) > 0) 
+//                            {
+//                                SeatSelect ss = SeatSelect.getInstance(membertel);
+//                                ss.setTitle("FamilyStudyCafe_SeatSelect");
+//                                dispose();
+//                            }
+//                        }
+                    }
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+		});
 		// 입실하기 버튼 button2
 
 		textField = new JTextField();

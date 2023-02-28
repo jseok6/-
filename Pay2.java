@@ -127,9 +127,11 @@ public class Pay2 extends JFrame{
 				if(result == JOptionPane.OK_OPTION) {
 				    // 확인 버튼이 눌렸을 때의 액션
 				    UserLoginEvent remainplus=new UserLoginEvent();
+				    PayEvent pay=new PayEvent();
 				    if (selectedButton.equals(btntime1))
 				    {
 				    	remainplus.remainTimeplus7(membertel);
+				    	pay.payadd("7",membertel);
 				    	PayEnter enter=PayEnter.getInstance(membertel);
 		                enter.setVisible(true);
 		                dispose();
@@ -137,6 +139,7 @@ public class Pay2 extends JFrame{
 				    else if (selectedButton.equals(btntime2))
 				    {
 				    	remainplus.remainTimeplus8(membertel);
+				    	pay.payadd("8",membertel);
 				    	PayEnter enter=PayEnter.getInstance(membertel);
 		                enter.setVisible(true);
 		                dispose();
@@ -144,6 +147,7 @@ public class Pay2 extends JFrame{
 				    else if (selectedButton.equals(btntime4))
 				    {
 				    	remainplus.remainTimeplus9(membertel);
+				    	pay.payadd("9",membertel);
 				    	PayEnter enter=PayEnter.getInstance(membertel);
 		                enter.setVisible(true);
 		                dispose();
@@ -151,6 +155,7 @@ public class Pay2 extends JFrame{
 				    else if (selectedButton.equals(btntime6))
 				    {
 				    	remainplus.remainTimeplus10(membertel);
+				    	pay.payadd("10",membertel);
 				    	PayEnter enter=PayEnter.getInstance(membertel);
 		                enter.setVisible(true);
 		                dispose();
@@ -158,6 +163,7 @@ public class Pay2 extends JFrame{
 				    else if (selectedButton.equals(btntime9))
 				    {
 				    	remainplus.remainTimeplus11(membertel);
+				    	pay.payadd("11",membertel);
 				    	PayEnter enter=PayEnter.getInstance(membertel);
 		                enter.setVisible(true);
 		                dispose();
@@ -165,6 +171,7 @@ public class Pay2 extends JFrame{
 				    else if (selectedButton.equals(btntime12))
 				    {
 				    	remainplus.remainTimeplus12(membertel);
+				    	pay.payadd("12",membertel);
 				    	PayEnter enter=PayEnter.getInstance(membertel);
 		                enter.setVisible(true);
 		                dispose();

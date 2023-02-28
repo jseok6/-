@@ -83,14 +83,23 @@ public class SeatSelect extends JFrame {
 		}
 	}// --connect
 	public static SeatSelect getInstance(String memberTel) {
-        if (instance == null) {
-            try {
-				instance = new SeatSelect(memberTel);
-			} catch (NumberFormatException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        }
+		try {
+			instance = new SeatSelect(memberTel);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//        if (instance == null) {
+//            try {
+//				instance = new SeatSelect(memberTel);
+//			} catch (NumberFormatException | SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//        }
         return instance;
     }
 

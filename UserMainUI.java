@@ -461,7 +461,7 @@ implements ActionListener, Runnable{
 						fmt.updateRemainTime(useTime, id);
 						// Seat테이블의 SeatAvail 상태 0으로 변경
 						FindSeatTable fst = new FindSeatTable();
-						fst.seatUpdate(seatnum, 0);
+						fst.seatUpdate(Integer.parseInt(num), 0);
 						
 					} catch (ParseException e1) {
 						e1.printStackTrace();
