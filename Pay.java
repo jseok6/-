@@ -30,6 +30,7 @@ public class Pay extends JFrame{
 	private JButton btncashpay;
 	private JButton back;
 	String num="1";
+	private static Pay instance = null;
 	
 	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton.jpg");
 	ImageIcon img2=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/image_exitButton2.jpg");
@@ -38,9 +39,16 @@ public class Pay extends JFrame{
 	
 	Font font=new Font("맑은 고딕", Font.PLAIN, 17);
 	
+	public static Pay getInstance(String memberTel) {
+        if (instance == null) {
+            instance = new Pay(memberTel);
+        }
+        return instance;
+        }
 	
 	
-	public Pay(String membertel) {
+	
+	private Pay(String membertel) {
 		setTitle("시간제");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
@@ -80,7 +88,7 @@ public class Pay extends JFrame{
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Pay2 pay2=new Pay2(membertel);
+				Pay2 pay2=Pay2.getInstance(membertel);
 				pay2.setVisible(true);
 				dispose();
 				
@@ -93,7 +101,7 @@ public class Pay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				UserLogin ui1=new UserLogin();
+				UserLogin ui1=UserLogin.getInstance();
 				ui1.setVisible(true);
 				dispose();
 			}
@@ -117,38 +125,54 @@ public class Pay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "현금을 넣어주세요.", "결제", JOptionPane.OK_CANCEL_OPTION);
+				int result = JOptionPane.showConfirmDialog(null, "결제하시겠습니까?", "결제", JOptionPane.OK_CANCEL_OPTION);
 				if(result == JOptionPane.OK_OPTION) {
 				    // 확인 버튼이 눌렸을 때의 액션
 				    UserLoginEvent remainplus=new UserLoginEvent();
 				    if (selectedButton.equals(btntime1))
 				    {
 				    	remainplus.remainTimeplus1(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime2))
 				    {
 				    	remainplus.remainTimeplus2(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime4))
 				    {
 				    	remainplus.remainTimeplus3(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime6))
 				    {
 				    	remainplus.remainTimeplus4(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime9))
 				    {
 				    	remainplus.remainTimeplus5(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime12))
 				    {
 				    	remainplus.remainTimeplus6(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }  
 				}
-				PayEnter enter=new PayEnter(membertel);
-                enter.setVisible(true);
-                dispose();
+				
 			}
 		});
       //카드결제
@@ -159,7 +183,7 @@ public class Pay extends JFrame{
 				try {
 					URI uri = new URI("C:/Users/dita810/Desktop/FSCTeam/FamilyStudycafe/Button_image/pay.html");
 	                desktop.browse(uri);
-	                PayEnter enter=new PayEnter(membertel);
+	                PayEnter enter=PayEnter.getInstance(membertel);
 	                enter.setVisible(true);
 	                dispose();
 				} catch (Exception e2) {

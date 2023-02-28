@@ -37,10 +37,15 @@ public class Pay2 extends JFrame{
 	ImageIcon imageperiod=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/time2.jpg");
 	
 	Font font=new Font("맑은 고딕", Font.PLAIN, 17);
+	private static Pay2 instance = null;
 	
-	
-	
-	public Pay2(String membertel) {
+	public static Pay2 getInstance(String memberTel) {
+        if (instance == null) {
+            instance = new Pay2(memberTel);
+        }
+        return instance;
+        }
+	private Pay2(String membertel) {
 		setTitle("시간제");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
@@ -82,7 +87,7 @@ public class Pay2 extends JFrame{
         btntime.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Pay pay=new Pay(membertel);
+				Pay pay=Pay.getInstance(membertel);
 				pay.setVisible(true);
 				dispose();
 				
@@ -95,7 +100,7 @@ public class Pay2 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				UserLogin ui1=new UserLogin();
+				UserLogin ui1=UserLogin.getInstance();
 				ui1.setVisible(true);
 				dispose();
 			}
@@ -118,38 +123,54 @@ public class Pay2 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "현금을 넣어주세요.", "결제", JOptionPane.OK_CANCEL_OPTION);
+				int result = JOptionPane.showConfirmDialog(null, "결제하시겠습니까?", "결제", JOptionPane.OK_CANCEL_OPTION);
 				if(result == JOptionPane.OK_OPTION) {
 				    // 확인 버튼이 눌렸을 때의 액션
 				    UserLoginEvent remainplus=new UserLoginEvent();
 				    if (selectedButton.equals(btntime1))
 				    {
 				    	remainplus.remainTimeplus7(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime2))
 				    {
 				    	remainplus.remainTimeplus8(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime4))
 				    {
 				    	remainplus.remainTimeplus9(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime6))
 				    {
 				    	remainplus.remainTimeplus10(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime9))
 				    {
 				    	remainplus.remainTimeplus11(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }
 				    else if (selectedButton.equals(btntime12))
 				    {
 				    	remainplus.remainTimeplus12(membertel);
+				    	PayEnter enter=PayEnter.getInstance(membertel);
+		                enter.setVisible(true);
+		                dispose();
 				    }  
 				}
-				PayEnter enter=new PayEnter(membertel);
-                enter.setVisible(true);
-                dispose();
+				
 				
 			}
 		});
@@ -161,7 +182,7 @@ public class Pay2 extends JFrame{
 				try {
 					URI uri = new URI("C:/Users/dita810/Desktop/FSCTeam/FamilyStudycafe/Button_image/pay.html");
 	                desktop.browse(uri);
-	                PayEnter enter=new PayEnter(membertel);
+	                PayEnter enter=PayEnter.getInstance(membertel);
 	                enter.setVisible(true);
 	                dispose();
 				} catch (Exception e2) {
@@ -310,7 +331,7 @@ public class Pay2 extends JFrame{
 	
 	}
 	public static void main(String[] args) {
-		new Pay("temp");
+		
 	}
 	
 	

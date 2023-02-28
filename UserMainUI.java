@@ -52,11 +52,12 @@ implements ActionListener, Runnable{
 	int rmtime1;
 	int rmtime2;
 	int rmtime3;
+	private static UserMainUI instance = null;
 	
 	ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\addpay.jpg");
 	ImageIcon imgexit=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image\\exit.jpg");
 
-	public UserMainUI(BufferedReader in, PrintWriter out, String id, String num) {
+	private UserMainUI(BufferedReader in, PrintWriter out, String id, String num) {
 		setSize(850,700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.id = id;
@@ -111,6 +112,12 @@ implements ActionListener, Runnable{
 			e.printStackTrace();
 		}
 	}//--run
+	public static synchronized UserMainUI getInstance(BufferedReader in, PrintWriter out, String id, String num) {
+        if (instance == null) {
+            instance = new UserMainUI(in, out, id, num);
+        }
+        return instance;
+}
 	
 	
 	
@@ -511,7 +518,8 @@ implements ActionListener, Runnable{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Pay(id);
+				Pay pay=Pay.getInstance(id);
+				pay.setVisible(true);
 				dispose();
 			}
 		});

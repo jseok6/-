@@ -51,6 +51,7 @@ public class SeatSelect extends JFrame {
 	PrintWriter out;
 	String host="113.198.238.101";
 	int port=8002;
+	private static SeatSelect instance = null;
 
 	public static void main(String[] args) {
 		// 전부 주석처리하면 이파일자체로 실행안됨, 로그인창에서 넘어오는 실행은 그대로 가능
@@ -81,9 +82,20 @@ public class SeatSelect extends JFrame {
 			e.printStackTrace();
 		}
 	}// --connect
+	public static SeatSelect getInstance(String memberTel) {
+        if (instance == null) {
+            try {
+				instance = new SeatSelect(memberTel);
+			} catch (NumberFormatException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        return instance;
+    }
 
 	// 프레임 생성
-	public SeatSelect(String membertel) throws NumberFormatException, SQLException {
+	private SeatSelect(String membertel) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1214, 836);
 		contentPane = new JPanel();
@@ -262,7 +274,8 @@ public class SeatSelect extends JFrame {
 									}		
 									String roomNum=seatSource.getText();
 									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
-									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
+									UserMainUI usermainui=UserMainUI.getInstance(in, out, membertel, roomNum);
+									usermainui.setVisible(true);
 									dispose();
 								}
 								else 
@@ -500,7 +513,8 @@ public class SeatSelect extends JFrame {
 									}		
 									String roomNum=seatSource.getText();
 									out.println(ChatProtocol2.ID+ChatProtocol2.MODE+membertel);
-									UserMainUI usermainui=new UserMainUI(in, out, membertel, roomNum);
+									UserMainUI usermainui=UserMainUI.getInstance(in, out, membertel, roomNum);
+									usermainui.setVisible(true);
 									dispose();
 								}
 								else 
@@ -704,7 +718,8 @@ public class SeatSelect extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new UserLogin(); // 회원로그인 화면으로 이동
+				UserLogin userlogin=UserLogin.getInstance();
+				userlogin.setVisible(true);// 회원로그인 화면으로 이동
 				dispose();
 			}
 		});

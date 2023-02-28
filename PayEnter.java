@@ -21,6 +21,7 @@ public class PayEnter  extends JFrame{
 
 	private JPanel payenterPanel;
 	private JTextField textField;
+	private static PayEnter instance = null;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -36,8 +37,14 @@ public class PayEnter  extends JFrame{
 			}
 		});
 	}
+	public static PayEnter getInstance(String userText) {
+        if (instance == null) {
+            instance = new PayEnter(userText);
+        }
+        return instance;
+        }
 
-	public PayEnter(String membertel) {
+	private PayEnter(String membertel) {
 		setTitle("FamilyStudyCafe_PayEnter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100,100,1056,570);
@@ -67,7 +74,9 @@ public class PayEnter  extends JFrame{
 //					fs.setSize(700, 600);
 //					fs.setLocation(200, 200);
 //					fs.dispose();
-					new Pay(membertel);
+					
+					Pay pay=Pay.getInstance(membertel);
+					pay.setVisible(true);
 					dispose();
 				}
 			}
@@ -101,13 +110,11 @@ public class PayEnter  extends JFrame{
 							+remTimeSec+"초");
 					//남은시간 검사
 					if (remTimeHour>0||remTimeMin>0||remTimeSec > 0) {
-						try {
-							SeatSelect ss = new SeatSelect(membertel);
+						
+							SeatSelect ss = SeatSelect.getInstance(membertel);
 							ss.setTitle("FamilyStudyCafe_SeatSelect");
 							dispose();
-						} catch (NumberFormatException | SQLException e1) {
-							e1.printStackTrace();
-						}
+						
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "시간 결제 후 이용해주세요");

@@ -75,7 +75,7 @@ public class UserLoginEvent {
 	    if (rs==1)
 	    {
 	    	JOptionPane.showMessageDialog(null, "회원 가입 완료");
-	    	Pay pay=new Pay(num);
+	    	Pay pay=Pay.getInstance(num);
         	pay.setVisible(true);
         	JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
 	    }
