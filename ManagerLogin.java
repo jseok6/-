@@ -88,8 +88,14 @@ implements ActionListener{
      ImageIcon updateLogoIcon = new ImageIcon(updateLogoImg);  // 새로운 Image 객체로 ImageIcon 객체 생성
 	 
 	 String arr[]= {"btnq","btnw","btne","btnr","btnt","btny","btnu","btni","btno","btnp"};
-	 
-	public ManagerLogin() {
+	private static ManagerLogin instance = null;
+	public static ManagerLogin getInstance() {
+	        if (instance == null) {
+	            instance = new ManagerLogin();
+	        }
+	        return instance;
+	}
+	private ManagerLogin() {
 		 // setting
         setTitle("FSC_ManagerLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -477,12 +483,14 @@ implements ActionListener{
 					if(sock==null) {
 						connect();
 					}
-					ManagerMain managerMain = new ManagerMain(in, out, name);
+					ManagerMain managerMain = ManagerMain.getInstance(in, out, name);
+					managerMain.setVisible(true);
+					dispose();
 					managerMain.setTitle("FamilyStudyCafe_ManagerMain");
 					managerMain.setResizable(false);
 					//managerMain.setVisible(true);
 					JOptionPane.showMessageDialog(null, "로그인을 환영합니다.");
-					dispose();
+					
 				} else {
 					JOptionPane.showMessageDialog(null, "아이디나 비밀번호를 확인하세요");
 				}

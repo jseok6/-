@@ -662,12 +662,11 @@ public class SeatSelect extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				try {
-					new SeatSelect(membertel);
+					SeatSelect seatselec=SeatSelect.getInstance(membertel);
+					seatselec.setVisible(true);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				} 
 			}
 		});
 		contentPane.add(refreshBtn);

@@ -122,6 +122,7 @@ implements Runnable{
 	PrintWriter out;
 	String id;
 	ManagerQuestionList MQL;
+	private static ManagerMain instance=null;
 	public static void main(String[] args) 
 	{
 		//전부 주석처리하면 이파일자체로 실행안됨, 로그인창에서 넘어오는 실행은 그대로 가능
@@ -147,9 +148,15 @@ implements Runnable{
 //			}
 //		});
 	}
+	public static synchronized ManagerMain getInstance(BufferedReader in,PrintWriter out,String name) throws NumberFormatException, SQLException {
+	      if (instance == null) {
+	         instance = new ManagerMain(in, out, name);
+	      }
+	      return instance;
+	}
 
 	//프레임 생성
-	public ManagerMain(BufferedReader in,PrintWriter out,String name) throws NumberFormatException, SQLException {
+	private ManagerMain(BufferedReader in,PrintWriter out,String name) throws NumberFormatException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 1114, 736);
 		
@@ -698,8 +705,10 @@ implements Runnable{
     	logoutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.exit(0); //매니저 메인화면 닫기(0 == 정상종료)  <=이거쓰면 새창도 안나옴
-				dispose(); //이걸쓰자
-				new ManagerLogin();//관리자 로그인 창 띄움- 관리자로그인창 고치고 수정필요
+				
+				ManagerLogin managerlogin=ManagerLogin.getInstance();
+				managerlogin.setVisible(true);
+				dispose();
 			}
 		});
 		contentPane.add(logoutBtn);
@@ -723,7 +732,7 @@ implements Runnable{
 //                		("", true, idLabel.getText(),quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
 //                questDialog.setVisible(true);
 				
-				MQL = new ManagerQuestionList(in, out, name);
+				MQL = ManagerQuestionList.getInstance(in, out, name);
 				MQL.open();
 			}
 		});
