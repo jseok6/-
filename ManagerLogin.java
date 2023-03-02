@@ -790,19 +790,7 @@ implements ActionListener{
 		}
 	}
 	
-//	public void managerConnect()
-//	{
-//		try
-//		{
-//			sock = new Socket(host, port);
-//			//in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-//			//out = new PrintWriter(sock.getOutputStream(), true/* auto flush */);
-//		} 
-//		catch (Exception e) 
-//		{
-//			e.printStackTrace();
-//		}
-//	}// --connect
+
 	
 	public static void main(String[] args) {
 		new ManagerLogin();

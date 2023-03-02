@@ -31,12 +31,6 @@ implements ActionListener{
 	 private JLabel label2;
 	 ImageIcon img=new ImageIcon("C:\\Users\\dita810\\Desktop\\FSCTeam\\FamilyStudycafe\\src\\img\\Button_image/back.jpg");
 	 
-//	 BufferedReader in;
-//	 PrintWriter out;
-//	 String id;
-//	 String host = "127.0.0.1";
-//	 int port = 8002;
-//	 Socket sock;
 	 
 	 private JButton btn1;
 	 private JButton btn2;

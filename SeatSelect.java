@@ -92,14 +92,6 @@ public class SeatSelect extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//        if (instance == null) {
-//            try {
-//				instance = new SeatSelect(memberTel);
-//			} catch (NumberFormatException | SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//        }
         return instance;
     }
 
@@ -146,8 +138,7 @@ public class SeatSelect extends JFrame {
 		JPanel panel1F = new JPanel();
 		panel1F.setBounds(121, 87, 945, 599);
 		panel1F.setLayout(null);
-//		panel1F.setEnabled(false); //패널 비활성화
-//		panel1F.setVisible(false); //패널 감추기
+
 		contentPane.add(panel1F);
 
 		// 1층 좌석 버튼 생성, 위치지정
@@ -164,7 +155,7 @@ public class SeatSelect extends JFrame {
 			seat1FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 			seat1FBtn[i].setBorder(lb);
 			seat1FBtn[i].setFocusPainted(false);
-//				seat1FBtn[i].setBackground(new Color(0, 128, 255));
+
 			try {
 				if (findSeatTable.seatAvail(Integer.parseInt(seat1Farr[i])) == 0) {// 사용가능
 					seat1FBtn[i].setBackground(Color.CYAN);
@@ -415,7 +406,7 @@ public class SeatSelect extends JFrame {
 			seat2FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 			seat2FBtn[i].setBorder(lb);
 			seat2FBtn[i].setFocusPainted(false);
-			// seat2FBtn[i].setBackground(new Color(0, 128, 255)); //seatAvail에따라 변경
+			
 			try {
 				if (findSeatTable.seatAvail(Integer.parseInt(seat2Farr[i])) == 0) {// 사용가능
 					seat2FBtn[i].setBackground(Color.CYAN);

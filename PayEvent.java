@@ -92,7 +92,6 @@ public class PayEvent {
 			System.out.print("잘못입력");
 			e.printStackTrace();
 		}
-		System.out.println("요금:"+time);
 		return time;
 	}
 	public String timePaid(String num)
@@ -116,7 +115,6 @@ public class PayEvent {
 			System.out.print("잘못입력");
 			e.printStackTrace();
 		}
-		System.out.println("시간:"+timepaid);
 		return timepaid;
 	}
 	public void payadd(String num, String memberTel)

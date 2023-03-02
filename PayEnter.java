@@ -114,15 +114,7 @@ public class PayEnter  extends JFrame{
                             ss.setTitle("FamilyStudyCafe_SeatSelect");
                             dispose();
                         }
-//                        for (int i = 0; i < rtsplit.length; i++) 
-//                        {
-//                            if (Integer.parseInt(rtsplit[i]) > 0) 
-//                            {
-//                                SeatSelect ss = SeatSelect.getInstance(membertel);
-//                                ss.setTitle("FamilyStudyCafe_SeatSelect");
-//                                dispose();
-//                            }
-//                        }
+
                     }
                 } catch (SQLException e1) {
                     e1.printStackTrace();

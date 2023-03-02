@@ -84,7 +84,7 @@ public class Pay extends JFrame{
         // visible
         setVisible(true);
         
-        //�Ⱓ�ǹ�ư
+        //기간권버튼
         btnperiod.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -95,7 +95,7 @@ public class Pay extends JFrame{
 			}
 		});
         
-      //기간권버튼
+      //뒤로가기버튼
         back.addActionListener(new ActionListener() {
 			
 			@Override

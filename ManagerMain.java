@@ -125,28 +125,7 @@ implements Runnable{
 	private static ManagerMain instance=null;
 	public static void main(String[] args) 
 	{
-		//전부 주석처리하면 이파일자체로 실행안됨, 로그인창에서 넘어오는 실행은 그대로 가능
-//		EventQueue.invokeLater(new Runnable() 
-//		{
-//			public void run() {
-//				try 
-//				{
-//					if (mminstance==null)
-//					{
-//						synchronized (ManagerMain.class) {
-//							ManagerMain Jframe = new ManagerMain("홍길동");
-//							Jframe.setVisible(true);
-//							Jframe.setResizable(false);
-//							Jframe.setTitle("FSC_ManagerMain");
-//						}
-//					}
-//				} 
-//				catch (Exception e) 
-//				{
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+		
 	}
 	public static synchronized ManagerMain getInstance(BufferedReader in,PrintWriter out,String name) throws NumberFormatException, SQLException {
 	      if (instance == null) {
@@ -305,7 +284,7 @@ implements Runnable{
 			
 			//"좌석정보" 글자 라벨
 			JLabel seatInfoStrLabel = new JLabel("좌석정보");
-			//seatInfoStrLabel.setOpaque(true);
+			
 			seatInfoStrLabel.setHorizontalAlignment(JLabel.CENTER);
 			seatInfoStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatInfoStrLabel.setBackground(new Color(128, 0, 0));
@@ -314,7 +293,7 @@ implements Runnable{
 			
 			//"좌석번호" 글자 라벨
 			JLabel seatNumStrLabel = new JLabel("좌석번호");
-			//seatNumStrLabel.setOpaque(true);
+			
 			seatNumStrLabel.setHorizontalAlignment(JLabel.CENTER);
 			seatNumStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			seatNumStrLabel.setBackground(new Color(128, 0, 0));
@@ -331,7 +310,7 @@ implements Runnable{
 			
 			//"회원"글자 라벨
 			JLabel memberStrLabel = new JLabel("회원");
-			//memberStrLabel.setOpaque(true);
+			
 			memberStrLabel.setHorizontalAlignment(JLabel.CENTER);
 			memberStrLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 			memberStrLabel.setBackground(new Color(128, 0, 0));
@@ -386,8 +365,7 @@ implements Runnable{
 			JPanel panel1F = new JPanel();
 			panel1F.setBounds(71, 37, 945, 599);
 			panel1F.setLayout(null);
-			//panel1F.setEnabled(false); //패널 비활성화
-			//panel1F.setVisible(false); //패널 감추기
+			
 			contentPane.add(panel1F);
 			
 			//1층 좌석 버튼 생성, 위치지정
@@ -405,7 +383,7 @@ implements Runnable{
 				seat1FBtn[i].setFont(new Font("Dialog", Font.BOLD, 16));
 				seat1FBtn[i].setBorder(lb);
 				seat1FBtn[i].setFocusPainted(false);
-				//seat1FBtn[i].setBackground(new Color(0, 128, 255));
+				
 		    	try {
 					if (findSeatTable.seatAvail(100+i)==0) 
 					{//사용가능
@@ -548,7 +526,7 @@ implements Runnable{
 		//2층 배치도 판넬
 		JPanel panel2F = new JPanel();
 		panel2F.setBounds(71, 37, 945, 599);
-		//panel2F.setBackground(Color.WHITE);
+		
 	    panel2F.setEnabled(false); //패널 비활성화
 		panel2F.setVisible(false); //패널 감추기
 		panel2F.setLayout(null);
@@ -693,7 +671,7 @@ implements Runnable{
 			wall2FLabel[11].setBounds(380, 184, 23, 140);
 			wall2FLabel[12].setBounds(285, 184, 27, 140);
 
-//		setVisible(true);	
+
 		//-----------------------------------------------------------------------------------------
 
 			//로그아웃 버튼--누르면 관리자로그인창으로
@@ -727,10 +705,7 @@ implements Runnable{
 		searchQuestionBtn.setFocusPainted(false);// hide focus rectangle
 		searchQuestionBtn.addActionListener(new ActionListener() {//누르면 아래 기능 동작
 			public void actionPerformed(ActionEvent e) {
-	              // QuestDialog생성
-//                QuestDialog questDialog = new QuestDialog //위에서 정의해놓은 QuestDialog 클래스 객체 생성
-//                		("", true, idLabel.getText(),quest1, ManagerMain.this); //매개변수(위에서 정한만큼)
-//                questDialog.setVisible(true);
+
 				
 				MQL = ManagerQuestionList.getInstance(in, out, name);
 				MQL.open();
@@ -819,7 +794,7 @@ implements Runnable{
     			
     			//의자 라벨의 값 읽어와서 의자정보 패널의 의자번호 라벨에 붙임
     			seatNumLabel_seatInfoPanel.setText(seatSource.getText());
-    			//if(memberInfoPanel.isEnabled()==false||seatInfoPanel.isEnabled()==false) //TODO 조건문 미동작?
+    			
     			//{
     				//클릭한 의자라벨값 읽어와서 findUse 실행(사용중인지 검사)
     				try {

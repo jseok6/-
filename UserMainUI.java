@@ -129,11 +129,10 @@ implements ActionListener, Runnable{
 			//Dialog의 창크기
 			int width = 300;
 			int height = 200;
-			//int x = fx+getWidth()/2-width/2;
-			//int y = fy+getHeight()/2-height/2;
+
 			md.setSize(width, height);
 			md.setLocationRelativeTo(this);
-			//md.setBounds(x, y, width, height);
+
 			md.setVisible(true);
 		}else if(obj == bt3) { // 답변하기
 			if(list.getSelectedItem()!=null) {
@@ -191,9 +190,7 @@ implements ActionListener, Runnable{
 			System.out.println("Rn:"+Rn);
 			String msg = data.substring(idx1 + 1);	// [id]:채팅내용
 			System.out.println("msg:"+msg);
-//			if(Rn.equals(QR[0].roomname)) {
-//				QR[0].addText(msg);
-//			}
+
 			for(int i = 0; QR.length > i; i++) {
 				if(QR[i] != null) {
 					if(Rn.equals(QR[i].roomName)){
@@ -319,8 +316,7 @@ implements ActionListener, Runnable{
 	}//--MyDialog
 	
 	public void creatRoom(String roomname) {
-//		QR[0] = new MChatQuestionRoom(roomname, in, out, id);
-//		System.out.println(QR[0].roomname);
+
 		int orner = 1;
 		String msg = "이미 있는 질문 입니다.";
 		for(int i = 0; QR.length > i; i++) {
@@ -330,11 +326,10 @@ implements ActionListener, Runnable{
 					//Dialog의 창크기
 					int width = 200;
 					int height = 200;
-					//int x = fx+getWidth()/2-width/2;
-					//int y = fy+getHeight()/2-height/2;
+
 					md.setSize(width, height);
 					md.setLocationRelativeTo(this);
-					//md.setBounds(x, y, width, height);
+
 					md.setVisible(true);
 					return;
 				}
@@ -359,11 +354,10 @@ implements ActionListener, Runnable{
 					//Dialog의 창크기
 					int width = 300;
 					int height = 200;
-					//int x = fx+getWidth()/2-width/2;
-					//int y = fy+getHeight()/2-height/2;
+
 					md.setSize(width, height);
 					md.setLocationRelativeTo(this);
-					//md.setBounds(x, y, width, height);
+
 					md.setVisible(true);
 					return;
 				}
@@ -579,11 +573,10 @@ implements ActionListener, Runnable{
 		//Dialog의 창크기
 		int width = 300;
 		int height = 200;
-		//int x = fx+getWidth()/2-width/2;
-		//int y = fy+getHeight()/2-height/2;
+
 		md.setSize(width, height);
 		md.setLocationRelativeTo(this);
-		//md.setBounds(x, y, width, height);
+
 		md.setVisible(true);
 		return;
 	}
